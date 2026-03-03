@@ -4,53 +4,95 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Matemática — Varjota DigiEdu</title>
+  <script src="../assets/template-loader.js"></script>
   <script>
     window.VD_PAGE = { disciplina: "matematica", pageTitle: "Matemática" };
   </script>
-  <script src="../assets/template-loader.js"></script>
-  <script src="../assets/template.js"></script>  <style>
-    .disc-hero { text-align: center; padding: 36px 20px 28px; border-bottom: 1px solid var(--vd-border); margin-bottom: 28px; }
+  <script src="../assets/template.js"></script>
+  <style>
+    .disc-hero { text-align: center; padding: 36px 20px 28px; border-bottom: 1px solid #DDE3ED; margin-bottom: 28px; }
     .disc-hero__icon { font-size: 4rem; line-height: 1; margin-bottom: 12px; }
     .disc-hero__title { font-family: 'Lexend', sans-serif; font-size: 2rem; font-weight: 800; color: #283593; margin-bottom: 8px; }
-    .disc-hero__desc { color: var(--vd-muted); font-size: .9375rem; max-width: 500px; margin: 0 auto; line-height: 1.6; }
-    .disc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
-    .disc-item { border: 2px dashed var(--vd-border); border-radius: var(--vd-radius); padding: 28px 16px; text-align: center; color: var(--vd-muted); font-size: .875rem; font-weight: 600; transition: border-color .2s, background .2s; cursor: default; }
-    .disc-item:hover { border-color: #283593; background: #EEEFFE; color: #283593; }
-    .disc-item__icon { font-size: 2rem; display: block; margin-bottom: 10px; }
-    .disc-item__tag { display: inline-block; margin-top: 8px; font-size: .72rem; background: #f5f5f5; border-radius: 20px; padding: 2px 10px; color: #999; }
+    .disc-hero__desc { color: #6B7280; font-size: .9375rem; max-width: 500px; margin: 0 auto; line-height: 1.6; }
+    .gaveta { border: 1px solid #DDE3ED; border-radius: 14px; overflow: hidden; margin-bottom: 12px; }
+    .gaveta__btn { width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: #F3F4F6; border: none; cursor: pointer; font-family: 'Lexend', sans-serif; font-size: .95rem; font-weight: 700; color: #1A1A2E; text-align: left; transition: background .15s; }
+    .gaveta__btn:hover { background: #E9EAEC; }
+    .gaveta__btn.aberta { background: #E9EAEC; }
+    .gaveta__icone { font-size: 1.2rem; }
+    .gaveta__seta { font-size: .85rem; color: #6B7280; transition: transform .15s; }
+    .gaveta__btn.aberta .gaveta__seta { transform: rotate(180deg); }
+    .gaveta__corpo { max-height: 0; overflow: hidden; transition: max-height .15s ease, opacity .15s ease; opacity: 0; }
+    .gaveta__corpo.aberto { max-height: 2000px; opacity: 1; }
+    .gaveta__inner { padding: 20px; background: #fff; }
+    .bncc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+    .bncc-card { border: 1px solid #DDE3ED; border-radius: 12px; padding: 18px; background: #F9FAFB; transition: box-shadow .15s, transform .15s; }
+    .bncc-card:hover { box-shadow: 0 4px 16px rgba(21,101,192,.12); transform: translateY(-2px); }
+    .bncc-card__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+    .bncc-card__codigo { font-family: 'Lexend', sans-serif; font-size: .8rem; font-weight: 700; color: #fff; background: #283593; padding: 3px 10px; border-radius: 20px; }
+    .bncc-card__ano { font-size: .75rem; font-weight: 700; color: #6B7280; background: #F3F4F6; padding: 3px 8px; border-radius: 20px; }
+    .bncc-card__desc { font-size: .85rem; color: #374151; line-height: 1.55; }
+    .em-breve { text-align: center; padding: 32px 20px; color: #9CA3AF; }
+    .em-breve__icon { font-size: 2.5rem; margin-bottom: 10px; }
+    .em-breve__text { font-family: 'Lexend', sans-serif; font-size: .9rem; font-weight: 600; }
   </style>
 </head>
 <body>
   <div class="disc-hero">
     <div class="disc-hero__icon">📐</div>
     <h1 class="disc-hero__title">Matemática</h1>
-    <p class="disc-hero__desc">
-      Recursos educacionais, habilidades BNCC e atividades de Matemática
-      para o Ensino Fundamental — 1º ao 9º ano.
-    </p>
+    <p class="disc-hero__desc">Recursos educacionais, habilidades BNCC e atividades de Matemática para o Ensino Fundamental — 1º ao 9º ano.</p>
   </div>
 
-  <div class="disc-grid">
-    <div class="disc-item">
-      <span class="disc-item__icon">📋</span>
-      Correlação BNCC
-      <span class="disc-item__tag">Em breve</span>
-    </div>
-    <div class="disc-item">
-      <span class="disc-item__icon">✏️</span>
-      Atividades
-      <span class="disc-item__tag">Em breve</span>
-    </div>
-    <div class="disc-item">
-      <span class="disc-item__icon">💻</span>
-      REDs
-      <span class="disc-item__tag">Em breve</span>
-    </div>
-    <div class="disc-item">
-      <span class="disc-item__icon">📁</span>
-      Materiais de Apoio
-      <span class="disc-item__tag">Em breve</span>
+  <div class="gaveta" id="gaveta-bncc">
+    <button class="gaveta__btn" onclick="toggleGaveta('bncc')">
+      <span><span class="gaveta__icone">📋</span> Correlação BNCC</span><span class="gaveta__seta">▼</span>
+    </button>
+    <div class="gaveta__corpo" id="corpo-bncc">
+      <div class="gaveta__inner">
+        <div class="bncc-grid">
+          <div class="bncc-card">
+            <div class="bncc-card__header"><span class="bncc-card__codigo">EF01MA01</span><span class="bncc-card__ano">1º ano</span></div>
+            <p class="bncc-card__desc">Utilizar números naturais como indicador de quantidade ou de ordem em diferentes situações cotidianas e reconhecer situações em que os números não indicam quantidade nem ordem.</p>
+          </div>
+          <div class="bncc-card">
+            <div class="bncc-card__header"><span class="bncc-card__codigo">EF02MA01</span><span class="bncc-card__ano">2º ano</span></div>
+            <p class="bncc-card__desc">Comparar e ordenar números naturais (de até três ordens) pela compreensão de características do sistema de numeração decimal: valor posicional e função do zero.</p>
+          </div>
+          <div class="bncc-card">
+            <div class="bncc-card__header"><span class="bncc-card__codigo">EF03MA01</span><span class="bncc-card__ano">3º ano</span></div>
+            <p class="bncc-card__desc">Ler, escrever e comparar números naturais de até a ordem de unidades de milhar, estabelecendo relações entre os registros numéricos e em língua materna.</p>
+          </div>
+          <div class="bncc-card">
+            <div class="bncc-card__header"><span class="bncc-card__codigo">EF04MA01</span><span class="bncc-card__ano">4º ano</span></div>
+            <p class="bncc-card__desc">Ler, escrever e ordenar números naturais até a ordem de dezenas de milhar com compreensão das principais características do sistema de numeração decimal.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+
+  <div class="gaveta" id="gaveta-atividades">
+    <button class="gaveta__btn" onclick="toggleGaveta('atividades')"><span><span class="gaveta__icone">✏️</span> Atividades</span><span class="gaveta__seta">▼</span></button>
+    <div class="gaveta__corpo" id="corpo-atividades"><div class="gaveta__inner"><div class="em-breve"><div class="em-breve__icon">🚧</div><div class="em-breve__text">Conteúdo em breve</div></div></div></div>
+  </div>
+  <div class="gaveta" id="gaveta-reds">
+    <button class="gaveta__btn" onclick="toggleGaveta('reds')"><span><span class="gaveta__icone">💻</span> REDs</span><span class="gaveta__seta">▼</span></button>
+    <div class="gaveta__corpo" id="corpo-reds"><div class="gaveta__inner"><div class="em-breve"><div class="em-breve__icon">🚧</div><div class="em-breve__text">Conteúdo em breve</div></div></div></div>
+  </div>
+  <div class="gaveta" id="gaveta-materiais">
+    <button class="gaveta__btn" onclick="toggleGaveta('materiais')"><span><span class="gaveta__icone">📁</span> Materiais de Apoio</span><span class="gaveta__seta">▼</span></button>
+    <div class="gaveta__corpo" id="corpo-materiais"><div class="gaveta__inner"><div class="em-breve"><div class="em-breve__icon">🚧</div><div class="em-breve__text">Conteúdo em breve</div></div></div></div>
+  </div>
+
+  <script>
+    function toggleGaveta(id) {
+      ['bncc','atividades','reds','materiais'].forEach(function(i) {
+        var btn=document.querySelector('#gaveta-'+i+' .gaveta__btn');
+        var corpo=document.getElementById('corpo-'+i);
+        if(i===id){var a=!corpo.classList.contains('aberto');btn.classList.toggle('aberta',a);corpo.classList.toggle('aberto',a);}
+        else{btn.classList.remove('aberta');corpo.classList.remove('aberto');}
+      });
+    }
+  </script>
 </body>
 </html>
