@@ -48,15 +48,15 @@ Página inicial com:
 - O index.html NÃO usa template.js (contém tudo inline)
 
 ## CORES DOS CARDS DE DISCIPLINAS (gradientes 135deg)
-arte              → #C62828 → #EF9A9A  | ícone 🎨
-ciencias          → #00695C → #80CBC4  | ícone 🔬
-educacao-fisica   → #2E7D32 → #A5D6A7  | ícone ⚽
-ensino-religioso  → #6A1B9A → #CE93D8  | ícone ✨
-geografia         → #1565C0 → #90CAF9  | ícone 🌍
-historia          → #BF360C → #FFAB91  | ícone 📜
-lingua-inglesa    → #00838F → #80DEEA  | ícone 🇬🇧
+arte              → #C62828 → #EF9A9A  | ícone 🎨 (texto escuro #3E1500)
+ciencias          → #00695C → #80CBC4  | ícone 🔬 (texto escuro #3E1500)
+educacao-fisica   → #2E7D32 → #A5D6A7  | ícone ⚽ (texto escuro #3E1500)
+ensino-religioso  → #6A1B9A → #CE93D8  | ícone ✨ (texto escuro #3E1500)
+geografia         → #1565C0 → #90CAF9  | ícone 🌍 (texto escuro #3E1500)
+historia          → #BF360C → #FFAB91  | ícone 📜 (texto escuro #3E1500)
+lingua-inglesa    → #00838F → #80DEEA  | ícone 🆒 (texto escuro #3E1500)
 lingua-portuguesa → #E65100 → #FFE082  | ícone 📖 (texto escuro #3E1500)
-matematica        → #283593 → #7986CB  | ícone 📐
+matematica        → #283593 → #7986CB  | ícone 📐 (texto escuro #3E1500)
 
 ## ARQUIVO: assets/template.css
 CSS compartilhado por TODAS as páginas filhas. Define:
