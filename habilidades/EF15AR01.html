@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Correlação BNCC — EF15AR01 — Varjota DigiEdu</title>
+
+  <!--
+  ╔═══════════════════════════════════════════════════════════════╗
+  ║          VARJOTA DIGIEDU — TEMPLATE DE PÁGINA FILHA          ║
+  ╠═══════════════════════════════════════════════════════════════╣
+  ║                                                               ║
+  ║  INSTRUÇÕES PARA USO (leia antes de gerar conteúdo):         ║
+  ║                                                               ║
+  ║  1. Altere o <title> acima                                   ║
+  ║                                                               ║
+  ║  2. Preencha window.VD_PAGE:                                 ║
+  ║     • disciplina → slug da disciplina (ver lista abaixo)     ║
+  ║     • pageTitle  → título exibido no breadcrumb              ║
+  ║                                                               ║
+  ║  3. Ajuste o src do template.js conforme o nível da pasta:   ║
+  ║     • disciplinas/  → src="../assets/template.js"            ║
+  ║     • pages/        → src="../assets/template.js"            ║
+  ║     • raiz/         → src="assets/template.js"               ║
+  ║                                                               ║
+  ║  4. Escreva APENAS o conteúdo dentro do <body>               ║
+  ║     Navbar, sidebar, breadcrumb e footer são automáticos.    ║
+  ║                                                               ║
+  ║  5. NÃO inclua: <nav>, <header>, <footer>, <aside>           ║
+  ║                                                               ║
+  ║  SLUGS VÁLIDOS PARA disciplina:                              ║
+  ║    arte | ciencias | educacao-fisica | ensino-religioso      ║
+  ║    geografia | historia | lingua-inglesa                     ║
+  ║    lingua-portuguesa | matematica                            ║
+  ║                                                               ║
+  ║  Para páginas sem disciplina (pages/), omita a propriedade   ║
+  ║  "disciplina" e informe apenas "pageTitle".                  ║
+  ╚═══════════════════════════════════════════════════════════════╝
+  -->
+
+  <script>
+    window.VD_PAGE = {
+      disciplina: "arte",                // slug da disciplina
+      pageTitle:  "Correlação BNCC — EF15AR01"   // título exibido no breadcrumb
+    };
+  </script>
+
+  <!-- Ajuste o caminho conforme a pasta onde o arquivo está salvo -->
+  <script src="../assets/template.js"></script>
+
+  <!--
+    Estilos opcionais exclusivos desta página.
+    O template.css já é carregado automaticamente pelo template.js.
+    Use esta tag <style> apenas para customizações pontuais.
+  -->
+  <style>
+    /* Pequenos ajustes para destacar as habilidades de computação */
+    .habilidade-comp {
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    .habilidade-comp h3 {
+      margin-bottom: 0.5rem;
+      color: #27ae60; /* verde para diferenciar */
+    }
+    .relacao {
+      background-color: #f0f9f0;
+      padding: 0.8rem 1rem;
+      border-radius: 8px;
+      margin-top: 1rem;
+      font-style: italic;
+      border-left: 4px solid #2ecc71;
+    }
+    .relacao strong {
+      font-style: normal;
+    }
+    .metadata {
+      color: #555;
+      font-size: 0.95rem;
+    }
+  </style>
+
+</head>
+<body>
+
+  <!--
+  ╔═══════════════════════════════════════════════════════════════╗
+  ║  ESCREVA AQUI O CONTEÚDO DA PÁGINA                           ║
+  ║                                                               ║
+  ║  O template.js envolverá automaticamente tudo que estiver    ║
+  ║  aqui dentro de:                                             ║
+  ║    .vd-layout > .vd-main > .vd-content                      ║
+  ║                                                               ║
+  ║  Classes utilitárias disponíveis (do template.css):          ║
+  ║    .vd-content h1  → título principal (azul escuro)          ║
+  ║    .vd-content h2  → subtítulo (azul primário)               ║
+  ║    .vd-content h3  → seção (texto escuro)                    ║
+  ║    .vd-content p   → parágrafo (line-height 1.7)             ║
+  ║    .vd-content hr  → separador sutil                         ║
+  ║    .vd-content a   → link azul sublinhado                    ║
+  ╚═══════════════════════════════════════════════════════════════╝
+  -->
+
+  <h1>🎯 Correlação com a BNCC Computação</h1>
+
+  <!-- Habilidade selecionada -->
+  <h2>Habilidade selecionada</h2>
+  <p><strong>Código:</strong> EF15AR01</p>
+  <p><strong>Descrição:</strong> Identificar e apreciar formas distintas das artes visuais tradicionais e contemporâneas, cultivando a percepção, o imaginário, a capacidade de simbolizar e o repertório imagético.</p>
+  <p><strong>Componente:</strong> Arte</p>
+  <p><strong>Ano/Etapa:</strong> 1º, 2º, 3º, 4º, 5º</p>
+  <p><strong>Unidade temática:</strong> Artes visuais</p>
+  <p><strong>Objeto do conhecimento:</strong> Contextos e práticas</p>
+
+  <hr>
+
+  <!-- Habilidades de Computação correlacionadas -->
+  <h2>💻 Habilidades de Computação correlacionadas</h2>
+
+  <!-- Habilidade 1 -->
+  <div class="habilidade-comp">
+    <h3>🔹 EF15CO08 – Reconhecer e utilizar tecnologias computacionais para pesquisar e acessar informações, expressar-se crítica e criativamente e resolver problemas.</h3>
+    <p><strong>Componente:</strong> Computação</p>
+    <p><strong>Ano/Etapa:</strong> 1º, 2º, 3º, 4º, 5º</p>
+    <p><strong>Unidade temática:</strong> Cultura digital</p>
+    <p><strong>Objeto do conhecimento:</strong> Uso de artefatos computacionais</p>
+    <div class="relacao">
+      <strong>Relação:</strong> Permite que os alunos utilizem recursos digitais para pesquisar e apreciar diferentes manifestações artísticas, ampliando o repertório imagético por meio de acervos online, museus virtuais e galerias digitais.
+    </div>
+  </div>
+
+  <!-- Habilidade 2 -->
+  <div class="habilidade-comp">
+    <h3>🔹 EF03CO07 – Utilizar diferentes navegadores e ferramentas de busca para pesquisar e acessar informações.</h3>
+    <p><strong>Componente:</strong> Computação</p>
+    <p><strong>Ano/Etapa:</strong> 3º</p>
+    <p><strong>Unidade temática:</strong> Cultura digital</p>
+    <p><strong>Objeto do conhecimento:</strong> Uso de tecnologias computacionais</p>
+    <div class="relacao">
+      <strong>Relação:</strong> Habilidade essencial para que os alunos possam pesquisar e identificar formas distintas de artes visuais disponíveis em ambientes digitais.
+    </div>
+  </div>
+
+  <!-- Habilidade 3 -->
+  <div class="habilidade-comp">
+    <h3>🔹 EF04CO08 – Reconhecer a importância de verificar a confiabilidade das fontes de informações obtidas na Internet.</h3>
+    <p><strong>Componente:</strong> Computação</p>
+    <p><strong>Ano/Etapa:</strong> 4º</p>
+    <p><strong>Unidade temática:</strong> Cultura digital</p>
+    <p><strong>Objeto do conhecimento:</strong> Segurança e responsabilidade no uso da tecnologia</p>
+    <div class="relacao">
+      <strong>Relação:</strong> Contribui para o desenvolvimento do olhar crítico necessário ao apreciar obras de arte e informações artísticas encontradas online.
+    </div>
+  </div>
+
+  <!-- Habilidade 4 -->
+  <div class="habilidade-comp">
+    <h3>🔹 EF15CO09 – Entender que as tecnologias devem ser utilizadas de maneira segura, ética e responsável, respeitando direitos autorais, de imagem e as leis vigentes.</h3>
+    <p><strong>Componente:</strong> Computação</p>
+    <p><strong>Ano/Etapa:</strong> 1º, 2º, 3º, 4º, 5º</p>
+    <p><strong>Unidade temática:</strong> Cultura digital</p>
+    <p><strong>Objeto do conhecimento:</strong> Segurança e responsabilidade no uso da tecnologia computacional</p>
+    <div class="relacao">
+      <strong>Relação:</strong> Fundamental para que os alunos compreendam a importância dos direitos autorais ao apreciar e reproduzir obras de arte visuais em ambiente digital.
+    </div>
+  </div>
+
+  <!-- Habilidade 5 -->
+  <div class="habilidade-comp">
+    <h3>🔹 EF05CO08 – Acessar as informações na Internet de forma crítica para distinguir os conteúdos confiáveis de não confiáveis.</h3>
+    <p><strong>Componente:</strong> Computação</p>
+    <p><strong>Ano/Etapa:</strong> 5º</p>
+    <p><strong>Unidade temática:</strong> Cultura digital</p>
+    <p><strong>Objeto do conhecimento:</strong> Segurança e responsabilidade no uso da tecnologia</p>
+    <div class="relacao">
+      <strong>Relação:</strong> Aprofunda a capacidade de selecionar fontes confiáveis para a apreciação de diferentes manifestações artísticas online.
+    </div>
+  </div>
+
+  <!-- Habilidade 6 -->
+  <div class="habilidade-comp">
+    <h3>🔹 EF04CO06 – Usar diferentes ferramentas computacionais para criação de conteúdo (textos, apresentações, vídeos etc.).</h3>
+    <p><strong>Componente:</strong> Computação</p>
+    <p><strong>Ano/Etapa:</strong> 4º</p>
+    <p><strong>Unidade temática:</strong> Cultura digital</p>
+    <p><strong>Objeto do conhecimento:</strong> Uso de tecnologias computacionais</p>
+    <div class="relacao">
+      <strong>Relação:</strong> Permite que os alunos registrem e compartilhem suas apreciações sobre as obras de arte estudadas, criando apresentações ou portfolios digitais.
+    </div>
+  </div>
+
+  <!-- Habilidade 7 -->
+  <div class="habilidade-comp">
+    <h3>🔹 EF15CO05 – Codificar a informação de diferentes formas, entendendo a importância desta codificação para o armazenamento, manipulação e transmissão em dispositivos computacionais.</h3>
+    <p><strong>Componente:</strong> Computação</p>
+    <p><strong>Ano/Etapa:</strong> 1º, 2º, 3º, 4º, 5º</p>
+    <p><strong>Unidade temática:</strong> Mundo digital</p>
+    <p><strong>Objeto do conhecimento:</strong> Codificação da informação</p>
+    <div class="relacao">
+      <strong>Relação:</strong> Relaciona-se com a "capacidade de simbolizar" mencionada na habilidade de arte, ao mostrar como imagens e símbolos visuais são codificados digitalmente.
+    </div>
+  </div>
+
+  <!-- Habilidade 8 -->
+  <div class="habilidade-comp">
+    <h3>🔹 EF05CO10 – Expressar-se crítica e criativamente na compreensão das mudanças tecnológicas no mundo do trabalho e sobre a evolução da sociedade.</h3>
+    <p><strong>Componente:</strong> Computação</p>
+    <p><strong>Ano/Etapa:</strong> 5º</p>
+    <p><strong>Unidade temática:</strong> Cultura digital</p>
+    <p><strong>Objeto do conhecimento:</strong> Uso de tecnologias computacionais</p>
+    <div class="relacao">
+      <strong>Relação:</strong> Amplia a percepção sobre como as tecnologias influenciam a produção e apreciação artística contemporânea.
+    </div>
+  </div>
+
+  <!-- Habilidade 9 -->
+  <div class="habilidade-comp">
+    <h3>🔹 EF01CO06 – Reconhecer e explorar artefatos computacionais voltados a atender necessidades pessoais ou coletivas.</h3>
+    <p><strong>Componente:</strong> Computação</p>
+    <p><strong>Ano/Etapa:</strong> 1º</p>
+    <p><strong>Unidade temática:</strong> Cultura digital</p>
+    <p><strong>Objeto do conhecimento:</strong> Uso de artefatos computacionais</p>
+    <div class="relacao">
+      <strong>Relação:</strong> Introduz o contato inicial com dispositivos que podem ser utilizados para acessar conteúdos artísticos digitais.
+    </div>
+  </div>
+
+  <hr class="metadata">
+  <p class="metadata">🔍 Habilidades listadas em ordem decrescente de relevância para a habilidade EF15AR01.</p>
+
+</body>
+</html>

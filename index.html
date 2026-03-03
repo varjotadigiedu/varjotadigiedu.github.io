@@ -42,13 +42,13 @@ body { background: var(--vd-bg); color: var(--vd-text); font-family: 'Nunito', s
 .disc-card { border-radius: var(--vd-radius); padding: 28px 16px 24px; display: flex; flex-direction: column; align-items: center; gap: 10px; text-decoration: none; color: #fff; font-family: 'Lexend', sans-serif; font-weight: 600; font-size: .95rem; text-align: center; box-shadow: var(--vd-shadow-md); transition: transform .22s, box-shadow .22s; }
 .disc-card:hover { transform: translateY(-6px) scale(1.025); box-shadow: 0 14px 36px rgba(0,0,0,.2); }
 .disc-card__icon { font-size: 2.6rem; line-height: 1; }
-.disc-card--arte              { background: linear-gradient(135deg,#C62828,#EF9A9A); }
-.disc-card--ciencias          { background: linear-gradient(135deg,#00695C,#80CBC4); }
-.disc-card--educacao-fisica   { background: linear-gradient(135deg,#2E7D32,#A5D6A7); }
-.disc-card--ensino-religioso  { background: linear-gradient(135deg,#6A1B9A,#CE93D8); }
-.disc-card--geografia         { background: linear-gradient(135deg,#1565C0,#90CAF9); }
-.disc-card--historia          { background: linear-gradient(135deg,#BF360C,#FFAB91); }
-.disc-card--lingua-inglesa    { background: linear-gradient(135deg,#00838F,#80DEEA); }
+.disc-card--arte              { background: linear-gradient(135deg,#C62828,#EF9A9A); color:#3E1500; }
+.disc-card--ciencias          { background: linear-gradient(135deg,#00695C,#80CBC4); color:#3E1500; }
+.disc-card--educacao-fisica   { background: linear-gradient(135deg,#2E7D32,#A5D6A7); color:#3E1500; }
+.disc-card--ensino-religioso  { background: linear-gradient(135deg,#6A1B9A,#CE93D8); color:#3E1500; }
+.disc-card--geografia         { background: linear-gradient(135deg,#1565C0,#90CAF9); color:#3E1500; }
+.disc-card--historia          { background: linear-gradient(135deg,#BF360C,#FFAB91); color:#3E1500; }
+.disc-card--lingua-inglesa    { background: linear-gradient(135deg,#00838F,#80DEEA); color:#3E1500; }
 .disc-card--lingua-portuguesa { background: linear-gradient(135deg,#E65100,#FFE082); color:#3E1500; }
 .disc-card--matematica        { background: linear-gradient(135deg,#283593,#7986CB); }
 .ref-card { background: linear-gradient(135deg,#0D47A1,#1565C0); border-radius: var(--vd-radius); padding: 24px 28px; display: flex; align-items: center; gap: 18px; margin-top: 20px; text-decoration: none; transition: transform .2s, box-shadow .2s; box-shadow: var(--vd-shadow-md); }
@@ -92,7 +92,7 @@ body { background: var(--vd-bg); color: var(--vd-text); font-family: 'Nunito', s
   <div class="index-hero__logo">
     <img src="assets/logo.png" alt="Varjota DigiEdu" onerror="this.outerHTML='<h1 style=&quot;color:#fff;font-family:Lexend,sans-serif;font-size:2.4rem;font-weight:800;&quot;>Varjota DigiEdu</h1>'"/>
   </div>
-  <p class="index-hero__tagline">Plataforma de recursos educacionais digitais da Secretaria de Educação</p>
+  <p class="index-hero__tagline">Plataforma de recursos educacionais digitais da Secretaria de Educação da Prefeitura de Varjota</p>
   <div class="index-search">
     <input type="text" id="searchInput" placeholder="Pesquisar disciplinas..." autocomplete="off"/>
     <button onclick="filterCards()">Pesquisar</button>
@@ -107,7 +107,7 @@ body { background: var(--vd-bg); color: var(--vd-text); font-family: 'Nunito', s
     <a href="disciplinas/ensino-religioso.html"  class="disc-card disc-card--ensino-religioso"  data-label="ensino religioso"><span class="disc-card__icon">✨</span>Ensino Religioso</a>
     <a href="disciplinas/geografia.html"         class="disc-card disc-card--geografia"         data-label="geografia"><span class="disc-card__icon">🌍</span>Geografia</a>
     <a href="disciplinas/historia.html"          class="disc-card disc-card--historia"          data-label="história historia"><span class="disc-card__icon">📜</span>História</a>
-    <a href="disciplinas/lingua-inglesa.html"    class="disc-card disc-card--lingua-inglesa"    data-label="língua inglesa lingua inglesa"><span class="disc-card__icon">🇬🇧</span>Língua Inglesa</a>
+    <a href="disciplinas/lingua-inglesa.html"    class="disc-card disc-card--lingua-inglesa"    data-label="língua inglesa lingua inglesa"><span class="disc-card__icon">🆒</span>Língua Inglesa</a>
     <a href="disciplinas/lingua-portuguesa.html" class="disc-card disc-card--lingua-portuguesa" data-label="língua portuguesa lingua portuguesa"><span class="disc-card__icon">📖</span>Língua Portuguesa</a>
     <a href="disciplinas/matematica.html"        class="disc-card disc-card--matematica"        data-label="matemática matematica"><span class="disc-card__icon">📐</span>Matemática</a>
   </div>
@@ -122,7 +122,7 @@ body { background: var(--vd-bg); color: var(--vd-text); font-family: 'Nunito', s
 </main>
 <footer class="vd-footer">
   <div class="vd-footer__inner">
-    <p>© 2025 Prefeitura de Varjota — Secretaria de Educação (SMETEC)</p>
+    <p>© 2025 Prefeitura de Varjota — Secretaria de Educação e Tecnologia (SMETEC)</p>
     <p class="vd-footer__notice">O conteúdo deste site não pode ser editado, copiado ou distribuído sem expressa autorização da SMETEC-Varjota.</p>
   </div>
 </footer>
