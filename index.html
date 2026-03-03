@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Varjota DigiEdu</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --vd-primary: #1565C0; --vd-primary-dk: #0D47A1; --vd-accent: #FF8F00;
+  --vd-bg: #F4F7FB; --vd-white: #FFFFFF; --vd-text: #1A1A2E; --vd-muted: #6B7280;
+  --vd-border: #DDE3ED; --vd-nav-h: 68px; --vd-radius: 14px;
+  --vd-shadow: 0 2px 14px rgba(21,101,192,.09); --vd-shadow-md: 0 6px 28px rgba(21,101,192,.15);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--vd-bg); color: var(--vd-text); font-family: 'Nunito', sans-serif; min-height: 100vh; display: flex; flex-direction: column; }
+.vd-navbar { position: sticky; top: 0; z-index: 1000; background: linear-gradient(135deg, var(--vd-primary-dk) 0%, var(--vd-primary) 100%); height: var(--vd-nav-h); box-shadow: 0 2px 20px rgba(13,71,161,.3); }
+.vd-navbar__inner { max-width: 1400px; margin: 0 auto; height: 100%; padding: 0 28px; display: flex; align-items: center; gap: 28px; }
+.vd-navbar__logo { flex-shrink: 0; display: flex; align-items: center; text-decoration: none; }
+.vd-navbar__logo img { height: 50px; width: auto; object-fit: contain; }
+.vd-navbar__logo-fb { color:#fff;font-family:'Lexend',sans-serif;font-weight:700;font-size:1.1rem; }
+.vd-navbar__links { display: flex; list-style: none; gap: 2px; margin-left: auto; }
+.vd-navbar__links a { display: block; padding: 8px 15px; color: rgba(255,255,255,.85); text-decoration: none; font-family: 'Lexend', sans-serif; font-size: .85rem; font-weight: 500; border-radius: 8px; transition: background .2s, color .2s; white-space: nowrap; }
+.vd-navbar__links a:hover, .vd-navbar__links a.active { background: rgba(255,255,255,.18); color: #fff; }
+.vd-navbar__hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; margin-left: auto; }
+.vd-navbar__hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; }
+.index-hero { background: linear-gradient(135deg, var(--vd-primary-dk) 0%, var(--vd-primary) 60%, #1976D2 100%); padding: 56px 28px 52px; text-align: center; position: relative; overflow: hidden; }
+.index-hero::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+.index-hero__logo { position: relative; margin-bottom: 24px; }
+.index-hero__logo img { height: 110px; width: auto; max-width: 500px; object-fit: contain; filter: drop-shadow(0 4px 20px rgba(0,0,0,.25)); }
+.index-hero__tagline { position: relative; font-family: 'Lexend', sans-serif; font-size: 1rem; color: rgba(255,255,255,.8); margin-bottom: 36px; }
+.index-search { position: relative; display: flex; max-width: 580px; margin: 0 auto; background: rgba(255,255,255,.15); border: 2px solid rgba(255,255,255,.3); border-radius: 50px; backdrop-filter: blur(8px); overflow: hidden; transition: all .25s; }
+.index-search:focus-within { background: rgba(255,255,255,.22); border-color: rgba(255,255,255,.6); box-shadow: 0 0 0 4px rgba(255,255,255,.12); }
+.index-search input { flex: 1; padding: 14px 22px; background: none; border: none; outline: none; color: #fff; font-family: 'Nunito', sans-serif; font-size: 1rem; font-weight: 600; }
+.index-search input::placeholder { color: rgba(255,255,255,.55); }
+.index-search button { padding: 12px 28px; background: var(--vd-accent); border: none; color: #fff; font-family: 'Lexend', sans-serif; font-size: .9rem; font-weight: 600; cursor: pointer; transition: background .2s; border-radius: 0 48px 48px 0; }
+.index-search button:hover { background: #F57C00; }
+.index-main { max-width: 1400px; margin: 0 auto; padding: 40px 28px 52px; width: 100%; }
+.index-section-title { font-family: 'Lexend', sans-serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
+.index-section-title::after { content: ''; flex: 1; height: 2px; background: var(--vd-border); border-radius: 2px; }
+.disc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 18px; }
+.disc-card { border-radius: var(--vd-radius); padding: 28px 16px 24px; display: flex; flex-direction: column; align-items: center; gap: 10px; text-decoration: none; color: #fff; font-family: 'Lexend', sans-serif; font-weight: 600; font-size: .95rem; text-align: center; box-shadow: var(--vd-shadow-md); transition: transform .22s, box-shadow .22s; }
+.disc-card:hover { transform: translateY(-6px) scale(1.025); box-shadow: 0 14px 36px rgba(0,0,0,.2); }
+.disc-card__icon { font-size: 2.6rem; line-height: 1; }
+.disc-card--arte              { background: linear-gradient(135deg,#C62828,#EF9A9A); }
+.disc-card--ciencias          { background: linear-gradient(135deg,#00695C,#80CBC4); }
+.disc-card--educacao-fisica   { background: linear-gradient(135deg,#2E7D32,#A5D6A7); }
+.disc-card--ensino-religioso  { background: linear-gradient(135deg,#6A1B9A,#CE93D8); }
+.disc-card--geografia         { background: linear-gradient(135deg,#1565C0,#90CAF9); }
+.disc-card--historia          { background: linear-gradient(135deg,#BF360C,#FFAB91); }
+.disc-card--lingua-inglesa    { background: linear-gradient(135deg,#00838F,#80DEEA); }
+.disc-card--lingua-portuguesa { background: linear-gradient(135deg,#E65100,#FFE082); color:#3E1500; }
+.disc-card--matematica        { background: linear-gradient(135deg,#283593,#7986CB); }
+.ref-card { background: linear-gradient(135deg,#0D47A1,#1565C0); border-radius: var(--vd-radius); padding: 24px 28px; display: flex; align-items: center; gap: 18px; margin-top: 20px; text-decoration: none; transition: transform .2s, box-shadow .2s; box-shadow: var(--vd-shadow-md); }
+.ref-card:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(13,71,161,.3); }
+.ref-card__icon { font-size: 2.4rem; flex-shrink: 0; }
+.ref-card__text h3 { font-family: 'Lexend', sans-serif; font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 4px; }
+.ref-card__text p { font-size: .85rem; color: rgba(255,255,255,.7); }
+.ref-card__arrow { margin-left: auto; font-size: 1.4rem; color: rgba(255,255,255,.55); }
+.vd-footer { background: linear-gradient(135deg, var(--vd-primary-dk), var(--vd-primary)); color: rgba(255,255,255,.8); margin-top: auto; padding: 20px 28px; text-align: center; }
+.vd-footer__inner { max-width:1400px; margin:0 auto; display:flex; flex-direction:column; gap:4px; }
+.vd-footer__inner p { font-size:.8rem; font-weight:600; }
+.vd-footer__notice { font-size:.72rem!important; opacity:.65; }
+@media(max-width:900px){
+  .vd-navbar__links{display:none;flex-direction:column;position:absolute;top:var(--vd-nav-h);left:0;right:0;background:var(--vd-primary-dk);padding:16px;gap:4px;z-index:999;}
+  .vd-navbar__links.open{display:flex;}
+  .vd-navbar__hamburger{display:flex;}
+  .vd-navbar__inner{position:relative;}
+  .disc-grid{grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:14px;}
+  .index-hero__logo img{height:75px;}
+}
+</style>
+</head>
+<body>
+<nav class="vd-navbar">
+  <div class="vd-navbar__inner">
+    <a href="index.html" class="vd-navbar__logo">
+      <img src="assets/logo.png" alt="Varjota DigiEdu" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
+      <span class="vd-navbar__logo-fb" style="display:none">Varjota DigiEdu</span>
+    </a>
+    <button class="vd-navbar__hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <ul class="vd-navbar__links" id="navLinks">
+      <li><a href="index.html" class="active">Início</a></li>
+      <li><a href="pages/bncc-correlacionada.html">BNCC Correlacionada</a></li>
+      <li><a href="pages/bncc-educacao.html">BNCC Educação</a></li>
+      <li><a href="pages/atividades.html">Atividades</a></li>
+      <li><a href="pages/reds.html">REDs</a></li>
+    </ul>
+  </div>
+</nav>
+<section class="index-hero">
+  <div class="index-hero__logo">
+    <img src="assets/logo.png" alt="Varjota DigiEdu" onerror="this.outerHTML='<h1 style=&quot;color:#fff;font-family:Lexend,sans-serif;font-size:2.4rem;font-weight:800;&quot;>Varjota DigiEdu</h1>'"/>
+  </div>
+  <p class="index-hero__tagline">Plataforma de recursos educacionais digitais da Secretaria de Educação</p>
+  <div class="index-search">
+    <input type="text" id="searchInput" placeholder="Pesquisar disciplinas..." autocomplete="off"/>
+    <button onclick="filterCards()">Pesquisar</button>
+  </div>
+</section>
+<main class="index-main">
+  <h2 class="index-section-title">📚 Disciplinas</h2>
+  <div class="disc-grid" id="discGrid">
+    <a href="disciplinas/arte.html"              class="disc-card disc-card--arte"              data-label="arte"><span class="disc-card__icon">🎨</span>Arte</a>
+    <a href="disciplinas/ciencias.html"          class="disc-card disc-card--ciencias"          data-label="ciências ciencias"><span class="disc-card__icon">🔬</span>Ciências</a>
+    <a href="disciplinas/educacao-fisica.html"   class="disc-card disc-card--educacao-fisica"   data-label="educação física educacao fisica"><span class="disc-card__icon">⚽</span>Educação Física</a>
+    <a href="disciplinas/ensino-religioso.html"  class="disc-card disc-card--ensino-religioso"  data-label="ensino religioso"><span class="disc-card__icon">✨</span>Ensino Religioso</a>
+    <a href="disciplinas/geografia.html"         class="disc-card disc-card--geografia"         data-label="geografia"><span class="disc-card__icon">🌍</span>Geografia</a>
+    <a href="disciplinas/historia.html"          class="disc-card disc-card--historia"          data-label="história historia"><span class="disc-card__icon">📜</span>História</a>
+    <a href="disciplinas/lingua-inglesa.html"    class="disc-card disc-card--lingua-inglesa"    data-label="língua inglesa lingua inglesa"><span class="disc-card__icon">🇬🇧</span>Língua Inglesa</a>
+    <a href="disciplinas/lingua-portuguesa.html" class="disc-card disc-card--lingua-portuguesa" data-label="língua portuguesa lingua portuguesa"><span class="disc-card__icon">📖</span>Língua Portuguesa</a>
+    <a href="disciplinas/matematica.html"        class="disc-card disc-card--matematica"        data-label="matemática matematica"><span class="disc-card__icon">📐</span>Matemática</a>
+  </div>
+  <a href="pages/ref-curricular.html" class="ref-card">
+    <span class="ref-card__icon">📋</span>
+    <div class="ref-card__text">
+      <h3>Referencial Curricular da Educação Digital e Midiática de Varjota</h3>
+      <p>Acesse o referencial completo da SMETEC-Varjota</p>
+    </div>
+    <span class="ref-card__arrow">→</span>
+  </a>
+</main>
+<footer class="vd-footer">
+  <div class="vd-footer__inner">
+    <p>© 2025 Prefeitura de Varjota — Secretaria de Educação (SMETEC)</p>
+    <p class="vd-footer__notice">O conteúdo deste site não pode ser editado, copiado ou distribuído sem expressa autorização da SMETEC-Varjota.</p>
+  </div>
+</footer>
+<script>
+document.getElementById('hamburger').addEventListener('click',()=>{document.getElementById('navLinks').classList.toggle('open');});
+document.getElementById('searchInput').addEventListener('input',filterCards);
+function filterCards(){const q=document.getElementById('searchInput').value.toLowerCase().trim();document.querySelectorAll('.disc-card').forEach(c=>{c.style.display=(!q||c.dataset.label.includes(q))?'':'none';});}
+</script>
+</body>
+</html>
