@@ -9,8 +9,8 @@
  *       pageTitle:  "Título da página" // exibido no breadcrumb
  *     };
  *   </script>
- *   <script src="../assets/template.js"></script>
- */
+ *   <script src="../assets/template-loader.js"></script>
+  <script src="../assets/template.js"></script> */
 
 (function () {
     'use strict';
@@ -72,21 +72,8 @@
   
     function injectAssets() {
       // Google Fonts — evita duplicar se já existir
-      if (!document.querySelector('link[href*="fonts.googleapis"]')) {
-        const gf   = document.createElement('link');
-        gf.rel     = 'stylesheet';
-        gf.href    = 'https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Lexend:wght@400;500;600;700&display=swap';
-        document.head.prepend(gf);
-      }
-  
       // template.css
-      if (!document.querySelector('link[href*="template.css"]')) {
-        const css   = document.createElement('link');
-        css.rel     = 'stylesheet';
-        css.href    = r('assets/template.css');
-        document.head.prepend(css);
-      }
-    }
+         }
   
     /* ── 4. Navbar ──────────────────────────────────────────────── */
   

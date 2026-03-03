@@ -110,8 +110,8 @@ Estrutura exata:
       pageTitle:  "TÍTULO DA PÁGINA"
     };
   </script>
-  <script src="../assets/template.js"></script>
-  <!-- Ajuste o ../ conforme nível de pasta -->
+  <script src="../assets/template-loader.js"></script>
+  <script src="../assets/template.js"></script>  <!-- Ajuste o ../ conforme nível de pasta -->
 </head>
 <body>
   <!-- APENAS o conteúdo específico da página aqui -->

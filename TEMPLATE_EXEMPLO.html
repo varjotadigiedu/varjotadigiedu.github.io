@@ -1,0 +1,20 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TÍTULO DA PÁGINA — Varjota DigiEdu</title>
+
+  <!-- ✅ Loader síncrono: garante CSS antes de qualquer <style> inline -->
+  <script src="../assets/template-loader.js"></script>
+
+  <script>
+    window.VD_PAGE = {
+      disciplina: "SLUG_DA_DISCIPLINA",
+      pageTitle:  "TÍTULO DA PÁGINA"
+    };
+  </script>
+  <script src="../assets/template-loader.js"></script>
+  <script src="../assets/template.js"></script>
+  <style>
+    /* var(--vd-*) funcionam aqui pois o CSS já foi carregado acima */
+  </style>
+</head>
