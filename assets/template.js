@@ -5,239 +5,327 @@
  * USO NA PÁGINA FILHA (antes deste script):
  *   <script>
  *     window.VD_PAGE = {
- *       disciplina: "arte",           // slug da disciplina (opcional)
- *       pageTitle:  "Título da página" // exibido no breadcrumb
+ *       disciplina: "arte",
+ *       pageTitle:  "Título da página"
  *     };
  *   </script>
- *   <script src="../assets/template-loader.js"></script>
-  <script src="../assets/template.js"></script> */
+ *   <script src="../assets/template.js"></script>
+ */
 
 (function () {
-    'use strict';
-  
-    /* ── 1. Configuração central ────────────────────────────────── */
-  
-    const DISCIPLINAS = [
-      { slug: 'arte',              label: 'Arte',              icon: '🎨', cor: '#C62828' },
-      { slug: 'ciencias',          label: 'Ciências',          icon: '🔬', cor: '#00695C' },
-      { slug: 'educacao-fisica',   label: 'Educação Física',   icon: '⚽', cor: '#2E7D32' },
-      { slug: 'ensino-religioso',  label: 'Ensino Religioso',  icon: '✨', cor: '#6A1B9A' },
-      { slug: 'geografia',         label: 'Geografia',         icon: '🌍', cor: '#1565C0' },
-      { slug: 'historia',          label: 'História',          icon: '📜', cor: '#BF360C' },
-      { slug: 'lingua-inglesa',    label: 'Língua Inglesa',    icon: '🇬🇧', cor: '#00838F' },
-      { slug: 'lingua-portuguesa', label: 'Língua Portuguesa', icon: '📖', cor: '#E65100' },
-      { slug: 'matematica',        label: 'Matemática',        icon: '📐', cor: '#283593' },
-    ];
-  
-    const NAV_ITEMS = [
-      { label: 'Início',               href: 'index.html' },
-      { label: 'BNCC Correlacionada',  href: 'pages/bncc-correlacionada.html' },
-      { label: 'BNCC Educação',        href: 'pages/bncc-educacao.html' },
-      { label: 'Atividades',           href: 'pages/atividades.html' },
-      { label: 'REDs',                 href: 'pages/reds.html' },
-    ];
-  
-    /* ── 2. Utilitários ─────────────────────────────────────────── */
-  
-    /**
-     * Calcula o prefixo de caminho relativo baseado na
-     * profundidade atual do URL.
-     * Exemplos:
-     *   /index.html            → ""
-     *   /disciplinas/arte.html → "../"
-     *   /pages/atividades.html → "../"
-     */
-    function getPrefix() {
-      const parts = window.location.pathname.split('/').filter(Boolean);
-      // Remove o nome do arquivo (última parte)
-      const depth = parts.length > 0 ? parts.length - 1 : 0;
-      return depth > 0 ? '../'.repeat(depth) : '';
-    }
-  
-    const PREFIX = getPrefix();
-  
-    /** Resolve um href relativo à raiz do projeto */
-    function r(href) {
-      return PREFIX + href;
-    }
-  
-    /** Verifica se um href corresponde à página atual */
-    function isActive(href) {
-      const current = window.location.pathname.split('/').pop() || 'index.html';
-      const target  = href.split('/').pop();
-      return current === target;
-    }
-  
-    /* ── 3. Injeção de CSS e Fontes ─────────────────────────────── */
-  
-    function injectAssets() {
-      // Google Fonts — evita duplicar se já existir
-      // template.css
-         }
-  
-    /* ── 4. Navbar ──────────────────────────────────────────────── */
-  
-    function buildNavbar() {
-      const nav       = document.createElement('nav');
-      nav.className   = 'vd-navbar';
-      nav.innerHTML   = `
-        <div class="vd-navbar__inner">
-  
-          <a href="${r('index.html')}" class="vd-navbar__logo">
-            <img
-              src="${r('assets/logo.png')}"
-              alt="Varjota DigiEdu"
-              onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
-            />
-            <span class="vd-navbar__logo-fb" style="display:none">Varjota DigiEdu</span>
-          </a>
-  
-          <button class="vd-navbar__hamburger" id="vdHamburger" aria-label="Abrir menu">
-            <span></span><span></span><span></span>
-          </button>
-  
-          <ul class="vd-navbar__links" id="vdNavLinks">
-            ${NAV_ITEMS.map(item => `
-              <li>
-                <a href="${r(item.href)}" class="${isActive(item.href) ? 'active' : ''}">
-                  ${item.label}
-                </a>
-              </li>
-            `).join('')}
-          </ul>
-  
-        </div>
-      `;
-  
-      // Insere antes de tudo no body
-      document.body.insertBefore(nav, document.body.firstChild);
-  
-      // Toggle hamburger
-      nav.querySelector('#vdHamburger').addEventListener('click', () => {
-        nav.querySelector('#vdNavLinks').classList.toggle('open');
-      });
-  
-      // Fecha menu ao clicar em um link (mobile)
-      nav.querySelectorAll('#vdNavLinks a').forEach(a => {
-        a.addEventListener('click', () => {
-          nav.querySelector('#vdNavLinks').classList.remove('open');
-        });
+  'use strict';
+
+  /* ── 1. Configuração central ────────────────────────────────── */
+
+  var DISCIPLINAS = [
+    { slug: 'arte',              label: 'Arte',              icon: '🎨' },
+    { slug: 'ciencias',          label: 'Ciências',          icon: '🔬' },
+    { slug: 'educacao-fisica',   label: 'Educação Física',   icon: '⚽' },
+    { slug: 'ensino-religioso',  label: 'Ensino Religioso',  icon: '✨' },
+    { slug: 'geografia',         label: 'Geografia',         icon: '🌍' },
+    { slug: 'historia',          label: 'História',          icon: '📜' },
+    { slug: 'lingua-inglesa',    label: 'Língua Inglesa',    icon: '🇬🇧' },
+    { slug: 'lingua-portuguesa', label: 'Língua Portuguesa', icon: '📖' },
+    { slug: 'matematica',        label: 'Matemática',        icon: '📐' },
+  ];
+
+  var NAV_ITEMS = [
+    { label: 'Início',              href: 'index.html' },
+    { label: 'BNCC Correlacionada', href: 'pages/bncc-correlacionada.html' },
+    { label: 'BNCC Educação',       href: 'pages/bncc-educacao.html' },
+    { label: 'Atividades',          href: 'pages/atividades.html' },
+    { label: 'REDs',                href: 'pages/reds.html' },
+  ];
+
+  /* ── 2. Utilitários ─────────────────────────────────────────── */
+
+  function getPrefix() {
+    var parts = window.location.pathname.split('/').filter(function(p) { return p !== ''; });
+    var depth = parts.length > 0 ? parts.length - 1 : 0;
+    var prefix = '';
+    for (var i = 0; i < depth; i++) { prefix += '../'; }
+    return prefix;
+  }
+
+  var PREFIX = getPrefix();
+
+  function r(href) {
+    return PREFIX + href;
+  }
+
+  function isActive(href) {
+    var current = window.location.pathname.split('/').pop() || 'index.html';
+    var target  = href.split('/').pop();
+    return current === target;
+  }
+
+  function el(tag, props, children) {
+    var elem = document.createElement(tag);
+    if (props) {
+      Object.keys(props).forEach(function(key) {
+        if (key === 'className') {
+          elem.className = props[key];
+        } else if (key === 'textContent') {
+          elem.textContent = props[key];
+        } else if (key === 'onclick') {
+          elem.addEventListener('click', props[key]);
+        } else {
+          elem.setAttribute(key, props[key]);
+        }
       });
     }
-  
-    /* ── 5. Layout (sidebar + main + breadcrumb) ────────────────── */
-  
-    function buildLayout() {
-      const meta   = window.VD_PAGE || {};
-      const slug   = meta.disciplina  || null;
-      const title  = meta.pageTitle   || null;
-      const disc   = DISCIPLINAS.find(d => d.slug === slug) || null;
-  
-      // Coleta todos os filhos do body que não são a navbar
-      const original = Array.from(document.body.children).filter(
-        el => !el.classList.contains('vd-navbar')
-      );
-  
-      /* ── Sidebar ── */
-      const sidebar     = document.createElement('aside');
-      sidebar.className = 'vd-sidebar';
-      sidebar.innerHTML = `
-  
-        <button class="vd-back-btn" onclick="history.back()">
-          ← Voltar
-        </button>
-  
-        <div class="vd-sidebar__section">
-          <h3 class="vd-sidebar__title">Disciplinas</h3>
-          <ul class="vd-sidebar__menu">
-            ${DISCIPLINAS.map(d => `
-              <li>
-                
-                  href="${r('disciplinas/' + d.slug + '.html')}"
-                  class="${d.slug === slug ? 'active' : ''}"
-                >
-                  <span>${d.icon}</span> ${d.label}
-                </a>
-              </li>
-            `).join('')}
-          </ul>
-        </div>
-  
-      `;
-  
-      /* ── Breadcrumb ── */
-      let bcItems = `<li><a href="${r('index.html')}">🏠 Início</a></li>`;
-  
-      if (disc) {
-        bcItems += `
-          <li>
-            <a href="${r('disciplinas/' + slug + '.html')}">${disc.label}</a>
-          </li>
-        `;
+    if (children) {
+      children.forEach(function(child) {
+        if (typeof child === 'string') {
+          elem.appendChild(document.createTextNode(child));
+        } else if (child) {
+          elem.appendChild(child);
+        }
+      });
+    }
+    return elem;
+  }
+
+  /* ── 3. Injeção de Fontes ───────────────────────────────────── */
+
+  function injectFonts() {
+    if (!document.querySelector('link[href*="fonts.googleapis"]')) {
+      var gf  = document.createElement('link');
+      gf.rel  = 'stylesheet';
+      gf.href = 'https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Lexend:wght@400;500;600;700&display=swap';
+      document.head.appendChild(gf);
+    }
+  }
+
+  /* ── 4. Navbar ──────────────────────────────────────────────── */
+
+  function buildNavbar() {
+    // Logo
+    var logoImg = document.createElement('img');
+    logoImg.src = r('assets/logo.png');
+    logoImg.alt = 'Varjota DigiEdu';
+    logoImg.onerror = function() {
+      this.style.display = 'none';
+      this.nextSibling.style.display = 'block';
+    };
+
+    var logoFb = document.createElement('span');
+    logoFb.className   = 'vd-navbar__logo-fb';
+    logoFb.textContent = 'Varjota DigiEdu';
+    logoFb.style.display = 'none';
+
+    var logoLink = document.createElement('a');
+    logoLink.href      = r('index.html');
+    logoLink.className = 'vd-navbar__logo';
+    logoLink.appendChild(logoImg);
+    logoLink.appendChild(logoFb);
+
+    // Hamburger
+    var hamburger = document.createElement('button');
+    hamburger.className   = 'vd-navbar__hamburger';
+    hamburger.id          = 'vdHamburger';
+    hamburger.setAttribute('aria-label', 'Abrir menu');
+    for (var s = 0; s < 3; s++) {
+      hamburger.appendChild(document.createElement('span'));
+    }
+
+    // Links
+    var ul = document.createElement('ul');
+    ul.className = 'vd-navbar__links';
+    ul.id        = 'vdNavLinks';
+
+    NAV_ITEMS.forEach(function(item) {
+      var a       = document.createElement('a');
+      a.href      = r(item.href);
+      a.textContent = item.label;
+      if (isActive(item.href)) { a.className = 'active'; }
+
+      var li = document.createElement('li');
+      li.appendChild(a);
+      ul.appendChild(li);
+    });
+
+    // Inner
+    var inner = document.createElement('div');
+    inner.className = 'vd-navbar__inner';
+    inner.appendChild(logoLink);
+    inner.appendChild(hamburger);
+    inner.appendChild(ul);
+
+    // Nav
+    var nav = document.createElement('nav');
+    nav.className = 'vd-navbar';
+    nav.appendChild(inner);
+
+    document.body.insertBefore(nav, document.body.firstChild);
+
+    // Toggle hamburger
+    hamburger.addEventListener('click', function() {
+      ul.classList.toggle('open');
+    });
+
+    // Fecha ao clicar num link
+    ul.querySelectorAll('a').forEach(function(a) {
+      a.addEventListener('click', function() {
+        ul.classList.remove('open');
+      });
+    });
+  }
+
+  /* ── 5. Layout ──────────────────────────────────────────────── */
+
+  function buildLayout() {
+    var meta  = window.VD_PAGE || {};
+    var slug  = meta.disciplina || null;
+    var title = meta.pageTitle  || null;
+    var disc  = null;
+
+    DISCIPLINAS.forEach(function(d) {
+      if (d.slug === slug) { disc = d; }
+    });
+
+    // Coleta conteúdo original (exceto navbar)
+    var original = [];
+    Array.from(document.body.children).forEach(function(child) {
+      if (!child.classList.contains('vd-navbar')) {
+        original.push(child);
       }
-  
-      if (title) {
-        bcItems += `<li class="current">${title}</li>`;
-      }
-  
-      const breadcrumb     = document.createElement('nav');
-      breadcrumb.className = 'vd-breadcrumb';
-      breadcrumb.setAttribute('aria-label', 'Navegação estrutural');
-      breadcrumb.innerHTML = `<ol>${bcItems}</ol>`;
-  
-      /* ── Content wrapper ── */
-      const content     = document.createElement('div');
-      content.className = 'vd-content';
-      original.forEach(el => content.appendChild(el));
-  
-      /* ── Main ── */
-      const main     = document.createElement('main');
-      main.className = 'vd-main';
-      main.appendChild(breadcrumb);
-      main.appendChild(content);
-  
-      /* ── Layout wrapper ── */
-      const layout     = document.createElement('div');
-      layout.className = 'vd-layout';
-      layout.appendChild(sidebar);
-      layout.appendChild(main);
-  
-      document.body.appendChild(layout);
+    });
+
+    /* ── Botão Voltar ── */
+    var backBtn = document.createElement('button');
+    backBtn.className   = 'vd-back-btn';
+    backBtn.textContent = '← Voltar';
+    backBtn.addEventListener('click', function() { history.back(); });
+
+    /* ── Menu de disciplinas ── */
+    var menuTitle = document.createElement('h3');
+    menuTitle.className   = 'vd-sidebar__title';
+    menuTitle.textContent = 'Disciplinas';
+
+    var menuUl = document.createElement('ul');
+    menuUl.className = 'vd-sidebar__menu';
+
+    DISCIPLINAS.forEach(function(d) {
+      var iconSpan = document.createElement('span');
+      iconSpan.textContent = d.icon;
+
+      var a = document.createElement('a');
+      a.href = r('disciplinas/' + d.slug + '.html');
+      if (d.slug === slug) { a.className = 'active'; }
+      a.appendChild(iconSpan);
+      a.appendChild(document.createTextNode(' ' + d.label));
+
+      var li = document.createElement('li');
+      li.appendChild(a);
+      menuUl.appendChild(li);
+    });
+
+    var sidebarSection = document.createElement('div');
+    sidebarSection.className = 'vd-sidebar__section';
+    sidebarSection.appendChild(menuTitle);
+    sidebarSection.appendChild(menuUl);
+
+    /* ── Sidebar ── */
+    var sidebar = document.createElement('aside');
+    sidebar.className = 'vd-sidebar';
+    sidebar.appendChild(backBtn);
+    sidebar.appendChild(sidebarSection);
+
+    /* ── Breadcrumb ── */
+    var bcOl = document.createElement('ol');
+
+    // Item: Início
+    var homeA = document.createElement('a');
+    homeA.href        = r('index.html');
+    homeA.textContent = '🏠 Início';
+    var homeLi = document.createElement('li');
+    homeLi.appendChild(homeA);
+    bcOl.appendChild(homeLi);
+
+    // Item: Disciplina
+    if (disc) {
+      var discA = document.createElement('a');
+      discA.href        = r('disciplinas/' + slug + '.html');
+      discA.textContent = disc.label;
+      var discLi = document.createElement('li');
+      discLi.appendChild(discA);
+      bcOl.appendChild(discLi);
     }
-  
-    /* ── 6. Rodapé ──────────────────────────────────────────────── */
-  
-    function buildFooter() {
-      const footer     = document.createElement('footer');
-      footer.className = 'vd-footer';
-      footer.innerHTML = `
-        <div class="vd-footer__inner">
-          <p>© ${new Date().getFullYear()} Prefeitura de Varjota — Secretaria de Educação (SMETEC)</p>
-          <p class="vd-footer__notice">
-            O conteúdo deste site não pode ser editado, copiado ou distribuído
-            sem expressa autorização da SMETEC-Varjota.
-          </p>
-        </div>
-      `;
-      document.body.appendChild(footer);
+
+    // Item: Página atual
+    if (title) {
+      var curLi = document.createElement('li');
+      curLi.className   = 'current';
+      curLi.textContent = title;
+      bcOl.appendChild(curLi);
     }
-  
-    /* ── 7. Inicialização ───────────────────────────────────────── */
-  
-    function run() {
-      buildNavbar();
-      buildLayout();
-      buildFooter();
-    }
-  
-    // Injeta CSS imediatamente (antes do DOM estar pronto)
-    injectAssets();
-  
-    // Aguarda o DOM para montar os elementos visuais
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', run);
-    } else {
-      run();
-    }
-  
-  })();
+
+    var breadcrumb = document.createElement('nav');
+    breadcrumb.className = 'vd-breadcrumb';
+    breadcrumb.setAttribute('aria-label', 'Navegação estrutural');
+    breadcrumb.appendChild(bcOl);
+
+    /* ── Content ── */
+    var content = document.createElement('div');
+    content.className = 'vd-content';
+    original.forEach(function(child) {
+      content.appendChild(child);
+    });
+
+    /* ── Main ── */
+    var main = document.createElement('main');
+    main.className = 'vd-main';
+    main.appendChild(breadcrumb);
+    main.appendChild(content);
+
+    /* ── Layout ── */
+    var layout = document.createElement('div');
+    layout.className = 'vd-layout';
+    layout.appendChild(sidebar);
+    layout.appendChild(main);
+
+    document.body.appendChild(layout);
+  }
+
+  /* ── 6. Rodapé ──────────────────────────────────────────────── */
+
+  function buildFooter() {
+    var year = new Date().getFullYear();
+
+    var p1 = document.createElement('p');
+    p1.textContent = '© ' + year + ' Prefeitura de Varjota — Secretaria de Educação (SMETEC)';
+
+    var p2 = document.createElement('p');
+    p2.className   = 'vd-footer__notice';
+    p2.textContent = 'O conteúdo deste site não pode ser editado, copiado ou distribuído sem expressa autorização da SMETEC-Varjota.';
+
+    var inner = document.createElement('div');
+    inner.className = 'vd-footer__inner';
+    inner.appendChild(p1);
+    inner.appendChild(p2);
+
+    var footer = document.createElement('footer');
+    footer.className = 'vd-footer';
+    footer.appendChild(inner);
+
+    document.body.appendChild(footer);
+  }
+
+  /* ── 7. Inicialização ───────────────────────────────────────── */
+
+  function run() {
+    buildNavbar();
+    buildLayout();
+    buildFooter();
+  }
+
+  injectFonts();
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', run);
+  } else {
+    run();
+  }
+
+})();
