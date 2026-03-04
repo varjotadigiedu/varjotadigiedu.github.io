@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Educação Infantil — Referencial Curricular — Varjota DigiEdu</title>
+  <script src="../assets/template-loader.js"></script>
+  <script>
+    window.VD_PAGE = {
+      pageTitle:  "Educação Infantil",
+      breadcrumb: [
+        { label: "Início",                href: "../index.html" },
+        { label: "Referencial Curricular", href: "./index.html" },
+        { label: "Educação Infantil",      href: null }
+      ]
+    };
+  </script>
+  <script src="../assets/template.js"></script>
+  <style>
+    :root {
+      --pc-cor:   #1565C0; --pc-light: #EEF4FF;
+      --md-cor:   #6A1B9A; --md-light: #F9F0FF;
+      --cd-cor:   #00838F; --cd-light: #EDFAFA;
+    }
+
+    /* ── Campos de Experiência — cores ── */
+    .trans--eu-outro       { background: #FFF0F5; border-color: #AD1457; }
+    .trans--eu-outro .trans__disc { color: #AD1457; }
+    .trans--tracas         { background: #FFF8F0; border-color: #E65100; }
+    .trans--tracas .trans__disc { color: #E65100; }
+    .trans--espacos        { background: #EEEFFE; border-color: #283593; }
+    .trans--espacos .trans__disc { color: #283593; }
+    .trans--corpo          { background: #F1F8F1; border-color: #2E7D32; }
+    .trans--corpo .trans__disc { color: #2E7D32; }
+    .trans--escuta         { background: #EEF4FF; border-color: #1565C0; }
+    .trans--escuta .trans__disc { color: #1565C0; }
+
+    .page-hero { text-align: center; padding: 32px 20px 24px; border-bottom: 1px solid #DDE3ED; margin-bottom: 24px; }
+    .page-hero__icon { font-size: 3rem; margin-bottom: 10px; }
+    .page-hero__title { font-family: 'Lexend', sans-serif; font-size: 1.8rem; font-weight: 800; color: #AD1457; margin-bottom: 6px; }
+    .page-hero__desc { color: #6B7280; font-size: .9rem; max-width: 500px; margin: 0 auto; line-height: 1.6; }
+
+    .eixo-btns { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
+    .eixo-btn { display: flex; align-items: center; gap: 7px; padding: 9px 18px; border-radius: 50px; border: 2px solid #DDE3ED; background: #fff; font-family: 'Lexend', sans-serif; font-size: .82rem; font-weight: 700; color: #6B7280; cursor: pointer; transition: all .18s; }
+    .eixo-btn:hover { border-color: #1565C0; color: #1565C0; background: #EEF4FF; }
+    .eixo-btn.ativo { color: #fff; }
+    .eixo-btn.ativo[data-eixo="todos"] { background: #374151; border-color: #374151; }
+    .eixo-btn.ativo[data-eixo="PC"]    { background: var(--pc-cor); border-color: var(--pc-cor); }
+    .eixo-btn.ativo[data-eixo="MD"]    { background: var(--md-cor); border-color: var(--md-cor); }
+    .eixo-btn.ativo[data-eixo="CD"]    { background: var(--cd-cor); border-color: var(--cd-cor); }
+
+    .hab-card { border: 1px solid #DDE3ED; border-radius: 14px; overflow: hidden; margin-bottom: 12px; transition: box-shadow .18s; }
+    .hab-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,.08); }
+    .hab-card__header { display: flex; align-items: center; gap: 14px; padding: 16px 20px; cursor: pointer; background: #fff; transition: background .15s; }
+    .hab-card__header:hover { background: #F9FAFB; }
+    .hab-card__codigo { font-family: 'Lexend', sans-serif; font-size: .78rem; font-weight: 800; color: #fff; padding: 4px 12px; border-radius: 20px; flex-shrink: 0; }
+    .hab-card[data-eixo="PC"] .hab-card__codigo { background: var(--pc-cor); }
+    .hab-card[data-eixo="MD"] .hab-card__codigo { background: var(--md-cor); }
+    .hab-card[data-eixo="CD"] .hab-card__codigo { background: var(--cd-cor); }
+    .hab-card__resumo { flex: 1; font-size: .875rem; color: #374151; line-height: 1.4; }
+    .hab-card__resumo strong { font-family: 'Lexend', sans-serif; font-size: .72rem; color: #9CA3AF; display: block; margin-bottom: 2px; text-transform: uppercase; letter-spacing: .05em; }
+    .hab-card__seta { font-size: .8rem; color: #9CA3AF; flex-shrink: 0; transition: transform .18s; }
+    .hab-card.aberto .hab-card__seta { transform: rotate(180deg); }
+
+    .hab-card__detalhe { max-height: 0; overflow: hidden; transition: max-height .2s ease, opacity .2s ease; opacity: 0; }
+    .hab-card.aberto .hab-card__detalhe { max-height: 4000px; opacity: 1; }
+    .hab-card__inner { padding: 0 20px 20px; border-top: 1px solid #F3F4F6; background: #fff; }
+
+    .detalhe-secao { margin-top: 18px; }
+    .detalhe-secao__titulo { font-family: 'Lexend', sans-serif; font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; color: #9CA3AF; margin-bottom: 8px; }
+    .detalhe-secao__texto { font-size: .875rem; color: #374151; line-height: 1.6; white-space: pre-line; }
+
+    .detalhe-objeto { display: inline-block; font-size: .75rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; margin-right: 6px; margin-bottom: 6px; }
+    .hab-card[data-eixo="PC"] .detalhe-objeto { background: var(--pc-light); color: var(--pc-cor); }
+    .hab-card[data-eixo="MD"] .detalhe-objeto { background: var(--md-light); color: var(--md-cor); }
+    .hab-card[data-eixo="CD"] .detalhe-objeto { background: var(--cd-light); color: var(--cd-cor); }
+
+    .trans-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; margin-top: 8px; }
+    .trans-card { border: 1.5px solid; border-radius: 10px; padding: 12px 14px; }
+    .trans__disc { font-family: 'Lexend', sans-serif; font-size: .75rem; font-weight: 800; margin-bottom: 6px; }
+    .trans__texto { font-size: .8rem; color: #374151; line-height: 1.5; }
+
+    .hab-contador { font-family: 'Lexend', sans-serif; font-size: .78rem; font-weight: 700; color: #9CA3AF; margin-bottom: 16px; }
+  </style>
+</head>
+<body>
+
+  <div class="page-hero">
+    <div class="page-hero__icon">🧸</div>
+    <h1 class="page-hero__title">Referencial Curricular — Educação Infantil</h1>
+    <p class="page-hero__desc">Habilidades de Computação da Educação Infantil, com explicações, exemplos e conexões com os Campos de Experiência da BNCC.</p>
+  </div>
+
+  <div class="eixo-btns">
+    <button class="eixo-btn ativo" data-eixo="todos" onclick="filtrar('todos')">🔲 Todos</button>
+    <button class="eixo-btn" data-eixo="PC" onclick="filtrar('PC')">🧠 Pensamento Computacional</button>
+    <button class="eixo-btn" data-eixo="MD" onclick="filtrar('MD')">🌐 Mundo Digital</button>
+    <button class="eixo-btn" data-eixo="CD" onclick="filtrar('CD')">💻 Cultura Digital</button>
+  </div>
+
+  <div class="hab-contador" id="contador">11 habilidades</div>
+
+  <!-- EI03CO01 -->
+  <div class="hab-card" data-eixo="PC" id="hab-EI03CO01">
+    <div class="hab-card__header" onclick="toggleHab('EI03CO01')">
+      <span class="hab-card__codigo">EI03CO01</span>
+      <div class="hab-card__resumo">
+        <strong>Pensamento Computacional</strong>
+        Reconhecer padrão de repetição em sequência de sons, movimentos, desenhos.
+      </div>
+      <span class="hab-card__seta">▼</span>
+    </div>
+    <div class="hab-card__detalhe">
+      <div class="hab-card__inner">
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Explicação da habilidade</div>
+          <p class="detalhe-secao__texto">Consiste em levar a criança a reconhecer padrões de repetição em sons, movimentos e desenhos, identificando a lógica que organiza essas sequências. Esse reconhecimento, trabalhado por meio de atividades como batidas rítmicas, gestos corporais repetidos e ordens visuais de formas ou cores, desenvolve o pensamento computacional.</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Exemplos de atividades</div>
+          <p class="detalhe-secao__texto">Computação plugada: Criar padrões de repetição em sequência com formas e cores em editor de desenho ou por ferramenta online (Pattern Shapes). Completar sequência de figuras por meio de jogos online (Shape Pattern, Chicken Dance).
+
+Computação desplugada: Perceber repetição de movimentos em tarefas da rotina (comer um sanduíche, respirar). Reconhecer padrão por meio de sons do próprio corpo. Criar sequência a partir de padrão de cores ou formas com blocos de montar.</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Campos de Experiência</div>
+          <div class="trans-grid">
+            <div class="trans-card trans--eu-outro">
+              <div class="trans__disc">🌿 O eu, o outro e o nós</div>
+              <p class="trans__texto">Brincadeira de roda com padrões rítmicos: as crianças cantam e batem palmas seguindo uma sequência (forte–fraco–forte–fraco). Saudações com gestos repetitivos: cada criança cumprimenta o colega com uma sequência fixa de movimentos.</p>
+            </div>
+            <div class="trans-card trans--tracas">
+              <div class="trans__disc">🎨 Traços, sons, cores e formas</div>
+              <p class="trans__texto">Sequência de desenhos ou cores: colar figuras seguindo uma ordem (círculo vermelho – quadrado azul – círculo vermelho – quadrado azul). Instrumentos musicais: reproduzir padrões sonoros (tambor–chocalho–tambor–chocalho).</p>
+            </div>
+            <div class="trans-card trans--espacos">
+              <div class="trans__disc">🔢 Espaços, tempos, quantidades, relações e transformações</div>
+              <p class="trans__texto">Sequência de objetos do ambiente: organizar brinquedos em padrões (carro–bola–boneca–carro–bola–boneca). Calendário de rotina: marcar dias com padrões (sol–nuvem–sol–nuvem).</p>
+            </div>
+            <div class="trans-card trans--corpo">
+              <div class="trans__disc">🤸 Corpo, gestos e movimentos</div>
+              <p class="trans__texto">Circuito motor com padrões: pular em um pé – dois pés – girar – repetir. Dança com coreografia repetitiva: sequência de passos que se repete ao som da música.</p>
+            </div>
+            <div class="trans-card trans--escuta">
+              <div class="trans__disc">💬 Escuta, fala, pensamento e imaginação</div>
+              <p class="trans__texto">História com sons repetitivos: sempre que o personagem aparecer, todos batem palmas duas vezes. Poemas ou parlendas: recitar textos com ritmos e sons que se repetem, reforçando a percepção do padrão.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EI03CO02 -->
+  <div class="hab-card" data-eixo="PC" id="hab-EI03CO02">
+    <div class="hab-card__header" onclick="toggleHab('EI03CO02')">
+      <span class="hab-card__codigo">EI03CO02</span>
+      <div class="hab-card__resumo">
+        <strong>Pensamento Computacional</strong>
+        Expressar as etapas para a realização de uma tarefa de forma clara e ordenada.
+      </div>
+      <span class="hab-card__seta">▼</span>
+    </div>
+    <div class="hab-card__detalhe">
+      <div class="hab-card__inner">
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Explicação da habilidade</div>
+          <p class="detalhe-secao__texto">A habilidade busca desenvolver a capacidade da criança de reconhecer que toda tarefa é composta por etapas que precisam ser seguidas em ordem. Isso estimula a organização do pensamento, a noção de sequência lógica e a comunicação.</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Exemplos de atividades</div>
+          <p class="detalhe-secao__texto">Computação plugada: Jogos digitais que apresentam etapas de tarefas (Cookie Monsters Foodie Truck, Ready Set Grow).
+
+Computação desplugada: Relatar e desenhar etapas de tarefas diárias (ex.: hora de dormir). Ordenar cartões com imagens que mostrem uma sequência.</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Campos de Experiência</div>
+          <div class="trans-grid">
+            <div class="trans-card trans--eu-outro">
+              <div class="trans__disc">🌿 O eu, o outro e o nós</div>
+              <p class="trans__texto">Cuidar de si e dos outros: narrar os passos para escovar os dentes em grupo.</p>
+            </div>
+            <div class="trans-card trans--tracas">
+              <div class="trans__disc">🎨 Traços, sons, cores e formas</div>
+              <p class="trans__texto">Desenhar as etapas de fazer um suco (pegar fruta, cortar, espremer, beber).</p>
+            </div>
+            <div class="trans-card trans--espacos">
+              <div class="trans__disc">🔢 Espaços, tempos, quantidades, relações e transformações</div>
+              <p class="trans__texto">Montar blocos de encaixe em sequência para construir uma torre.</p>
+            </div>
+            <div class="trans-card trans--corpo">
+              <div class="trans__disc">🤸 Corpo, gestos e movimentos</div>
+              <p class="trans__texto">Encenar com gestos a ordem de uma atividade (vestir-se, brincar, guardar os brinquedos).</p>
+            </div>
+            <div class="trans-card trans--escuta">
+              <div class="trans__disc">💬 Escuta, fala, pensamento e imaginação</div>
+              <p class="trans__texto">Recontar oralmente a ordem de uma história curta.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EI03CO03 -->
+  <div class="hab-card" data-eixo="PC" id="hab-EI03CO03">
+    <div class="hab-card__header" onclick="toggleHab('EI03CO03')">
+      <span class="hab-card__codigo">EI03CO03</span>
+      <div class="hab-card__resumo">
+        <strong>Pensamento Computacional</strong>
+        Experienciar a execução de algoritmos brincando com objetos (des)plugados.
+      </div>
+      <span class="hab-card__seta">▼</span>
+    </div>
+    <div class="hab-card__detalhe">
+      <div class="hab-card__inner">
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Explicação da habilidade</div>
+          <p class="detalhe-secao__texto">Propõe que a criança vivencie a realização de instruções passo a passo (algoritmos), seja com apoio de jogos digitais, seja em atividades corporais e manuais. Isso favorece a percepção de causa e efeito e da lógica das ações.</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Exemplos de atividades</div>
+          <p class="detalhe-secao__texto">Computação plugada: Jogos digitais de sequências e lógica (Follow the Code). Brinquedos robóticos simples.
+
+Computação desplugada: Jogos de percurso (labirinto, amarelinha). Dobraduras seguindo passos.</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Campos de Experiência</div>
+          <div class="trans-grid">
+            <div class="trans-card trans--eu-outro">
+              <div class="trans__disc">🌿 O eu, o outro e o nós</div>
+              <p class="trans__texto">Brincadeira de dar instruções para o colega se movimentar até um destino.</p>
+            </div>
+            <div class="trans-card trans--tracas">
+              <div class="trans__disc">🎨 Traços, sons, cores e formas</div>
+              <p class="trans__texto">Seguir instruções para montar figuras com blocos.</p>
+            </div>
+            <div class="trans-card trans--espacos">
+              <div class="trans__disc">🔢 Espaços, tempos, quantidades, relações e transformações</div>
+              <p class="trans__texto">Organizar peças de quebra-cabeça conforme instruções.</p>
+            </div>
+            <div class="trans-card trans--corpo">
+              <div class="trans__disc">🤸 Corpo, gestos e movimentos</div>
+              <p class="trans__texto">Circuitos motores com instruções passo a passo.</p>
+            </div>
+            <div class="trans-card trans--escuta">
+              <div class="trans__disc">💬 Escuta, fala, pensamento e imaginação</div>
+              <p class="trans__texto">Seguir instruções narradas em uma história interativa.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EI03CO04 -->
+  <div class="hab-card" data-eixo="PC" id="hab-EI03CO04">
+    <div class="hab-card__header" onclick="toggleHab('EI03CO04')">
+      <span class="hab-card__codigo">EI03CO04</span>
+      <div class="hab-card__resumo">
+        <strong>Pensamento Computacional</strong>
+        Criar e representar algoritmos para resolver problemas.
+      </div>
+      <span class="hab-card__seta">▼</span>
+    </div>
+    <div class="hab-card__detalhe">
+      <div class="hab-card__inner">
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Explicação da habilidade</div>
+          <p class="detalhe-secao__texto">A criança deve elaborar e registrar instruções organizadas em sequência para atingir um objetivo, compreendendo que existem diferentes formas de solucionar um problema.</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Exemplos de atividades</div>
+          <p class="detalhe-secao__texto">Computação plugada: Jogos digitais de programação simples (LightBot, Scratch Jr.).
+
+Computação desplugada: Criar receita culinária com passos. Traçar percursos em tabuleiros.</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Campos de Experiência</div>
+          <div class="trans-grid">
+            <div class="trans-card trans--eu-outro">
+              <div class="trans__disc">🌿 O eu, o outro e o nós</div>
+              <p class="trans__texto">Construir coletivamente um percurso até um brinquedo.</p>
+            </div>
+            <div class="trans-card trans--tracas">
+              <div class="trans__disc">🎨 Traços, sons, cores e formas</div>
+              <p class="trans__texto">Representar por desenhos as etapas de fazer uma arte.</p>
+            </div>
+            <div class="trans-card trans--espacos">
+              <div class="trans__disc">🔢 Espaços, tempos, quantidades, relações e transformações</div>
+              <p class="trans__texto">Organizar trajetos em mapas simples.</p>
+            </div>
+            <div class="trans-card trans--corpo">
+              <div class="trans__disc">🤸 Corpo, gestos e movimentos</div>
+              <p class="trans__texto">Dramatizar uma sequência de movimentos até chegar a um objetivo.</p>
+            </div>
+            <div class="trans-card trans--escuta">
+              <div class="trans__disc">💬 Escuta, fala, pensamento e imaginação</div>
+              <p class="trans__texto">Criar histórias em sequência com imagens.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EI03CO05 -->
+  <div class="hab-card" data-eixo="PC" id="hab-EI03CO05">
+    <div class="hab-card__header" onclick="toggleHab('EI03CO05')">
+      <span class="hab-card__codigo">EI03CO05</span>
+      <div class="hab-card__resumo">
+        <strong>Pensamento Computacional</strong>
+        Comparar soluções algorítmicas para resolver um mesmo problema.
+      </div>
+      <span class="hab-card__seta">▼</span>
+    </div>
+    <div class="hab-card__detalhe">
+      <div class="hab-card__inner">
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Explicação da habilidade</div>
+          <p class="detalhe-secao__texto">Desenvolve a percepção de que uma mesma tarefa pode ser realizada de formas diferentes, incentivando flexibilidade cognitiva e pensamento crítico.</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Exemplos de atividades</div>
+          <p class="detalhe-secao__texto">Computação plugada: Jogos digitais de labirinto que permitem rotas distintas.
+
+Computação desplugada: Labirintos no chão. Comparar formas diferentes de escovar dentes ou se vestir.</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Campos de Experiência</div>
+          <div class="trans-grid">
+            <div class="trans-card trans--eu-outro">
+              <div class="trans__disc">🌿 O eu, o outro e o nós</div>
+              <p class="trans__texto">Trocar estratégias entre colegas para montar um brinquedo.</p>
+            </div>
+            <div class="trans-card trans--tracas">
+              <div class="trans__disc">🎨 Traços, sons, cores e formas</div>
+              <p class="trans__texto">Comparar diferentes formas de montar a mesma figura.</p>
+            </div>
+            <div class="trans-card trans--espacos">
+              <div class="trans__disc">🔢 Espaços, tempos, quantidades, relações e transformações</div>
+              <p class="trans__texto">Usar rotas alternativas em percursos no pátio.</p>
+            </div>
+            <div class="trans-card trans--corpo">
+              <div class="trans__disc">🤸 Corpo, gestos e movimentos</div>
+              <p class="trans__texto">Comparar movimentos distintos para chegar a um ponto.</p>
+            </div>
+            <div class="trans-card trans--escuta">
+              <div class="trans__disc">💬 Escuta, fala, pensamento e imaginação</div>
+              <p class="trans__texto">Contar finais diferentes para a mesma história.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EI03CO06 -->
+  <div class="hab-card" data-eixo="PC" id="hab-EI03CO06">
+    <div class="hab-card__header" onclick="toggleHab('EI03CO06')">
+      <span class="hab-card__codigo">EI03CO06</span>
+      <div class="hab-card__resumo">
+        <strong>Pensamento Computacional</strong>
+        Compreender decisões em dois estados (verdadeiro ou falso).
+      </div>
+      <span class="hab-card__seta">▼</span>
+    </div>
+    <div class="hab-card__detalhe">
+      <div class="hab-card__inner">
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Explicação da habilidade</div>
+          <p class="detalhe-secao__texto">Trabalha a noção de escolhas binárias, introduzindo o raciocínio lógico e a tomada de decisão a partir de critérios simples.</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Exemplos de atividades</div>
+          <p class="detalhe-secao__texto">Computação plugada: Jogos digitais de verdadeiro ou falso (Wordwall).
+
+Computação desplugada: Brincadeira com cartas verde/vermelha. Jogo do "Morto e vivo" adaptado para verdadeiro/falso.</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Campos de Experiência</div>
+          <div class="trans-grid">
+            <div class="trans-card trans--eu-outro">
+              <div class="trans__disc">🌿 O eu, o outro e o nós</div>
+              <p class="trans__texto">Decidir coletivamente se afirmações sobre convivência são verdadeiras ou falsas.</p>
+            </div>
+            <div class="trans-card trans--tracas">
+              <div class="trans__disc">🎨 Traços, sons, cores e formas</div>
+              <p class="trans__texto">Avaliar se uma figura corresponde a uma descrição.</p>
+            </div>
+            <div class="trans-card trans--espacos">
+              <div class="trans__disc">🔢 Espaços, tempos, quantidades, relações e transformações</div>
+              <p class="trans__texto">Respostas binárias em desafios matemáticos simples.</p>
+            </div>
+            <div class="trans-card trans--corpo">
+              <div class="trans__disc">🤸 Corpo, gestos e movimentos</div>
+              <p class="trans__texto">Brincadeiras motoras que exigem escolhas entre dois movimentos.</p>
+            </div>
+            <div class="trans-card trans--escuta">
+              <div class="trans__disc">💬 Escuta, fala, pensamento e imaginação</div>
+              <p class="trans__texto">Avaliar a veracidade de frases em histórias narradas.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EI03CO07 -->
+  <div class="hab-card" data-eixo="MD" id="hab-EI03CO07">
+    <div class="hab-card__header" onclick="toggleHab('EI03CO07')">
+      <span class="hab-card__codigo">EI03CO07</span>
+      <div class="hab-card__resumo">
+        <strong>Mundo Digital</strong>
+        Reconhecer dispositivos eletrônicos (e não-eletrônicos), identificando quando estão ligados ou desligados.
+      </div>
+      <span class="hab-card__seta">▼</span>
+    </div>
+    <div class="hab-card__detalhe">
+      <div class="hab-card__inner">
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Explicação da habilidade</div>
+          <p class="detalhe-secao__texto">Envolve a exploração de aparelhos do cotidiano, distinguindo os que são eletrônicos dos que não são e reconhecendo seus estados de funcionamento.</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Exemplos de atividades</div>
+          <p class="detalhe-secao__texto">Computação plugada: Explorar dispositivos (celular, tablet, rádio).
+
+Computação desplugada: Brincadeiras com dois estados (ligado/desligado).</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Campos de Experiência</div>
+          <div class="trans-grid">
+            <div class="trans-card trans--eu-outro">
+              <div class="trans__disc">🌿 O eu, o outro e o nós</div>
+              <p class="trans__texto">Compartilhar experiências sobre o uso de aparelhos em casa.</p>
+            </div>
+            <div class="trans-card trans--tracas">
+              <div class="trans__disc">🎨 Traços, sons, cores e formas</div>
+              <p class="trans__texto">Representar aparelhos ligados/desligados em desenhos.</p>
+            </div>
+            <div class="trans-card trans--espacos">
+              <div class="trans__disc">🔢 Espaços, tempos, quantidades, relações e transformações</div>
+              <p class="trans__texto">Classificar objetos em categorias (eletrônicos/não-eletrônicos).</p>
+            </div>
+            <div class="trans-card trans--corpo">
+              <div class="trans__disc">🤸 Corpo, gestos e movimentos</div>
+              <p class="trans__texto">Brincadeiras de estátua (movimento = ligado, parado = desligado).</p>
+            </div>
+            <div class="trans-card trans--escuta">
+              <div class="trans__disc">💬 Escuta, fala, pensamento e imaginação</div>
+              <p class="trans__texto">Narrar o uso de diferentes dispositivos em histórias.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EI03CO08 -->
+  <div class="hab-card" data-eixo="MD" id="hab-EI03CO08">
+    <div class="hab-card__header" onclick="toggleHab('EI03CO08')">
+      <span class="hab-card__codigo">EI03CO08</span>
+      <div class="hab-card__resumo">
+        <strong>Mundo Digital</strong>
+        Compreender o conceito de interfaces para comunicação com objetos (des)plugados.
+      </div>
+      <span class="hab-card__seta">▼</span>
+    </div>
+    <div class="hab-card__detalhe">
+      <div class="hab-card__inner">
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Explicação da habilidade</div>
+          <p class="detalhe-secao__texto">A criança deve perceber que diferentes dispositivos possuem meios de interação específicos (botões, telas, voz, gestos).</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Exemplos de atividades</div>
+          <p class="detalhe-secao__texto">Computação plugada: Reconhecer interfaces de aparelhos. Desenhar botões e telas.
+
+Computação desplugada: Brincadeira "telefone sem fio". Criar painéis com botões fictícios.</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Campos de Experiência</div>
+          <div class="trans-grid">
+            <div class="trans-card trans--eu-outro">
+              <div class="trans__disc">🌿 O eu, o outro e o nós</div>
+              <p class="trans__texto">Trocar experiências de uso de controles remotos em família.</p>
+            </div>
+            <div class="trans-card trans--tracas">
+              <div class="trans__disc">🎨 Traços, sons, cores e formas</div>
+              <p class="trans__texto">Produzir desenhos de telas e botões coloridos.</p>
+            </div>
+            <div class="trans-card trans--espacos">
+              <div class="trans__disc">🔢 Espaços, tempos, quantidades, relações e transformações</div>
+              <p class="trans__texto">Comparar diferentes formas de interagir com o mesmo objeto.</p>
+            </div>
+            <div class="trans-card trans--corpo">
+              <div class="trans__disc">🤸 Corpo, gestos e movimentos</div>
+              <p class="trans__texto">Usar gestos como comandos em brincadeiras.</p>
+            </div>
+            <div class="trans-card trans--escuta">
+              <div class="trans__disc">💬 Escuta, fala, pensamento e imaginação</div>
+              <p class="trans__texto">Inventar narrativas em que personagens usam diferentes interfaces.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EI03CO09 -->
+  <div class="hab-card" data-eixo="MD" id="hab-EI03CO09">
+    <div class="hab-card__header" onclick="toggleHab('EI03CO09')">
+      <span class="hab-card__codigo">EI03CO09</span>
+      <div class="hab-card__resumo">
+        <strong>Mundo Digital</strong>
+        Identificar dispositivos computacionais e as diferentes formas de interação.
+      </div>
+      <span class="hab-card__seta">▼</span>
+    </div>
+    <div class="hab-card__detalhe">
+      <div class="hab-card__inner">
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Explicação da habilidade</div>
+          <p class="detalhe-secao__texto">Reconhecer tablets, computadores, robôs e perceber como interagimos com eles de formas distintas (toque, mouse, voz, movimento).</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Exemplos de atividades</div>
+          <p class="detalhe-secao__texto">Computação plugada: Brincar com diferentes dispositivos em jogos educativos.
+
+Computação desplugada: Jogo de adivinhação sobre interações.</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Campos de Experiência</div>
+          <div class="trans-grid">
+            <div class="trans-card trans--eu-outro">
+              <div class="trans__disc">🌿 O eu, o outro e o nós</div>
+              <p class="trans__texto">Compartilhar experiências de jogos em diferentes aparelhos.</p>
+            </div>
+            <div class="trans-card trans--tracas">
+              <div class="trans__disc">🎨 Traços, sons, cores e formas</div>
+              <p class="trans__texto">Ilustrar como se interage com cada aparelho.</p>
+            </div>
+            <div class="trans-card trans--espacos">
+              <div class="trans__disc">🔢 Espaços, tempos, quantidades, relações e transformações</div>
+              <p class="trans__texto">Comparar formas de uso de cada dispositivo.</p>
+            </div>
+            <div class="trans-card trans--corpo">
+              <div class="trans__disc">🤸 Corpo, gestos e movimentos</div>
+              <p class="trans__texto">Imitar gestos usados em aparelhos (deslizar tela, clicar).</p>
+            </div>
+            <div class="trans-card trans--escuta">
+              <div class="trans__disc">💬 Escuta, fala, pensamento e imaginação</div>
+              <p class="trans__texto">Contar histórias em que personagens usam computadores.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EI03CO10 -->
+  <div class="hab-card" data-eixo="CD" id="hab-EI03CO10">
+    <div class="hab-card__header" onclick="toggleHab('EI03CO10')">
+      <span class="hab-card__codigo">EI03CO10</span>
+      <div class="hab-card__resumo">
+        <strong>Cultura Digital</strong>
+        Utilizar tecnologia digital de maneira segura, consciente e respeitosa.
+      </div>
+      <span class="hab-card__seta">▼</span>
+    </div>
+    <div class="hab-card__detalhe">
+      <div class="hab-card__inner">
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Explicação da habilidade</div>
+          <p class="detalhe-secao__texto">Envolve sensibilizar as crianças para atitudes responsáveis com tecnologia, respeitando regras de segurança e convivência.</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Exemplos de atividades</div>
+          <p class="detalhe-secao__texto">Computação plugada: Caça ao tesouro digital sobre segurança. Criar portfólio de boas práticas.
+
+Computação desplugada: Caça ao tesouro físico com dilemas de segurança. Produzir cartazes sobre segurança digital.</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Campos de Experiência</div>
+          <div class="trans-grid">
+            <div class="trans-card trans--eu-outro">
+              <div class="trans__disc">🌿 O eu, o outro e o nós</div>
+              <p class="trans__texto">Discutir atitudes de respeito e segurança com colegas.</p>
+            </div>
+            <div class="trans-card trans--tracas">
+              <div class="trans__disc">🎨 Traços, sons, cores e formas</div>
+              <p class="trans__texto">Desenhar cenas de uso seguro da internet.</p>
+            </div>
+            <div class="trans-card trans--espacos">
+              <div class="trans__disc">🔢 Espaços, tempos, quantidades, relações e transformações</div>
+              <p class="trans__texto">Marcar no calendário os momentos adequados de uso de tela.</p>
+            </div>
+            <div class="trans-card trans--corpo">
+              <div class="trans__disc">🤸 Corpo, gestos e movimentos</div>
+              <p class="trans__texto">Encenar atitudes corretas diante de situações digitais.</p>
+            </div>
+            <div class="trans-card trans--escuta">
+              <div class="trans__disc">💬 Escuta, fala, pensamento e imaginação</div>
+              <p class="trans__texto">Ouvir e discutir histórias sobre segurança online.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EI03CO11 -->
+  <div class="hab-card" data-eixo="CD" id="hab-EI03CO11">
+    <div class="hab-card__header" onclick="toggleHab('EI03CO11')">
+      <span class="hab-card__codigo">EI03CO11</span>
+      <div class="hab-card__resumo">
+        <strong>Cultura Digital</strong>
+        Adotar hábitos saudáveis de uso de artefatos computacionais, seguindo recomendações de órgãos de saúde competentes.
+      </div>
+      <span class="hab-card__seta">▼</span>
+    </div>
+    <div class="hab-card__detalhe">
+      <div class="hab-card__inner">
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Explicação da habilidade</div>
+          <p class="detalhe-secao__texto">A habilidade propõe conscientizar sobre limites de tempo de tela, pausas ativas e equilíbrio entre atividades digitais e físicas.</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Exemplos de atividades</div>
+          <p class="detalhe-secao__texto">Computação plugada: Reflexão sobre tempo de tela a partir de jogos digitais.
+
+Computação desplugada: Dramatização com fantoches sobre o uso equilibrado de tecnologia.</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Campos de Experiência</div>
+          <div class="trans-grid">
+            <div class="trans-card trans--eu-outro">
+              <div class="trans__disc">🌿 O eu, o outro e o nós</div>
+              <p class="trans__texto">Dialogar sobre regras de uso de aparelhos em família.</p>
+            </div>
+            <div class="trans-card trans--tracas">
+              <div class="trans__disc">🎨 Traços, sons, cores e formas</div>
+              <p class="trans__texto">Registrar em desenho o que gostam de fazer longe das telas.</p>
+            </div>
+            <div class="trans-card trans--espacos">
+              <div class="trans__disc">🔢 Espaços, tempos, quantidades, relações e transformações</div>
+              <p class="trans__texto">Organizar rotina com tempo para brincadeiras digitais e não digitais.</p>
+            </div>
+            <div class="trans-card trans--corpo">
+              <div class="trans__disc">🤸 Corpo, gestos e movimentos</div>
+              <p class="trans__texto">Realizar pausas ativas com alongamentos.</p>
+            </div>
+            <div class="trans-card trans--escuta">
+              <div class="trans__disc">💬 Escuta, fala, pensamento e imaginação</div>
+              <p class="trans__texto">Ouvir histórias que incentivem o brincar ao ar livre.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleHab(codigo) {
+      document.getElementById('hab-' + codigo).classList.toggle('aberto');
+    }
+
+    function filtrar(eixo) {
+      document.querySelectorAll('.eixo-btn').forEach(function(btn) {
+        btn.classList.toggle('ativo', btn.dataset.eixo === eixo);
+      });
+      var cards = document.querySelectorAll('.hab-card');
+      var visiveis = 0;
+      cards.forEach(function(card) {
+        var mostrar = eixo === 'todos' || card.dataset.eixo === eixo;
+        card.style.display = mostrar ? 'block' : 'none';
+        if (mostrar) visiveis++;
+      });
+      document.getElementById('contador').textContent =
+        visiveis + (visiveis === 1 ? ' habilidade' : ' habilidades');
+    }
+  </script>
+
+</body>
+</html>
