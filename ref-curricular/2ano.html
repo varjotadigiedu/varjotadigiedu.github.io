@@ -3,259 +3,465 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>EI01EO04 — Educação Infantil — Varjota DigiEdu</title>
-
-  <script src="../../assets/template-loader.js"></script>
+  <title>2º ano — Referencial Curricular — Varjota DigiEdu</title>
+  <script src="../assets/template-loader.js"></script>
   <script>
     window.VD_PAGE = {
-      disciplina: "educacao-infantil",
-      pageTitle:  "EI01EO04"
+      pageTitle:  "2º ano",
+      breadcrumb: [
+        { label: "Início",                href: "../index.html" },
+        { label: "Referencial Curricular", href: "./index.html" },
+        { label: "2º ano",                href: null }
+      ]
     };
   </script>
-  <script src="../../assets/template.js"></script>
-
+  <script src="../assets/template.js"></script>
   <style>
-    /* ── Cores temáticas — Educação Infantil ── */
     :root {
-      --disc-cor:       #AD1457;   /* cor principal da Educação Infantil */
-      --disc-cor-light: #FFF0F5;   /* fundo suave da Educação Infantil  */
-      --comp-cor:       #27AE60;   /* verde fixo para Computação */
-      --comp-cor-light: #E8F5E9;   /* fundo suave para Computação */
+      --pc-cor:   #1565C0; --pc-light: #EEF4FF;
+      --md-cor:   #6A1B9A; --md-light: #F9F0FF;
+      --cd-cor:   #00838F; --cd-light: #EDFAFA;
     }
+    .trans--lingua-portuguesa { background: #FFF8F0; border-color: #E65100; }
+    .trans--lingua-portuguesa .trans__disc { color: #E65100; }
+    .trans--matematica { background: #EEEFFE; border-color: #283593; }
+    .trans--matematica .trans__disc { color: #283593; }
+    .trans--ciencias { background: #F0FBF9; border-color: #00695C; }
+    .trans--ciencias .trans__disc { color: #00695C; }
+    .trans--historia { background: #FFF3EE; border-color: #BF360C; }
+    .trans--historia .trans__disc { color: #BF360C; }
+    .trans--geografia { background: #EEF4FF; border-color: #1565C0; }
+    .trans--geografia .trans__disc { color: #1565C0; }
+    .trans--arte { background: #FFF5F5; border-color: #C62828; }
+    .trans--arte .trans__disc { color: #C62828; }
 
-    /* ── Botão voltar ── */
-    .hab-voltar {
-      display: inline-flex; align-items: center; gap: 6px;
-      margin-bottom: 24px;
-      padding: 8px 18px; border-radius: 50px;
-      border: 2px solid var(--disc-cor);
-      background: #fff; color: var(--disc-cor);
-      font-family: 'Lexend', sans-serif; font-size: .85rem; font-weight: 700;
-      text-decoration: none; transition: background .15s, color .15s;
-    }
-    .hab-voltar:hover { background: var(--disc-cor); color: #fff; }
+    .page-hero { text-align: center; padding: 32px 20px 24px; border-bottom: 1px solid #DDE3ED; margin-bottom: 24px; }
+    .page-hero__icon { font-size: 3rem; margin-bottom: 10px; }
+    .page-hero__title { font-family: 'Lexend', sans-serif; font-size: 1.8rem; font-weight: 800; color: #0D47A1; margin-bottom: 6px; }
+    .page-hero__desc { color: #6B7280; font-size: .9rem; max-width: 500px; margin: 0 auto; line-height: 1.6; }
 
-    /* ── Bloco da habilidade principal ── */
-    .hab-principal {
-      background: var(--disc-cor-light);
-      border-left: 4px solid var(--disc-cor);
-      border-radius: 0 12px 12px 0;
-      padding: 24px 28px;
-      margin-bottom: 32px;
-    }
-    .hab-principal__titulo {
-      font-family: 'Lexend', sans-serif;
-      font-size: 1.1rem; font-weight: 800;
-      color: var(--disc-cor);
-      margin-bottom: 16px;
-    }
-    .hab-principal__campo { margin: 6px 0; font-size: .9rem; color: #374151; }
-    .hab-principal__campo strong {
-      font-family: 'Lexend', sans-serif;
-      color: #1A1A2E;
-      display: inline-block; min-width: 160px;
-    }
+    .eixo-btns { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
+    .eixo-btn { display: flex; align-items: center; gap: 7px; padding: 9px 18px; border-radius: 50px; border: 2px solid #DDE3ED; background: #fff; font-family: 'Lexend', sans-serif; font-size: .82rem; font-weight: 700; color: #6B7280; cursor: pointer; transition: all .18s; }
+    .eixo-btn:hover { border-color: #1565C0; color: #1565C0; background: #EEF4FF; }
+    .eixo-btn.ativo { color: #fff; }
+    .eixo-btn.ativo[data-eixo="todos"] { background: #374151; border-color: #374151; }
+    .eixo-btn.ativo[data-eixo="PC"]    { background: var(--pc-cor); border-color: var(--pc-cor); }
+    .eixo-btn.ativo[data-eixo="MD"]    { background: var(--md-cor); border-color: var(--md-cor); }
+    .eixo-btn.ativo[data-eixo="CD"]    { background: var(--cd-cor); border-color: var(--cd-cor); }
 
-    /* ── Título da seção de Computação ── */
-    .hab-secao-titulo {
-      font-family: 'Lexend', sans-serif;
-      font-size: 1.15rem; font-weight: 800;
-      color: #1A1A2E;
-      margin-bottom: 16px;
-      padding-bottom: 10px;
-      border-bottom: 2px solid #DDE3ED;
-    }
+    .hab-card { border: 1px solid #DDE3ED; border-radius: 14px; overflow: hidden; margin-bottom: 12px; transition: box-shadow .18s; }
+    .hab-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,.08); }
+    .hab-card__header { display: flex; align-items: center; gap: 14px; padding: 16px 20px; cursor: pointer; background: #fff; transition: background .15s; }
+    .hab-card__header:hover { background: #F9FAFB; }
+    .hab-card__codigo { font-family: 'Lexend', sans-serif; font-size: .78rem; font-weight: 800; color: #fff; padding: 4px 12px; border-radius: 20px; flex-shrink: 0; }
+    .hab-card[data-eixo="PC"] .hab-card__codigo { background: var(--pc-cor); }
+    .hab-card[data-eixo="MD"] .hab-card__codigo { background: var(--md-cor); }
+    .hab-card[data-eixo="CD"] .hab-card__codigo { background: var(--cd-cor); }
+    .hab-card__resumo { flex: 1; font-size: .875rem; color: #374151; line-height: 1.4; }
+    .hab-card__resumo strong { font-family: 'Lexend', sans-serif; font-size: .72rem; color: #9CA3AF; display: block; margin-bottom: 2px; text-transform: uppercase; letter-spacing: .05em; }
+    .hab-card__seta { font-size: .8rem; color: #9CA3AF; flex-shrink: 0; transition: transform .18s; }
+    .hab-card.aberto .hab-card__seta { transform: rotate(180deg); }
 
-    /* ── Cards de habilidades de Computação ── */
-    .hab-computacao {
-      background: #F9FAFB;
-      border: 1px solid #DDE3ED;
-      border-radius: 12px;
-      padding: 22px 24px;
-      margin-bottom: 16px;
-      transition: box-shadow .15s;
-    }
-    .hab-computacao:hover { box-shadow: 0 4px 16px rgba(0,0,0,.08); }
+    .hab-card__detalhe { max-height: 0; overflow: hidden; transition: max-height .2s ease, opacity .2s ease; opacity: 0; }
+    .hab-card.aberto .hab-card__detalhe { max-height: 4000px; opacity: 1; }
+    .hab-card__inner { padding: 0 20px 20px; border-top: 1px solid #F3F4F6; background: #fff; }
 
-    .hab-computacao__codigo {
-      font-family: 'Lexend', sans-serif;
-      font-size: 1rem; font-weight: 800;
-      color: var(--comp-cor);
-      margin-bottom: 14px;
-      display: flex; align-items: center; gap: 8px;
-    }
-    .hab-computacao__codigo::before { content: "🔹"; font-size: .9rem; }
+    .detalhe-secao { margin-top: 18px; }
+    .detalhe-secao__titulo { font-family: 'Lexend', sans-serif; font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; color: #9CA3AF; margin-bottom: 8px; }
+    .detalhe-secao__texto { font-size: .875rem; color: #374151; line-height: 1.6; }
 
-    .hab-computacao__campo { margin: 5px 0; font-size: .875rem; color: #374151; }
-    .hab-computacao__campo strong {
-      font-family: 'Lexend', sans-serif;
-      color: #555;
-      display: inline-block; min-width: 160px;
-    }
+    .detalhe-objeto { display: inline-block; font-size: .75rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; margin-right: 6px; margin-bottom: 6px; }
+    .hab-card[data-eixo="PC"] .detalhe-objeto { background: var(--pc-light); color: var(--pc-cor); }
+    .hab-card[data-eixo="MD"] .detalhe-objeto { background: var(--md-light); color: var(--md-cor); }
+    .hab-card[data-eixo="CD"] .detalhe-objeto { background: var(--cd-light); color: var(--cd-cor); }
 
-    /* ── Box de relação ── */
-    .hab-relacao {
-      background: var(--comp-cor-light);
-      border-radius: 8px;
-      padding: 12px 16px;
-      margin-top: 14px;
-      font-size: .875rem;
-      font-style: italic;
-      color: #1B5E20;
-      line-height: 1.55;
-    }
-    .hab-relacao::before {
-      content: "🎯 Relação: ";
-      font-weight: 700;
-      font-style: normal;
-      font-family: 'Lexend', sans-serif;
-    }
+    .trans-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; margin-top: 8px; }
+    .trans-card { border: 1.5px solid; border-radius: 10px; padding: 12px 14px; }
+    .trans__disc { font-family: 'Lexend', sans-serif; font-size: .75rem; font-weight: 800; margin-bottom: 6px; }
+    .trans__texto { font-size: .8rem; color: #374151; line-height: 1.5; }
 
-    /* ── Rodapé de metadados ── */
-    .hab-metadata {
-      margin-top: 28px;
-      padding-top: 16px;
-      border-top: 1px solid #DDE3ED;
-      font-size: .8rem;
-      color: #9CA3AF;
-    }
+    .hab-contador { font-family: 'Lexend', sans-serif; font-size: .78rem; font-weight: 700; color: #9CA3AF; margin-bottom: 16px; }
   </style>
 </head>
 <body>
 
-  <!-- Botão voltar — Educação Infantil -->
-  <a href="../../disciplinas/educacao-infantil.html" class="hab-voltar">
-    ← Voltar para Educação Infantil
-  </a>
-
-  <!-- ══════════════════════════════════════════════════
-       BLOCO DA HABILIDADE PRINCIPAL
-       Habilidade EI01EO04
-  ══════════════════════════════════════════════════ -->
-  <section class="hab-principal">
-    <div class="hab-principal__titulo">📌 Habilidade selecionada</div>
-    <p class="hab-principal__campo"><strong>Código:</strong> EI01EO04</p>
-    <p class="hab-principal__campo"><strong>Descrição:</strong> Comunicar necessidades, desejos e emoções, utilizando gestos, balbucios, palavras.</p>
-    <p class="hab-principal__campo"><strong>Componente:</strong> Educação Infantil</p>
-    <p class="hab-principal__campo"><strong>Ano/Etapa:</strong> Bebês (zero a 1 ano e 6 meses)</p>
-    <p class="hab-principal__campo"><strong>Unidade temática:</strong> O eu, o outro e o nós</p>
-    <p class="hab-principal__campo"><strong>Objeto do conhecimento:</strong> Expressão e comunicação</p>
-  </section>
-
-  <!-- ══════════════════════════════════════════════════
-       SEÇÃO DE HABILIDADES DE COMPUTAÇÃO CORRELACIONADAS
-  ══════════════════════════════════════════════════ -->
-  <div class="hab-secao-titulo">💻 Habilidades de Computação correlacionadas</div>
-
-  <!-- ──────────────────────────────────────────────────
-       Habilidade 1: EI03CO02 – Expressar etapas para realização de tarefas
-       Mais relevante: comunicação → expressão de procedimentos
-  ────────────────────────────────────────────────── -->
-  <div class="hab-computacao">
-    <div class="hab-computacao__codigo">EI03CO02</div>
-    <p class="hab-computacao__campo"><strong>Descrição:</strong> Expressar as etapas para a realização de uma tarefa de forma clara e ordenada.</p>
-    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
-    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> Educação Infantil</p>
-    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento Computacional</p>
-    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Sequenciação e organização de ideias</p>
-    <div class="hab-relacao">A comunicação de necessidades e desejos (usando gestos, balbucios ou palavras) é a base para, posteriormente, expressar sequências de ações. Ambas envolvem a capacidade de transmitir uma intenção de forma compreensível.</div>
+  <div class="page-hero">
+    <div class="page-hero__icon">🌿</div>
+    <h1 class="page-hero__title">Referencial Curricular — 2º ano</h1>
+    <p class="page-hero__desc">Habilidades de Computação do Ensino Fundamental Anos Iniciais — 2º ano, com explicações, exemplos e transversalidades.</p>
   </div>
 
-  <!-- ──────────────────────────────────────────────────
-       Habilidade 2: EI03CO08 – Compreender interfaces para comunicação
-  ────────────────────────────────────────────────── -->
-  <div class="hab-computacao">
-    <div class="hab-computacao__codigo">EI03CO08</div>
-    <p class="hab-computacao__campo"><strong>Descrição:</strong> Compreender o conceito de interfaces para comunicação com objetos (des)plugados.</p>
-    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
-    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> Educação Infantil</p>
-    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Mundo Digital</p>
-    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Formas de interação com dispositivos</p>
-    <div class="hab-relacao">Assim como os bebês usam diferentes formas de comunicação (gestos, sons) para interagir com as pessoas, as interfaces digitais oferecem diferentes "linguagens" (toque, voz, botões) para interagir com dispositivos.</div>
+  <div class="eixo-btns">
+    <button class="eixo-btn ativo" data-eixo="todos" onclick="filtrar('todos')">🔲 Todos</button>
+    <button class="eixo-btn" data-eixo="PC" onclick="filtrar('PC')">🧠 Pensamento Computacional</button>
+    <button class="eixo-btn" data-eixo="MD" onclick="filtrar('MD')">🌐 Mundo Digital</button>
+    <button class="eixo-btn" data-eixo="CD" onclick="filtrar('CD')">💻 Cultura Digital</button>
   </div>
 
-  <!-- ──────────────────────────────────────────────────
-       Habilidade 3: EI03CO10 – Uso seguro, consciente e respeitoso da tecnologia
-  ────────────────────────────────────────────────── -->
-  <div class="hab-computacao">
-    <div class="hab-computacao__codigo">EI03CO10</div>
-    <p class="hab-computacao__campo"><strong>Descrição:</strong> Utilizar tecnologia digital de maneira segura, consciente e respeitosa.</p>
-    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
-    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> Educação Infantil</p>
-    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura Digital</p>
-    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Convivência e segurança no meio digital</p>
-    <div class="hab-relacao">A comunicação respeitosa de necessidades e emoções no mundo físico é a base para aprender a se expressar de forma adequada também nos ambientes digitais, respeitando a si mesmo e aos outros.</div>
+  <div class="hab-contador" id="contador">6 habilidades</div>
+
+  <!-- EF02CO01 -->
+  <div class="hab-card" data-eixo="PC" id="hab-EF02CO01">
+    <div class="hab-card__header" onclick="toggleHab('EF02CO01')">
+      <span class="hab-card__codigo">EF02CO01</span>
+      <div class="hab-card__resumo">
+        <strong>Modelagem de objetos · Pensamento Computacional</strong>
+        Criar e comparar modelos (representações) de objetos, identificando padrões e atributos essenciais.
+      </div>
+      <span class="hab-card__seta">▼</span>
+    </div>
+    <div class="hab-card__detalhe">
+      <div class="hab-card__inner">
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Objeto de conhecimento</div>
+          <span class="detalhe-objeto">Modelagem de objetos</span>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Explicação da habilidade</div>
+          <p class="detalhe-secao__texto">Um modelo é construído ao se identificar características essenciais de objetos. Modelos são importantes para classificar objetos e a escolha das características define os agrupamentos.</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Exemplos de atividades</div>
+          <p class="detalhe-secao__texto">O professor pode distribuir um conjunto de imagens de veículos como motos, bicicletas, automóveis, trens, aviões, caminhões, helicópteros, jet-skis, barcos a vela, lanchas etc., e solicitar que os alunos agrupem as imagens dos veículos que voam, que possuem rodas ou que possuem motor. Chamar a atenção de que diferentes características podem gerar diferentes agrupamentos.</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Transversalidades</div>
+          <div class="trans-grid">
+            <div class="trans-card trans--lingua-portuguesa">
+              <div class="trans__disc">📖 Língua Portuguesa</div>
+              <p class="trans__texto">O professor pode propor que os alunos construam modelos visuais para representar personagens de uma história, identificando traços como idade, gênero ou papel narrativo. Essa atividade mostra como simplificar informações ajuda a compreender melhor a narrativa.</p>
+            </div>
+            <div class="trans-card trans--matematica">
+              <div class="trans__disc">📐 Matemática</div>
+              <p class="trans__texto">O docente pode incentivar os alunos a modelar objetos por meio de formas geométricas básicas, como representar uma casa usando quadrados e triângulos. Isso fortalece a noção de abstração matemática e reconhecimento de padrões.</p>
+            </div>
+            <div class="trans-card trans--ciencias">
+              <div class="trans__disc">🔬 Ciências</div>
+              <p class="trans__texto">O professor pode propor que os alunos modelem animais ou plantas destacando características essenciais, como número de patas ou tipo de folhas, compreendendo como os cientistas classificam seres vivos.</p>
+            </div>
+            <div class="trans-card trans--historia">
+              <div class="trans__disc">📜 História</div>
+              <p class="trans__texto">O docente pode propor que os alunos modelem diferentes tipos de moradias ao longo do tempo, destacando características principais que permitem comparações entre épocas históricas.</p>
+            </div>
+            <div class="trans-card trans--geografia">
+              <div class="trans__disc">🌍 Geografia</div>
+              <p class="trans__texto">O professor pode incentivar os alunos a representar tipos de paisagens (campo, cidade, praia) em modelos simplificados, destacando atributos que diferenciam cada espaço.</p>
+            </div>
+            <div class="trans-card trans--arte">
+              <div class="trans__disc">🎨 Arte</div>
+              <p class="trans__texto">O docente pode orientar os alunos a representar objetos reais por meio de desenhos simplificados, como caricaturas ou ícones, mostrando como a arte pode criar modelos expressivos a partir de elementos essenciais.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <!-- ──────────────────────────────────────────────────
-       Habilidade 4: EI03CO03 – Execução de algoritmos com objetos (des)plugados
-  ────────────────────────────────────────────────── -->
-  <div class="hab-computacao">
-    <div class="hab-computacao__codigo">EI03CO03</div>
-    <p class="hab-computacao__campo"><strong>Descrição:</strong> Experienciar a execução de algoritmos brincando com objetos (des)plugados.</p>
-    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
-    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> Educação Infantil</p>
-    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento Computacional</p>
-    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Sequências de instruções</p>
-    <div class="hab-relacao">Brincadeiras que envolvem dar e receber instruções (ex.: "dá para o papai", "faz tchau") dependem da comunicação. A criança aprende que seus gestos e palavras funcionam como "comandos" que geram respostas nos outros.</div>
+  <!-- EF02CO02 -->
+  <div class="hab-card" data-eixo="PC" id="hab-EF02CO02">
+    <div class="hab-card__header" onclick="toggleHab('EF02CO02')">
+      <span class="hab-card__codigo">EF02CO02</span>
+      <div class="hab-card__resumo">
+        <strong>Algoritmos com repetições simples · Pensamento Computacional</strong>
+        Criar e simular algoritmos com sequências contendo repetições simples, analisando como a precisão da instrução impacta na execução.
+      </div>
+      <span class="hab-card__seta">▼</span>
+    </div>
+    <div class="hab-card__detalhe">
+      <div class="hab-card__inner">
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Objeto de conhecimento</div>
+          <span class="detalhe-objeto">Algoritmos com repetições simples</span>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Explicação da habilidade</div>
+          <p class="detalhe-secao__texto">Usar linguagem oral, textual ou pictográfica para descrever algoritmos, percebendo a importância de descrevê-los com precisão para que possam ser executados por outras pessoas (ou máquinas). Os algoritmos devem ser descritos através de sequências de instruções que podem ser repetidas um determinado número de vezes. Os ciclos de repetição devem ser simples, não contendo outros ciclos.</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Exemplos de atividades</div>
+          <p class="detalhe-secao__texto">Os alunos podem construir algoritmos com conjuntos de instruções pré-definidas, como ações para avançar, virar à direita, virar à esquerda. Para descrever a tarefa de andar 10 passos, virar à esquerda e andar mais 5 passos, pode-se definir: "Ande um passo 10 vezes; vire à esquerda; e ande um passo 5 vezes".</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Transversalidades</div>
+          <div class="trans-grid">
+            <div class="trans-card trans--lingua-portuguesa">
+              <div class="trans__disc">📖 Língua Portuguesa</div>
+              <p class="trans__texto">O professor pode incentivar os alunos a criarem instruções repetitivas para a escrita de palavras, como repetir uma sílaba para formar um texto poético, mostrando a força da repetição na linguagem.</p>
+            </div>
+            <div class="trans-card trans--matematica">
+              <div class="trans__disc">📐 Matemática</div>
+              <p class="trans__texto">O docente pode propor que os alunos representem multiplicações como repetições de somas em algoritmos simples, entendendo como a lógica de repetição se aplica ao raciocínio matemático.</p>
+            </div>
+            <div class="trans-card trans--ciencias">
+              <div class="trans__disc">🔬 Ciências</div>
+              <p class="trans__texto">O professor pode estimular a criação de algoritmos que descrevam ciclos naturais, como o ciclo da água ou batimentos cardíacos, destacando a repetição como característica dos fenômenos científicos.</p>
+            </div>
+            <div class="trans-card trans--historia">
+              <div class="trans__disc">📜 História</div>
+              <p class="trans__texto">O docente pode propor que os alunos identifiquem rotinas e repetições em atividades do passado, como rituais ou formas de trabalho, representando essas práticas em sequências de passos.</p>
+            </div>
+            <div class="trans-card trans--geografia">
+              <div class="trans__disc">🌍 Geografia</div>
+              <p class="trans__texto">O professor pode orientar algoritmos simples que descrevem trajetos repetitivos, como o percurso diário de casa até a escola, reforçando noções de espaço e movimento.</p>
+            </div>
+            <div class="trans-card trans--arte">
+              <div class="trans__disc">🎨 Arte</div>
+              <p class="trans__texto">O docente pode incentivar a criação de padrões visuais repetitivos em desenhos ou colagens, aproximando a lógica da repetição da estética artística.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <!-- ──────────────────────────────────────────────────
-       Habilidade 5: EI03CO06 – Decisões em dois estados
-  ────────────────────────────────────────────────── -->
-  <div class="hab-computacao">
-    <div class="hab-computacao__codigo">EI03CO06</div>
-    <p class="hab-computacao__campo"><strong>Descrição:</strong> Compreender decisões em dois estados (verdadeiro ou falso).</p>
-    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
-    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> Educação Infantil</p>
-    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento Computacional</p>
-    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Lógica binária e tomada de decisão</p>
-    <div class="hab-relacao">A comunicação de necessidades envolve escolhas simples: a criança quer algo (verdadeiro) ou não quer (falso). Essa lógica binária está presente tanto nas interações sociais quanto no raciocínio computacional.</div>
+  <!-- EF02CO03 -->
+  <div class="hab-card" data-eixo="MD" id="hab-EF02CO03">
+    <div class="hab-card__header" onclick="toggleHab('EF02CO03')">
+      <span class="hab-card__codigo">EF02CO03</span>
+      <div class="hab-card__resumo">
+        <strong>Instrução de máquina · Mundo Digital</strong>
+        Identificar que máquinas diferentes executam conjuntos próprios de instruções e que podem ser usadas para definir algoritmos.
+      </div>
+      <span class="hab-card__seta">▼</span>
+    </div>
+    <div class="hab-card__detalhe">
+      <div class="hab-card__inner">
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Objeto de conhecimento</div>
+          <span class="detalhe-objeto">Instrução de máquina</span>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Explicação da habilidade</div>
+          <p class="detalhe-secao__texto">Para compreender o funcionamento dos computadores, é importante entender que uma máquina disponibiliza um conjunto de instruções (as operações) que, se realizadas em uma dada sequência (algoritmo), produzem algum resultado.</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Exemplos de atividades</div>
+          <p class="detalhe-secao__texto">O aluno pode identificar que alguns conjuntos de instruções bem definidos (operações aritméticas simples de uma calculadora, operações de dobradura etc.) podem ser usados em sequências bem definidas para produzir coisas (o cálculo de uma expressão simples, um origami etc.).</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Transversalidades</div>
+          <div class="trans-grid">
+            <div class="trans-card trans--lingua-portuguesa">
+              <div class="trans__disc">📖 Língua Portuguesa</div>
+              <p class="trans__texto">O professor pode mostrar que, assim como as máquinas seguem instruções específicas, os textos também seguem regras de linguagem, incentivando os alunos a perceber a gramática como um "conjunto de instruções" que organiza a comunicação.</p>
+            </div>
+            <div class="trans-card trans--matematica">
+              <div class="trans__disc">📐 Matemática</div>
+              <p class="trans__texto">O docente pode propor o uso da calculadora para resolver expressões simples, destacando que o dispositivo só responde a instruções corretas, aproximando tecnologia e precisão matemática.</p>
+            </div>
+            <div class="trans-card trans--ciencias">
+              <div class="trans__disc">🔬 Ciências</div>
+              <p class="trans__texto">O professor pode mostrar que instrumentos científicos, como microscópios, possuem modos de uso que seguem instruções específicas, relacionando ciência e tecnologia.</p>
+            </div>
+            <div class="trans-card trans--historia">
+              <div class="trans__disc">📜 História</div>
+              <p class="trans__texto">O docente pode explicar como máquinas antigas, como teares ou moinhos, tinham modos próprios de funcionamento, ajudando os alunos a perceber a evolução tecnológica.</p>
+            </div>
+            <div class="trans-card trans--geografia">
+              <div class="trans__disc">🌍 Geografia</div>
+              <p class="trans__texto">O professor pode propor a observação de mapas digitais, mostrando que o software executa comandos de busca e localização específicos, associando tecnologia ao estudo do espaço.</p>
+            </div>
+            <div class="trans-card trans--arte">
+              <div class="trans__disc">🎨 Arte</div>
+              <p class="trans__texto">O docente pode explorar softwares de desenho que respondem a instruções de comando, mostrando como a criação artística também pode ser mediada por regras técnicas.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <!-- ──────────────────────────────────────────────────
-       Habilidade 6: EI03CO09 – Identificar dispositivos e formas de interação
-  ────────────────────────────────────────────────── -->
-  <div class="hab-computacao">
-    <div class="hab-computacao__codigo">EI03CO09</div>
-    <p class="hab-computacao__campo"><strong>Descrição:</strong> Identificar dispositivos computacionais e as diferentes formas de interação.</p>
-    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
-    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> Educação Infantil</p>
-    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Mundo Digital</p>
-    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Dispositivos e suas interfaces</p>
-    <div class="hab-relacao">Assim como a criança descobre que pode se comunicar de diferentes formas (gestos, sons), ela também descobre que diferentes dispositivos (tablet, brinquedo sonoro) têm formas específicas de interação (tocar, apertar, soprar).</div>
+  <!-- EF02CO04 -->
+  <div class="hab-card" data-eixo="MD" id="hab-EF02CO04">
+    <div class="hab-card__header" onclick="toggleHab('EF02CO04')">
+      <span class="hab-card__codigo">EF02CO04</span>
+      <div class="hab-card__resumo">
+        <strong>Hardware e software · Mundo Digital</strong>
+        Diferenciar componentes físicos (hardware) e programas que fornecem as instruções (software) para o hardware.
+      </div>
+      <span class="hab-card__seta">▼</span>
+    </div>
+    <div class="hab-card__detalhe">
+      <div class="hab-card__inner">
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Objeto de conhecimento</div>
+          <span class="detalhe-objeto">Hardware e software</span>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Explicação da habilidade</div>
+          <p class="detalhe-secao__texto">O objetivo da habilidade é mostrar aos alunos que em seu cotidiano existem dispositivos físicos (celulares, computadores, calculadoras, máquinas de costura etc.) que são controlados por algo que segue uma sequência de passos lógicos (um App do celular, uma pessoa com a calculadora, uma costureira) etc.</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Exemplos de atividades</div>
+          <p class="detalhe-secao__texto">Pode-se utilizar dispositivos do cotidiano do aluno para diferenciar o dispositivo físico (hardware) daquilo que o controla (software).</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Transversalidades</div>
+          <div class="trans-grid">
+            <div class="trans-card trans--lingua-portuguesa">
+              <div class="trans__disc">📖 Língua Portuguesa</div>
+              <p class="trans__texto">O professor pode propor que os alunos comparem um livro (objeto físico) e a história que ele traz (conteúdo simbólico), fazendo uma analogia para compreender hardware e software.</p>
+            </div>
+            <div class="trans-card trans--matematica">
+              <div class="trans__disc">📐 Matemática</div>
+              <p class="trans__texto">O docente pode incentivar os alunos a diferenciar a calculadora (hardware) dos cálculos que ela processa (software), mostrando a relação entre material e instrução lógica.</p>
+            </div>
+            <div class="trans-card trans--ciencias">
+              <div class="trans__disc">🔬 Ciências</div>
+              <p class="trans__texto">O professor pode propor experiências em que um mesmo dispositivo físico (como uma lâmpada) tenha diferentes comportamentos dependendo do "programa" (interruptor, sensor, timer), aproximando hardware e software da investigação científica.</p>
+            </div>
+            <div class="trans-card trans--historia">
+              <div class="trans__disc">📜 História</div>
+              <p class="trans__texto">O docente pode mostrar como instrumentos antigos (hardware) eram operados por pessoas (software humano), incentivando a reflexão sobre a evolução da tecnologia.</p>
+            </div>
+            <div class="trans-card trans--geografia">
+              <div class="trans__disc">🌍 Geografia</div>
+              <p class="trans__texto">O professor pode propor que os alunos explorem mapas digitais, identificando o aparelho físico usado (tablet ou computador) e o programa que o executa (software de mapas).</p>
+            </div>
+            <div class="trans-card trans--arte">
+              <div class="trans__disc">🎨 Arte</div>
+              <p class="trans__texto">O docente pode mostrar que uma câmera fotográfica é hardware, mas os filtros aplicados em imagens são software, aproximando o conceito da prática artística.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <!-- ──────────────────────────────────────────────────
-       Habilidade 7: EI03CO07 – Reconhecer dispositivos ligados/desligados
-  ────────────────────────────────────────────────── -->
-  <div class="hab-computacao">
-    <div class="hab-computacao__codigo">EI03CO07</div>
-    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer dispositivos eletrônicos (e não-eletrônicos), identificando quando estão ligados ou desligados.</p>
-    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
-    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> Educação Infantil</p>
-    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Mundo Digital</p>
-    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Estados de dispositivos</p>
-    <div class="hab-relacao">A comunicação de "sim" e "não" (presente/ausente, quer/não quer) é análoga a compreender os estados "ligado" e "desligado" nos dispositivos, ambos representando decisões binárias.</div>
+  <!-- EF02CO05 -->
+  <div class="hab-card" data-eixo="CD" id="hab-EF02CO05">
+    <div class="hab-card__header" onclick="toggleHab('EF02CO05')">
+      <span class="hab-card__codigo">EF02CO05</span>
+      <div class="hab-card__resumo">
+        <strong>Uso de artefatos computacionais · Cultura Digital</strong>
+        Reconhecer as características e usos das tecnologias computacionais no cotidiano dentro e fora da escola.
+      </div>
+      <span class="hab-card__seta">▼</span>
+    </div>
+    <div class="hab-card__detalhe">
+      <div class="hab-card__inner">
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Objeto de conhecimento</div>
+          <span class="detalhe-objeto">Uso de artefatos computacionais</span>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Explicação da habilidade</div>
+          <p class="detalhe-secao__texto">A proposta nessa habilidade é que o aluno verifique as diferentes características das tecnologias de informação e comunicação, identificando como funcionam, principais aspectos, bem como reconhecendo os diferentes usos no dia a dia das pessoas dentro e fora da escola.</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Exemplos de atividades</div>
+          <p class="detalhe-secao__texto">O professor pode apresentar imagens de diferentes tecnologias (celular, tablets, computador) destacando características de cada uma, como tamanho e tipos, bem como diferentes usos no cotidiano. Criar um portfólio de tecnologias com imagens.</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Transversalidades</div>
+          <div class="trans-grid">
+            <div class="trans-card trans--lingua-portuguesa">
+              <div class="trans__disc">📖 Língua Portuguesa</div>
+              <p class="trans__texto">O professor pode propor entrevistas com familiares sobre os usos da tecnologia no cotidiano, registrando os relatos em forma de texto digital.</p>
+            </div>
+            <div class="trans-card trans--matematica">
+              <div class="trans__disc">📐 Matemática</div>
+              <p class="trans__texto">O docente pode estimular os alunos a levantar dados sobre o uso de dispositivos em casa e na escola, organizando-os em gráficos simples que mostrem padrões de uso.</p>
+            </div>
+            <div class="trans-card trans--ciencias">
+              <div class="trans__disc">🔬 Ciências</div>
+              <p class="trans__texto">O professor pode propor debates sobre como a tecnologia ajuda nas descobertas científicas, incentivando a observação crítica dos benefícios e limites.</p>
+            </div>
+            <div class="trans-card trans--historia">
+              <div class="trans__disc">📜 História</div>
+              <p class="trans__texto">O docente pode apresentar imagens de tecnologias de diferentes épocas, mostrando como evoluíram e impactaram a vida social.</p>
+            </div>
+            <div class="trans-card trans--geografia">
+              <div class="trans__disc">🌍 Geografia</div>
+              <p class="trans__texto">O professor pode orientar que os alunos observem como a tecnologia auxilia no estudo de diferentes lugares, como uso de GPS e satélites.</p>
+            </div>
+            <div class="trans-card trans--arte">
+              <div class="trans__disc">🎨 Arte</div>
+              <p class="trans__texto">O docente pode incentivar o uso de câmeras digitais ou aplicativos de desenho para a produção criativa, valorizando a expressão artística mediada pela tecnologia.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <!-- ──────────────────────────────────────────────────
-       Habilidade 8: EI03CO04 – Criar e representar algoritmos
-  ────────────────────────────────────────────────── -->
-  <div class="hab-computacao">
-    <div class="hab-computacao__codigo">EI03CO04</div>
-    <p class="hab-computacao__campo"><strong>Descrição:</strong> Criar e representar algoritmos para resolver problemas.</p>
-    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
-    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> Educação Infantil</p>
-    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento Computacional</p>
-    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Elaboração de sequências lógicas</p>
-    <div class="hab-relacao">Quando a criança aprende a comunicar uma sequência de ações (ex.: gestos para pedir comida, apontar e balbuciar para um brinquedo), ela está, de forma elementar, criando um "algoritmo" para resolver um problema.</div>
+  <!-- EF02CO06 -->
+  <div class="hab-card" data-eixo="CD" id="hab-EF02CO06">
+    <div class="hab-card__header" onclick="toggleHab('EF02CO06')">
+      <span class="hab-card__codigo">EF02CO06</span>
+      <div class="hab-card__resumo">
+        <strong>Segurança e responsabilidade · Cultura Digital</strong>
+        Reconhecer os cuidados com a segurança no uso de dispositivos computacionais.
+      </div>
+      <span class="hab-card__seta">▼</span>
+    </div>
+    <div class="hab-card__detalhe">
+      <div class="hab-card__inner">
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Objeto de conhecimento</div>
+          <span class="detalhe-objeto">Segurança e responsabilidade no uso de tecnologia computacional</span>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Explicação da habilidade</div>
+          <p class="detalhe-secao__texto">Nesta habilidade temos a perspectiva de trazer um panorama sobre os cuidados com a segurança ao usar dispositivos como celular, tablets, computadores (roubo de dados em dispositivos físicos, rastro de dados online quando da utilização de jogos etc.).</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Exemplos de atividades</div>
+          <p class="detalhe-secao__texto">O professor poderá criar um portfólio com alguns cuidados ao jogar nos dispositivos como celular e tablets.</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Transversalidades</div>
+          <div class="trans-grid">
+            <div class="trans-card trans--lingua-portuguesa">
+              <div class="trans__disc">📖 Língua Portuguesa</div>
+              <p class="trans__texto">O professor pode trabalhar textos informativos sobre segurança digital, incentivando os alunos a produzir pequenas recomendações escritas para o uso consciente da tecnologia.</p>
+            </div>
+            <div class="trans-card trans--matematica">
+              <div class="trans__disc">📐 Matemática</div>
+              <p class="trans__texto">O docente pode propor atividades com senhas numéricas, mostrando combinações seguras e discutindo probabilidades de acerto.</p>
+            </div>
+            <div class="trans-card trans--ciencias">
+              <div class="trans__disc">🔬 Ciências</div>
+              <p class="trans__texto">O professor pode estimular reflexões sobre a comparação entre vírus biológicos e digitais, promovendo a consciência de prevenção em ambos os contextos.</p>
+            </div>
+            <div class="trans-card trans--historia">
+              <div class="trans__disc">📜 História</div>
+              <p class="trans__texto">O docente pode apresentar exemplos de como sociedades antigas protegiam informações sigilosas, comparando com os cuidados atuais no mundo digital.</p>
+            </div>
+            <div class="trans-card trans--geografia">
+              <div class="trans__disc">🌍 Geografia</div>
+              <p class="trans__texto">O professor pode discutir os riscos de compartilhar localização em jogos e aplicativos, mostrando a importância de preservar a segurança espacial.</p>
+            </div>
+            <div class="trans-card trans--arte">
+              <div class="trans__disc">🎨 Arte</div>
+              <p class="trans__texto">O docente pode incentivar a criação de cartazes digitais com mensagens de conscientização sobre segurança online, integrando criatividade e responsabilidade digital.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <p class="hab-metadata">
-    🔍 Habilidades listadas em ordem decrescente de relevância para a habilidade EI01EO04
-  </p>
+  <script>
+    function toggleHab(codigo) {
+      document.getElementById('hab-' + codigo).classList.toggle('aberto');
+    }
+
+    function filtrar(eixo) {
+      document.querySelectorAll('.eixo-btn').forEach(function(btn) {
+        btn.classList.toggle('ativo', btn.dataset.eixo === eixo);
+      });
+      var cards = document.querySelectorAll('.hab-card');
+      var visiveis = 0;
+      cards.forEach(function(card) {
+        var mostrar = eixo === 'todos' || card.dataset.eixo === eixo;
+        card.style.display = mostrar ? 'block' : 'none';
+        if (mostrar) visiveis++;
+      });
+      document.getElementById('contador').textContent =
+        visiveis + (visiveis === 1 ? ' habilidade' : ' habilidades');
+    }
+  </script>
 
 </body>
 </html>
