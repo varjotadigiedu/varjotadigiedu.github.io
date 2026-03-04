@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>EF01GE04 — Geografia — Varjota DigiEdu</title>
+
+  <script src="../../assets/template-loader.js"></script>
+  <script>
+    window.VD_PAGE = {
+      disciplina: "geografia",
+      pageTitle:  "EF01GE04"
+    };
+  </script>
+  <script src="../../assets/template.js"></script>
+
+  <style>
+    /* ── Cores temáticas — Geografia ── */
+    :root {
+      --disc-cor:       #1565C0;   /* cor principal da disciplina */
+      --disc-cor-light: #EEF4FF;   /* fundo suave da disciplina  */
+      --comp-cor:       #27AE60;   /* verde fixo para Computação */
+      --comp-cor-light: #E8F5E9;   /* fundo suave para Computação */
+    }
+
+    /* ── Botão voltar ── */
+    .hab-voltar {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-bottom: 24px;
+      padding: 8px 18px; border-radius: 50px;
+      border: 2px solid var(--disc-cor);
+      background: #fff; color: var(--disc-cor);
+      font-family: 'Lexend', sans-serif; font-size: .85rem; font-weight: 700;
+      text-decoration: none; transition: background .15s, color .15s;
+    }
+    .hab-voltar:hover { background: var(--disc-cor); color: #fff; }
+
+    /* ── Bloco da habilidade principal ── */
+    .hab-principal {
+      background: var(--disc-cor-light);
+      border-left: 4px solid var(--disc-cor);
+      border-radius: 0 12px 12px 0;
+      padding: 24px 28px;
+      margin-bottom: 32px;
+    }
+    .hab-principal__titulo {
+      font-family: 'Lexend', sans-serif;
+      font-size: 1.1rem; font-weight: 800;
+      color: var(--disc-cor);
+      margin-bottom: 16px;
+    }
+    .hab-principal__campo { margin: 6px 0; font-size: .9rem; color: #374151; }
+    .hab-principal__campo strong {
+      font-family: 'Lexend', sans-serif;
+      color: #1A1A2E;
+      display: inline-block; min-width: 160px;
+    }
+
+    /* ── Título da seção de Computação ── */
+    .hab-secao-titulo {
+      font-family: 'Lexend', sans-serif;
+      font-size: 1.15rem; font-weight: 800;
+      color: #1A1A2E;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #DDE3ED;
+    }
+
+    /* ── Cards de habilidades de Computação ── */
+    .hab-computacao {
+      background: #F9FAFB;
+      border: 1px solid #DDE3ED;
+      border-radius: 12px;
+      padding: 22px 24px;
+      margin-bottom: 16px;
+      transition: box-shadow .15s;
+    }
+    .hab-computacao:hover { box-shadow: 0 4px 16px rgba(0,0,0,.08); }
+
+    .hab-computacao__codigo {
+      font-family: 'Lexend', sans-serif;
+      font-size: 1rem; font-weight: 800;
+      color: var(--comp-cor);
+      margin-bottom: 14px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .hab-computacao__codigo::before { content: "🔹"; font-size: .9rem; }
+
+    .hab-computacao__campo { margin: 5px 0; font-size: .875rem; color: #374151; }
+    .hab-computacao__campo strong {
+      font-family: 'Lexend', sans-serif;
+      color: #555;
+      display: inline-block; min-width: 160px;
+    }
+
+    /* ── Box de relação ── */
+    .hab-relacao {
+      background: var(--comp-cor-light);
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-top: 14px;
+      font-size: .875rem;
+      font-style: italic;
+      color: #1B5E20;
+      line-height: 1.55;
+    }
+    .hab-relacao::before {
+      content: "🎯 Relação: ";
+      font-weight: 700;
+      font-style: normal;
+      font-family: 'Lexend', sans-serif;
+    }
+
+    /* ── Rodapé de metadados ── */
+    .hab-metadata {
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid #DDE3ED;
+      font-size: .8rem;
+      color: #9CA3AF;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Botão voltar -->
+  <a href="../../disciplinas/geografia.html" class="hab-voltar">
+    ← Voltar para Geografia
+  </a>
+
+  <!-- ══════════════════════════════════════════════════
+       BLOCO DA HABILIDADE PRINCIPAL
+  ══════════════════════════════════════════════════ -->
+  <section class="hab-principal">
+    <div class="hab-principal__titulo">📌 Habilidade selecionada</div>
+    <p class="hab-principal__campo"><strong>Código:</strong> EF01GE04</p>
+    <p class="hab-principal__campo"><strong>Descrição:</strong> Discutir e elaborar, coletivamente, regras de convívio em diferentes espaços (sala de aula, escola etc.).</p>
+    <p class="hab-principal__campo"><strong>Componente:</strong> Geografia</p>
+    <p class="hab-principal__campo"><strong>Ano/Etapa:</strong> 1º ano</p>
+    <p class="hab-principal__campo"><strong>Unidade temática:</strong> O sujeito e seu lugar no mundo</p>
+    <p class="hab-principal__campo"><strong>Objeto do conhecimento:</strong> Situações de convívio em diferentes lugares</p>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════
+       SEÇÃO DE HABILIDADES DE COMPUTAÇÃO CORRELACIONADAS
+  ══════════════════════════════════════════════════ -->
+  <div class="hab-secao-titulo">💻 Habilidades de Computação correlacionadas</div>
+
+  <!-- Habilidade 1: EF01CO02 - Sequências de passos -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF01CO02</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Identificar e seguir sequências de passos aplicados no dia a dia para resolver problemas.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º ano</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Conceituação de Algoritmos</p>
+    <div class="hab-relacao">Regras de convívio são essencialmente sequências de passos (algoritmos sociais) que organizam a vida em comunidade, conectando-se diretamente à ideia de algoritmos no pensamento computacional.</div>
+  </div>
+
+  <!-- Habilidade 2: EF01CO03 - Criar sequências -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF01CO03</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reorganizar e criar sequências de passos em meios físicos ou digitais, relacionando essas sequências à palavra 'Algoritmos'.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º ano</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Conceituação de Algoritmos</p>
+    <div class="hab-relacao">A elaboração coletiva de regras de convívio é um processo de criação de sequências de passos (o que fazer, como agir) que pode ser relacionado à construção de algoritmos.</div>
+  </div>
+
+  <!-- Habilidade 3: EF01CO04 - Reconhecer informação -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF01CO04</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer o que é a informação, que ela pode ser armazenada, transmitida como mensagem por diversos meios e descrita em várias linguagens.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º ano</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Mundo digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Codificação da informação</p>
+    <div class="hab-relacao">As regras de convívio são informações importantes que precisam ser registradas, comunicadas e seguidas por todos, conectando-se aos conceitos de informação e transmissão de mensagens.</div>
+  </div>
+
+  <!-- Habilidade 4: EF01CO05 - Representar informação -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF01CO05</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Representar informação usando diferentes codificações.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º ano</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Mundo digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Codificação da informação</p>
+    <div class="hab-relacao">As regras elaboradas coletivamente podem ser representadas de diferentes formas: cartazes com desenhos, símbolos, textos curtos ou até mesmo em formato digital, aplicando diferentes codificações.</div>
+  </div>
+
+  <!-- Habilidade 5: EF01CO07 - Uso seguro da tecnologia -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF01CO07</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Conhecer as possibilidades de uso seguro das tecnologias computacionais para proteção dos dados pessoais e para garantir a própria segurança.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º ano</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Segurança e responsabilidade no uso de tecnologia computacional</p>
+    <div class="hab-relacao">As regras de convívio também se aplicam aos espaços digitais. Discutir como se comportar com segurança e respeito no ambiente online é uma extensão natural da habilidade.</div>
+  </div>
+
+  <!-- Habilidade 6: EF02CO06 - Cuidados com segurança -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF02CO06</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer os cuidados com a segurança no uso de dispositivos computacionais.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 2º ano</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Segurança e responsabilidade no uso de tecnologia computacional</p>
+    <div class="hab-relacao">As regras de convívio podem ser ampliadas para incluir cuidados ao usar tablets, computadores e outros dispositivos, conectando Geografia à Cultura Digital.</div>
+  </div>
+
+  <!-- Habilidade 7: EF15CO02 - Algoritmos -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF15CO02</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Construir e simular algoritmos, de forma independente ou em colaboração, que resolvam problemas simples e do cotidiano com uso de sequências, seleções condicionais e repetições de instruções.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º, 2º, 3º, 4º, 5º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Algoritmos</p>
+    <div class="hab-relacao">A construção colaborativa de regras é análoga à construção colaborativa de algoritmos - ambos exigem negociação, clareza e sequenciamento lógico.</div>
+  </div>
+
+  <!-- Habilidade 8: EF15CO04 - Decomposição -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF15CO04</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Aplicar a estratégia de decomposição para resolver problemas complexos, dividindo esse problema em partes menores, resolvendo-as e combinando suas soluções.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º, 2º, 3º, 4º, 5º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Decomposição</p>
+    <div class="hab-relacao">Para criar regras de convívio para diferentes espaços (sala, pátio, refeitório), podemos decompor o problema e criar regras específicas para cada contexto, aplicando a estratégia de decomposição.</div>
+  </div>
+
+  <!-- Habilidade 9: EF15CO08 - Usar tecnologias computacionais -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF15CO08</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer e utilizar tecnologias computacionais para pesquisar e acessar informações, expressar-se crítica e criativamente e resolver problemas.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º, 2º, 3º, 4º, 5º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Uso de artefatos computacionais</p>
+    <div class="hab-relacao">As regras de convívio podem ser registradas em formato digital (apresentações, cartazes digitais, vídeos) e compartilhadas com toda a escola usando ferramentas computacionais.</div>
+  </div>
+
+  <!-- Habilidade 10: EF15CO09 - Uso ético e responsável -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF15CO09</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Entender que as tecnologias devem ser utilizadas de maneira segura, ética e responsável, respeitando direitos autorais, de imagem e as leis vigentes.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º, 2º, 3º, 4º, 5º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Segurança e responsabilidade no uso da tecnologia computacional</p>
+    <div class="hab-relacao">Esta habilidade é uma extensão direta das regras de convívio para o ambiente digital, ensinando que o respeito e a ética também se aplicam ao usar tecnologias.</div>
+  </div>
+
+  <!-- Habilidade 11: EF03CO09 - Compartilhamento de informações -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF03CO09</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer o potencial impacto do compartilhamento de informações pessoais ou de seus pares em meio digital.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 3º ano</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Segurança e responsabilidade no uso da tecnologia</p>
+    <div class="hab-relacao">As regras de convívio podem incluir orientações sobre o que compartilhar ou não online, conectando a Geografia dos espaços físicos aos espaços virtuais.</div>
+  </div>
+
+  <!-- Habilidade 12: EF69CO11 - Conduta em ambiente digital -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF69CO11</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Apresentar conduta e linguagem apropriadas ao se comunicar em ambiente digital, considerando a ética e o respeito.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 6º, 7º, 8º, 9º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Segurança e responsabilidade no uso da tecnologia - Tecnologia digital e sociedade</p>
+    <div class="hab-relacao">As regras de convívio elaboradas para espaços físicos podem ser adaptadas para orientar a conduta em ambientes digitais, ampliando o conceito de "espaços de convívio".</div>
+  </div>
+
+  <p class="hab-metadata">
+    🔍 Habilidades listadas em ordem decrescente de relevância para a habilidade EF01GE04
+  </p>
+
+</body>
+</html>

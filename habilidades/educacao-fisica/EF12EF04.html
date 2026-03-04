@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>EF12EF04 — Educação Física — Varjota DigiEdu</title>
+
+  <script src="../../assets/template-loader.js"></script>
+  <script>
+    window.VD_PAGE = {
+      disciplina: "educacao-fisica",
+      pageTitle:  "EF12EF04"
+    };
+  </script>
+  <script src="../../assets/template.js"></script>
+
+  <style>
+    /* ── Cores temáticas — Educação Física ── */
+    :root {
+      --disc-cor:       #2E7D32;
+      --disc-cor-light: #F1F8F1;
+      --comp-cor:       #27AE60;
+      --comp-cor-light: #E8F5E9;
+    }
+
+    .hab-voltar {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-bottom: 24px;
+      padding: 8px 18px; border-radius: 50px;
+      border: 2px solid var(--disc-cor);
+      background: #fff; color: var(--disc-cor);
+      font-family: 'Lexend', sans-serif; font-size: .85rem; font-weight: 700;
+      text-decoration: none; transition: background .15s, color .15s;
+    }
+    .hab-voltar:hover { background: var(--disc-cor); color: #fff; }
+
+    .hab-principal {
+      background: var(--disc-cor-light);
+      border-left: 4px solid var(--disc-cor);
+      border-radius: 0 12px 12px 0;
+      padding: 24px 28px;
+      margin-bottom: 32px;
+    }
+    .hab-principal__titulo {
+      font-family: 'Lexend', sans-serif;
+      font-size: 1.1rem; font-weight: 800;
+      color: var(--disc-cor);
+      margin-bottom: 16px;
+    }
+    .hab-principal__campo { margin: 6px 0; font-size: .9rem; color: #374151; }
+    .hab-principal__campo strong {
+      font-family: 'Lexend', sans-serif;
+      color: #1A1A2E;
+      display: inline-block; min-width: 160px;
+    }
+
+    .hab-secao-titulo {
+      font-family: 'Lexend', sans-serif;
+      font-size: 1.15rem; font-weight: 800;
+      color: #1A1A2E;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #DDE3ED;
+    }
+
+    .hab-computacao {
+      background: #F9FAFB;
+      border: 1px solid #DDE3ED;
+      border-radius: 12px;
+      padding: 22px 24px;
+      margin-bottom: 16px;
+      transition: box-shadow .15s;
+    }
+    .hab-computacao:hover { box-shadow: 0 4px 16px rgba(0,0,0,.08); }
+
+    .hab-computacao__codigo {
+      font-family: 'Lexend', sans-serif;
+      font-size: 1rem; font-weight: 800;
+      color: var(--comp-cor);
+      margin-bottom: 14px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .hab-computacao__codigo::before { content: "🔹"; font-size: .9rem; }
+
+    .hab-computacao__campo { margin: 5px 0; font-size: .875rem; color: #374151; }
+    .hab-computacao__campo strong {
+      font-family: 'Lexend', sans-serif;
+      color: #555;
+      display: inline-block; min-width: 160px;
+    }
+
+    .hab-relacao {
+      background: var(--comp-cor-light);
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-top: 14px;
+      font-size: .875rem;
+      font-style: italic;
+      color: #1B5E20;
+      line-height: 1.55;
+    }
+    .hab-relacao::before {
+      content: "🎯 Relação: ";
+      font-weight: 700;
+      font-style: normal;
+      font-family: 'Lexend', sans-serif;
+    }
+
+    .hab-metadata {
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid #DDE3ED;
+      font-size: .8rem;
+      color: #9CA3AF;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Botão voltar -->
+  <a href="../../disciplinas/educacao-fisica.html" class="hab-voltar">
+    ← Voltar para Educação Física
+  </a>
+
+  <!-- HABILIDADE PRINCIPAL: EF12EF04 -->
+  <section class="hab-principal">
+    <div class="hab-principal__titulo">📌 Habilidade selecionada</div>
+    <p class="hab-principal__campo"><strong>Código:</strong> EF12EF04</p>
+    <p class="hab-principal__campo"><strong>Descrição:</strong> Colaborar na proposição e na produção de alternativas para a prática, em outros momentos e espaços, de brincadeiras e jogos e demais práticas corporais tematizadas na escola, produzindo textos (orais, escritos, audiovisuais) para divulgá-las na escola e na comunidade.</p>
+    <p class="hab-principal__campo"><strong>Componente:</strong> Educação Física</p>
+    <p class="hab-principal__campo"><strong>Ano/Etapa:</strong> 1º e 2º ano</p>
+    <p class="hab-principal__campo"><strong>Unidade temática:</strong> Brincadeiras e jogos</p>
+    <p class="hab-principal__campo"><strong>Objeto do conhecimento:</strong> Brincadeiras e jogos da cultura popular presentes no contexto comunitário e regional</p>
+  </section>
+
+  <!-- SEÇÃO DE CORRELAÇÕES COM COMPUTAÇÃO -->
+  <div class="hab-secao-titulo">💻 Habilidades de Computação correlacionadas</div>
+
+  <!-- Habilidade 1: EF01CO04 – Informação e múltiplas linguagens -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF01CO04</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer o que é a informação, que ela pode ser armazenada, transmitida como mensagem por diversos meios e descrita em várias linguagens.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Mundo digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Codificação da informação</p>
+    <div class="hab-relacao">Relação direta com a produção de textos orais, escritos e audiovisuais: a Computação ensina que a informação pode ser representada em diferentes linguagens e meios.</div>
+  </div>
+
+  <!-- Habilidade 2: EF01CO05 – Representar informação usando codificações -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF01CO05</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Representar informação usando diferentes codificações.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Mundo digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Codificação da informação</p>
+    <div class="hab-relacao">As brincadeiras podem ser representadas de diferentes formas (texto, desenho, vídeo, áudio) para divulgação, utilizando diferentes codificações.</div>
+  </div>
+
+  <!-- Habilidade 3: EF15CO05 – Codificar para armazenamento e transmissão -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF15CO05</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Codificar a informação de diferentes formas, entendendo a importância desta codificação para o armazenamento, manipulação e transmissão em dispositivos computacionais.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º, 2º, 3º, 4º, 5º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Mundo digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Codificação da informação</p>
+    <div class="hab-relacao">Para divulgar as brincadeiras, é preciso armazenar e transmitir informações; esta habilidade explica a importância da codificação nesses processos.</div>
+  </div>
+
+  <!-- Habilidade 4: EF03CO08 – Expressar-se em diferentes formatos digitais -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF03CO08</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Usar ferramentas computacionais em situações didáticas para se expressar em diferentes formatos digitais.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 3º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Uso de tecnologias computacionais</p>
+    <div class="hab-relacao">Aplica-se à produção de materiais de divulgação em formatos digitais (apresentações, vídeos, podcasts) sobre as brincadeiras.</div>
+  </div>
+
+  <!-- Habilidade 5: EF04CO06 – Criar conteúdo com ferramentas computacionais -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF04CO06</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Usar diferentes ferramentas computacionais para criação de conteúdo (textos, apresentações, vídeos etc.).</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 4º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Uso de tecnologias computacionais</p>
+    <div class="hab-relacao">Ferramentas digitais podem ser usadas para criar os materiais de divulgação (cartazes digitais, vídeos tutoriais, apresentações).</div>
+  </div>
+
+  <!-- Habilidade 6: EF15CO08 – Uso de tecnologias para expressão e pesquisa -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF15CO08</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer e utilizar tecnologias computacionais para pesquisar e acessar informações, expressar‑se crítica e criativamente e resolver problemas.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º, 2º, 3º, 4º, 5º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Uso de artefatos computacionais</p>
+    <div class="hab-relacao">As tecnologias podem ser usadas tanto para pesquisar sobre as brincadeiras quanto para criar e divulgar os materiais produzidos.</div>
+  </div>
+
+  <!-- Habilidade 7: EF07CO11 – Criar, documentar e publicar produtos digitais -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF07CO11</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Criar, documentar e publicar de forma individual ou colaborativa, produtos (vídeos, podcasts, web sites) usando recursos de tecnologia.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 7º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Uso de tecnologias computacionais - Produção Digital</p>
+    <div class="hab-relacao">Embora seja de ano mais avançado, relaciona-se à produção e publicação de materiais para divulgação na escola e comunidade.</div>
+  </div>
+
+  <!-- Habilidade 8: EF02CO05 – Tecnologias no cotidiano escolar -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF02CO05</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer as características e usos das tecnologias computacionais no cotidiano dentro e fora da escola.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 2º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Uso de artefatos computacionais</p>
+    <div class="hab-relacao">A produção de materiais para divulgação pode utilizar tecnologias presentes no cotidiano escolar (computadores, tablets, câmeras).</div>
+  </div>
+
+  <!-- Habilidade 9: EF01CO06 – Artefatos computacionais para necessidades coletivas -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF01CO06</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer e explorar artefatos computacionais voltados a atender necessidades pessoais ou coletivas.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Uso de artefatos computacionais</p>
+    <div class="hab-relacao">A divulgação das brincadeiras atende a uma necessidade coletiva (compartilhar cultura), e artefatos computacionais podem apoiar esse processo.</div>
+  </div>
+
+  <!-- Habilidade 10: EF15CO09 – Uso ético e responsável da tecnologia -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF15CO09</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Entender que as tecnologias devem ser utilizadas de maneira segura, ética e responsável, respeitando direitos autorais, de imagem e as leis vigentes.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º, 2º, 3º, 4º, 5º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Segurança e responsabilidade no uso da tecnologia computacional</p>
+    <div class="hab-relacao">Ao produzir e divulgar materiais, é fundamental respeitar direitos autorais e de imagem das pessoas envolvidas.</div>
+  </div>
+
+  <!-- Habilidade 11: EF04CO08 – Verificar confiabilidade de fontes -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF04CO08</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer a importância de verificar a confiabilidade das fontes de informações obtidas na Internet.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 4º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Segurança e responsabilidade no uso da tecnologia</p>
+    <div class="hab-relacao">Se os alunos pesquisarem informações sobre as brincadeiras na internet, é importante verificar se as fontes são confiáveis.</div>
+  </div>
+
+  <!-- Habilidade 12: EF05CO09 – Direitos autorais em mídias digitais -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF05CO09</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Usar informações considerando aplicações e limites dos direitos autorais em diferentes mídias digitais.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 5º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Segurança e responsabilidade no uso da tecnologia</p>
+    <div class="hab-relacao">Relaciona-se ao respeito aos direitos autorais ao utilizar imagens, músicas ou textos de terceiros nos materiais de divulgação.</div>
+  </div>
+
+  <!-- Rodapé com metadados -->
+  <p class="hab-metadata">
+    🔍 Habilidades listadas em ordem decrescente de relevância para a habilidade EF12EF04<br>
+    ✨ Ênfase em: produção de conteúdo digital, múltiplas linguagens, divulgação, direitos autorais e uso ético da tecnologia.
+  </p>
+
+</body>
+</html>

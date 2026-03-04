@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>EF01HI02 — História — Varjota DigiEdu</title>
+
+  <script src="../../assets/template-loader.js"></script>
+  <script>
+    window.VD_PAGE = {
+      disciplina: "historia",
+      pageTitle:  "EF01HI02"
+    };
+  </script>
+  <script src="../../assets/template.js"></script>
+
+  <style>
+    /* ── Cores temáticas — História ── */
+    :root {
+      --disc-cor:       #BF360C;   /* cor principal da disciplina */
+      --disc-cor-light: #FFF3EE;   /* fundo suave da disciplina  */
+      --comp-cor:       #27AE60;   /* verde fixo para Computação */
+      --comp-cor-light: #E8F5E9;   /* fundo suave para Computação */
+    }
+
+    /* ── Botão voltar ── */
+    .hab-voltar {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-bottom: 24px;
+      padding: 8px 18px; border-radius: 50px;
+      border: 2px solid var(--disc-cor);
+      background: #fff; color: var(--disc-cor);
+      font-family: 'Lexend', sans-serif; font-size: .85rem; font-weight: 700;
+      text-decoration: none; transition: background .15s, color .15s;
+    }
+    .hab-voltar:hover { background: var(--disc-cor); color: #fff; }
+
+    /* ── Bloco da habilidade principal ── */
+    .hab-principal {
+      background: var(--disc-cor-light);
+      border-left: 4px solid var(--disc-cor);
+      border-radius: 0 12px 12px 0;
+      padding: 24px 28px;
+      margin-bottom: 32px;
+    }
+    .hab-principal__titulo {
+      font-family: 'Lexend', sans-serif;
+      font-size: 1.1rem; font-weight: 800;
+      color: var(--disc-cor);
+      margin-bottom: 16px;
+    }
+    .hab-principal__campo { margin: 6px 0; font-size: .9rem; color: #374151; }
+    .hab-principal__campo strong {
+      font-family: 'Lexend', sans-serif;
+      color: #1A1A2E;
+      display: inline-block; min-width: 160px;
+    }
+
+    /* ── Título da seção de Computação ── */
+    .hab-secao-titulo {
+      font-family: 'Lexend', sans-serif;
+      font-size: 1.15rem; font-weight: 800;
+      color: #1A1A2E;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #DDE3ED;
+    }
+
+    /* ── Cards de habilidades de Computação ── */
+    .hab-computacao {
+      background: #F9FAFB;
+      border: 1px solid #DDE3ED;
+      border-radius: 12px;
+      padding: 22px 24px;
+      margin-bottom: 16px;
+      transition: box-shadow .15s;
+    }
+    .hab-computacao:hover { box-shadow: 0 4px 16px rgba(0,0,0,.08); }
+
+    .hab-computacao__codigo {
+      font-family: 'Lexend', sans-serif;
+      font-size: 1rem; font-weight: 800;
+      color: var(--comp-cor);
+      margin-bottom: 14px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .hab-computacao__codigo::before { content: "🔹"; font-size: .9rem; }
+
+    .hab-computacao__campo { margin: 5px 0; font-size: .875rem; color: #374151; }
+    .hab-computacao__campo strong {
+      font-family: 'Lexend', sans-serif;
+      color: #555;
+      display: inline-block; min-width: 160px;
+    }
+
+    /* ── Box de relação ── */
+    .hab-relacao {
+      background: var(--comp-cor-light);
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-top: 14px;
+      font-size: .875rem;
+      font-style: italic;
+      color: #1B5E20;
+      line-height: 1.55;
+    }
+    .hab-relacao::before {
+      content: "🎯 Relação: ";
+      font-weight: 700;
+      font-style: normal;
+      font-family: 'Lexend', sans-serif;
+    }
+
+    /* ── Rodapé de metadados ── */
+    .hab-metadata {
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid #DDE3ED;
+      font-size: .8rem;
+      color: #9CA3AF;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Botão voltar — substituído para História -->
+  <a href="../../disciplinas/historia.html" class="hab-voltar">
+    ← Voltar para História
+  </a>
+
+  <!-- ══════════════════════════════════════════════════
+       BLOCO DA HABILIDADE PRINCIPAL
+  ══════════════════════════════════════════════════ -->
+  <section class="hab-principal">
+    <div class="hab-principal__titulo">📌 Habilidade selecionada</div>
+    <p class="hab-principal__campo"><strong>Código:</strong> EF01HI02</p>
+    <p class="hab-principal__campo"><strong>Descrição:</strong> Identificar a relação entre as suas histórias e as histórias de sua família e de sua comunidade.</p>
+    <p class="hab-principal__campo"><strong>Componente:</strong> História</p>
+    <p class="hab-principal__campo"><strong>Ano/Etapa:</strong> 1º ano</p>
+    <p class="hab-principal__campo"><strong>Unidade temática:</strong> Mundo pessoal: meu lugar no mundo</p>
+    <p class="hab-principal__campo"><strong>Objeto do conhecimento:</strong> As diferentes formas de organização da família e da comunidade: os vínculos pessoais e as relações de amizade</p>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════
+       SEÇÃO DE HABILIDADES DE COMPUTAÇÃO CORRELACIONADAS
+  ══════════════════════════════════════════════════ -->
+  <div class="hab-secao-titulo">💻 Habilidades de Computação correlacionadas</div>
+
+  <!-- Habilidade 1 (mais relevante) -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF01CO01</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Organizar objetos físicos ou digitais considerando diferentes características para esta organização, explicitando semelhanças (padrões) e diferenças.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Organização de objetos</p>
+    <div class="hab-relacao">Permite organizar digitalmente as histórias da família e da comunidade (fotos, documentos, relatos) em categorias que evidenciem as relações entre a história pessoal da criança e as histórias coletivas.</div>
+  </div>
+
+  <!-- Habilidade 2 -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF15CO08</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer e utilizar tecnologias computacionais para pesquisar e acessar informações, expressar-se crítica e criativamente e resolver problemas.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º, 2º, 3º, 4º, 5º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Uso de artefatos computacionais</p>
+    <div class="hab-relacao">Estimula o uso da tecnologia para pesquisar e registrar as histórias da família e da comunidade, criando conexões digitais que evidenciam como a criança se insere nesse contexto.</div>
+  </div>
+
+  <!-- Habilidade 3 -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF01CO04</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer o que é a informação, que ela pode ser armazenada, transmitida como mensagem por diversos meios e descrita em várias linguagens.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Mundo digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Codificação da informação</p>
+    <div class="hab-relacao">Fundamenta a compreensão de que as histórias pessoais, familiares e comunitárias são informações que podem ser registradas, armazenadas e transmitidas em diferentes formatos digitais.</div>
+  </div>
+
+  <!-- Habilidade 4 -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF01CO05</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Representar informação usando diferentes codificações.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Mundo digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Codificação da informação</p>
+    <div class="hab-relacao">Permite que as crianças representem as relações entre sua história e a história familiar/comunitária usando diferentes linguagens digitais: desenhos digitalizados, áudios com relatos, fotos organizadas em linha do tempo.</div>
+  </div>
+
+  <!-- Habilidade 5 -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF02CO01</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Criar e comparar modelos (representações) de objetos, identificando padrões e atributos essenciais.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 2º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Modelagem de objetos</p>
+    <div class="hab-relacao">Ajuda a criar modelos digitais que representem as conexões entre a criança, sua família e comunidade, como árvores genealógicas interativas ou mapas de relações comunitárias.</div>
+  </div>
+
+  <!-- Habilidade 6 -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF15CO05</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Codificar a informação de diferentes formas, entendendo a importância desta codificação para o armazenamento, manipulação e transmissão em dispositivos computacionais.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º, 2º, 3º, 4º, 5º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Mundo digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Codificação da informação</p>
+    <div class="hab-relacao">Amplia a compreensão sobre como as histórias podem ser transformadas em formatos digitais para serem preservadas e compartilhadas, evidenciando a relação entre diferentes narrativas.</div>
+  </div>
+
+  <!-- Habilidade 7 -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF01CO06</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer e explorar artefatos computacionais voltados a atender necessidades pessoais ou coletivas.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Uso de artefatos computacionais</p>
+    <div class="hab-relacao">Permite explorar dispositivos como tablets e computadores para acessar e registrar histórias familiares e comunitárias, utilizando aplicativos de criação de álbuns, áudios ou vídeos.</div>
+  </div>
+
+  <!-- Habilidade 8 -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF02HI08</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Compilar histórias da família e/ou da comunidade registradas em diferentes fontes.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> História</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 2º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> A comunidade e seus registros</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> As fontes: relatos orais, objetos, imagens, músicas, escrita, tecnologias digitais</p>
+    <div class="hab-relacao">Complementa diretamente a EF01HI02 ao abordar a compilação de histórias familiares e comunitárias utilizando diferentes fontes, incluindo tecnologias digitais de informação e comunicação.</div>
+  </div>
+
+  <!-- Habilidade 9 -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF03CO08</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Usar ferramentas computacionais em situações didáticas para se expressar em diferentes formatos digitais.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 3º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Uso de tecnologias computacionais</p>
+    <div class="hab-relacao">Estimula a expressão criativa das relações entre histórias pessoais e coletivas através de diferentes formatos digitais como apresentações multimídia, eBooks ou podcasts comunitários.</div>
+  </div>
+
+  <!-- Habilidade 10 -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF01CO07</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Conhecer as possibilidades de uso seguro das tecnologias computacionais para proteção dos dados pessoais e para garantir a própria segurança.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Segurança e responsabilidade no uso de tecnologia computacional</p>
+    <div class="hab-relacao">Ensina as crianças a protegerem suas informações pessoais e familiares ao compartilharem histórias em meios digitais, promovendo o uso responsável da tecnologia ao abordar relações familiares e comunitárias.</div>
+  </div>
+
+  <p class="hab-metadata">
+    🔍 Habilidades listadas em ordem decrescente de relevância para a habilidade EF01HI02
+  </p>
+
+</body>
+</html>

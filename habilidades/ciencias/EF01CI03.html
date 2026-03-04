@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>EF01CI03 — Ciências — Varjota DigiEdu</title>
+
+  <script src="../../assets/template-loader.js"></script>
+  <script>
+    window.VD_PAGE = {
+      disciplina: "ciencias",
+      pageTitle:  "EF01CI03"
+    };
+  </script>
+  <script src="../../assets/template.js"></script>
+
+  <style>
+    /* ── Cores temáticas — Ciências ── */
+    :root {
+      --disc-cor:       #00695C;
+      --disc-cor-light: #F0FBF9;
+      --comp-cor:       #27AE60;
+      --comp-cor-light: #E8F5E9;
+    }
+
+    /* ── Botão voltar ── */
+    .hab-voltar {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-bottom: 24px;
+      padding: 8px 18px; border-radius: 50px;
+      border: 2px solid var(--disc-cor);
+      background: #fff; color: var(--disc-cor);
+      font-family: 'Lexend', sans-serif; font-size: .85rem; font-weight: 700;
+      text-decoration: none; transition: background .15s, color .15s;
+    }
+    .hab-voltar:hover { background: var(--disc-cor); color: #fff; }
+
+    /* ── Bloco da habilidade principal ── */
+    .hab-principal {
+      background: var(--disc-cor-light);
+      border-left: 4px solid var(--disc-cor);
+      border-radius: 0 12px 12px 0;
+      padding: 24px 28px;
+      margin-bottom: 32px;
+    }
+    .hab-principal__titulo {
+      font-family: 'Lexend', sans-serif;
+      font-size: 1.1rem; font-weight: 800;
+      color: var(--disc-cor);
+      margin-bottom: 16px;
+    }
+    .hab-principal__campo { margin: 6px 0; font-size: .9rem; color: #374151; }
+    .hab-principal__campo strong {
+      font-family: 'Lexend', sans-serif;
+      color: #1A1A2E;
+      display: inline-block; min-width: 160px;
+    }
+
+    /* ── Título da seção de Computação ── */
+    .hab-secao-titulo {
+      font-family: 'Lexend', sans-serif;
+      font-size: 1.15rem; font-weight: 800;
+      color: #1A1A2E;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #DDE3ED;
+    }
+
+    /* ── Cards de habilidades de Computação ── */
+    .hab-computacao {
+      background: #F9FAFB;
+      border: 1px solid #DDE3ED;
+      border-radius: 12px;
+      padding: 22px 24px;
+      margin-bottom: 16px;
+      transition: box-shadow .15s;
+    }
+    .hab-computacao:hover { box-shadow: 0 4px 16px rgba(0,0,0,.08); }
+
+    .hab-computacao__codigo {
+      font-family: 'Lexend', sans-serif;
+      font-size: 1rem; font-weight: 800;
+      color: var(--comp-cor);
+      margin-bottom: 14px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .hab-computacao__codigo::before { content: "🔹"; font-size: .9rem; }
+
+    .hab-computacao__campo { margin: 5px 0; font-size: .875rem; color: #374151; }
+    .hab-computacao__campo strong {
+      font-family: 'Lexend', sans-serif;
+      color: #555;
+      display: inline-block; min-width: 160px;
+    }
+
+    /* ── Box de relação ── */
+    .hab-relacao {
+      background: var(--comp-cor-light);
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-top: 14px;
+      font-size: .875rem;
+      font-style: italic;
+      color: #1B5E20;
+      line-height: 1.55;
+    }
+    .hab-relacao::before {
+      content: "🎯 Relação: ";
+      font-weight: 700;
+      font-style: normal;
+      font-family: 'Lexend', sans-serif;
+    }
+
+    /* ── Rodapé de metadados ── */
+    .hab-metadata {
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid #DDE3ED;
+      font-size: .8rem;
+      color: #9CA3AF;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Botão voltar -->
+  <a href="../../disciplinas/ciencias.html" class="hab-voltar">
+    ← Voltar para Ciências
+  </a>
+
+  <!-- ══════════════════════════════════════════════════
+       BLOCO DA HABILIDADE PRINCIPAL
+  ══════════════════════════════════════════════════ -->
+  <section class="hab-principal">
+    <div class="hab-principal__titulo">📌 Habilidade selecionada</div>
+    <p class="hab-principal__campo"><strong>Código:</strong> EF01CI03</p>
+    <p class="hab-principal__campo"><strong>Descrição:</strong> Discutir as razões pelas quais os hábitos de higiene do corpo (lavar as mãos antes de comer, escovar os dentes, limpar os olhos, o nariz e as orelhas etc.) são necessários para a manutenção da saúde.</p>
+    <p class="hab-principal__campo"><strong>Componente:</strong> Ciências</p>
+    <p class="hab-principal__campo"><strong>Ano/Etapa:</strong> 1º</p>
+    <p class="hab-principal__campo"><strong>Unidade temática:</strong> Vida e evolução</p>
+    <p class="hab-principal__campo"><strong>Objeto do conhecimento:</strong> Corpo humano / Respeito à diversidade</p>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════
+       SEÇÃO DE HABILIDADES DE COMPUTAÇÃO CORRELACIONADAS
+  ══════════════════════════════════════════════════ -->
+  <div class="hab-secao-titulo">💻 Habilidades de Computação correlacionadas</div>
+
+  <!-- Bloco 1 - EF01CO02 (Conceituação de Algoritmos) -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF01CO02</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Identificar e seguir sequências de passos aplicados no dia a dia para resolver problemas.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Conceituação de Algoritmos</p>
+    <div class="hab-relacao">Os hábitos de higiene são sequências de passos (algoritmos) do cotidiano: lavar as mãos envolve abrir a torneira, ensaboar, enxaguar, secar — uma correlação direta com o conceito de algoritmos.</div>
+  </div>
+
+  <!-- Bloco 2 - EF01CO03 (Criação de sequências de passos) -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF01CO03</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reorganizar e criar sequências de passos em meios físicos ou digitais, relacionando essas sequências à palavra ‘Algoritmos’.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Conceituação de Algoritmos</p>
+    <div class="hab-relacao">Os alunos podem criar e reorganizar sequências de higiene (ex: ordem correta dos passos para escovar os dentes), compreendendo que essas sequências são algoritmos para manter a saúde.</div>
+  </div>
+
+  <!-- Bloco 3 - EF01CO07 (Segurança e responsabilidade no uso de tecnologia) -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF01CO07</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Conhecer as possibilidades de uso seguro das tecnologias computacionais para proteção dos dados pessoais e para garantir a própria segurança.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Segurança e responsabilidade no uso de tecnologia computacional</p>
+    <div class="hab-relacao">Ambas tratam de cuidados com o corpo e segurança: a higiene protege a saúde física; o uso seguro da tecnologia protege os dados e a privacidade — conectando saúde e cidadania digital.</div>
+  </div>
+
+  <!-- Bloco 4 - EF01CO04 (Reconhecimento da informação) -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF01CO04</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer o que é a informação, que ela pode ser armazenada, transmitida como mensagem por diversos meios e descrita em várias linguagens.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Mundo digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Codificação da informação</p>
+    <div class="hab-relacao">As informações sobre saúde e higiene podem ser transmitidas por cartazes, vídeos ou aplicativos, conectando a comunicação científica à codificação e transmissão da informação no mundo digital.</div>
+  </div>
+
+  <!-- Bloco 5 - EF15CO09 (Segurança e responsabilidade) -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF15CO09</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Entender que as tecnologias devem ser utilizadas de maneira segura, ética e responsável, respeitando direitos autorais, de imagem e as leis vigentes.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º, 2º, 3º, 4º, 5º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Segurança e responsabilidade no uso da tecnologia computacional</p>
+    <div class="hab-relacao">Assim como a higiene envolve responsabilidade com o próprio corpo, o uso da tecnologia exige responsabilidade e ética — ambas formam hábitos saudáveis no mundo físico e digital.</div>
+  </div>
+
+  <!-- Bloco 6 - EF01CO01 (Organização de objetos) -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF01CO01</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Organizar objetos físicos ou digitais considerando diferentes características para esta organização, explicitando semelhanças (padrões) e diferenças.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Organização de objetos</p>
+    <div class="hab-relacao">Os objetos de higiene (escova, pasta, sabonete) podem ser organizados por função ou frequência de uso, aplicando o conceito de classificação do pensamento computacional.</div>
+  </div>
+
+  <!-- Bloco 7 - EF03CO03 (Decomposição) -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF03CO03</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Aplicar a estratégia de decomposição para resolver problemas complexos, dividindo esse problema em partes menores, resolvendo-as e combinando suas soluções.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 3º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Decomposição</p>
+    <div class="hab-relacao">Manter a saúde por meio da higiene pode ser decomposto em diferentes hábitos (higiene das mãos, bucal, ocular), cada um com seus passos específicos — uma aplicação da decomposição.</div>
+  </div>
+
+  <!-- Bloco 8 - EF15CO08 (Uso de artefatos computacionais) -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF15CO08</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer e utilizar tecnologias computacionais para pesquisar e acessar informações, expressar-se crítica e criativamente e resolver problemas.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º, 2º, 3º, 4º, 5º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Uso de artefatos computacionais</p>
+    <div class="hab-relacao">Os alunos podem pesquisar sobre higiene em fontes digitais confiáveis ou criar campanhas usando ferramentas computacionais, unindo ciências e cultura digital.</div>
+  </div>
+
+  <p class="hab-metadata">
+    🔍 Habilidades listadas em ordem decrescente de relevância para a habilidade EF01CI03
+  </p>
+
+</body>
+</html>

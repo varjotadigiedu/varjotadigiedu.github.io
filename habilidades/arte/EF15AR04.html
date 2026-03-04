@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>EF15AR04 — Arte — Varjota DigiEdu</title>
+
+  <script src="../../assets/template-loader.js"></script>
+  <script>
+    window.VD_PAGE = {
+      disciplina: "arte",
+      pageTitle:  "EF15AR04"
+    };
+  </script>
+  <script src="../../assets/template.js"></script>
+
+  <style>
+    /* ── Cores temáticas — Arte ── */
+    :root {
+      --disc-cor:       #C62828;   /* cor principal da disciplina */
+      --disc-cor-light: #FFF5F5;   /* fundo suave da disciplina  */
+      --comp-cor:       #27AE60;   /* verde fixo para Computação */
+      --comp-cor-light: #E8F5E9;   /* fundo suave para Computação */
+    }
+
+    /* ── Botão voltar ── */
+    .hab-voltar {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-bottom: 24px;
+      padding: 8px 18px; border-radius: 50px;
+      border: 2px solid var(--disc-cor);
+      background: #fff; color: var(--disc-cor);
+      font-family: 'Lexend', sans-serif; font-size: .85rem; font-weight: 700;
+      text-decoration: none; transition: background .15s, color .15s;
+    }
+    .hab-voltar:hover { background: var(--disc-cor); color: #fff; }
+
+    /* ── Bloco da habilidade principal ── */
+    .hab-principal {
+      background: var(--disc-cor-light);
+      border-left: 4px solid var(--disc-cor);
+      border-radius: 0 12px 12px 0;
+      padding: 24px 28px;
+      margin-bottom: 32px;
+    }
+    .hab-principal__titulo {
+      font-family: 'Lexend', sans-serif;
+      font-size: 1.1rem; font-weight: 800;
+      color: var(--disc-cor);
+      margin-bottom: 16px;
+    }
+    .hab-principal__campo { margin: 6px 0; font-size: .9rem; color: #374151; }
+    .hab-principal__campo strong {
+      font-family: 'Lexend', sans-serif;
+      color: #1A1A2E;
+      display: inline-block; min-width: 160px;
+    }
+
+    /* ── Título da seção de Computação ── */
+    .hab-secao-titulo {
+      font-family: 'Lexend', sans-serif;
+      font-size: 1.15rem; font-weight: 800;
+      color: #1A1A2E;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #DDE3ED;
+    }
+
+    /* ── Cards de habilidades de Computação ── */
+    .hab-computacao {
+      background: #F9FAFB;
+      border: 1px solid #DDE3ED;
+      border-radius: 12px;
+      padding: 22px 24px;
+      margin-bottom: 16px;
+      transition: box-shadow .15s;
+    }
+    .hab-computacao:hover { box-shadow: 0 4px 16px rgba(0,0,0,.08); }
+
+    .hab-computacao__codigo {
+      font-family: 'Lexend', sans-serif;
+      font-size: 1rem; font-weight: 800;
+      color: var(--comp-cor);
+      margin-bottom: 14px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .hab-computacao__codigo::before { content: "🔹"; font-size: .9rem; }
+
+    .hab-computacao__campo { margin: 5px 0; font-size: .875rem; color: #374151; }
+    .hab-computacao__campo strong {
+      font-family: 'Lexend', sans-serif;
+      color: #555;
+      display: inline-block; min-width: 160px;
+    }
+
+    /* ── Box de relação ── */
+    .hab-relacao {
+      background: var(--comp-cor-light);
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-top: 14px;
+      font-size: .875rem;
+      font-style: italic;
+      color: #1B5E20;
+      line-height: 1.55;
+    }
+    .hab-relacao::before {
+      content: "🎯 Relação: ";
+      font-weight: 700;
+      font-style: normal;
+      font-family: 'Lexend', sans-serif;
+    }
+
+    /* ── Rodapé de metadados ── */
+    .hab-metadata {
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid #DDE3ED;
+      font-size: .8rem;
+      color: #9CA3AF;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Botão voltar -->
+  <a href="../../disciplinas/arte.html" class="hab-voltar">
+    ← Voltar para Arte
+  </a>
+
+  <!-- HABILIDADE PRINCIPAL -->
+  <section class="hab-principal">
+    <div class="hab-principal__titulo">📌 Habilidade selecionada</div>
+    <p class="hab-principal__campo"><strong>Código:</strong> EF15AR04</p>
+    <p class="hab-principal__campo"><strong>Descrição:</strong> Experimentar diferentes formas de expressão artística (desenho, pintura, colagem, quadrinhos, dobradura, escultura, modelagem, instalação, vídeo, fotografia etc.), fazendo uso sustentável de materiais, instrumentos, recursos e técnicas convencionais e não convencionais.</p>
+    <p class="hab-principal__campo"><strong>Componente:</strong> Arte</p>
+    <p class="hab-principal__campo"><strong>Ano/Etapa:</strong> 1º, 2º, 3º, 4º, 5º</p>
+    <p class="hab-principal__campo"><strong>Unidade temática:</strong> Artes visuais</p>
+    <p class="hab-principal__campo"><strong>Objeto do conhecimento:</strong> Materialidades</p>
+  </section>
+
+  <!-- SEÇÃO DE HABILIDADES DE COMPUTAÇÃO CORRELACIONADAS -->
+  <div class="hab-secao-titulo">💻 Habilidades de Computação correlacionadas</div>
+
+  <!-- Habilidade 1 (mais relevante) -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF15CO08</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer e utilizar tecnologias computacionais para pesquisar e acessar informações, expressar-se crítica e criativamente e resolver problemas.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º, 2º, 3º, 4º, 5º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Uso de artefatos computacionais</p>
+    <div class="hab-relacao">Relaciona-se diretamente ao uso de ferramentas digitais (softwares de desenho, edição de vídeo e fotografia) como meio de expressão artística, conforme previsto na experimentação de diferentes formas de expressão.</div>
+  </div>
+
+  <!-- Habilidade 2 -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF03CO08</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Usar ferramentas computacionais em situações didáticas para se expressar em diferentes formatos digitais.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 3º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Uso de tecnologias computacionais</p>
+    <div class="hab-relacao">Correlaciona-se com a criação artística em formatos digitais (como vídeo e fotografia), permitindo que os alunos explorem a expressão por meio de ferramentas computacionais.</div>
+  </div>
+
+  <!-- Habilidade 3 -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF04CO06</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Usar diferentes ferramentas computacionais para criação de conteúdo (textos, apresentações, vídeos etc.).</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 4º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Uso de tecnologias computacionais</p>
+    <div class="hab-relacao">Alinha-se perfeitamente à produção de vídeos e animações como formas de expressão artística, ampliando o repertório de materiais e técnicas mencionados na habilidade de Arte.</div>
+  </div>
+
+  <!-- Habilidade 4 -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF01CO06</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer e explorar artefatos computacionais voltados a atender necessidades pessoais ou coletivas.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Uso de artefatos computacionais</p>
+    <div class="hab-relacao">A exploração de artefatos computacionais (como tablets, câmeras digitais e softwares de desenho) enriquece a experimentação artística com recursos não convencionais.</div>
+  </div>
+
+  <!-- Habilidade 5 -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF15AR26</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Explorar diferentes tecnologias e recursos digitais (multimeios, animações, jogos eletrônicos, gravações em áudio e vídeo, fotografia, softwares etc.) nos processos de criação artística.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Arte</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º, 2º, 3º, 4º, 5º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Artes integradas</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Arte e tecnologia</p>
+    <div class="hab-relacao">Embora seja da própria Arte, esta habilidade é irmã da EF15AR04 e explicita o uso de tecnologias digitais como parte das materialidades artísticas, reforçando a interseção com a Computação.</div>
+  </div>
+
+  <!-- Habilidade 6 -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF02CO05</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer as características e usos das tecnologias computacionais no cotidiano dentro e fora da escola.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 2º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Uso de artefatos computacionais</p>
+    <div class="hab-relacao">Reconhecer o uso de tecnologias no cotidiano pode incluir a criação artística digital (como fotografia com celular ou desenho em aplicativos), conectando-se à experimentação de técnicas não convencionais.</div>
+  </div>
+
+  <!-- Habilidade 7 -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF05CO10</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Expressar-se crítica e criativamente na compreensão das mudanças tecnológicas no mundo do trabalho e sobre a evolução da sociedade.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 5º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Uso de tecnologias computacionais</p>
+    <div class="hab-relacao">A expressão criativa por meio de tecnologias dialoga com as diversas formas de expressão artística, incentivando o uso inovador de recursos digitais.</div>
+  </div>
+
+  <!-- Habilidade 8 -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF69AR35</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Identificar e manipular diferentes tecnologias e recursos digitais para acessar, apreciar, produzir, registrar e compartilhar práticas e repertórios artísticos, de modo reflexivo, ético e responsável.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Arte</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 6º, 7º, 8º, 9º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Artes integradas</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Arte e tecnologia</p>
+    <div class="hab-relacao">Embora voltada para os anos finais, esta habilidade aprofunda a relação entre arte e tecnologia, mostrando a continuidade da exploração de recursos digitais iniciada nos anos iniciais com a EF15AR04.</div>
+  </div>
+
+  <!-- Habilidade 9 -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF01CO04</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer o que é a informação, que ela pode ser armazenada, transmitida como mensagem por diversos meios e descrita em várias linguagens.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Mundo digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Codificação da informação</p>
+    <div class="hab-relacao">Ao explorar vídeo e fotografia, os alunos lidam com a criação e o armazenamento de informações (imagens, sons), conectando-se aos conceitos básicos de como a informação é representada e transmitida.</div>
+  </div>
+
+  <!-- Habilidade 10 -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF69AR06</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Desenvolver processos de criação em artes visuais, com base em temas ou interesses artísticos, de modo individual, coletivo e colaborativo, fazendo uso de materiais, instrumentos e recursos convencionais, alternativos e digitais.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Arte</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 6º, 7º, 8º, 9º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Artes visuais</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Processos de criação</p>
+    <div class="hab-relacao">Esta habilidade dos anos finais reforça a continuidade do uso de recursos digitais na criação artística, ampliando a experimentação iniciada com a EF15AR04.</div>
+  </div>
+
+  <p class="hab-metadata">
+    🔍 Habilidades listadas em ordem decrescente de relevância para a habilidade EF15AR04
+  </p>
+
+</body>
+</html>
