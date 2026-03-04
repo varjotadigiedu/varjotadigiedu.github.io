@@ -10,118 +10,117 @@
   </script>
   <script src="../assets/template.js"></script>
   <style>
+    :root { --disc-cor: #6A1B9A; --disc-cor-light: #F9F0FF; }
+
     .disc-hero { text-align: center; padding: 36px 20px 28px; border-bottom: 1px solid #DDE3ED; margin-bottom: 28px; }
     .disc-hero__icon { font-size: 4rem; line-height: 1; margin-bottom: 12px; }
-    .disc-hero__title { font-family: 'Lexend', sans-serif; font-size: 2rem; font-weight: 800; color: #6A1B9A; margin-bottom: 8px; }
+    .disc-hero__title { font-family: 'Lexend', sans-serif; font-size: 2rem; font-weight: 800; color: var(--disc-cor); margin-bottom: 8px; }
     .disc-hero__desc { color: #6B7280; font-size: .9375rem; max-width: 500px; margin: 0 auto; line-height: 1.6; }
-    .gaveta { border: 1px solid #DDE3ED; border-radius: 14px; overflow: hidden; margin-bottom: 12px; }
-    .gaveta__btn { width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: #F3F4F6; border: none; cursor: pointer; font-family: 'Lexend', sans-serif; font-size: .95rem; font-weight: 700; color: #1A1A2E; text-align: left; transition: background .15s; }
-    .gaveta__btn:hover { background: #E9EAEC; }
-    .gaveta__btn.aberta { background: #E9EAEC; }
-    .gaveta__icone { font-size: 1.2rem; }
-    .gaveta__seta { font-size: .85rem; color: #6B7280; transition: transform .15s; }
-    .gaveta__btn.aberta .gaveta__seta { transform: rotate(180deg); }
-    .gaveta__corpo { max-height: 0; overflow: hidden; transition: max-height .15s ease, opacity .15s ease; opacity: 0; }
-    .gaveta__corpo.aberto { max-height: 2000px; opacity: 1; }
-    .gaveta__inner { padding: 20px; background: #fff; }
+
+    .sec-btns { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
+    .sec-btn { display: flex; align-items: center; gap: 8px; padding: 11px 20px; border-radius: 50px; border: 2px solid #DDE3ED; background: #fff; font-family: 'Lexend', sans-serif; font-size: .875rem; font-weight: 700; color: #6B7280; cursor: pointer; transition: all .18s; }
+    .sec-btn:hover { border-color: var(--disc-cor); color: var(--disc-cor); background: var(--disc-cor-light); }
+    .sec-btn.ativo { border-color: var(--disc-cor); background: var(--disc-cor); color: #fff; }
+    .sec-btn__icon { font-size: 1rem; }
+
+    .sec-painel { display: none; animation: fadeIn .18s ease; }
+    .sec-painel.ativo { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
     .bncc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
-    .bncc-card { border: 1px solid #DDE3ED; border-radius: 12px; padding: 18px; background: #F9FAFB; transition: box-shadow .15s, transform .15s; }
-    .bncc-card:hover { box-shadow: 0 4px 16px rgba(21,101,192,.12); transform: translateY(-2px); }
+
+    .bncc-card { border: 1px solid #DDE3ED; border-radius: 12px; padding: 18px; background: #F9FAFB; }
     .bncc-card__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
-    .bncc-card__codigo { font-family: 'Lexend', sans-serif; font-size: .8rem; font-weight: 700; color: #fff; background: #6A1B9A; padding: 3px 10px; border-radius: 20px; }
+    .bncc-card__codigo { font-family: 'Lexend', sans-serif; font-size: .8rem; font-weight: 700; color: #fff; background: var(--disc-cor); padding: 3px 10px; border-radius: 20px; }
     .bncc-card__ano { font-size: .75rem; font-weight: 700; color: #6B7280; background: #F3F4F6; padding: 3px 8px; border-radius: 20px; }
-    .bncc-card__desc { font-size: .85rem; color: #374151; line-height: 1.55; }
-    .em-breve { text-align: center; padding: 32px 20px; color: #9CA3AF; }
+    .bncc-card__desc { font-size: .85rem; color: #374151; line-height: 1.55; margin-bottom: 12px; }
+    .bncc-card__link { display: inline-flex; align-items: center; gap: 4px; font-size: .78rem; font-weight: 700; color: var(--disc-cor); font-family: 'Lexend', sans-serif; text-decoration: none; border: 1.5px solid var(--disc-cor); padding: 4px 12px; border-radius: 20px; transition: background .15s, color .15s; }
+    .bncc-card__link:hover { background: var(--disc-cor); color: #fff; }
+
+    .em-breve { text-align: center; padding: 48px 20px; color: #9CA3AF; border: 2px dashed #DDE3ED; border-radius: 14px; }
     .em-breve__icon { font-size: 2.5rem; margin-bottom: 10px; }
     .em-breve__text { font-family: 'Lexend', sans-serif; font-size: .9rem; font-weight: 600; }
   </style>
 </head>
 <body>
+
   <div class="disc-hero">
     <div class="disc-hero__icon">✨</div>
     <h1 class="disc-hero__title">Ensino Religioso</h1>
     <p class="disc-hero__desc">Recursos educacionais, habilidades BNCC e atividades de Ensino Religioso para o Ensino Fundamental — 1º ao 9º ano.</p>
   </div>
 
-  <div class="gaveta" id="gaveta-bncc">
-    <button class="gaveta__btn" onclick="toggleGaveta('bncc')">
-      <span><span class="gaveta__icone">📋</span> Correlação BNCC</span>
-      <span class="gaveta__seta">▼</span>
-    </button>
-    <div class="gaveta__corpo" id="corpo-bncc">
-      <div class="gaveta__inner">
-        <div class="bncc-grid">
-          <div class="bncc-card">
-            <div class="bncc-card__header">
-              <span class="bncc-card__codigo">EF01ER01</span>
-              <span class="bncc-card__ano">1º ano</span>
-            </div>
-            <p class="bncc-card__desc">Identificar e respeitar os diferentes credos, ritos, usos e costumes das diversas tradições religiosas e filosofias de vida, reconhecendo suas experiências e práticas como expressão de valores e sentidos humanos.</p>
-          </div>
-          <div class="bncc-card">
-            <div class="bncc-card__header">
-              <span class="bncc-card__codigo">EF02ER01</span>
-              <span class="bncc-card__ano">2º ano</span>
-            </div>
-            <p class="bncc-card__desc">Reconhecer e cuidar de si mesmo, do outro e do meio ambiente, segundo os princípios éticos da vida coletiva.</p>
-          </div>
-          <div class="bncc-card">
-            <div class="bncc-card__header">
-              <span class="bncc-card__codigo">EF03ER01</span>
-              <span class="bncc-card__ano">3º ano</span>
-            </div>
-            <p class="bncc-card__desc">Identificar e comparar os signos e símbolos de diferentes tradições religiosas e filosofias de vida, como elementos de identidade cultural dos grupos de pertença.</p>
-          </div>
-          <div class="bncc-card">
-            <div class="bncc-card__header">
-              <span class="bncc-card__codigo">EF04ER01</span>
-              <span class="bncc-card__ano">4º ano</span>
-            </div>
-            <p class="bncc-card__desc">Reconhecer e valorizar, em seu contexto de vida, a diversidade de manifestações do sagrado e suas práticas rituais, festivas e de vida comunitária.</p>
-          </div>
+  <div class="sec-btns">
+    <button class="sec-btn" id="btn-bncc"       onclick="mostrarSecao('bncc')">      <span class="sec-btn__icon">📋</span> Correlação BNCC</button>
+    <button class="sec-btn" id="btn-atividades"  onclick="mostrarSecao('atividades')"><span class="sec-btn__icon">✏️</span> Atividades</button>
+    <button class="sec-btn" id="btn-reds"        onclick="mostrarSecao('reds')">      <span class="sec-btn__icon">💻</span> REDs</button>
+    <button class="sec-btn" id="btn-materiais"   onclick="mostrarSecao('materiais')"> <span class="sec-btn__icon">📁</span> Materiais de Apoio</button>
+  </div>
+
+  <div class="sec-painel" id="painel-bncc">
+    <div class="bncc-grid">
+
+      <!-- Card 1 — copie este bloco para adicionar mais habilidades -->
+      <div class="bncc-card">
+        <div class="bncc-card__header">
+          <span class="bncc-card__codigo">EF01ER01</span>
+          <span class="bncc-card__ano">1º ano</span>
         </div>
+        <p class="bncc-card__desc">Identificar e respeitar os diferentes credos, ritos, usos e costumes das diversas tradições religiosas e filosofias de vida, reconhecendo suas experiências e práticas como expressão de valores e sentidos humanos.</p>
+        <a href="../habilidades/ensino-religioso/EF01ER01.html" class="bncc-card__link">Ver detalhes →</a>
       </div>
+
+      <!-- Card 2 -->
+      <div class="bncc-card">
+        <div class="bncc-card__header">
+          <span class="bncc-card__codigo">EF02ER01</span>
+          <span class="bncc-card__ano">2º ano</span>
+        </div>
+        <p class="bncc-card__desc">Reconhecer e cuidar de si mesmo, do outro e do meio ambiente, segundo os princípios éticos da vida coletiva.</p>
+        <a href="../habilidades/ensino-religioso/EF02ER01.html" class="bncc-card__link">Ver detalhes →</a>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="bncc-card">
+        <div class="bncc-card__header">
+          <span class="bncc-card__codigo">EF03ER01</span>
+          <span class="bncc-card__ano">3º ano</span>
+        </div>
+        <p class="bncc-card__desc">Identificar e comparar os signos e símbolos de diferentes tradições religiosas e filosofias de vida, como elementos de identidade cultural dos grupos de pertença.</p>
+        <a href="../habilidades/ensino-religioso/EF03ER01.html" class="bncc-card__link">Ver detalhes →</a>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="bncc-card">
+        <div class="bncc-card__header">
+          <span class="bncc-card__codigo">EF04ER01</span>
+          <span class="bncc-card__ano">4º ano</span>
+        </div>
+        <p class="bncc-card__desc">Reconhecer e valorizar, em seu contexto de vida, a diversidade de manifestações do sagrado e suas práticas rituais, festivas e de vida comunitária.</p>
+        <a href="../habilidades/ensino-religioso/EF04ER01.html" class="bncc-card__link">Ver detalhes →</a>
+      </div>
+
     </div>
   </div>
 
-  <div class="gaveta" id="gaveta-atividades">
-    <button class="gaveta__btn" onclick="toggleGaveta('atividades')">
-      <span><span class="gaveta__icone">✏️</span> Atividades</span>
-      <span class="gaveta__seta">▼</span>
-    </button>
-    <div class="gaveta__corpo" id="corpo-atividades">
-      <div class="gaveta__inner"><div class="em-breve"><div class="em-breve__icon">🚧</div><div class="em-breve__text">Conteúdo em breve</div></div></div>
-    </div>
+  <div class="sec-painel" id="painel-atividades">
+    <div class="em-breve"><div class="em-breve__icon">🚧</div><div class="em-breve__text">Conteúdo em breve</div></div>
   </div>
-  <div class="gaveta" id="gaveta-reds">
-    <button class="gaveta__btn" onclick="toggleGaveta('reds')">
-      <span><span class="gaveta__icone">💻</span> REDs</span>
-      <span class="gaveta__seta">▼</span>
-    </button>
-    <div class="gaveta__corpo" id="corpo-reds">
-      <div class="gaveta__inner"><div class="em-breve"><div class="em-breve__icon">🚧</div><div class="em-breve__text">Conteúdo em breve</div></div></div>
-    </div>
+  <div class="sec-painel" id="painel-reds">
+    <div class="em-breve"><div class="em-breve__icon">🚧</div><div class="em-breve__text">Conteúdo em breve</div></div>
   </div>
-  <div class="gaveta" id="gaveta-materiais">
-    <button class="gaveta__btn" onclick="toggleGaveta('materiais')">
-      <span><span class="gaveta__icone">📁</span> Materiais de Apoio</span>
-      <span class="gaveta__seta">▼</span>
-    </button>
-    <div class="gaveta__corpo" id="corpo-materiais">
-      <div class="gaveta__inner"><div class="em-breve"><div class="em-breve__icon">🚧</div><div class="em-breve__text">Conteúdo em breve</div></div></div>
-    </div>
+  <div class="sec-painel" id="painel-materiais">
+    <div class="em-breve"><div class="em-breve__icon">🚧</div><div class="em-breve__text">Conteúdo em breve</div></div>
   </div>
 
   <script>
-    function toggleGaveta(id) {
-      var ids = ['bncc', 'atividades', 'reds', 'materiais'];
-      ids.forEach(function(i) {
-        var btn = document.querySelector('#gaveta-' + i + ' .gaveta__btn');
-        var corpo = document.getElementById('corpo-' + i);
-        if (i === id) { var abrindo = !corpo.classList.contains('aberto'); btn.classList.toggle('aberta', abrindo); corpo.classList.toggle('aberto', abrindo); }
-        else { btn.classList.remove('aberta'); corpo.classList.remove('aberto'); }
+    function mostrarSecao(id) {
+      ['bncc','atividades','reds','materiais'].forEach(function(i) {
+        document.getElementById('btn-'+i).classList.toggle('ativo', i===id);
+        document.getElementById('painel-'+i).classList.toggle('ativo', i===id);
       });
     }
   </script>
+
 </body>
 </html>

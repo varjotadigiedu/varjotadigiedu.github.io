@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1º ano — Referencial Curricular — Varjota DigiEdu</title>
+  <script src="../assets/template-loader.js"></script>
+  <script>
+    window.VD_PAGE = {
+      pageTitle:  "1º ano",
+      breadcrumb: [
+        { label: "Início",                href: "../index.html" },
+        { label: "Referencial Curricular", href: "./index.html" },
+        { label: "1º ano",                href: null },
+      ]
+    };
+  </script>
+  <script src="../assets/template.js"></script>
+  <style>
+    /* ── Cores dos eixos ── */
+    :root {
+      --pc-cor:   #1565C0; --pc-light: #EEF4FF;   /* Pensamento Computacional */
+      --md-cor:   #6A1B9A; --md-light: #F9F0FF;   /* Mundo Digital */
+      --cd-cor:   #00838F; --cd-light: #EDFAFA;   /* Cultura Digital */
+    }
+
+    /* ── Cores das disciplinas (transversais) ── */
+    .trans--arte             { background: #FFF5F5; border-color: #C62828; }
+    .trans--arte .trans__disc { color: #C62828; }
+    .trans--ciencias         { background: #F0FBF9; border-color: #00695C; }
+    .trans--ciencias .trans__disc { color: #00695C; }
+    .trans--educacao-fisica  { background: #F1F8F1; border-color: #2E7D32; }
+    .trans--educacao-fisica .trans__disc { color: #2E7D32; }
+    .trans--historia         { background: #FFF3EE; border-color: #BF360C; }
+    .trans--historia .trans__disc { color: #BF360C; }
+    .trans--geografia        { background: #EEF4FF; border-color: #1565C0; }
+    .trans--geografia .trans__disc { color: #1565C0; }
+    .trans--matematica       { background: #EEEFFE; border-color: #283593; }
+    .trans--matematica .trans__disc { color: #283593; }
+    .trans--lingua-portuguesa { background: #FFF8F0; border-color: #E65100; }
+    .trans--lingua-portuguesa .trans__disc { color: #E65100; }
+    .trans--lingua-inglesa   { background: #EDFAFA; border-color: #00838F; }
+    .trans--lingua-inglesa .trans__disc { color: #00838F; }
+    .trans--ensino-religioso { background: #F9F0FF; border-color: #6A1B9A; }
+    .trans--ensino-religioso .trans__disc { color: #6A1B9A; }
+
+    /* ── Hero ── */
+    .page-hero { text-align: center; padding: 32px 20px 24px; border-bottom: 1px solid #DDE3ED; margin-bottom: 24px; }
+    .page-hero__icon { font-size: 3rem; margin-bottom: 10px; }
+    .page-hero__title { font-family: 'Lexend', sans-serif; font-size: 1.8rem; font-weight: 800; color: #0D47A1; margin-bottom: 6px; }
+    .page-hero__desc { color: #6B7280; font-size: .9rem; max-width: 500px; margin: 0 auto; line-height: 1.6; }
+
+    /* ── Botões de filtro por eixo ── */
+    .eixo-btns { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
+    .eixo-btn { display: flex; align-items: center; gap: 7px; padding: 9px 18px; border-radius: 50px; border: 2px solid #DDE3ED; background: #fff; font-family: 'Lexend', sans-serif; font-size: .82rem; font-weight: 700; color: #6B7280; cursor: pointer; transition: all .18s; }
+    .eixo-btn:hover { border-color: #1565C0; color: #1565C0; background: #EEF4FF; }
+    .eixo-btn.ativo { color: #fff; }
+    .eixo-btn.ativo[data-eixo="todos"]  { background: #374151; border-color: #374151; }
+    .eixo-btn.ativo[data-eixo="PC"]     { background: var(--pc-cor); border-color: var(--pc-cor); }
+    .eixo-btn.ativo[data-eixo="MD"]     { background: var(--md-cor); border-color: var(--md-cor); }
+    .eixo-btn.ativo[data-eixo="CD"]     { background: var(--cd-cor); border-color: var(--cd-cor); }
+
+    /* ── Cards de habilidade ── */
+    .hab-card { border: 1px solid #DDE3ED; border-radius: 14px; overflow: hidden; margin-bottom: 12px; transition: box-shadow .18s; }
+    .hab-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,.08); }
+
+    .hab-card__header { display: flex; align-items: center; gap: 14px; padding: 16px 20px; cursor: pointer; background: #fff; transition: background .15s; }
+    .hab-card__header:hover { background: #F9FAFB; }
+
+    .hab-card__codigo { font-family: 'Lexend', sans-serif; font-size: .78rem; font-weight: 800; color: #fff; padding: 4px 12px; border-radius: 20px; flex-shrink: 0; }
+    .hab-card[data-eixo="PC"] .hab-card__codigo { background: var(--pc-cor); }
+    .hab-card[data-eixo="MD"] .hab-card__codigo { background: var(--md-cor); }
+    .hab-card[data-eixo="CD"] .hab-card__codigo { background: var(--cd-cor); }
+
+    .hab-card__resumo { flex: 1; font-size: .875rem; color: #374151; line-height: 1.4; }
+    .hab-card__resumo strong { font-family: 'Lexend', sans-serif; font-size: .72rem; color: #9CA3AF; display: block; margin-bottom: 2px; text-transform: uppercase; letter-spacing: .05em; }
+    .hab-card__seta { font-size: .8rem; color: #9CA3AF; flex-shrink: 0; transition: transform .18s; }
+    .hab-card.aberto .hab-card__seta { transform: rotate(180deg); }
+
+    /* ── Painel de detalhe ── */
+    .hab-card__detalhe { max-height: 0; overflow: hidden; transition: max-height .2s ease, opacity .2s ease; opacity: 0; }
+    .hab-card.aberto .hab-card__detalhe { max-height: 3000px; opacity: 1; }
+    .hab-card__inner { padding: 0 20px 20px; border-top: 1px solid #F3F4F6; background: #fff; }
+
+    .detalhe-secao { margin-top: 18px; }
+    .detalhe-secao__titulo { font-family: 'Lexend', sans-serif; font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; color: #9CA3AF; margin-bottom: 8px; }
+    .detalhe-secao__texto { font-size: .875rem; color: #374151; line-height: 1.6; }
+
+    .detalhe-objeto { display: inline-block; font-size: .75rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; margin-right: 6px; margin-bottom: 6px; }
+    .hab-card[data-eixo="PC"] .detalhe-objeto { background: var(--pc-light); color: var(--pc-cor); }
+    .hab-card[data-eixo="MD"] .detalhe-objeto { background: var(--md-light); color: var(--md-cor); }
+    .hab-card[data-eixo="CD"] .detalhe-objeto { background: var(--cd-light); color: var(--cd-cor); }
+
+    /* ── Grid de transversais ── */
+    .trans-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; margin-top: 8px; }
+    .trans-card { border: 1.5px solid; border-radius: 10px; padding: 12px 14px; }
+    .trans__disc { font-family: 'Lexend', sans-serif; font-size: .75rem; font-weight: 800; margin-bottom: 6px; text-transform: uppercase; letter-spacing: .05em; }
+    .trans__texto { font-size: .8rem; color: #374151; line-height: 1.5; }
+
+    /* ── Contador ── */
+    .hab-contador { font-family: 'Lexend', sans-serif; font-size: .78rem; font-weight: 700; color: #9CA3AF; margin-bottom: 16px; }
+  </style>
+</head>
+<body>
+
+  <div class="page-hero">
+    <div class="page-hero__icon">🌱</div>
+    <h1 class="page-hero__title">Referencial Curricular — 1º ano</h1>
+    <p class="page-hero__desc">Habilidades de Computação do Ensino Fundamental Anos Iniciais — 1º ano, com explicações, exemplos e transversalidades.</p>
+  </div>
+
+  <!-- ── Filtros por eixo ── -->
+  <div class="eixo-btns">
+    <button class="eixo-btn ativo" data-eixo="todos" onclick="filtrar('todos')">🔲 Todos</button>
+    <button class="eixo-btn" data-eixo="PC" onclick="filtrar('PC')">🧠 Pensamento Computacional</button>
+    <button class="eixo-btn" data-eixo="MD" onclick="filtrar('MD')">🌐 Mundo Digital</button>
+    <button class="eixo-btn" data-eixo="CD" onclick="filtrar('CD')">💻 Cultura Digital</button>
+  </div>
+
+  <div class="hab-contador" id="contador">7 habilidades</div>
+
+  <!-- ════════════════════════════════════════════════════
+       HABILIDADES — copie o bloco .hab-card para adicionar
+       mais habilidades ao popular com novos arquivos .md
+  ════════════════════════════════════════════════════ -->
+
+  <!-- EF01CO01 -->
+  <div class="hab-card" data-eixo="PC" id="hab-EF01CO01">
+    <div class="hab-card__header" onclick="toggleHab('EF01CO01')">
+      <span class="hab-card__codigo">EF01CO01</span>
+      <div class="hab-card__resumo">
+        <strong>Organização de objetos · Pensamento Computacional</strong>
+        Organizar objetos físicos ou digitais considerando diferentes características, explicitando semelhanças (padrões) e diferenças.
+      </div>
+      <span class="hab-card__seta">▼</span>
+    </div>
+    <div class="hab-card__detalhe">
+      <div class="hab-card__inner">
+
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Objetos de conhecimento</div>
+          <span class="detalhe-objeto">Organização de objetos</span>
+        </div>
+
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Explicação da habilidade</div>
+          <p class="detalhe-secao__texto">Objetos de um mesmo conjunto podem ser organizados e agrupados de diferentes maneiras, enfatizando as características desejadas. A organização adequada pode facilitar a busca por um objeto específico dentro deste conjunto.</p>
+        </div>
+
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Exemplos de atividades</div>
+          <p class="detalhe-secao__texto">O professor pode pedir que os alunos organizem um conjunto de personagens por gênero, cor dos olhos, idade, tamanho, nacionalidade etc. Também pode sugerir que os alunos organizem um conjunto de figuras geométricas por cor, por tipo de figura, por tamanho das figuras etc.</p>
+        </div>
+
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Transversalidades</div>
+          <div class="trans-grid">
+            <div class="trans-card trans--lingua-portuguesa">
+              <div class="trans__disc">📖 Língua Portuguesa</div>
+              <p class="trans__texto">O professor pode incentivar os alunos a organizar palavras de acordo com suas famílias, sílabas iniciais ou quantidade de letras, criando padrões de classificação que favorecem a consciência fonológica e o raciocínio lógico.</p>
+            </div>
+            <div class="trans-card trans--matematica">
+              <div class="trans__disc">📐 Matemática</div>
+              <p class="trans__texto">O docente pode propor a organização de objetos em tabelas ou gráficos simples, classificando-os por cor, forma ou tamanho. Esse exercício aproxima a ideia de conjuntos e favorece a introdução a conceitos estatísticos de forma lúdica e visual.</p>
+            </div>
+            <div class="trans-card trans--ciencias">
+              <div class="trans__disc">🔬 Ciências</div>
+              <p class="trans__texto">O professor pode pedir que os alunos agrupem animais, plantas ou materiais de acordo com suas características, como ambiente de vida ou utilidade. Esse exercício mostra como a organização facilita a observação científica e a construção de conceitos.</p>
+            </div>
+            <div class="trans-card trans--historia">
+              <div class="trans__disc">📜 História</div>
+              <p class="trans__texto">O docente pode propor que os alunos organizem imagens de objetos antigos e atuais, comparando diferenças e semelhanças. Assim, desenvolvem noções temporais e aprendem a classificar informações com base em contextos históricos.</p>
+            </div>
+            <div class="trans-card trans--geografia">
+              <div class="trans__disc">🌍 Geografia</div>
+              <p class="trans__texto">O professor pode orientar a classificação de paisagens, tipos de moradia ou meios de transporte em quadros comparativos. Isso ajuda os alunos a compreender as diferenças culturais e espaciais, utilizando a lógica de agrupamento.</p>
+            </div>
+            <div class="trans-card trans--arte">
+              <div class="trans__disc">🎨 Arte</div>
+              <p class="trans__texto">O docente pode sugerir que os alunos organizem imagens de obras de arte segundo estilos, cores predominantes ou técnicas usadas. Essa atividade estimula a percepção estética e a análise visual a partir da lógica de classificação.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- EF01CO02 -->
+  <div class="hab-card" data-eixo="PC" id="hab-EF01CO02">
+    <div class="hab-card__header" onclick="toggleHab('EF01CO02')">
+      <span class="hab-card__codigo">EF01CO02</span>
+      <div class="hab-card__resumo">
+        <strong>Conceituação de Algoritmos · Pensamento Computacional</strong>
+        Identificar e seguir sequências de passos aplicados no dia a dia para resolver problemas.
+      </div>
+      <span class="hab-card__seta">▼</span>
+    </div>
+    <div class="hab-card__detalhe">
+      <div class="hab-card__inner">
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Objetos de conhecimento</div>
+          <span class="detalhe-objeto">Conceituação de Algoritmos</span>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Explicação da habilidade</div>
+          <p class="detalhe-secao__texto">O objetivo é que os alunos possam identificar passos que fazem parte da execução de uma tarefa, bem como seguir uma sequência de passos para realizar uma tarefa (resolver um problema).</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Exemplos de atividades</div>
+          <p class="detalhe-secao__texto">O professor pode fornecer sequências de passos para resolver problemas como construir origamis simples, seguir caminhos, executar uma receita, construir figuras com Tangram, entre outros, e solicitar que os alunos as executem.</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Transversalidades</div>
+          <div class="trans-grid">
+            <div class="trans-card trans--lingua-portuguesa">
+              <div class="trans__disc">📖 Língua Portuguesa</div>
+              <p class="trans__texto">O professor pode propor que os alunos sigam uma sequência de instruções para montar uma pequena história ilustrada, percebendo como a ordem dos eventos interfere na clareza do texto narrativo.</p>
+            </div>
+            <div class="trans-card trans--matematica">
+              <div class="trans__disc">📐 Matemática</div>
+              <p class="trans__texto">O docente pode sugerir que os alunos sigam passos para resolver cálculos de forma estruturada, como somar primeiro as unidades e depois as dezenas, compreendendo que a organização lógica facilita o raciocínio matemático.</p>
+            </div>
+            <div class="trans-card trans--ciencias">
+              <div class="trans__disc">🔬 Ciências</div>
+              <p class="trans__texto">O professor pode propor que os alunos sigam instruções para realizar um pequeno experimento, como plantar uma semente em etapas. Dessa forma, aprendem que a sequência correta garante a validade do procedimento científico.</p>
+            </div>
+            <div class="trans-card trans--historia">
+              <div class="trans__disc">📜 História</div>
+              <p class="trans__texto">O docente pode trabalhar com sequências de acontecimentos do cotidiano dos alunos, como a rotina escolar, para mostrar como a ordem cronológica organiza o tempo e auxilia a compreensão da vida em sociedade.</p>
+            </div>
+            <div class="trans-card trans--geografia">
+              <div class="trans__disc">🌍 Geografia</div>
+              <p class="trans__texto">O professor pode orientar que os alunos sigam instruções para desenhar um caminho até a escola, estimulando a compreensão do espaço e da orientação geográfica.</p>
+            </div>
+            <div class="trans-card trans--arte">
+              <div class="trans__disc">🎨 Arte</div>
+              <p class="trans__texto">O docente pode trabalhar sequências de passos na construção de dobraduras ou colagens, destacando como a ordem da execução interfere no resultado artístico.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EF01CO03 -->
+  <div class="hab-card" data-eixo="PC" id="hab-EF01CO03">
+    <div class="hab-card__header" onclick="toggleHab('EF01CO03')">
+      <span class="hab-card__codigo">EF01CO03</span>
+      <div class="hab-card__resumo">
+        <strong>Conceituação de Algoritmos · Pensamento Computacional</strong>
+        Reorganizar e criar sequências de passos em meios físicos ou digitais, relacionando essas sequências à palavra 'Algoritmos'.
+      </div>
+      <span class="hab-card__seta">▼</span>
+    </div>
+    <div class="hab-card__detalhe">
+      <div class="hab-card__inner">
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Objetos de conhecimento</div>
+          <span class="detalhe-objeto">Conceituação de Algoritmos</span>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Explicação da habilidade</div>
+          <p class="detalhe-secao__texto">Ao explicar para alguém como realizar uma tarefa (resolver um problema), se está criando um algoritmo. Esses algoritmos podem ser construídos a partir de um conjunto de passos desordenados, onde o aluno deve identificar a sequência em que esses passos devem ser executados, ou podem ser construídos partindo do zero. Pode-se usar linguagem textual, oral ou pictográfica para descrever os passos de um algoritmo.</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Exemplos de atividades</div>
+          <p class="detalhe-secao__texto">O professor pode fornecer imagens que descrevem os passos para construir um objeto usando peças do tipo 'Lego' e solicitar que os alunos as organizem em uma sequência que permita construir o objeto. Ou ainda, o professor pode solicitar que os alunos expliquem, oralmente ou através de sequências de desenhos, como se joga esconde-esconde.</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Transversalidades</div>
+          <div class="trans-grid">
+            <div class="trans-card trans--lingua-portuguesa">
+              <div class="trans__disc">📖 Língua Portuguesa</div>
+              <p class="trans__texto">O professor pode solicitar que os alunos reorganizem frases embaralhadas para formar uma narrativa coerente, entendendo que a sequência correta de ideias é fundamental para a construção de sentidos em textos.</p>
+            </div>
+            <div class="trans-card trans--matematica">
+              <div class="trans__disc">📐 Matemática</div>
+              <p class="trans__texto">O docente pode pedir que os alunos reorganizem os passos de um cálculo ou de uma operação, percebendo que a ordem dos procedimentos é essencial para chegar ao resultado correto.</p>
+            </div>
+            <div class="trans-card trans--ciencias">
+              <div class="trans__disc">🔬 Ciências</div>
+              <p class="trans__texto">O professor pode propor que os alunos reordenem imagens que representam o ciclo de vida de um animal ou planta, identificando a sequência natural dos fenômenos.</p>
+            </div>
+            <div class="trans-card trans--historia">
+              <div class="trans__disc">📜 História</div>
+              <p class="trans__texto">O docente pode sugerir a reorganização de imagens que representem fatos históricos importantes, permitindo que os alunos compreendam a cronologia dos acontecimentos.</p>
+            </div>
+            <div class="trans-card trans--geografia">
+              <div class="trans__disc">🌍 Geografia</div>
+              <p class="trans__texto">O professor pode orientar que os alunos criem algoritmos simples para descrever um trajeto no bairro, reorganizando direções para que façam sentido espacial.</p>
+            </div>
+            <div class="trans-card trans--arte">
+              <div class="trans__disc">🎨 Arte</div>
+              <p class="trans__texto">O docente pode estimular os alunos a reorganizar etapas de um processo criativo, como montar uma escultura de massinha, mostrando que a sequência é essencial para o produto final.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EF01CO04 -->
+  <div class="hab-card" data-eixo="MD" id="hab-EF01CO04">
+    <div class="hab-card__header" onclick="toggleHab('EF01CO04')">
+      <span class="hab-card__codigo">EF01CO04</span>
+      <div class="hab-card__resumo">
+        <strong>Codificação da informação · Mundo Digital</strong>
+        Reconhecer o que é a informação, que ela pode ser armazenada, transmitida como mensagem por diversos meios e descrita em várias linguagens.
+      </div>
+      <span class="hab-card__seta">▼</span>
+    </div>
+    <div class="hab-card__detalhe">
+      <div class="hab-card__inner">
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Objetos de conhecimento</div>
+          <span class="detalhe-objeto">Codificação da informação</span>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Explicação da habilidade</div>
+          <p class="detalhe-secao__texto">O objetivo é fazer com que o aluno compreenda o conceito de informação, que uma mesma informação pode ser descrita de diversas formas (usando linguagem oral, imagens, sons etc.) e que tal descrição pode ser armazenada e transmitida.</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Exemplos de atividades</div>
+          <p class="detalhe-secao__texto">Transmitir uma palavra por 'telefone sem fio', enviar um desenho para um colega, gravar uma mensagem de áudio e reproduzi-la para um colega, entre outros.</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Transversalidades</div>
+          <div class="trans-grid">
+            <div class="trans-card trans--lingua-portuguesa">
+              <div class="trans__disc">📖 Língua Portuguesa</div>
+              <p class="trans__texto">O professor pode propor que os alunos gravem pequenas narrativas orais e depois transcrevam em texto, comparando como a informação é preservada ou alterada em diferentes linguagens.</p>
+            </div>
+            <div class="trans-card trans--matematica">
+              <div class="trans__disc">📐 Matemática</div>
+              <p class="trans__texto">O docente pode incentivar os alunos a representar números por meio de símbolos, desenhos ou objetos, mostrando que a informação matemática pode ser descrita em diferentes códigos.</p>
+            </div>
+            <div class="trans-card trans--ciencias">
+              <div class="trans__disc">🔬 Ciências</div>
+              <p class="trans__texto">O professor pode propor que os alunos representem um fenômeno natural por meio de desenho, áudio ou dramatização, comparando como cada forma de representação transmite informações específicas.</p>
+            </div>
+            <div class="trans-card trans--historia">
+              <div class="trans__disc">📜 História</div>
+              <p class="trans__texto">O docente pode mostrar que informações sobre o passado podem ser transmitidas por diferentes registros, como imagens, textos ou relatos orais, valorizando as diversas formas de memória.</p>
+            </div>
+            <div class="trans-card trans--geografia">
+              <div class="trans__disc">🌍 Geografia</div>
+              <p class="trans__texto">O professor pode pedir que os alunos descrevam informações sobre o clima local usando tabelas, gráficos e desenhos, compreendendo como diferentes linguagens comunicam o mesmo dado.</p>
+            </div>
+            <div class="trans-card trans--arte">
+              <div class="trans__disc">🎨 Arte</div>
+              <p class="trans__texto">O docente pode propor que os alunos expressem uma mesma ideia em desenho, música e movimento corporal, percebendo a riqueza das múltiplas linguagens artísticas como forma de codificação de informações.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EF01CO05 -->
+  <div class="hab-card" data-eixo="MD" id="hab-EF01CO05">
+    <div class="hab-card__header" onclick="toggleHab('EF01CO05')">
+      <span class="hab-card__codigo">EF01CO05</span>
+      <div class="hab-card__resumo">
+        <strong>Codificação da informação · Mundo Digital</strong>
+        Representar informação usando diferentes codificações.
+      </div>
+      <span class="hab-card__seta">▼</span>
+    </div>
+    <div class="hab-card__detalhe">
+      <div class="hab-card__inner">
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Objetos de conhecimento</div>
+          <span class="detalhe-objeto">Codificação da informação</span>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Explicação da habilidade</div>
+          <p class="detalhe-secao__texto">Compreender o conceito de representação é um passo importante para a compreensão de como computadores representam as informações e simulam comportamentos. Um algoritmo executado por um computador opera dados representados de maneira simbólica. Por exemplo, uma imagem pode ser representada por uma grade formada por pequenos quadrados (pixels), cada qual com um número que representa sua cor.</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Exemplos de atividades</div>
+          <p class="detalhe-secao__texto">Mostrar que ao pintar as áreas de uma imagem com cores pré-definidas (codificação) uma imagem é recuperada (informação) ou mostrar a relação de uma música com suas notas musicais.</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Transversalidades</div>
+          <div class="trans-grid">
+            <div class="trans-card trans--lingua-portuguesa">
+              <div class="trans__disc">📖 Língua Portuguesa</div>
+              <p class="trans__texto">O professor pode pedir que os alunos representem palavras por meio de símbolos ou códigos visuais, como criar um alfabeto ilustrado, percebendo a relação entre signo e significado.</p>
+            </div>
+            <div class="trans-card trans--matematica">
+              <div class="trans__disc">📐 Matemática</div>
+              <p class="trans__texto">O docente pode estimular os alunos a representar números por meio de diferentes sistemas de contagem, como palitos, marcas ou símbolos, compreendendo que todos são formas de codificação.</p>
+            </div>
+            <div class="trans-card trans--ciencias">
+              <div class="trans__disc">🔬 Ciências</div>
+              <p class="trans__texto">O professor pode orientar os alunos a representar estados da água (sólido, líquido e gasoso) por desenhos, ícones ou símbolos, mostrando que diferentes codificações expressam o mesmo conceito científico.</p>
+            </div>
+            <div class="trans-card trans--historia">
+              <div class="trans__disc">📜 História</div>
+              <p class="trans__texto">O docente pode sugerir que os alunos usem ícones ou símbolos para representar acontecimentos importantes da própria vida, criando um diário visual que funciona como uma codificação da memória.</p>
+            </div>
+            <div class="trans-card trans--geografia">
+              <div class="trans__disc">🌍 Geografia</div>
+              <p class="trans__texto">O professor pode propor que os alunos usem símbolos para representar elementos de um mapa, como rios, montanhas ou cidades, aprendendo que a cartografia é uma forma de codificação espacial.</p>
+            </div>
+            <div class="trans-card trans--arte">
+              <div class="trans__disc">🎨 Arte</div>
+              <p class="trans__texto">O docente pode estimular os alunos a criar imagens pixeladas ou mosaicos digitais, percebendo como a arte pode dialogar com sistemas de representação binária.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EF01CO06 -->
+  <div class="hab-card" data-eixo="CD" id="hab-EF01CO06">
+    <div class="hab-card__header" onclick="toggleHab('EF01CO06')">
+      <span class="hab-card__codigo">EF01CO06</span>
+      <div class="hab-card__resumo">
+        <strong>Uso de artefatos computacionais · Cultura Digital</strong>
+        Reconhecer e explorar artefatos computacionais voltados a atender necessidades pessoais ou coletivas.
+      </div>
+      <span class="hab-card__seta">▼</span>
+    </div>
+    <div class="hab-card__detalhe">
+      <div class="hab-card__inner">
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Objetos de conhecimento</div>
+          <span class="detalhe-objeto">Uso de artefatos computacionais</span>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Explicação da habilidade</div>
+          <p class="detalhe-secao__texto">Esta habilidade tem como proposta a identificação e exploração de tecnologias físicas ou digitais, como por exemplo computador, tablets, brinquedos eletrônicos, ferramentas do cotidiano (martelo, alavancas, rampa).</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Exemplos de atividades</div>
+          <p class="detalhe-secao__texto">O professor poderá utilizar um jogo educacional em ferramentas como computador, tablet, mesas interativas, celular, em que os alunos possam experimentar seus recursos.</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Transversalidades</div>
+          <div class="trans-grid">
+            <div class="trans-card trans--lingua-portuguesa">
+              <div class="trans__disc">📖 Língua Portuguesa</div>
+              <p class="trans__texto">O professor pode incentivar os alunos a explorar aplicativos de leitura e escrita, produzindo textos digitais coletivos, ampliando o contato com diferentes suportes de linguagem.</p>
+            </div>
+            <div class="trans-card trans--matematica">
+              <div class="trans__disc">📐 Matemática</div>
+              <p class="trans__texto">O docente pode propor o uso de jogos digitais que envolvam cálculos simples, incentivando o raciocínio lógico e a prática da contagem.</p>
+            </div>
+            <div class="trans-card trans--ciencias">
+              <div class="trans__disc">🔬 Ciências</div>
+              <p class="trans__texto">O professor pode orientar o uso de simuladores digitais que permitam observar fenômenos naturais de forma lúdica, aproximando tecnologia e conhecimento científico.</p>
+            </div>
+            <div class="trans-card trans--historia">
+              <div class="trans__disc">📜 História</div>
+              <p class="trans__texto">O docente pode estimular os alunos a explorar vídeos ou jogos que representem culturas e épocas distintas, promovendo uma compreensão inicial da diversidade histórica.</p>
+            </div>
+            <div class="trans-card trans--geografia">
+              <div class="trans__disc">🌍 Geografia</div>
+              <p class="trans__texto">O professor pode propor o uso de globos digitais ou mapas interativos em aplicativos, ajudando os alunos a reconhecer espaços geográficos de forma visual e acessível.</p>
+            </div>
+            <div class="trans-card trans--arte">
+              <div class="trans__disc">🎨 Arte</div>
+              <p class="trans__texto">O docente pode incentivar a exploração de aplicativos de desenho ou música, permitindo que os alunos criem produções autorais digitais.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EF01CO07 -->
+  <div class="hab-card" data-eixo="CD" id="hab-EF01CO07">
+    <div class="hab-card__header" onclick="toggleHab('EF01CO07')">
+      <span class="hab-card__codigo">EF01CO07</span>
+      <div class="hab-card__resumo">
+        <strong>Segurança e responsabilidade · Cultura Digital</strong>
+        Conhecer as possibilidades de uso seguro das tecnologias computacionais para proteção dos dados pessoais e para garantir a própria segurança.
+      </div>
+      <span class="hab-card__seta">▼</span>
+    </div>
+    <div class="hab-card__detalhe">
+      <div class="hab-card__inner">
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Objetos de conhecimento</div>
+          <span class="detalhe-objeto">Segurança e responsabilidade no uso de tecnologia computacional</span>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Explicação da habilidade</div>
+          <p class="detalhe-secao__texto">Esta habilidade propõe que o aluno possa refletir sobre a importância de resguardar dados pessoais como nome, endereço, idade, onde estuda, quando da utilização de tecnologias como celular, tablets, em que não se pode compartilhar essas informações com qualquer pessoa.</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Exemplos de atividades</div>
+          <p class="detalhe-secao__texto">Professor poderá fazer um jogo de imagens de dispositivos como celular, tablet, computador dentre outros em que os alunos precisam apresentar o que as pessoas fazem com essas tecnologias. Assim, o professor poderá destacar os cuidados quando usamos esses dispositivos.</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Transversalidades</div>
+          <div class="trans-grid">
+            <div class="trans-card trans--lingua-portuguesa">
+              <div class="trans__disc">📖 Língua Portuguesa</div>
+              <p class="trans__texto">O professor pode propor rodas de conversa sobre como informações pessoais aparecem em textos e redes digitais, discutindo com os alunos quais dados podem ou não ser expostos.</p>
+            </div>
+            <div class="trans-card trans--matematica">
+              <div class="trans__disc">📐 Matemática</div>
+              <p class="trans__texto">O docente pode trabalhar com senhas numéricas simples, mostrando a importância de criar combinações seguras e relacionando o conceito à lógica matemática.</p>
+            </div>
+            <div class="trans-card trans--ciencias">
+              <div class="trans__disc">🔬 Ciências</div>
+              <p class="trans__texto">O professor pode discutir com os alunos como vírus digitais se assemelham a doenças, relacionando a importância da prevenção no mundo físico e no digital.</p>
+            </div>
+            <div class="trans-card trans--historia">
+              <div class="trans__disc">📜 História</div>
+              <p class="trans__texto">O docente pode mostrar como, em diferentes épocas, as pessoas usaram códigos e segredos para proteger informações, aproximando essa prática do cuidado digital atual.</p>
+            </div>
+            <div class="trans-card trans--geografia">
+              <div class="trans__disc">🌍 Geografia</div>
+              <p class="trans__texto">O professor pode explorar mapas digitais discutindo a importância de não compartilhar localização em tempo real, destacando o uso seguro da tecnologia.</p>
+            </div>
+            <div class="trans-card trans--arte">
+              <div class="trans__disc">🎨 Arte</div>
+              <p class="trans__texto">O docente pode propor atividades de criação de cartazes digitais que alertem para cuidados no uso de tecnologias, incentivando a produção artística como forma de conscientização.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleHab(codigo) {
+      var card = document.getElementById('hab-' + codigo);
+      card.classList.toggle('aberto');
+    }
+
+    function filtrar(eixo) {
+      // Atualiza botões
+      document.querySelectorAll('.eixo-btn').forEach(function(btn) {
+        btn.classList.toggle('ativo', btn.dataset.eixo === eixo);
+      });
+
+      // Filtra cards
+      var cards = document.querySelectorAll('.hab-card');
+      var visiveis = 0;
+      cards.forEach(function(card) {
+        var mostrar = eixo === 'todos' || card.dataset.eixo === eixo;
+        card.style.display = mostrar ? 'block' : 'none';
+        if (mostrar) visiveis++;
+      });
+
+      // Atualiza contador
+      document.getElementById('contador').textContent =
+        visiveis + (visiveis === 1 ? ' habilidade' : ' habilidades');
+    }
+  </script>
+
+</body>
+</html>

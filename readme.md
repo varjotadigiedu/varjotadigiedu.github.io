@@ -36,10 +36,12 @@ Oraganização da página
 
 ```
 Para adicionar mais cards BNCC em qualquer disciplina, basta copiar e colar este bloco dentro do .bncc-grid:
-html<div class="bncc-card">
+
+<a href="../habilidades/DISCIPLINA/CODIGO.html" class="bncc-card">
   <div class="bncc-card__header">
-    <span class="bncc-card__codigo">CÓDIGO</span>
+    <span class="bncc-card__codigo">CODIGO</span>
     <span class="bncc-card__ano">Xº ano</span>
   </div>
-  <p class="bncc-card__desc">Descrição da habilidade aqui.</p>
-</div>
+  <p class="bncc-card__desc">Descrição da habilidade.</p>
+  <span class="bncc-card__link">Ver detalhes →</span>
+</a>

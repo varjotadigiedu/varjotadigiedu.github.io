@@ -24,9 +24,10 @@
     { slug: 'ensino-religioso',  label: 'Ensino Religioso',  icon: '✨' },
     { slug: 'geografia',         label: 'Geografia',         icon: '🌍' },
     { slug: 'historia',          label: 'História',          icon: '📜' },
-    { slug: 'lingua-inglesa',    label: 'Língua Inglesa',    icon: '🇬🇧' },
+    { slug: 'lingua-inglesa',    label: 'Língua Inglesa',    icon: '🆙' },
     { slug: 'lingua-portuguesa', label: 'Língua Portuguesa', icon: '📖' },
     { slug: 'matematica',        label: 'Matemática',        icon: '📐' },
+    { slug: 'educacao-infantil', label: 'Educação Infantil', icon: '🧸' },
   ];
 
   var NAV_ITEMS = [
