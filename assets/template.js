@@ -32,9 +32,8 @@
 
   var NAV_ITEMS = [
     { label: 'Início',              href: 'index.html' },
-    { label: 'BNCC Correlacionada', href: 'pages/bncc-correlacionada.html' },
-    { label: 'BNCC Educação',       href: 'pages/bncc-educacao.html' },
-    { label: 'Atividades',          href: 'pages/atividades.html' },
+    { label: 'BNCC Computação', href: 'ref-curricular/index.html' },
+    { label: 'Banco de ideias',          href: 'pages/banco-de-ideias.html' },
     { label: 'REDs',                href: 'pages/reds.html' },
   ];
 
