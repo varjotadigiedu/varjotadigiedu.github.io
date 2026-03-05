@@ -127,7 +127,7 @@ window.VD_SEARCH_INDEX = [
 
   { title: 'Banco de Ideias',        desc: 'Ideias e sugestões de atividades para sala de aula',                url: 'pages/banco-ideias.html',   icon: '💡', categoria: 'Seção', tags: 'banco ideias atividades sugestoes plano de aula criatividade' },
   { title: 'REDs',                   desc: 'Recursos Educacionais Digitais selecionados para professores',      url: 'pages/reds.html',           icon: '🖥️', categoria: 'Seção', tags: 'reds recursos educacionais digitais jogos videos aplicativos' },
-  { title: 'Referencial Curricular', desc: 'Referencial Curricular da Educação Digital e Midiática de Varjota', url: 'ref-curricular/index.html', icon: '📋', categoria: 'Seção', tags: 'bncc referencial curricular computacao digital midia habilidades' },
+  { title: 'Referencial Curricular', desc: 'Referencial Curricular da Educação Digital e Midiática de Varjota', url: 'ref-curricular/ref-index.html', icon: '📋', categoria: 'Seção', tags: 'bncc referencial curricular computacao digital midia habilidades' },
 
 
   /* ══════════════════════════════════════════════════════════════════════════
