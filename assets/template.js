@@ -32,7 +32,7 @@
 
   var NAV_ITEMS = [
     { label: 'Início',              href: 'index.html' },
-    { label: 'BNCC Computação',     href: 'ref-curricular/index.html' },
+    { label: 'BNCC Computação',                href: 'ref-curricular/ref-index.html' },
     { label: 'Banco de ideias',     href: 'pages/banco-de-ideias.html' },
     { label: 'REDs',                href: 'pages/reds.html' },
   ];

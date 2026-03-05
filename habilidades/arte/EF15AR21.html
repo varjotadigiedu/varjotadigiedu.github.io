@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EF15AR21 — Arte — Varjota DigiEdu</title>
+  <script src="../../assets/template-loader.js"></script>
+  <script>window.VD_PAGE={disciplina:"arte",pageTitle:"EF15AR21"};</script>
+  <script src="../../assets/template.js"></script>
+  <style>/* ── Cores temáticas ── */
+    :root {
+      --disc-cor:       #C62828;   /* cor principal da Arte */
+      --disc-cor-light: #FFF5F5;   /* fundo suave da Arte  */
+      --comp-cor:       #27AE60;   /* verde fixo para Computação */
+      --comp-cor-light: #E8F5E9;   /* fundo suave para Computação */
+    }
+
+    /* ── Botão voltar ── */
+    .hab-voltar {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-bottom: 24px;
+      padding: 8px 18px; border-radius: 50px;
+      border: 2px solid var(--disc-cor);
+      background: #fff; color: var(--disc-cor);
+      font-family: 'Lexend', sans-serif; font-size: .85rem; font-weight: 700;
+      text-decoration: none; transition: background .15s, color .15s;
+    }
+    .hab-voltar:hover { background: var(--disc-cor); color: #fff; }
+
+    /* ── Bloco da habilidade principal ── */
+    .hab-principal {
+      background: var(--disc-cor-light);
+      border-left: 4px solid var(--disc-cor);
+      border-radius: 0 12px 12px 0;
+      padding: 24px 28px;
+      margin-bottom: 32px;
+    }
+    .hab-principal__titulo {
+      font-family: 'Lexend', sans-serif;
+      font-size: 1.1rem; font-weight: 800;
+      color: var(--disc-cor);
+      margin-bottom: 16px;
+    }
+    .hab-principal__campo { margin: 6px 0; font-size: .9rem; color: #374151; }
+    .hab-principal__campo strong {
+      font-family: 'Lexend', sans-serif;
+      color: #1A1A2E;
+      display: inline-block; min-width: 160px;
+    }
+
+    /* ── Título da seção de Computação ── */
+    .hab-secao-titulo {
+      font-family: 'Lexend', sans-serif;
+      font-size: 1.15rem; font-weight: 800;
+      color: #1A1A2E;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #DDE3ED;
+    }
+
+    /* ── Cards de habilidades de Computação ── */
+    .hab-computacao {
+      background: #F9FAFB;
+      border: 1px solid #DDE3ED;
+      border-radius: 12px;
+      padding: 22px 24px;
+      margin-bottom: 16px;
+      transition: box-shadow .15s;
+    }
+    .hab-computacao:hover { box-shadow: 0 4px 16px rgba(0,0,0,.08); }
+
+    .hab-computacao__codigo {
+      font-family: 'Lexend', sans-serif;
+      font-size: 1rem; font-weight: 800;
+      color: var(--comp-cor);
+      margin-bottom: 14px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .hab-computacao__codigo::before { content: "🔹"; font-size: .9rem; }
+
+    .hab-computacao__campo { margin: 5px 0; font-size: .875rem; color: #374151; }
+    .hab-computacao__campo strong {
+      font-family: 'Lexend', sans-serif;
+      color: #555;
+      display: inline-block; min-width: 160px;
+    }
+
+    /* ── Box de relação ── */
+    .hab-relacao {
+      background: var(--comp-cor-light);
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-top: 14px;
+      font-size: .875rem;
+      font-style: italic;
+      color: #1B5E20;
+      line-height: 1.55;
+    }
+    .hab-relacao::before {
+      content: "🎯 Relação: ";
+      font-weight: 700;
+      font-style: normal;
+      font-family: 'Lexend', sans-serif;
+    }
+
+    /* ── Rodapé de metadados ── */
+    .hab-metadata {
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid #DDE3ED;
+      font-size: .8rem;
+      color: #9CA3AF;
+    }</style>
+</head>
+<body>
+<a href="../../disciplinas/arte.html" class="hab-voltar">← Voltar para Arte</a>
+<section class="hab-principal">
+  <div class="hab-principal__titulo">📌 Habilidade selecionada</div>
+  <p class="hab-principal__campo"><strong>Código:</strong> EF15AR21</p>
+  <p class="hab-principal__campo"><strong>Descrição:</strong> Exercitar a imitação e o faz de conta, ressignificando objetos e fatos e experimentando-se no lugar do outro, ao compor e encenar acontecimentos cênicos, por meio de músicas, imagens, textos ou outros pontos de partida, de forma intencional e reflexiva.</p>
+  <p class="hab-principal__campo"><strong>Componente:</strong> Arte</p>
+  <p class="hab-principal__campo"><strong>Ano/Etapa:</strong> 1º, 2º, 3º, 4º, 5º</p>
+  <p class="hab-principal__campo"><strong>Unidade temática:</strong> Teatro</p>
+  <p class="hab-principal__campo"><strong>Objeto do conhecimento:</strong> Processos de criação</p>
+</section>
+<div class="hab-secao-titulo">💻 Habilidades de Computação correlacionadas</div>
+
+<!-- 1 -->
+<div class="hab-computacao">
+  <div class="hab-computacao__codigo">EF02CO01</div>
+  <p class="hab-computacao__campo"><strong>Descrição:</strong> Criar e comparar modelos (representações) de objetos, identificando padrões e atributos essenciais.</p>
+  <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+  <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 2º</p>
+  <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento computacional</p>
+  <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Modelagem de objetos</p>
+  <div class="hab-relacao">A imitação e o faz de conta envolvem criar modelos (representações) de pessoas, objetos e situações, assim como na modelagem computacional.</div>
+</div>
+
+<!-- 2 -->
+<div class="hab-computacao">
+  <div class="hab-computacao__codigo">EF01CO01</div>
+  <p class="hab-computacao__campo"><strong>Descrição:</strong> Organizar objetos físicos ou digitais considerando diferentes características para esta organização, explicitando semelhanças (padrões) e diferenças.</p>
+  <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+  <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º</p>
+  <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento computacional</p>
+  <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Organização de objetos</p>
+  <div class="hab-relacao">Ressignificar objetos no teatro (ex: um cabo de vassoura como espada) envolve identificar semelhanças e diferenças, similar à organização por características.</div>
+</div>
+
+<!-- 3 -->
+<div class="hab-computacao">
+  <div class="hab-computacao__codigo">EF15CO08</div>
+  <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer e utilizar tecnologias computacionais para pesquisar e acessar informações, expressar-se crítica e criativamente e resolver problemas.</p>
+  <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+  <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º, 2º, 3º, 4º, 5º</p>
+  <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+  <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Uso de artefatos computacionais</p>
+  <div class="hab-relacao">Aplicativos de realidade aumentada podem ser usados para ressignificar objetos e criar cenários virtuais para o faz de conta.</div>
+</div>
+
+<!-- 4 -->
+<div class="hab-computacao">
+  <div class="hab-computacao__codigo">EF03CO08</div>
+  <p class="hab-computacao__campo"><strong>Descrição:</strong> Usar ferramentas computacionais em situações didáticas para se expressar em diferentes formatos digitais.</p>
+  <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+  <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 3º</p>
+  <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+  <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Uso de tecnologias computacionais</p>
+  <div class="hab-relacao">Ferramentas de criação de avatares e personagens digitais permitem exercitar a imitação e o faz de conta em ambientes virtuais.</div>
+</div>
+
+<!-- 5 -->
+<div class="hab-computacao">
+  <div class="hab-computacao__codigo">EF15CO02</div>
+  <p class="hab-computacao__campo"><strong>Descrição:</strong> Construir e simular algoritmos, de forma independente ou em colaboração, que resolvam problemas simples e do cotidiano com uso de sequências, seleções condicionais e repetições de instruções.</p>
+  <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+  <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º, 2º, 3º, 4º, 5º</p>
+  <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento computacional</p>
+  <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Algoritmos</p>
+  <div class="hab-relacao">Uma encenação pode ser vista como um algoritmo de ações e falas, com sequências e repetições, exercitando a imitação.</div>
+</div>
+
+<!-- 6 -->
+<div class="hab-computacao">
+  <div class="hab-computacao__codigo">EF69AR29</div>
+  <p class="hab-computacao__campo"><strong>Descrição:</strong> Experimentar a gestualidade e as construções corporais e vocais de maneira imaginativa na improvisação teatral e no jogo cênico.</p>
+  <p class="hab-computacao__campo"><strong>Componente:</strong> Arte</p>
+  <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 6º, 7º, 8º, 9º</p>
+  <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Teatro</p>
+  <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Processos de criação</p>
+  <div class="hab-relacao">Versão avançada que aprofunda a experimentação de gestos e vozes na improvisação teatral.</div>
+</div>
+
+<!-- 7 -->
+<div class="hab-computacao">
+  <div class="hab-computacao__codigo">EF69AR30</div>
+  <p class="hab-computacao__campo"><strong>Descrição:</strong> Compor improvisações e acontecimentos cênicos com base em textos dramáticos ou outros estímulos (música, imagens, objetos etc.), caracterizando personagens e considerando a relação com o espectador.</p>
+  <p class="hab-computacao__campo"><strong>Componente:</strong> Arte</p>
+  <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 6º, 7º, 8º, 9º</p>
+  <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Teatro</p>
+  <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Processos de criação</p>
+  <div class="hab-relacao">Amplia a composição cênica para os anos finais, incluindo estímulos diversos como imagens e objetos.</div>
+</div>
+
+<!-- 8 -->
+<div class="hab-computacao">
+  <div class="hab-computacao__codigo">EF01CO04</div>
+  <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer o que é a informação, que ela pode ser armazenada, transmitida como mensagem por diversos meios e descrita em várias linguagens.</p>
+  <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+  <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º</p>
+  <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Mundo digital</p>
+  <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Codificação da informação</p>
+  <div class="hab-relacao">As encenações transmitem mensagens (informações) por meio de várias linguagens (corporal, verbal, musical), conectando-se aos conceitos de informação.</div>
+</div>
+
+<!-- 9 -->
+<div class="hab-computacao">
+  <div class="hab-computacao__codigo">EF01CO06</div>
+  <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer e explorar artefatos computacionais voltados a atender necessidades pessoais ou coletivas.</p>
+  <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+  <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º</p>
+  <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+  <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Uso de artefatos computacionais</p>
+  <div class="hab-relacao">Explorar jogos de faz de conta e aplicativos de criação de personagens atende à necessidade de exercitar a imaginação e a imitação.</div>
+</div>
+
+<!-- 10 -->
+<div class="hab-computacao">
+  <div class="hab-computacao__codigo">EF02CO05</div>
+  <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer as características e usos das tecnologias computacionais no cotidiano dentro e fora da escola.</p>
+  <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+  <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 2º</p>
+  <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+  <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Uso de artefatos computacionais</p>
+  <div class="hab-relacao">Usar tablets para criar histórias em quadrinhos ou animações é uma forma de exercitar o faz de conta com tecnologia.</div>
+</div>
+
+<p class="hab-metadata">🔍 Habilidades listadas em ordem decrescente de relevância para a habilidade EF15AR21</p>
+</body>
+</html>

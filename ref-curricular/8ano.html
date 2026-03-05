@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>8º ano — Referencial Curricular — Varjota DigiEdu</title>
+  <script src="../assets/template-loader.js"></script>
+  <script>
+    window.VD_PAGE = {
+      pageTitle:  "8º ano",
+      breadcrumb: [
+        { label: "Início",                href: "../index.html" },
+        { label: "Referencial Curricular", href: "./index.html" },
+        { label: "8º ano",                href: null }
+      ]
+    };
+  </script>
+  <script src="../assets/template.js"></script>
+  <style>
+    :root {
+      --pc-cor:   #1565C0; --pc-light: #EEF4FF;
+      --md-cor:   #6A1B9A; --md-light: #F9F0FF;
+      --cd-cor:   #00838F; --cd-light: #EDFAFA;
+    }
+    .trans--lingua-portuguesa { background: #FFF8F0; border-color: #E65100; }
+    .trans--lingua-portuguesa .trans__disc { color: #E65100; }
+    .trans--matematica { background: #EEEFFE; border-color: #283593; }
+    .trans--matematica .trans__disc { color: #283593; }
+    .trans--ciencias { background: #F0FBF9; border-color: #00695C; }
+    .trans--ciencias .trans__disc { color: #00695C; }
+    .trans--historia { background: #FFF3EE; border-color: #BF360C; }
+    .trans--historia .trans__disc { color: #BF360C; }
+    .trans--geografia { background: #EEF4FF; border-color: #1565C0; }
+    .trans--geografia .trans__disc { color: #1565C0; }
+    .trans--arte { background: #FFF5F5; border-color: #C62828; }
+    .trans--arte .trans__disc { color: #C62828; }
+    .trans--educacao-fisica { background: #F1F8F1; border-color: #2E7D32; }
+    .trans--educacao-fisica .trans__disc { color: #2E7D32; }
+
+    .page-hero { text-align: center; padding: 32px 20px 24px; border-bottom: 1px solid #DDE3ED; margin-bottom: 24px; }
+    .page-hero__icon { font-size: 3rem; margin-bottom: 10px; }
+    .page-hero__title { font-family: 'Lexend', sans-serif; font-size: 1.8rem; font-weight: 800; color: #1A237E; margin-bottom: 6px; }
+    .page-hero__desc { color: #6B7280; font-size: .9rem; max-width: 500px; margin: 0 auto; line-height: 1.6; }
+
+    .eixo-btns { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
+    .eixo-btn { display: flex; align-items: center; gap: 7px; padding: 9px 18px; border-radius: 50px; border: 2px solid #DDE3ED; background: #fff; font-family: 'Lexend', sans-serif; font-size: .82rem; font-weight: 700; color: #6B7280; cursor: pointer; transition: all .18s; }
+    .eixo-btn:hover { border-color: #1565C0; color: #1565C0; background: #EEF4FF; }
+    .eixo-btn.ativo { color: #fff; }
+    .eixo-btn.ativo[data-eixo="todos"] { background: #374151; border-color: #374151; }
+    .eixo-btn.ativo[data-eixo="PC"]    { background: var(--pc-cor); border-color: var(--pc-cor); }
+    .eixo-btn.ativo[data-eixo="MD"]    { background: var(--md-cor); border-color: var(--md-cor); }
+    .eixo-btn.ativo[data-eixo="CD"]    { background: var(--cd-cor); border-color: var(--cd-cor); }
+
+    .hab-card { border: 1px solid #DDE3ED; border-radius: 14px; overflow: hidden; margin-bottom: 12px; transition: box-shadow .18s; }
+    .hab-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,.08); }
+    .hab-card__header { display: flex; align-items: center; gap: 14px; padding: 16px 20px; cursor: pointer; background: #fff; transition: background .15s; }
+    .hab-card__header:hover { background: #F9FAFB; }
+    .hab-card__codigo { font-family: 'Lexend', sans-serif; font-size: .78rem; font-weight: 800; color: #fff; padding: 4px 12px; border-radius: 20px; flex-shrink: 0; }
+    .hab-card[data-eixo="PC"] .hab-card__codigo { background: var(--pc-cor); }
+    .hab-card[data-eixo="MD"] .hab-card__codigo { background: var(--md-cor); }
+    .hab-card[data-eixo="CD"] .hab-card__codigo { background: var(--cd-cor); }
+    .hab-card__resumo { flex: 1; font-size: .875rem; color: #374151; line-height: 1.4; }
+    .hab-card__resumo strong { font-family: 'Lexend', sans-serif; font-size: .72rem; color: #9CA3AF; display: block; margin-bottom: 2px; text-transform: uppercase; letter-spacing: .05em; }
+    .hab-card__seta { font-size: .8rem; color: #9CA3AF; flex-shrink: 0; transition: transform .18s; }
+    .hab-card.aberto .hab-card__seta { transform: rotate(180deg); }
+
+    .hab-card__detalhe { max-height: 0; overflow: hidden; transition: max-height .2s ease, opacity .2s ease; opacity: 0; }
+    .hab-card.aberto .hab-card__detalhe { max-height: 4000px; opacity: 1; }
+    .hab-card__inner { padding: 0 20px 20px; border-top: 1px solid #F3F4F6; background: #fff; }
+
+    .detalhe-secao { margin-top: 18px; }
+    .detalhe-secao__titulo { font-family: 'Lexend', sans-serif; font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; color: #9CA3AF; margin-bottom: 8px; }
+    .detalhe-secao__texto { font-size: .875rem; color: #374151; line-height: 1.6; }
+
+    .detalhe-objeto { display: inline-block; font-size: .75rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; margin-right: 6px; margin-bottom: 6px; }
+    .hab-card[data-eixo="PC"] .detalhe-objeto { background: var(--pc-light); color: var(--pc-cor); }
+    .hab-card[data-eixo="MD"] .detalhe-objeto { background: var(--md-light); color: var(--md-cor); }
+    .hab-card[data-eixo="CD"] .detalhe-objeto { background: var(--cd-light); color: var(--cd-cor); }
+
+    .trans-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; margin-top: 8px; }
+    .trans-card { border: 1.5px solid; border-radius: 10px; padding: 12px 14px; }
+    .trans__disc { font-family: 'Lexend', sans-serif; font-size: .75rem; font-weight: 800; margin-bottom: 6px; }
+    .trans__texto { font-size: .8rem; color: #374151; line-height: 1.5; }
+
+    .hab-contador { font-family: 'Lexend', sans-serif; font-size: .78rem; font-weight: 700; color: #9CA3AF; margin-bottom: 16px; }
+  </style>
+</head>
+<body>
+
+  <div class="page-hero">
+    <div class="page-hero__icon">🔬</div>
+    <h1 class="page-hero__title">Referencial Curricular — 8º ano</h1>
+    <p class="page-hero__desc">Habilidades de Computação do Ensino Fundamental Anos Finais — 8º ano, com explicações, exemplos e transversalidades.</p>
+  </div>
+
+  <div class="eixo-btns">
+    <button class="eixo-btn ativo" data-eixo="todos" onclick="filtrar('todos')">🔲 Todos</button>
+    <button class="eixo-btn" data-eixo="PC" onclick="filtrar('PC')">🧠 Pensamento Computacional</button>
+    <button class="eixo-btn" data-eixo="MD" onclick="filtrar('MD')">🌐 Mundo Digital</button>
+    <button class="eixo-btn" data-eixo="CD" onclick="filtrar('CD')">💻 Cultura Digital</button>
+  </div>
+
+  <div class="hab-contador" id="contador">9 habilidades</div>
+
+  <!-- EF08CO01 -->
+  <div class="hab-card" data-eixo="PC" id="hab-EF08CO01">
+    <div class="hab-card__header" onclick="toggleHab('EF08CO01')">
+      <span class="hab-card__codigo">EF08CO01</span>
+      <div class="hab-card__resumo">
+        <strong>Programação · Recursão · Pensamento Computacional</strong>
+        Construir soluções de problemas usando a técnica de recursão e automatizar tais soluções usando uma linguagem de programação.
+      </div>
+      <span class="hab-card__seta">▼</span>
+    </div>
+    <div class="hab-card__detalhe">
+      <div class="hab-card__inner">
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Objeto de conhecimento</div>
+          <span class="detalhe-objeto">Programação</span>
+          <span class="detalhe-objeto">Programação com listas e recursão</span>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Explicação da habilidade</div>
+          <p class="detalhe-secao__texto">O conceito de recursão permite exercitar o pensamento indutivo na resolução de problemas. Recursão não deve ser entendida como questão sintática, mas como uma forma poderosa de resolver problemas. O raciocínio indutivo permite trabalhar em um nível de abstração mais elevado do que o raciocínio dedutivo — grande parte dos algoritmos clássicos da Computação são mais fáceis de compreender em suas versões recursivas.</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Exemplos de atividades</div>
+          <p class="detalhe-secao__texto">(1) Solução recursiva para definir o tamanho de uma lista: "se a lista for vazia, o tamanho é zero; senão o tamanho é um mais o tamanho do resto da lista."
+(2) Solução recursiva para encontrar ascendentes de olhos azuis em uma árvore genealógica: se a árvore estiver vazia, o resultado é zero; senão, se a pessoa da raiz tiver olhos azuis, soma 1 ao número de ascendentes de olhos azuis por parte de pai e de mãe; caso contrário, retorna apenas o número de ascendentes por parte de pai e mãe.</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Transversalidades</div>
+          <div class="trans-grid">
+            <div class="trans-card trans--lingua-portuguesa">
+              <div class="trans__disc">📖 Língua Portuguesa</div>
+              <p class="trans__texto">O professor pode propor a análise da estrutura de narrativas complexas usando o pensamento recursivo, identificando como histórias dentro de histórias se relacionam com casos base e chamadas recursivas, desenvolvendo a compreensão de estruturas narrativas complexas.</p>
+            </div>
+            <div class="trans-card trans--matematica">
+              <div class="trans__disc">📐 Matemática</div>
+              <p class="trans__texto">O docente pode desafiar os alunos a criar funções recursivas para calcular sequências numéricas como Fibonacci ou fatorial, relacionando padrões matemáticos com estruturas recursivas e compreendendo conceitos abstratos através da programação.</p>
+            </div>
+            <div class="trans-card trans--ciencias">
+              <div class="trans__disc">🔬 Ciências</div>
+              <p class="trans__texto">O professor pode sugerir a modelagem recursiva de fenômenos naturais como fractais ou divisão celular, criando simulações que mostrem processos repetitivos na natureza e integrando observação científica com modelagem computacional.</p>
+            </div>
+            <div class="trans-card trans--historia">
+              <div class="trans__disc">📜 História</div>
+              <p class="trans__texto">O docente pode propor a análise de árvores genealógicas históricas usando recursão, desenvolvendo algoritmos para calcular relações de parentesco em diferentes contextos culturais e compreendendo estruturas sociais através do pensamento recursivo.</p>
+            </div>
+            <div class="trans-card trans--geografia">
+              <div class="trans__disc">🌍 Geografia</div>
+              <p class="trans__texto">O professor pode orientar a criação de algoritmos recursivos para analisar hierarquias urbanas ou sistemas fluviais, onde cada elemento contém subelementos similares, associando análise espacial com raciocínio indutivo.</p>
+            </div>
+            <div class="trans-card trans--arte">
+              <div class="trans__disc">🎨 Arte</div>
+              <p class="trans__texto">O docente pode incentivar a criação de arte generativa usando recursão, desenvolvendo padrões visuais que se repetem em diferentes escalas e explorando a relação entre matemática, computação e expressão artística.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EF08CO02 -->
+  <div class="hab-card" data-eixo="PC" id="hab-EF08CO02">
+    <div class="hab-card__header" onclick="toggleHab('EF08CO02')">
+      <span class="hab-card__codigo">EF08CO02</span>
+      <div class="hab-card__resumo">
+        <strong>Programação · Algoritmos clássicos · Pensamento Computacional</strong>
+        Criar soluções usando listas para descrever informações e automatizá-las, empregando ou não a recursão como técnica.
+      </div>
+      <span class="hab-card__seta">▼</span>
+    </div>
+    <div class="hab-card__detalhe">
+      <div class="hab-card__inner">
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Objeto de conhecimento</div>
+          <span class="detalhe-objeto">Programação</span>
+          <span class="detalhe-objeto">Algoritmos clássicos</span>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Explicação da habilidade</div>
+          <p class="detalhe-secao__texto">Fazer projetos e construir soluções usando listas e recursão. É importante salientar a análise crítica de programas recursivos: identificar a existência de um caso base (fim) e de chamadas recursivas que fazem o programa convergir (aproximar-se do fim). Caso contrário, os programas podem não terminar.</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Exemplos de atividades</div>
+          <p class="detalhe-secao__texto">Fazer um programa que junte duas pilhas de cartas ordenadas de forma que o baralho todo continue ordenado (merge de listas ordenadas). O aluno deve identificar o caso base (uma das listas vazia) e a chamada recursiva que reduz o problema a cada passo.</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Transversalidades</div>
+          <div class="trans-grid">
+            <div class="trans-card trans--lingua-portuguesa">
+              <div class="trans__disc">📖 Língua Portuguesa</div>
+              <p class="trans__texto">O professor pode propor a organização de corpus textuais em listas ordenadas, desenvolvendo algoritmos para análise de frequência de palavras ou estruturas sintáticas, desenvolvendo habilidades de análise linguística com suporte computacional.</p>
+            </div>
+            <div class="trans-card trans--matematica">
+              <div class="trans__disc">📐 Matemática</div>
+              <p class="trans__texto">O docente pode orientar a implementação de algoritmos de ordenação e busca em listas numéricas, aplicando conceitos de eficiência e complexidade computacional, relacionando matemática discreta com resolução prática de problemas.</p>
+            </div>
+            <div class="trans-card trans--ciencias">
+              <div class="trans__disc">🔬 Ciências</div>
+              <p class="trans__texto">O professor pode sugerir a criação de sistemas de classificação biológica usando listas, organizando espécies por características compartilhadas e desenvolvendo algoritmos de busca que integrem taxonomia com estruturas de dados.</p>
+            </div>
+            <div class="trans-card trans--historia">
+              <div class="trans__disc">📜 História</div>
+              <p class="trans__texto">O docente pode propor a construção de linhas do tempo como listas ordenadas, desenvolvendo algoritmos para inserção e busca de eventos históricos e compreendendo cronologia através de estruturas de dados dinâmicas.</p>
+            </div>
+            <div class="trans-card trans--geografia">
+              <div class="trans__disc">🌍 Geografia</div>
+              <p class="trans__texto">O professor pode orientar o desenvolvimento de sistemas de listagem para dados demográficos, criando algoritmos que organizem cidades por diferentes critérios como população ou IDH, associando análise estatística com programação.</p>
+            </div>
+            <div class="trans-card trans--educacao-fisica">
+              <div class="trans__disc">⚽ Educação Física</div>
+              <p class="trans__texto">O docente pode propor a criação de listas para organizar rankings esportivos, desenvolvendo algoritmos de atualização baseados em desempenho e aplicando lógica computacional em contextos esportivos.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EF08CO04 -->
+  <div class="hab-card" data-eixo="PC" id="hab-EF08CO04">
+    <div class="hab-card__header" onclick="toggleHab('EF08CO04')">
+      <span class="hab-card__codigo">EF08CO04</span>
+      <div class="hab-card__resumo">
+        <strong>Programação · Projetos com programação · Pensamento Computacional</strong>
+        Construir soluções computacionais de problemas de diferentes áreas, selecionando estruturas de dados e técnicas adequadas de forma individual e colaborativa.
+      </div>
+      <span class="hab-card__seta">▼</span>
+    </div>
+    <div class="hab-card__detalhe">
+      <div class="hab-card__inner">
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Objeto de conhecimento</div>
+          <span class="detalhe-objeto">Programação</span>
+          <span class="detalhe-objeto">Projetos com programação</span>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Explicação da habilidade</div>
+          <p class="detalhe-secao__texto">Uma estrutura de dados é uma coleção de valores, seus relacionamentos e as operações sobre eles. É uma implementação concreta de um tipo abstrato de dado. O aluno deve analisar proposição e requisitos de um programa, identificando qual estrutura de dados é adequada para cada caso.</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Exemplos de atividades</div>
+          <p class="detalhe-secao__texto">Analisar os requisitos de um programa e identificar a estrutura de dados adequada: um programa que manipula imagens pode usar um vetor ou uma matriz de pixels; um jogo no Scratch pode armazenar a pontuação dos usuários numa lista e salvar esses dados na nuvem; um sistema de redes sociais pode usar grafos para representar conexões.</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Transversalidades</div>
+          <div class="trans-grid">
+            <div class="trans-card trans--lingua-portuguesa">
+              <div class="trans__disc">📖 Língua Portuguesa</div>
+              <p class="trans__texto">O professor pode propor o desenvolvimento de analisadores textuais que usem diferentes estruturas de dados para indexação e busca eficiente em grandes volumes textuais, desenvolvendo competências avançadas em processamento de linguagem.</p>
+            </div>
+            <div class="trans-card trans--matematica">
+              <div class="trans__disc">📐 Matemática</div>
+              <p class="trans__texto">O docente pode desafiar os alunos a implementar sistemas de equações usando matrizes, desenvolvendo algoritmos para resolução e análise de sistemas lineares e aplicando álgebra linear em contextos computacionais práticos.</p>
+            </div>
+            <div class="trans-card trans--ciencias">
+              <div class="trans__disc">🔬 Ciências</div>
+              <p class="trans__texto">O professor pode sugerir a criação de modelos de simulação ecológica usando grafos para redes tróficas e matrizes para dados ambientais, integrando modelagem científica com estruturas de dados complexas.</p>
+            </div>
+            <div class="trans-card trans--historia">
+              <div class="trans__disc">📜 História</div>
+              <p class="trans__texto">O docente pode propor a construção de bancos de dados relacionais para análise histórica, conectando eventos, personagens e contextos através de múltiplas estruturas de dados e desenvolvendo pesquisa histórica com ferramentas computacionais.</p>
+            </div>
+            <div class="trans-card trans--geografia">
+              <div class="trans__disc">🌍 Geografia</div>
+              <p class="trans__texto">O professor pode orientar o desenvolvimento de SIGs simplificados, integrando diferentes estruturas de dados para representação e análise espacial multicamadas, associando geotecnologia com programação aplicada.</p>
+            </div>
+            <div class="trans-card trans--arte">
+              <div class="trans__disc">🎨 Arte</div>
+              <p class="trans__texto">O docente pode incentivar a criação de instalações digitais interativas que utilizem diversas estruturas de dados para processamento em tempo real de entradas sensoriais, explorando a interseção entre arte, tecnologia e ciência da computação.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EF08CO05 -->
+  <div class="hab-card" data-eixo="MD" id="hab-EF08CO05">
+    <div class="hab-card__header" onclick="toggleHab('EF08CO05')">
+      <span class="hab-card__codigo">EF08CO05</span>
+      <div class="hab-card__resumo">
+        <strong>Sistemas distribuídos e internet · Mundo Digital</strong>
+        Compreender os conceitos de paralelismo, concorrência e armazenamento/processamento distribuídos.
+      </div>
+      <span class="hab-card__seta">▼</span>
+    </div>
+    <div class="hab-card__detalhe">
+      <div class="hab-card__inner">
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Objeto de conhecimento</div>
+          <span class="detalhe-objeto">Sistemas distribuídos e internet</span>
+          <span class="detalhe-objeto">Fundamentos de sistemas distribuídos</span>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Explicação da habilidade</div>
+          <p class="detalhe-secao__texto">O paralelismo permite a utilização de diferentes recursos para executar partes de uma tarefa simultaneamente, melhorando o tempo de execução. Para construir uma solução usando paralelismo, deve-se identificar quais partes da solução são independentes e podem ser executadas ao mesmo tempo. A concorrência ocorre quando tarefas disputam os mesmos recursos. A própria Internet é considerada um sistema distribuído.</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Exemplos de atividades</div>
+          <p class="detalhe-secao__texto">A partir da especificação de um sistema web não implementado ou real, os estudantes podem analisar quais funcionalidades dependem de concorrência ou armazenamento distribuído. Aplicações e serviços baseados em computação em nuvem também são exemplos concretos de sistemas distribuídos.</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Transversalidades</div>
+          <div class="trans-grid">
+            <div class="trans-card trans--lingua-portuguesa">
+              <div class="trans__disc">📖 Língua Portuguesa</div>
+              <p class="trans__texto">O professor pode simular processos de tradução colaborativa onde diferentes grupos trabalham paralelamente em partes de um texto, depois integrando as versões, desenvolvendo compreensão sobre trabalho cooperativo e resolução de conflitos.</p>
+            </div>
+            <div class="trans-card trans--matematica">
+              <div class="trans__disc">📐 Matemática</div>
+              <p class="trans__texto">O docente pode propor a resolução paralela de problemas complexos, dividindo cálculos entre grupos que trabalham simultaneamente e depois integrando resultados, vivenciando vantagens e desafios do processamento paralelo.</p>
+            </div>
+            <div class="trans-card trans--ciencias">
+              <div class="trans__disc">🔬 Ciências</div>
+              <p class="trans__texto">O professor pode sugerir a simulação de experimentos onde diferentes variáveis são testadas simultaneamente por grupos distintos, depois consolidando dados, integrando método científico com abordagens de processamento distribuído.</p>
+            </div>
+            <div class="trans-card trans--historia">
+              <div class="trans__disc">📜 História</div>
+              <p class="trans__texto">O docente pode propor pesquisas históricas colaborativas onde grupos investigam diferentes aspectos de um período simultaneamente, integrando descobertas e compreendendo a construção do conhecimento histórico como processo coletivo.</p>
+            </div>
+            <div class="trans-card trans--geografia">
+              <div class="trans__disc">🌍 Geografia</div>
+              <p class="trans__texto">O professor pode orientar o mapeamento colaborativo de territórios, com grupos trabalhando em regiões diferentes simultaneamente e integrando resultados, associando cartografia participativa com processamento distribuído.</p>
+            </div>
+            <div class="trans-card trans--educacao-fisica">
+              <div class="trans__disc">⚽ Educação Física</div>
+              <p class="trans__texto">O docente pode organizar circuitos de atividades onde estações funcionem paralelamente, analisando eficiência do trabalho em conjunto e vivenciando conceitos de paralelismo em contextos corporais.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EF08CO06 -->
+  <div class="hab-card" data-eixo="MD" id="hab-EF08CO06">
+    <div class="hab-card__header" onclick="toggleHab('EF08CO06')">
+      <span class="hab-card__codigo">EF08CO06</span>
+      <div class="hab-card__resumo">
+        <strong>Sistemas distribuídos e internet · Mundo Digital</strong>
+        Entender como é a estrutura e o funcionamento da internet.
+      </div>
+      <span class="hab-card__seta">▼</span>
+    </div>
+    <div class="hab-card__detalhe">
+      <div class="hab-card__inner">
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Objeto de conhecimento</div>
+          <span class="detalhe-objeto">Sistemas distribuídos e internet</span>
+          <span class="detalhe-objeto">Internet</span>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Explicação da habilidade</div>
+          <p class="detalhe-secao__texto">A internet é uma rede composta por muitas redes, as quais compartilham o protocolo Internet. Essas redes são agrupadas em sistemas autônomos — conjuntos de redes que possuem uma política de operação comum. A definição desses sistemas autônomos é realizada por entidades que operam na organização dos recursos da Internet.</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Exemplos de atividades</div>
+          <p class="detalhe-secao__texto">Usar a lógica de um modelo em camadas e mostrar como uma língua comum pode ser usada para traduzir comunicações entre 2 línguas sem tradutores diretos (ex: tradutores português-inglês e inglês-espanhol → permitem tradução português-espanhol). Da mesma forma, a internet usa protocolos intermediários para conectar redes distintas.</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Transversalidades</div>
+          <div class="trans-grid">
+            <div class="trans-card trans--lingua-portuguesa">
+              <div class="trans__disc">📖 Língua Portuguesa</div>
+              <p class="trans__texto">O professor pode analisar a estrutura da internet como analogia para sistemas de comunicação humana, discutindo como protocolos asseguram entendimento mútuo entre falantes de diferentes variedades linguísticas, desenvolvendo metalinguagem e compreensão de sistemas complexos.</p>
+            </div>
+            <div class="trans-card trans--matematica">
+              <div class="trans__disc">📐 Matemática</div>
+              <p class="trans__texto">O docente pode modelar roteamento na internet usando conceitos de grafos e teoria dos conjuntos, calculando caminhos ótimos entre diferentes pontos da rede e aplicando matemática discreta na compreensão de infraestrutura digital.</p>
+            </div>
+            <div class="trans-card trans--ciencias">
+              <div class="trans__disc">🔬 Ciências</div>
+              <p class="trans__texto">O professor pode investigar a infraestrutura física da internet, relacionando conceitos de física como transmissão de dados por fibra óptica com funcionamento da rede, integrando conhecimentos de física com tecnologia da informação.</p>
+            </div>
+            <div class="trans-card trans--historia">
+              <div class="trans__disc">📜 História</div>
+              <p class="trans__texto">O docente pode traçar a evolução histórica da internet, desde ARPANET até a world wide web, contextualizando desenvolvimentos tecnológicos em seus momentos históricos e compreendendo a internet como construção sociotécnica.</p>
+            </div>
+            <div class="trans-card trans--geografia">
+              <div class="trans__disc">🌍 Geografia</div>
+              <p class="trans__texto">O professor pode mapear a infraestrutura global da internet, analisando desigualdades de acesso e concentração de cabos submarinos e data centers, associando geografia econômica com justiça digital.</p>
+            </div>
+            <div class="trans-card trans--arte">
+              <div class="trans__disc">🎨 Arte</div>
+              <p class="trans__texto">O docente pode explorar a internet como meio artístico, analisando como artistas utilizam a estrutura da rede em net art e obras colaborativas distribuídas, compreendendo a internet como suporte e tema na produção artística contemporânea.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EF08CO07 -->
+  <div class="hab-card" data-eixo="CD" id="hab-EF08CO07">
+    <div class="hab-card__header" onclick="toggleHab('EF08CO07')">
+      <span class="hab-card__codigo">EF08CO07</span>
+      <div class="hab-card__resumo">
+        <strong>Segurança e responsabilidade · Cultura Digital</strong>
+        Compartilhar informações por meio de redes sociais de forma responsável, avaliando sua confiabilidade, considerando o respeito e a ética.
+      </div>
+      <span class="hab-card__seta">▼</span>
+    </div>
+    <div class="hab-card__detalhe">
+      <div class="hab-card__inner">
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Objeto de conhecimento</div>
+          <span class="detalhe-objeto">Segurança e responsabilidade no uso da tecnologia</span>
+          <span class="detalhe-objeto">Redes sociais e segurança da informação</span>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Explicação da habilidade</div>
+          <p class="detalhe-secao__texto">A perspectiva desta habilidade é que o aluno tenha a vivência das redes sociais, identifique seu funcionamento — regras, cadastro e demais aspectos operacionais. Além disso, espera-se que o aluno possa refletir sobre o uso responsável das redes sociais, discutindo ética e respeito ao interagir com o outro em meio digital.</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Exemplos de atividades</div>
+          <p class="detalhe-secao__texto">Utilizar as redes sociais para compartilhar informações, por exemplo, compartilhando com colegas um evento ou acontecimento, analisando criticamente o que compartilhar, como compartilhar e avaliando a confiabilidade das informações antes de repassá-las.</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Transversalidades</div>
+          <div class="trans-grid">
+            <div class="trans-card trans--lingua-portuguesa">
+              <div class="trans__disc">📖 Língua Portuguesa</div>
+              <p class="trans__texto">O professor pode analisar diferentes gêneros discursivos nas redes sociais, desenvolvendo critérios para avaliação de credibilidade e adequação comunicativa, fortalecendo o letramento midiático e crítico sobre produção e circulação de informações.</p>
+            </div>
+            <div class="trans-card trans--matematica">
+              <div class="trans__disc">📐 Matemática</div>
+              <p class="trans__texto">O docente pode trabalhar com análise estatística de engajamento em redes sociais, desenvolvendo gráficos que mostrem padrões de compartilhamento e viralização e aplicando matemática para compreender dinâmicas sociais digitais.</p>
+            </div>
+            <div class="trans-card trans--ciencias">
+              <div class="trans__disc">🔬 Ciências</div>
+              <p class="trans__texto">O professor pode discutir a disseminação de informações científicas nas redes, analisando casos de desinformação e estratégias para comunicação científica responsável, integrando método científico com educação midiática.</p>
+            </div>
+            <div class="trans-card trans--historia">
+              <div class="trans__disc">📜 História</div>
+              <p class="trans__texto">O docente pode analisar como redes sociais impactam a construção da memória histórica e a formação de narrativas coletivas sobre eventos passados, compreendendo a relação entre mídias digitais e consciência histórica.</p>
+            </div>
+            <div class="trans-card trans--geografia">
+              <div class="trans__disc">🌍 Geografia</div>
+              <p class="trans__texto">O professor pode investigar como redes sociais representam diferentes territórios e comunidades, analisando estereótipos e visões parciais e associando representação espacial com crítica cultural digital.</p>
+            </div>
+            <div class="trans-card trans--educacao-fisica">
+              <div class="trans__disc">⚽ Educação Física</div>
+              <p class="trans__texto">O docente pode discutir a relação entre redes sociais e imagem corporal, analisando impactos na autoestima e hábitos de vida saudável e desenvolvendo consciência crítica sobre influências digitais na saúde.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EF08CO08 -->
+  <div class="hab-card" data-eixo="CD" id="hab-EF08CO08">
+    <div class="hab-card__header" onclick="toggleHab('EF08CO08')">
+      <span class="hab-card__codigo">EF08CO08</span>
+      <div class="hab-card__resumo">
+        <strong>Segurança e responsabilidade · Cultura Digital</strong>
+        Distinguir os tipos de dados pessoais solicitados em espaços digitais e os riscos associados ao compartilhá-los.
+      </div>
+      <span class="hab-card__seta">▼</span>
+    </div>
+    <div class="hab-card__detalhe">
+      <div class="hab-card__inner">
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Objeto de conhecimento</div>
+          <span class="detalhe-objeto">Segurança e responsabilidade no uso da tecnologia</span>
+          <span class="detalhe-objeto">Segurança em ambientes virtuais</span>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Explicação da habilidade</div>
+          <p class="detalhe-secao__texto">É importante que o aluno identifique os tipos de dados pessoais (nome, endereço, documento de identidade) que são exigidos em diferentes espaços como jogos online e redes sociais, bem como reflita sobre os riscos de compartilhar esses dados na internet.</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Exemplos de atividades</div>
+          <p class="detalhe-secao__texto">Identificar as informações pessoais que podem ou não ser tornadas públicas, criando uma lista de sites com os tipos de dados pessoais solicitados (sites de compras, jogos online, redes sociais) e avaliando os riscos envolvidos em cada caso.</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Transversalidades</div>
+          <div class="trans-grid">
+            <div class="trans-card trans--lingua-portuguesa">
+              <div class="trans__disc">📖 Língua Portuguesa</div>
+              <p class="trans__texto">O professor pode analisar a linguagem usada em termos de uso e políticas de privacidade, desenvolvendo habilidades de leitura crítica de documentos jurídico-informativos e fortalecendo a compreensão de textos complexos do cotidiano digital.</p>
+            </div>
+            <div class="trans-card trans--matematica">
+              <div class="trans__disc">📐 Matemática</div>
+              <p class="trans__texto">O docente pode trabalhar com probabilidade e estatística para calcular riscos associados ao compartilhamento de diferentes tipos de dados pessoais em variados contextos online, quantificando e avaliando riscos digitais.</p>
+            </div>
+            <div class="trans-card trans--ciencias">
+              <div class="trans__disc">🔬 Ciências</div>
+              <p class="trans__texto">O professor pode investigar tecnologias de proteção de dados como criptografia e autenticação biométrica, relacionando-as com conceitos de física e biologia e integrando conhecimentos científicos com segurança digital prática.</p>
+            </div>
+            <div class="trans-card trans--historia">
+              <div class="trans__disc">📜 História</div>
+              <p class="trans__texto">O docente pode analisar a evolução do conceito de privacidade ao longo do tempo, contextualizando preocupações contemporâneas com dados pessoais e compreendendo a historicidade dos direitos à privacidade.</p>
+            </div>
+            <div class="trans-card trans--geografia">
+              <div class="trans__disc">🌍 Geografia</div>
+              <p class="trans__texto">O professor pode mapear diferentes legislações sobre proteção de dados ao redor do mundo, analisando variações culturais e políticas sobre privacidade e associando diversidade jurídica com cidadania digital global.</p>
+            </div>
+            <div class="trans-card trans--arte">
+              <div class="trans__disc">🎨 Arte</div>
+              <p class="trans__texto">O docente pode explorar obras artísticas que tratam de vigilância digital e privacidade, promovendo reflexão crítica sobre sociedade de controle e desenvolvendo consciência política através da expressão artística.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EF08CO09 -->
+  <div class="hab-card" data-eixo="CD" id="hab-EF08CO09">
+    <div class="hab-card__header" onclick="toggleHab('EF08CO09')">
+      <span class="hab-card__codigo">EF08CO09</span>
+      <div class="hab-card__resumo">
+        <strong>Segurança e responsabilidade · Cultura Digital</strong>
+        Analisar criticamente as políticas de termos de uso das redes sociais e demais plataformas.
+      </div>
+      <span class="hab-card__seta">▼</span>
+    </div>
+    <div class="hab-card__detalhe">
+      <div class="hab-card__inner">
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Objeto de conhecimento</div>
+          <span class="detalhe-objeto">Segurança e responsabilidade no uso da tecnologia</span>
+          <span class="detalhe-objeto">Segurança em ambientes virtuais</span>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Explicação da habilidade</div>
+          <p class="detalhe-secao__texto">Espera-se que o aluno possa discutir e analisar os termos e políticas de uso das redes sociais e demais plataformas, refletindo sobre suas implicações, como o armazenamento de dados pessoais, o uso de informações para publicidade e os direitos cedidos às plataformas.</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Exemplos de atividades</div>
+          <p class="detalhe-secao__texto">Identificar elementos "polêmicos" dessas políticas, como cláusulas que permitem compartilhamento de dados com terceiros ou que concedem licença de uso de conteúdo publicado. Propor aspectos que poderiam ser melhorados para garantir a proteção dos indivíduos.</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Transversalidades</div>
+          <div class="trans-grid">
+            <div class="trans-card trans--lingua-portuguesa">
+              <div class="trans__disc">📖 Língua Portuguesa</div>
+              <p class="trans__texto">O professor pode realizar análise linguística detalhada de termos de uso, identificando estratégias de persuasão, ambiguidades e assimetrias informativas, desenvolvendo leitura crítica e compreensão de textos regulatórios.</p>
+            </div>
+            <div class="trans-card trans--matematica">
+              <div class="trans__disc">📐 Matemática</div>
+              <p class="trans__texto">O docente pode calcular estatísticas sobre extensão e complexidade de termos de uso, desenvolvendo métricas para avaliar transparência e acessibilidade desses documentos e aplicando análise quantitativa em questões de direitos digitais.</p>
+            </div>
+            <div class="trans-card trans--ciencias">
+              <div class="trans__disc">🔬 Ciências</div>
+              <p class="trans__texto">O professor pode investigar o impacto psicológico de designs persuasivos (dark patterns) em interfaces digitais, relacionando com conceitos de comportamento humano e integrando psicologia cognitiva com crítica de interface.</p>
+            </div>
+            <div class="trans-card trans--historia">
+              <div class="trans__disc">📜 História</div>
+              <p class="trans__texto">O docente pode traçar a evolução das políticas de uso desde os primórdios da internet comercial, contextualizando mudanças em relações de poder digital e compreendendo contratos de plataforma como documentos históricos.</p>
+            </div>
+            <div class="trans-card trans--geografia">
+              <div class="trans__disc">🌍 Geografia</div>
+              <p class="trans__texto">O professor pode analisar como políticas de uso variam entre países e regiões, mapeando diferentes abordagens regulatórias ao redor do mundo e associando governança digital com geopolítica da internet.</p>
+            </div>
+            <div class="trans-card trans--educacao-fisica">
+              <div class="trans__disc">⚽ Educação Física</div>
+              <p class="trans__texto">O docente pode discutir políticas de uso em aplicativos de saúde e fitness, analisando implicações para privacidade de dados sensíveis e desenvolvendo consciência crítica sobre tecnologia vestível e saúde digital.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EF08CO11 -->
+  <div class="hab-card" data-eixo="CD" id="hab-EF08CO11">
+    <div class="hab-card__header" onclick="toggleHab('EF08CO11')">
+      <span class="hab-card__codigo">EF08CO11</span>
+      <div class="hab-card__resumo">
+        <strong>Uso de tecnologias computacionais · Cultura Digital</strong>
+        Avaliar a precisão, relevância, adequação, abrangência e vieses que ocorrem em fontes de informação eletrônica.
+      </div>
+      <span class="hab-card__seta">▼</span>
+    </div>
+    <div class="hab-card__detalhe">
+      <div class="hab-card__inner">
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Objeto de conhecimento</div>
+          <span class="detalhe-objeto">Uso de tecnologias computacionais</span>
+          <span class="detalhe-objeto">Uso crítico das mídias digitais</span>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Explicação da habilidade</div>
+          <p class="detalhe-secao__texto">A perspectiva desta habilidade é que o aluno faça análise crítica de fontes de informação, como jornais, blogs e canais do YouTube, verificando suas características e como a informação é veiculada.</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Exemplos de atividades</div>
+          <p class="detalhe-secao__texto">(1) Pesquisar na internet usando palavras-chave sobre os rios do município da escola. (2) Identificar a relação entre as palavras pesquisadas e as respostas listadas pelo buscador. (3) Identificar a existência de uma ordenação (ranqueamento) nos resultados, comparando os primeiros dez com os dez seguintes e discutindo o critério de relevância adotado pelo algoritmo.</p>
+        </div>
+        <div class="detalhe-secao">
+          <div class="detalhe-secao__titulo">Transversalidades</div>
+          <div class="trans-grid">
+            <div class="trans-card trans--lingua-portuguesa">
+              <div class="trans__disc">📖 Língua Portuguesa</div>
+              <p class="trans__texto">O professor pode desenvolver metodologias sistemáticas para avaliação de fontes online, criando checklists para verificação de credibilidade, viés editorial e qualidade informativa, fortalecendo o letramento informacional e a capacidade de pesquisa.</p>
+            </div>
+            <div class="trans-card trans--matematica">
+              <div class="trans__disc">📐 Matemática</div>
+              <p class="trans__texto">O docente pode trabalhar com probabilidade e estatística para avaliar confiabilidade de informações, calculando margens de erro e analisando amostragens em pesquisas divulgadas online, aplicando rigor matemático na avaliação de dados.</p>
+            </div>
+            <div class="trans-card trans--ciencias">
+              <div class="trans__disc">🔬 Ciências</div>
+              <p class="trans__texto">O professor pode desenvolver protocolos para verificação de informações científicas, contrastando fontes primárias com divulgação jornalística e identificando distorções, integrando método científico com educação midiática crítica.</p>
+            </div>
+            <div class="trans-card trans--historia">
+              <div class="trans__disc">📜 História</div>
+              <p class="trans__texto">O docente pode analisar como algoritmos de busca influenciam a construção do conhecimento histórico, identificando vieses na seleção e hierarquização de fontes e compreendendo a curadoria algorítmica da memória.</p>
+            </div>
+            <div class="trans-card trans--geografia">
+              <div class="trans__disc">🌍 Geografia</div>
+              <p class="trans__texto">O professor pode investigar como representações espaciais em diferentes fontes digitais refletem perspectivas específicas, analisando projeções cartográficas e seleção de dados, associando crítica cartográfica com alfabetização midiática.</p>
+            </div>
+            <div class="trans-card trans--arte">
+              <div class="trans__disc">🎨 Arte</div>
+              <p class="trans__texto">O docente pode analisar como algoritmos de recomendação influenciam o consumo cultural, investigando bolhas de filter e homogenização estética e desenvolvendo consciência crítica sobre curadoria digital na experiência artística.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleHab(codigo) {
+      document.getElementById('hab-' + codigo).classList.toggle('aberto');
+    }
+
+    function filtrar(eixo) {
+      document.querySelectorAll('.eixo-btn').forEach(function(btn) {
+        btn.classList.toggle('ativo', btn.dataset.eixo === eixo);
+      });
+      var cards = document.querySelectorAll('.hab-card');
+      var visiveis = 0;
+      cards.forEach(function(card) {
+        var mostrar = eixo === 'todos' || card.dataset.eixo === eixo;
+        card.style.display = mostrar ? 'block' : 'none';
+        if (mostrar) visiveis++;
+      });
+      document.getElementById('contador').textContent =
+        visiveis + (visiveis === 1 ? ' habilidade' : ' habilidades');
+    }
+  </script>
+
+</body>
+</html>
