@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Varjota DigiEdu</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="assets/search-index.js"></script>
 <style>
 :root {
   --vd-primary: #1565C0; --vd-primary-dk: #0D47A1; --vd-accent: #FF8F00;
@@ -14,6 +15,8 @@
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 body { background: var(--vd-bg); color: var(--vd-text); font-family: 'Nunito', sans-serif; min-height: 100vh; display: flex; flex-direction: column; }
+
+/* ── Navbar ── */
 .vd-navbar { position: sticky; top: 0; z-index: 1000; background: linear-gradient(135deg, var(--vd-primary-dk) 0%, var(--vd-primary) 100%); height: var(--vd-nav-h); box-shadow: 0 2px 20px rgba(13,71,161,.3); }
 .vd-navbar__inner { max-width: 1400px; margin: 0 auto; height: 100%; padding: 0 28px; display: flex; align-items: center; gap: 28px; }
 .vd-navbar__logo { flex-shrink: 0; display: flex; align-items: center; text-decoration: none; }
@@ -24,17 +27,120 @@ body { background: var(--vd-bg); color: var(--vd-text); font-family: 'Nunito', s
 .vd-navbar__links a:hover, .vd-navbar__links a.active { background: rgba(255,255,255,.18); color: #fff; }
 .vd-navbar__hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; margin-left: auto; }
 .vd-navbar__hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; }
-.index-hero { background: linear-gradient(135deg, var(--vd-primary-dk) 0%, var(--vd-primary) 60%, #1976D2 100%); padding: 56px 28px 52px; text-align: center; position: relative; overflow: hidden; }
+
+/* ── Hero ── */
+.index-hero { background: linear-gradient(135deg, var(--vd-primary-dk) 0%, var(--vd-primary) 60%, #1976D2 100%); padding: 56px 28px 52px; text-align: center; position: relative; }
 .index-hero::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
 .index-hero__logo { position: relative; margin-bottom: 24px; }
 .index-hero__logo img { height: 110px; width: auto; max-width: 500px; object-fit: contain; filter: drop-shadow(0 4px 20px rgba(0,0,0,.25)); }
 .index-hero__tagline { position: relative; font-family: 'Lexend', sans-serif; font-size: 1rem; color: rgba(255,255,255,.8); margin-bottom: 36px; }
-.index-search { position: relative; display: flex; max-width: 580px; margin: 0 auto; background: rgba(255,255,255,.15); border: 2px solid rgba(255,255,255,.3); border-radius: 50px; backdrop-filter: blur(8px); overflow: hidden; transition: all .25s; }
+
+/* ── Barra de pesquisa ── */
+.index-search { position: relative; display: flex; max-width: 580px; margin: 0 auto; background: rgba(255,255,255,.15); border: 2px solid rgba(255,255,255,.3); border-radius: 50px; backdrop-filter: blur(8px); overflow: visible; transition: all .25s; }
 .index-search:focus-within { background: rgba(255,255,255,.22); border-color: rgba(255,255,255,.6); box-shadow: 0 0 0 4px rgba(255,255,255,.12); }
-.index-search input { flex: 1; padding: 14px 22px; background: none; border: none; outline: none; color: #fff; font-family: 'Nunito', sans-serif; font-size: 1rem; font-weight: 600; }
+.index-search input { flex: 1; padding: 14px 22px; background: none; border: none; outline: none; color: #fff; font-family: 'Nunito', sans-serif; font-size: 1rem; font-weight: 600; border-radius: 50px 0 0 50px; }
 .index-search input::placeholder { color: rgba(255,255,255,.55); }
-.index-search button { padding: 12px 28px; background: var(--vd-accent); border: none; color: #fff; font-family: 'Lexend', sans-serif; font-size: .9rem; font-weight: 600; cursor: pointer; transition: background .2s; border-radius: 0 48px 48px 0; }
-.index-search button:hover { background: #F57C00; }
+.index-search__btn { padding: 12px 28px; background: var(--vd-accent); border: none; color: #fff; font-family: 'Lexend', sans-serif; font-size: .9rem; font-weight: 600; cursor: pointer; transition: background .2s; border-radius: 0 48px 48px 0; flex-shrink: 0; }
+.index-search__btn:hover { background: #F57C00; }
+
+/* ── Dropdown de resultados ── */
+.search-dropdown {
+  display: none;
+  position: fixed;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 12px 40px rgba(0,0,0,.28);
+  max-height: 480px;
+  overflow-y: auto;
+  z-index: 99999;
+  text-align: left;
+  border: 1px solid var(--vd-border);
+}
+.search-dropdown.visible { display: block; }
+.search-dropdown__header {
+  padding: 10px 18px 6px;
+  font-family: 'Lexend', sans-serif;
+  font-size: .72rem;
+  font-weight: 700;
+  color: #9CA3AF;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  border-bottom: 1px solid #F3F4F6;
+}
+.search-result {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 18px;
+  text-decoration: none;
+  color: var(--vd-text);
+  transition: background .14s;
+  border-bottom: 1px solid #F9FAFB;
+}
+.search-result:last-child { border-bottom: none; }
+.search-result:hover { background: #EEF4FF; }
+.search-result__icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+  width: 28px;
+  text-align: center;
+}
+.search-result__body { flex: 1; min-width: 0; }
+.search-result__title {
+  font-family: 'Lexend', sans-serif;
+  font-size: .88rem;
+  font-weight: 700;
+  color: var(--vd-primary);
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.search-result__title mark {
+  background: #FFF3CD;
+  color: #92400E;
+  border-radius: 3px;
+  padding: 0 2px;
+  font-style: normal;
+}
+.search-result__desc {
+  font-size: .78rem;
+  color: var(--vd-muted);
+  line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.search-result__cat {
+  font-size: .68rem;
+  font-weight: 700;
+  font-family: 'Lexend', sans-serif;
+  padding: 2px 8px;
+  border-radius: 20px;
+  flex-shrink: 0;
+  align-self: flex-start;
+  margin-top: 3px;
+  white-space: nowrap;
+}
+.cat--disciplina        { background: #FFF3E0; color: #E65100; }
+.cat--secao             { background: #EEF4FF; color: #1565C0; }
+.cat--referencial       { background: #F9F0FF; color: #6A1B9A; }
+.cat--habilidade        { background: #EDFAFA; color: #00695C; }
+.cat--habilidade-bncc   { background: #F0FBF0; color: #2E7D32; }
+.cat--recurso           { background: #FFFBEB; color: #92400E; }
+.cat--ideia             { background: #FFF0F6; color: #9D174D; }
+
+.search-empty {
+  padding: 24px 18px;
+  text-align: center;
+  font-size: .88rem;
+  color: var(--vd-muted);
+  font-family: 'Lexend', sans-serif;
+}
+.search-empty__icon { font-size: 2rem; margin-bottom: 8px; display: block; }
+
+/* ── Main content ── */
 .index-main { max-width: 1400px; margin: 0 auto; padding: 40px 28px 52px; width: 100%; }
 .index-section-title { font-family: 'Lexend', sans-serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
 .index-section-title::after { content: ''; flex: 1; height: 2px; background: var(--vd-border); border-radius: 2px; }
@@ -58,10 +164,13 @@ body { background: var(--vd-bg); color: var(--vd-text); font-family: 'Nunito', s
 .ref-card__text h3 { font-family: 'Lexend', sans-serif; font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 4px; }
 .ref-card__text p { font-size: .85rem; color: rgba(255,255,255,.7); }
 .ref-card__arrow { margin-left: auto; font-size: 1.4rem; color: rgba(255,255,255,.55); }
+
+/* ── Footer ── */
 .vd-footer { background: linear-gradient(135deg, var(--vd-primary-dk), var(--vd-primary)); color: rgba(255,255,255,.8); margin-top: auto; padding: 20px 28px; text-align: center; }
 .vd-footer__inner { max-width:1400px; margin:0 auto; display:flex; flex-direction:column; gap:4px; }
 .vd-footer__inner p { font-size:.8rem; font-weight:600; }
 .vd-footer__notice { font-size:.72rem!important; opacity:.65; }
+
 @media(max-width:900px){
   .vd-navbar__links{display:none;flex-direction:column;position:absolute;top:var(--vd-nav-h);left:0;right:0;background:var(--vd-primary-dk);padding:16px;gap:4px;z-index:999;}
   .vd-navbar__links.open{display:flex;}
@@ -69,10 +178,12 @@ body { background: var(--vd-bg); color: var(--vd-text); font-family: 'Nunito', s
   .vd-navbar__inner{position:relative;}
   .disc-grid{grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:14px;}
   .index-hero__logo img{height:75px;}
+  .search-dropdown { border-radius: 12px; }
 }
 </style>
 </head>
 <body>
+
 <nav class="vd-navbar">
   <div class="vd-navbar__inner">
     <a href="index.html" class="vd-navbar__logo">
@@ -82,22 +193,26 @@ body { background: var(--vd-bg); color: var(--vd-text); font-family: 'Nunito', s
     <button class="vd-navbar__hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
     <ul class="vd-navbar__links" id="navLinks">
       <li><a href="index.html" class="active">Início</a></li>
-      <li><a href="ref-curricular/ref-index.html">BNCC Computação</a></li>
+      <li><a href="ref-curricular/index.html">BNCC Computação</a></li>
       <li><a href="pages/banco-ideias.html">Banco de ideias</a></li>
       <li><a href="pages/reds.html">REDs</a></li>
     </ul>
   </div>
 </nav>
+
 <section class="index-hero">
   <div class="index-hero__logo">
     <img src="assets/logo.png" alt="Varjota DigiEdu" onerror="this.outerHTML='<h1 style=&quot;color:#fff;font-family:Lexend,sans-serif;font-size:2.4rem;font-weight:800;&quot;>Varjota DigiEdu</h1>'"/>
   </div>
   <p class="index-hero__tagline">Plataforma de recursos educacionais digitais da Secretaria de Educação da Prefeitura de Varjota</p>
-  <div class="index-search">
-    <input type="text" id="searchInput" placeholder="Pesquisar disciplinas..." autocomplete="off"/>
-    <button onclick="filterCards()">Pesquisar</button>
+
+  <div class="index-search" id="searchWrap">
+    <input type="text" id="searchInput" placeholder="Pesquisar em todo o site..." autocomplete="off" aria-label="Pesquisar"/>
+    <button class="index-search__btn" id="searchBtn">Pesquisar</button>
   </div>
 </section>
+<div class="search-dropdown" id="searchDropdown" role="listbox"></div>
+
 <main class="index-main">
   <h2 class="index-section-title">📚 Disciplinas</h2>
   <div class="disc-grid" id="discGrid">
@@ -110,9 +225,9 @@ body { background: var(--vd-bg); color: var(--vd-text); font-family: 'Nunito', s
     <a href="disciplinas/lingua-inglesa.html"    class="disc-card disc-card--lingua-inglesa"    data-label="língua inglesa lingua inglesa"><span class="disc-card__icon">🆙</span>Língua Inglesa</a>
     <a href="disciplinas/lingua-portuguesa.html" class="disc-card disc-card--lingua-portuguesa" data-label="língua portuguesa lingua portuguesa"><span class="disc-card__icon">📖</span>Língua Portuguesa</a>
     <a href="disciplinas/matematica.html"        class="disc-card disc-card--matematica"        data-label="matemática matematica"><span class="disc-card__icon">📐</span>Matemática</a>
-  <a href="disciplinas/educacao-infantil.html" class="disc-card disc-card--educacao-infantil" data-label="educação infantil educacao infantil"><span class="disc-card__icon">🧸</span>Educação Infantil</a>
+    <a href="disciplinas/educacao-infantil.html" class="disc-card disc-card--educacao-infantil" data-label="educação infantil educacao infantil"><span class="disc-card__icon">🧸</span>Educação Infantil</a>
   </div>
-  <a href="ref-curricular/ref-index.html" class="ref-card">
+  <a href="ref-curricular/index.html" class="ref-card">
     <span class="ref-card__icon">📋</span>
     <div class="ref-card__text">
       <h3>Referencial Curricular da Educação Digital e Midiática de Varjota</h3>
@@ -121,16 +236,215 @@ body { background: var(--vd-bg); color: var(--vd-text); font-family: 'Nunito', s
     <span class="ref-card__arrow">→</span>
   </a>
 </main>
+
 <footer class="vd-footer">
   <div class="vd-footer__inner">
     <p>© 2025 Prefeitura de Varjota — Secretaria de Educação e Tecnologia (SMETEC)</p>
     <p class="vd-footer__notice">O conteúdo deste site não pode ser editado, copiado ou distribuído sem expressa autorização da SMETEC-Varjota.</p>
   </div>
 </footer>
+
 <script>
-document.getElementById('hamburger').addEventListener('click',()=>{document.getElementById('navLinks').classList.toggle('open');});
-document.getElementById('searchInput').addEventListener('input',filterCards);
-function filterCards(){const q=document.getElementById('searchInput').value.toLowerCase().trim();document.querySelectorAll('.disc-card').forEach(c=>{c.style.display=(!q||c.dataset.label.includes(q))?'':'none';});}
+(function () {
+  'use strict';
+
+  /* ── Hamburger ── */
+  document.getElementById('hamburger').addEventListener('click', function () {
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+
+  /* ── Utilitários de texto ── */
+  function normalize(str) {
+    return (str || '').toLowerCase()
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  }
+
+  function highlight(text, query) {
+    if (!query) return escHtml(text);
+    var re = new RegExp('(' + escRe(query) + ')', 'gi');
+    return escHtml(text).replace(re, '<mark>$1</mark>');
+  }
+
+  function escHtml(str) {
+    return String(str)
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+      .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  function escRe(str) {
+    return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  }
+
+  function catClass(cat) {
+    var map = {
+      'Disciplina':             'cat--disciplina',
+      'Seção':                  'cat--secao',
+      'Referencial Curricular': 'cat--referencial',
+      'Habilidade':             'cat--habilidade',
+      'Habilidade BNCC':        'cat--habilidade-bncc',
+      'Recurso':                'cat--recurso',
+      'Ideia de Aula':          'cat--ideia',
+    };
+    return map[cat] || 'cat--secao';
+  }
+
+  /* ── Motor de busca ── */
+  function search(rawQuery) {
+    var q = normalize(rawQuery).trim();
+    if (!q) return [];
+
+    var terms = q.split(/\s+/);
+    var index = window.VD_SEARCH_INDEX || [];
+
+    var scored = [];
+    index.forEach(function (item) {
+      var haystack = normalize(item.title + ' ' + item.desc + ' ' + item.tags + ' ' + item.categoria);
+      var score = 0;
+
+      terms.forEach(function (term) {
+        if (normalize(item.title).includes(term))    score += 10;
+        if (normalize(item.categoria).includes(term)) score += 6;
+        if (normalize(item.desc).includes(term))     score += 4;
+        if (normalize(item.tags).includes(term))     score += 2;
+        if (haystack.includes(term))                 score += 1;
+      });
+
+      // Bônus: todos os termos presentes
+      var allMatch = terms.every(function (t) { return haystack.includes(t); });
+      if (allMatch) score += 5;
+
+      if (score > 0) {
+        scored.push({ item: item, score: score });
+      }
+    });
+
+    scored.sort(function (a, b) { return b.score - a.score; });
+    return scored.slice(0, 12).map(function (s) { return s.item; });
+  }
+
+  /* ── Renderização dos resultados ── */
+  var dropdown = document.getElementById('searchDropdown');
+  var lastQuery = '';
+
+  function positionDropdown() {
+    var rect = document.getElementById('searchWrap').getBoundingClientRect();
+    dropdown.style.top    = (rect.bottom + 10) + 'px';
+    dropdown.style.left   = rect.left + 'px';
+    dropdown.style.width  = rect.width + 'px';
+  }
+
+  function renderResults(results, query) {
+    if (!query.trim()) {
+      dropdown.innerHTML = '';
+      dropdown.classList.remove('visible');
+      return;
+    }
+
+    positionDropdown();
+    dropdown.classList.add('visible');
+
+    if (results.length === 0) {
+      dropdown.innerHTML =
+        '<div class="search-empty">' +
+          '<span class="search-empty__icon">🔍</span>' +
+          'Nenhum resultado para "<strong>' + escHtml(query) + '</strong>"' +
+        '</div>';
+      return;
+    }
+
+    // Agrupa por categoria
+    var groups = {};
+    var order  = [];
+    results.forEach(function (item) {
+      if (!groups[item.categoria]) {
+        groups[item.categoria] = [];
+        order.push(item.categoria);
+      }
+      groups[item.categoria].push(item);
+    });
+
+    var html = '';
+    order.forEach(function (cat) {
+      html += '<div class="search-dropdown__header">' + escHtml(cat) + '</div>';
+      groups[cat].forEach(function (item) {
+        html +=
+          '<a href="' + escHtml(item.url) + '" class="search-result" role="option">' +
+            '<span class="search-result__icon">' + item.icon + '</span>' +
+            '<div class="search-result__body">' +
+              '<div class="search-result__title">' + highlight(item.title, query) + '</div>' +
+              '<div class="search-result__desc">' + escHtml(item.desc) + '</div>' +
+            '</div>' +
+            '<span class="search-result__cat ' + catClass(item.categoria) + '">' + escHtml(item.categoria) + '</span>' +
+          '</a>';
+      });
+    });
+
+    dropdown.innerHTML = html;
+  }
+
+  /* ── Eventos ── */
+  var searchInput = document.getElementById('searchInput');
+
+  searchInput.addEventListener('input', function () {
+    var q = searchInput.value;
+    lastQuery = q;
+    renderResults(search(q), q);
+  });
+
+  searchInput.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') {
+      var results = search(searchInput.value);
+      if (results.length > 0) {
+        window.location.href = results[0].url;
+      }
+    }
+    if (e.key === 'Escape') {
+      dropdown.classList.remove('visible');
+    }
+  });
+
+  document.getElementById('searchBtn').addEventListener('click', function () {
+    var results = search(searchInput.value);
+    if (results.length > 0) {
+      window.location.href = results[0].url;
+    } else {
+      renderResults([], searchInput.value);
+      renderResults(search(searchInput.value), searchInput.value);
+    }
+  });
+
+  // Reposiciona no scroll/resize
+  window.addEventListener('scroll', function () {
+    if (dropdown.classList.contains('visible')) positionDropdown();
+  });
+  window.addEventListener('resize', function () {
+    if (dropdown.classList.contains('visible')) positionDropdown();
+  });
+
+  // Fecha ao clicar fora
+  document.addEventListener('click', function (e) {
+    var wrap = document.getElementById('searchWrap');
+    if (!wrap.contains(e.target) && !dropdown.contains(e.target)) {
+      dropdown.classList.remove('visible');
+    }
+  });
+
+  // Reabre ao focar no input se já tinha query
+  searchInput.addEventListener('focus', function () {
+    if (searchInput.value.trim()) {
+      renderResults(search(searchInput.value), searchInput.value);
+    }
+  });
+
+  /* ── Filtro dos cards de disciplina (comportamento original mantido) ── */
+  searchInput.addEventListener('input', function () {
+    var q = normalize(searchInput.value).trim();
+    document.querySelectorAll('.disc-card').forEach(function (c) {
+      c.style.display = (!q || normalize(c.dataset.label).includes(q)) ? '' : 'none';
+    });
+  });
+
+})();
 </script>
 </body>
 </html>

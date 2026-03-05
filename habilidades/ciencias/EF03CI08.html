@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>EF03CI08 — Ciências — Varjota DigiEdu</title>
+
+  <script src="../../assets/template-loader.js"></script>
+  <script>
+    window.VD_PAGE = {
+      disciplina: "ciencias",
+      pageTitle:  "EF03CI08"
+    };
+  </script>
+  <script src="../../assets/template.js"></script>
+
+  <style>
+    /* ── Cores temáticas — Ciências ── */
+    :root {
+      --disc-cor:       #00695C;
+      --disc-cor-light: #F0FBF9;
+      --comp-cor:       #27AE60;
+      --comp-cor-light: #E8F5E9;
+    }
+
+    /* ── Botão voltar ── */
+    .hab-voltar {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-bottom: 24px;
+      padding: 8px 18px; border-radius: 50px;
+      border: 2px solid var(--disc-cor);
+      background: #fff; color: var(--disc-cor);
+      font-family: 'Lexend', sans-serif; font-size: .85rem; font-weight: 700;
+      text-decoration: none; transition: background .15s, color .15s;
+    }
+    .hab-voltar:hover { background: var(--disc-cor); color: #fff; }
+
+    /* ── Bloco da habilidade principal ── */
+    .hab-principal {
+      background: var(--disc-cor-light);
+      border-left: 4px solid var(--disc-cor);
+      border-radius: 0 12px 12px 0;
+      padding: 24px 28px;
+      margin-bottom: 32px;
+    }
+    .hab-principal__titulo {
+      font-family: 'Lexend', sans-serif;
+      font-size: 1.1rem; font-weight: 800;
+      color: var(--disc-cor);
+      margin-bottom: 16px;
+    }
+    .hab-principal__campo { margin: 6px 0; font-size: .9rem; color: #374151; }
+    .hab-principal__campo strong {
+      font-family: 'Lexend', sans-serif;
+      color: #1A1A2E;
+      display: inline-block; min-width: 160px;
+    }
+
+    /* ── Título da seção de Computação ── */
+    .hab-secao-titulo {
+      font-family: 'Lexend', sans-serif;
+      font-size: 1.15rem; font-weight: 800;
+      color: #1A1A2E;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #DDE3ED;
+    }
+
+    /* ── Cards de habilidades de Computação ── */
+    .hab-computacao {
+      background: #F9FAFB;
+      border: 1px solid #DDE3ED;
+      border-radius: 12px;
+      padding: 22px 24px;
+      margin-bottom: 16px;
+      transition: box-shadow .15s;
+    }
+    .hab-computacao:hover { box-shadow: 0 4px 16px rgba(0,0,0,.08); }
+
+    .hab-computacao__codigo {
+      font-family: 'Lexend', sans-serif;
+      font-size: 1rem; font-weight: 800;
+      color: var(--comp-cor);
+      margin-bottom: 14px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .hab-computacao__codigo::before { content: "🔹"; font-size: .9rem; }
+
+    .hab-computacao__campo { margin: 5px 0; font-size: .875rem; color: #374151; }
+    .hab-computacao__campo strong {
+      font-family: 'Lexend', sans-serif;
+      color: #555;
+      display: inline-block; min-width: 160px;
+    }
+
+    /* ── Box de relação ── */
+    .hab-relacao {
+      background: var(--comp-cor-light);
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-top: 14px;
+      font-size: .875rem;
+      font-style: italic;
+      color: #1B5E20;
+      line-height: 1.55;
+    }
+    .hab-relacao::before {
+      content: "🎯 Relação: ";
+      font-weight: 700;
+      font-style: normal;
+      font-family: 'Lexend', sans-serif;
+    }
+
+    /* ── Rodapé de metadados ── */
+    .hab-metadata {
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid #DDE3ED;
+      font-size: .8rem;
+      color: #9CA3AF;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Botão voltar -->
+  <a href="../../disciplinas/ciencias.html" class="hab-voltar">
+    ← Voltar para Ciências
+  </a>
+
+  <!-- ══════════════════════════════════════════════════
+       BLOCO DA HABILIDADE PRINCIPAL
+  ══════════════════════════════════════════════════ -->
+  <section class="hab-principal">
+    <div class="hab-principal__titulo">📌 Habilidade selecionada</div>
+    <p class="hab-principal__campo"><strong>Código:</strong> EF03CI08</p>
+    <p class="hab-principal__campo"><strong>Descrição:</strong> Observar, identificar e registrar os períodos diários (dia e/ou noite) em que o Sol, demais estrelas, Lua e planetas estão visíveis no céu.</p>
+    <p class="hab-principal__campo"><strong>Componente:</strong> Ciências</p>
+    <p class="hab-principal__campo"><strong>Ano/Etapa:</strong> 3º</p>
+    <p class="hab-principal__campo"><strong>Unidade temática:</strong> Terra e Universo</p>
+    <p class="hab-principal__campo"><strong>Objeto do conhecimento:</strong> Características da Terra / Observação do céu / Usos do solo</p>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════
+       SEÇÃO DE HABILIDADES DE COMPUTAÇÃO CORRELACIONADAS
+  ══════════════════════════════════════════════════ -->
+  <div class="hab-secao-titulo">💻 Habilidades de Computação correlacionadas</div>
+
+  <!-- Bloco 1 - EF01CO02 (Conceituação de Algoritmos) -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF01CO02</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Identificar e seguir sequências de passos aplicados no dia a dia para resolver problemas.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Conceituação de Algoritmos</p>
+    <div class="hab-relacao">A observação do céu em diferentes períodos pode ser organizada como uma sequência de registros — uma introdução ao pensamento algorítmico e à coleta sistemática de dados.</div>
+  </div>
+
+  <!-- Bloco 2 - EF01CO03 (Criação de sequências de passos) -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF01CO03</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reorganizar e criar sequências de passos em meios físicos ou digitais, relacionando essas sequências à palavra ‘Algoritmos’.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Conceituação de Algoritmos</p>
+    <div class="hab-relacao">Os alunos podem criar sequências de observação (ex: ao anoitecer, observar a Lua; à noite, observar estrelas) e registrar em diários de bordo.</div>
+  </div>
+
+  <!-- Bloco 3 - EF01CO05 (Codificação da informação) -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF01CO05</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Representar informação usando diferentes codificações.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Mundo digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Codificação da informação</p>
+    <div class="hab-relacao">As observações podem ser registradas por desenhos, fotografias ou anotações — diferentes formas de codificar a informação sobre o céu.</div>
+  </div>
+
+  <!-- Bloco 4 - EF04CO01 (Matrizes) -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF04CO01</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer objetos do mundo real e/ou digital que podem ser representados através de matrizes que estabelecem uma organização na qual cada componente está em uma posição definida por coordenadas, fazendo manipulações simples sobre estas representações.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 4º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Matrizes e registros</p>
+    <div class="hab-relacao">As observações podem ser organizadas em tabelas (matrizes) relacionando data, horário, astro observado e período do dia — conectando ciências à representação estruturada.</div>
+  </div>
+
+  <!-- Bloco 5 - EF04CO02 (Registros) -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF04CO02</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer objetos do mundo real e/ou digital que podem ser representados através de registros que estabelecem uma organização na qual cada componente é identificado por um nome, fazendo manipulações sobre estas representações.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 4º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Matrizes e registros</p>
+    <div class="hab-relacao">Cada observação pode ser um registro com campos: data, horário, astro, período — uma aplicação direta do conceito de registros.</div>
+  </div>
+
+  <!-- Bloco 6 - EF05CO01 (Listas) -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF05CO01</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer objetos do mundo real e/ou digital que podem ser representados através de listas que estabelecem uma organização na qual há um número variável de itens dispostos em sequência, fazendo manipulações simples sobre estas representações.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 5º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Listas e grafos</p>
+    <div class="hab-relacao">Os astros observados podem ser listados por período (dia: Sol; noite: Lua, estrelas, planetas), aplicando o conceito de listas.</div>
+  </div>
+
+  <!-- Bloco 7 - EF01CO01 (Organização de objetos) -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF01CO01</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Organizar objetos físicos ou digitais considerando diferentes características para esta organização, explicitando semelhanças (padrões) e diferenças.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Organização de objetos</p>
+    <div class="hab-relacao">Os astros podem ser organizados por período de visibilidade (diurnos, noturnos) ou por tipo (estrelas, planetas, Lua).</div>
+  </div>
+
+  <!-- Bloco 8 - EF05CI10 (Constelações) -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF05CI10</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Identificar algumas constelações no céu, com o apoio de recursos (como mapas celestes e aplicativos digitais, entre outros), e os períodos do ano em que elas são visíveis no início da noite.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Ciências</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 5º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Terra e Universo</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Constelações e mapas celestes / Movimento de rotação da Terra / Periodicidade das fases da Lua / Instrumentos óticos</p>
+    <div class="hab-relacao">Amplia a observação do céu para incluir constelações e uso de aplicativos digitais, conectando ciências e tecnologia.</div>
+  </div>
+
+  <!-- Bloco 9 - EF05CI12 (Fases da Lua) -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF05CI12</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Concluir sobre a periodicidade das fases da Lua, com base na observação e no registro das formas aparentes da Lua no céu ao longo de, pelo menos, dois meses.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Ciências</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 5º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Terra e Universo</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Constelações e mapas celestes / Movimento de rotação da Terra / Periodicidade das fases da Lua / Instrumentos óticos</p>
+    <div class="hab-relacao">Aprofunda o registro sistemático da observação da Lua, complementando a EF03CI08 com análise de periodicidade.</div>
+  </div>
+
+  <!-- Bloco 10 - EF15CO08 (Uso de artefatos computacionais) -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF15CO08</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer e utilizar tecnologias computacionais para pesquisar e acessar informações, expressar-se crítica e criativamente e resolver problemas.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º, 2º, 3º, 4º, 5º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Uso de artefatos computacionais</p>
+    <div class="hab-relacao">Os alunos podem usar aplicativos de astronomia, planetários virtuais ou softwares de registro para observar e documentar o céu.</div>
+  </div>
+
+  <p class="hab-metadata">
+    🔍 Habilidades listadas em ordem decrescente de relevância para a habilidade EF03CI08
+  </p>
+
+</body>
+</html>
