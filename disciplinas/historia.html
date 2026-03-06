@@ -55,6 +55,7 @@
     <button class="sec-btn" id="btn-atividades"  onclick="mostrarSecao('atividades')"><span class="sec-btn__icon">✏️</span> Atividades</button>
     <button class="sec-btn" id="btn-reds"        onclick="mostrarSecao('reds')">      <span class="sec-btn__icon">💻</span> REDs</button>
     <button class="sec-btn" id="btn-materiais"   onclick="mostrarSecao('materiais')"> <span class="sec-btn__icon">📁</span> Materiais de Apoio</button>
+    <button class="sec-btn" id="btn-acessibilidade"   onclick="mostrarSecao('acessibilidade')"> <span class="sec-btn__icon">♿</span> Acessibilidade</button>
   </div>
 
   <div class="sec-painel" id="painel-bncc">
@@ -1581,10 +1582,14 @@
   <div class="sec-painel" id="painel-materiais">
     <div class="em-breve"><div class="em-breve__icon">🚧</div><div class="em-breve__text">Conteúdo em breve</div></div>
   </div>
+  <div class="sec-painel" id="painel-acessibilidade">
+    <div class="em-breve"><div class="em-breve__icon">🚧</div><div class="em-breve__text">Conteúdo em breve</div></div>
+  </div>
+
 
   <script>
     function mostrarSecao(id) {
-      ['bncc','atividades','reds','materiais'].forEach(function(i) {
+      ['bncc','atividades','reds','materiais','acessibilidade'].forEach(function(i) {
         document.getElementById('btn-'+i).classList.toggle('ativo', i===id);
         document.getElementById('painel-'+i).classList.toggle('ativo', i===id);
       });

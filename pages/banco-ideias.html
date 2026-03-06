@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Banco de Ideias — Varjota DigiEdu</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  --vd-primary: #1565C0; --vd-primary-dk: #0D47A1; --vd-accent: #FF8F00;
+  --vd-bg: #F4F7FB; --vd-white: #FFFFFF; --vd-text: #1A1A2E; --vd-muted: #6B7280;
+  --vd-border: #DDE3ED; --vd-nav-h: 68px; --vd-radius: 14px;
+  --vd-shadow: 0 2px 14px rgba(21,101,192,.09); --vd-shadow-md: 0 6px 28px rgba(21,101,192,.15);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--vd-bg); color: var(--vd-text); font-family: 'Nunito', sans-serif; min-height: 100vh; display: flex; flex-direction: column; }
+.vd-navbar { position: sticky; top: 0; z-index: 1000; background: linear-gradient(135deg, var(--vd-primary-dk) 0%, var(--vd-primary) 100%); height: var(--vd-nav-h); box-shadow: 0 2px 20px rgba(13,71,161,.3); }
+.vd-navbar__inner { max-width: 1400px; margin: 0 auto; height: 100%; padding: 0 28px; display: flex; align-items: center; gap: 28px; }
+.vd-navbar__logo { flex-shrink: 0; display: flex; align-items: center; text-decoration: none; }
+.vd-navbar__logo img { height: 50px; width: auto; object-fit: contain; }
+.vd-navbar__logo-fb { color:#fff;font-family:'Lexend',sans-serif;font-weight:700;font-size:1.1rem; }
+.vd-navbar__links { display: flex; list-style: none; gap: 2px; margin-left: auto; }
+.vd-navbar__links a { display: block; padding: 8px 15px; color: rgba(255,255,255,.85); text-decoration: none; font-family: 'Lexend', sans-serif; font-size: .85rem; font-weight: 500; border-radius: 8px; transition: background .2s, color .2s; white-space: nowrap; }
+.vd-navbar__links a:hover, .vd-navbar__links a.active { background: rgba(255,255,255,.18); color: #fff; }
+.vd-navbar__hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; margin-left: auto; }
+.vd-navbar__hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; }
+.index-hero { background: linear-gradient(135deg, var(--vd-primary-dk) 0%, var(--vd-primary) 60%, #1976D2 100%); padding: 56px 28px 52px; text-align: center; position: relative; overflow: hidden; }
+.index-hero::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+.index-hero__logo { position: relative; margin-bottom: 24px; }
+.index-hero__logo img { height: 110px; width: auto; max-width: 500px; object-fit: contain; filter: drop-shadow(0 4px 20px rgba(0,0,0,.25)); }
+.index-hero__tagline { position: relative; font-family: 'Lexend', sans-serif; font-size: 1rem; color: rgba(255,255,255,.8); margin-bottom: 36px; }
+.index-search { position: relative; display: flex; max-width: 580px; margin: 0 auto; background: rgba(255,255,255,.15); border: 2px solid rgba(255,255,255,.3); border-radius: 50px; backdrop-filter: blur(8px); overflow: hidden; transition: all .25s; }
+.index-search:focus-within { background: rgba(255,255,255,.22); border-color: rgba(255,255,255,.6); box-shadow: 0 0 0 4px rgba(255,255,255,.12); }
+.index-search input { flex: 1; padding: 14px 22px; background: none; border: none; outline: none; color: #fff; font-family: 'Nunito', sans-serif; font-size: 1rem; font-weight: 600; }
+.index-search input::placeholder { color: rgba(255,255,255,.55); }
+.index-search button { padding: 12px 28px; background: var(--vd-accent); border: none; color: #fff; font-family: 'Lexend', sans-serif; font-size: .9rem; font-weight: 600; cursor: pointer; transition: background .2s; border-radius: 0 48px 48px 0; }
+.index-search button:hover { background: #F57C00; }
+.index-main { max-width: 1400px; margin: 0 auto; padding: 40px 28px 52px; width: 100%; }
+.index-section-title { font-family: 'Lexend', sans-serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
+.index-section-title::after { content: ''; flex: 1; height: 2px; background: var(--vd-border); border-radius: 2px; }
+.disc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 18px; }
+.disc-card { border-radius: var(--vd-radius); padding: 28px 16px 24px; display: flex; flex-direction: column; align-items: center; gap: 10px; text-decoration: none; color: #fff; font-family: 'Lexend', sans-serif; font-weight: 600; font-size: .95rem; text-align: center; box-shadow: var(--vd-shadow-md); transition: transform .22s, box-shadow .22s; }
+.disc-card:hover { transform: translateY(-6px) scale(1.025); box-shadow: 0 14px 36px rgba(0,0,0,.2); }
+.disc-card__icon { font-size: 2.6rem; line-height: 1; }
+.disc-card--arte              { background: linear-gradient(135deg,#C62828,#EF9A9A); color:#3E1500; }
+.disc-card--ciencias          { background: linear-gradient(135deg,#00695C,#80CBC4); color:#3E1500; }
+.disc-card--educacao-fisica   { background: linear-gradient(135deg,#2E7D32,#A5D6A7); color:#3E1500; }
+.disc-card--ensino-religioso  { background: linear-gradient(135deg,#6A1B9A,#CE93D8); color:#3E1500; }
+.disc-card--geografia         { background: linear-gradient(135deg,#1565C0,#90CAF9); color:#3E1500; }
+.disc-card--historia          { background: linear-gradient(135deg,#BF360C,#FFAB91); color:#3E1500; }
+.disc-card--lingua-inglesa    { background: linear-gradient(135deg,#00838F,#80DEEA); color:#3E1500; }
+.disc-card--lingua-portuguesa { background: linear-gradient(135deg,#E65100,#FFE082); color:#3E1500; }
+.disc-card--matematica        { background: linear-gradient(135deg,#283593,#7986CB); color:#3E1500; }
+.disc-card--educacao-infantil { background: linear-gradient(135deg, #AD1457, #F48FB1); color:#3E1500; }
+.ref-card { background: linear-gradient(135deg,#0D47A1,#1565C0); border-radius: var(--vd-radius); padding: 24px 28px; display: flex; align-items: center; gap: 18px; margin-top: 20px; text-decoration: none; transition: transform .2s, box-shadow .2s; box-shadow: var(--vd-shadow-md); }
+.ref-card:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(13,71,161,.3); }
+.ref-card__icon { font-size: 2.4rem; flex-shrink: 0; }
+.ref-card__text h3 { font-family: 'Lexend', sans-serif; font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 4px; }
+.ref-card__text p { font-size: .85rem; color: rgba(255,255,255,.7); }
+.ref-card__arrow { margin-left: auto; font-size: 1.4rem; color: rgba(255,255,255,.55); }
+.vd-footer { background: linear-gradient(135deg, var(--vd-primary-dk), var(--vd-primary)); color: rgba(255,255,255,.8); margin-top: auto; padding: 20px 28px; text-align: center; }
+.vd-footer__inner { max-width:1400px; margin:0 auto; display:flex; flex-direction:column; gap:4px; }
+.vd-footer__inner p { font-size:.8rem; font-weight:600; }
+.vd-footer__notice { font-size:.72rem!important; opacity:.65; }
+@media(max-width:900px){
+  .vd-navbar__links{display:none;flex-direction:column;position:absolute;top:var(--vd-nav-h);left:0;right:0;background:var(--vd-primary-dk);padding:16px;gap:4px;z-index:999;}
+  .vd-navbar__links.open{display:flex;}
+  .vd-navbar__hamburger{display:flex;}
+  .vd-navbar__inner{position:relative;}
+  .disc-grid{grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:14px;}
+  .index-hero__logo img{height:75px;}
+}
+
+:root {
+  --ei-color:#AD1457; --ei-light:#FFF0F6; --ei-mid:#F48FB1;
+  --ai-color:#1565C0; --ai-light:#EEF4FF; --ai-mid:#90CAF9;
+  --af-color:#1A237E; --af-light:#EEEFFE; --af-mid:#7986CB;
+}
+.bi-hero{background:linear-gradient(135deg,#0D47A1 0%,#1565C0 55%,#283593 100%);padding:48px 32px 44px;position:relative;overflow:hidden;}
+.bi-hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");}
+.bi-hero__inner{position:relative;max-width:820px;margin:0 auto;}
+.bi-hero__tag{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:20px;padding:4px 14px;font-family:'Lexend',sans-serif;font-size:.75rem;font-weight:600;color:rgba(255,255,255,.9);margin-bottom:18px;letter-spacing:.04em;}
+.bi-hero h1{font-family:'Lexend',sans-serif;font-size:clamp(1.6rem,4vw,2.2rem);font-weight:800;color:#fff;margin-bottom:12px;line-height:1.2;}
+.bi-hero p{font-size:.95rem;color:rgba(255,255,255,.78);max-width:560px;line-height:1.6;margin-bottom:28px;}
+.bi-hero__stats{display:flex;gap:24px;flex-wrap:wrap;}
+.bi-hero__stat{display:flex;flex-direction:column;gap:2px;}
+.bi-hero__stat strong{font-family:'Lexend',sans-serif;font-size:1.4rem;font-weight:800;color:#fff;}
+.bi-hero__stat span{font-size:.75rem;color:rgba(255,255,255,.6);font-weight:600;}
+.bi-wrap{display:grid;grid-template-columns:280px 1fr;gap:0;min-height:70vh;}
+.bi-nav{background:#fff;border-right:2px solid #EDF0F7;padding:20px 0 40px;position:sticky;top:68px;height:calc(100vh - 68px);overflow-y:auto;scrollbar-width:thin;}
+.bi-nav__label{font-family:'Lexend',sans-serif;font-size:.68rem;font-weight:700;color:#9CA3AF;text-transform:uppercase;letter-spacing:.08em;padding:0 24px 10px;}
+.bi-nav__all{display:flex;align-items:center;gap:10px;padding:10px 24px 12px;cursor:pointer;border:none;background:none;width:100%;text-align:left;transition:background .15s;border-left:3px solid transparent;margin-bottom:4px;}
+.bi-nav__all:hover{background:#F9FAFB;}
+.bi-nav__all.active{background:#EEF4FF;border-left-color:#1565C0;}
+.bi-nav__all-icon{font-size:1.1rem;width:28px;height:28px;border-radius:8px;background:#EEF4FF;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.bi-nav__all-label{font-family:'Lexend',sans-serif;font-size:.85rem;font-weight:700;color:#374151;flex:1;}
+.bi-nav__all.active .bi-nav__all-label{color:#1565C0;}
+.bi-nav__all-count{font-size:.7rem;font-weight:700;font-family:'Lexend',sans-serif;background:#F3F4F6;color:#6B7280;border-radius:12px;padding:2px 8px;}
+.bi-nav__all.active .bi-nav__all-count{background:#90CAF9;color:#fff;}
+.bi-nav__divider{height:1px;background:#F3F4F6;margin:8px 24px 12px;}
+.bi-nav__seg-label{font-family:'Lexend',sans-serif;font-size:.65rem;font-weight:700;color:#C4C9D4;text-transform:uppercase;letter-spacing:.08em;padding:0 24px 8px;}
+.bi-segment__header{display:flex;align-items:center;gap:10px;padding:11px 24px;cursor:pointer;border:none;background:none;width:100%;text-align:left;transition:background .15s;border-left:3px solid transparent;user-select:none;}
+.bi-segment__header:hover{background:#F9FAFB;}
+.bi-segment--ei .bi-segment__header.active{border-left-color:var(--ei-color);background:var(--ei-light);}
+.bi-segment--ai .bi-segment__header.active{border-left-color:var(--ai-color);background:var(--ai-light);}
+.bi-segment--af .bi-segment__header.active{border-left-color:var(--af-color);background:var(--af-light);}
+.bi-segment__icon{font-size:1.1rem;flex-shrink:0;width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;}
+.bi-segment--ei .bi-segment__icon{background:var(--ei-light);}
+.bi-segment--ai .bi-segment__icon{background:var(--ai-light);}
+.bi-segment--af .bi-segment__icon{background:var(--af-light);}
+.bi-segment__name{flex:1;font-family:'Lexend',sans-serif;font-size:.85rem;font-weight:700;color:#374151;}
+.bi-segment__header.active .bi-segment__name{color:#1A1A2E;}
+.bi-segment__count{font-size:.7rem;font-weight:700;font-family:'Lexend',sans-serif;background:#F3F4F6;color:#6B7280;border-radius:12px;padding:2px 8px;margin-right:6px;}
+.bi-segment--ei .bi-segment__header.active .bi-segment__count{background:var(--ei-mid);color:#fff;}
+.bi-segment--ai .bi-segment__header.active .bi-segment__count{background:var(--ai-mid);color:#fff;}
+.bi-segment--af .bi-segment__header.active .bi-segment__count{background:var(--af-mid);color:#fff;}
+.bi-segment__chevron{font-size:.7rem;color:#9CA3AF;transition:transform .25s;flex-shrink:0;}
+.bi-segment__header.open .bi-segment__chevron{transform:rotate(180deg);}
+.bi-segment__drawer{max-height:0;overflow:hidden;transition:max-height .3s cubic-bezier(.4,0,.2,1);}
+.bi-segment__drawer.open{max-height:600px;}
+.bi-nav__item{display:flex;align-items:center;gap:9px;padding:8px 24px 8px 40px;font-size:.82rem;font-weight:600;color:#6B7280;font-family:'Nunito',sans-serif;transition:background .13s,color .13s;cursor:pointer;border:none;background:none;width:100%;text-align:left;border-left:3px solid transparent;}
+.bi-nav__item:hover{background:#F9FAFB;color:#1A1A2E;}
+.bi-segment--ei .bi-nav__item.active{border-left-color:var(--ei-color);background:#FFF5F9;color:var(--ei-color);font-weight:700;}
+.bi-segment--ai .bi-nav__item.active{border-left-color:var(--ai-color);background:#EEF4FF;color:var(--ai-color);font-weight:700;}
+.bi-segment--af .bi-nav__item.active{border-left-color:var(--af-color);background:#EEEFFE;color:var(--af-color);font-weight:700;}
+.bi-nav__item-icon{font-size:.9rem;width:18px;text-align:center;flex-shrink:0;}
+.bi-nav__item-label{flex:1;}
+.bi-main{padding:32px 36px 56px;background:#F4F7FB;min-width:0;}
+.bi-toolbar{display:flex;align-items:center;gap:12px;margin-bottom:28px;flex-wrap:wrap;}
+.bi-toolbar__title{font-family:'Lexend',sans-serif;font-size:1.15rem;font-weight:800;color:#1A1A2E;flex:1;min-width:160px;}
+.bi-toolbar__title span{font-size:.8rem;font-weight:600;color:#9CA3AF;margin-left:8px;}
+.bi-search{display:flex;align-items:center;background:#fff;border:2px solid #DDE3ED;border-radius:10px;padding:6px 14px;gap:8px;transition:border-color .2s;min-width:220px;}
+.bi-search:focus-within{border-color:#1565C0;}
+.bi-search input{border:none;outline:none;font-family:'Nunito',sans-serif;font-size:.85rem;font-weight:600;color:#1A1A2E;background:none;flex:1;min-width:0;}
+.bi-search input::placeholder{color:#9CA3AF;}
+.bi-search__icon{color:#9CA3AF;font-size:.85rem;flex-shrink:0;}
+.bi-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;}
+.bi-filter-btn{padding:5px 14px;border-radius:20px;border:2px solid #DDE3ED;background:#fff;font-family:'Lexend',sans-serif;font-size:.75rem;font-weight:700;color:#6B7280;cursor:pointer;transition:all .17s;white-space:nowrap;}
+.bi-filter-btn:hover{border-color:#1565C0;color:#1565C0;background:#EEF4FF;}
+.bi-filter-btn.active{background:#1565C0;border-color:#1565C0;color:#fff;}
+.bi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;}
+.bi-card{background:#fff;border-radius:16px;box-shadow:0 2px 12px rgba(21,101,192,.07);overflow:hidden;transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column;border:2px solid transparent;}
+.bi-card:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(21,101,192,.14);}
+.bi-card--ei:hover{border-color:var(--ei-color);}
+.bi-card--ai:hover{border-color:var(--ai-color);}
+.bi-card--af:hover{border-color:var(--af-color);}
+.bi-card__top{padding:20px 20px 16px;display:flex;align-items:flex-start;gap:14px;}
+.bi-card__emoji{font-size:2rem;line-height:1;flex-shrink:0;width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;}
+.bi-card--ei .bi-card__emoji{background:var(--ei-light);}
+.bi-card--ai .bi-card__emoji{background:var(--ai-light);}
+.bi-card--af .bi-card__emoji{background:var(--af-light);}
+.bi-card__header{flex:1;min-width:0;}
+.bi-card__title{font-family:'Lexend',sans-serif;font-size:.92rem;font-weight:800;color:#1A1A2E;margin-bottom:5px;line-height:1.3;}
+.bi-card__meta{display:flex;gap:6px;flex-wrap:wrap;}
+.bi-card__tag{font-size:.67rem;font-weight:700;font-family:'Lexend',sans-serif;padding:2px 9px;border-radius:12px;white-space:nowrap;}
+.bi-card--ei .bi-card__tag{background:var(--ei-light);color:var(--ei-color);}
+.bi-card--ai .bi-card__tag{background:var(--ai-light);color:var(--ai-color);}
+.bi-card--af .bi-card__tag{background:var(--af-light);color:var(--af-color);}
+.bi-card__desc{padding:0 20px 16px;font-size:.82rem;color:#6B7280;line-height:1.55;flex:1;}
+.bi-card__footer{padding:12px 20px;border-top:1px solid #F3F4F6;display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;}
+.bi-card__chips{display:flex;gap:5px;flex-wrap:wrap;}
+.bi-card__chip{font-size:.65rem;font-weight:700;padding:2px 8px;border-radius:10px;background:#F3F4F6;color:#6B7280;font-family:'Lexend',sans-serif;}
+.bi-card__btn{flex-shrink:0;padding:6px 14px;border-radius:8px;border:none;font-family:'Lexend',sans-serif;font-size:.75rem;font-weight:700;cursor:pointer;transition:all .17s;display:inline-flex;align-items:center;gap:5px;}
+.bi-card--ei .bi-card__btn{background:var(--ei-light);color:var(--ei-color);}
+.bi-card--ei .bi-card__btn:hover{background:var(--ei-color);color:#fff;}
+.bi-card--ai .bi-card__btn{background:var(--ai-light);color:var(--ai-color);}
+.bi-card--ai .bi-card__btn:hover{background:var(--ai-color);color:#fff;}
+.bi-card--af .bi-card__btn{background:var(--af-light);color:var(--af-color);}
+.bi-card--af .bi-card__btn:hover{background:var(--af-color);color:#fff;}
+.bi-empty{grid-column:1/-1;text-align:center;padding:60px 20px;color:#9CA3AF;}
+.bi-empty__icon{font-size:2.8rem;margin-bottom:12px;display:block;}
+.bi-empty__text{font-family:'Lexend',sans-serif;font-size:.9rem;font-weight:600;}
+.bi-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:8000;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(3px);}
+.bi-overlay.open{display:flex;}
+.bi-modal{background:#fff;border-radius:20px;max-width:620px;width:100%;max-height:85vh;overflow-y:auto;box-shadow:0 24px 60px rgba(0,0,0,.25);animation:modalIn .22s cubic-bezier(.34,1.56,.64,1);}
+@keyframes modalIn{from{opacity:0;transform:scale(.93) translateY(16px)}to{opacity:1;transform:none}}
+.bi-modal__header{padding:28px 28px 20px;display:flex;gap:16px;align-items:flex-start;border-bottom:2px solid #F3F4F6;}
+.bi-modal__emoji{font-size:2.2rem;width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.bi-modal__info{flex:1;}
+.bi-modal__title{font-family:'Lexend',sans-serif;font-size:1.1rem;font-weight:800;color:#1A1A2E;margin-bottom:8px;line-height:1.3;}
+.bi-modal__tags{display:flex;gap:6px;flex-wrap:wrap;}
+.bi-modal__tag{font-size:.68rem;font-weight:700;padding:3px 10px;border-radius:12px;font-family:'Lexend',sans-serif;}
+.bi-modal__close{background:#F3F4F6;border:none;border-radius:50%;width:34px;height:34px;font-size:1rem;cursor:pointer;color:#6B7280;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:background .15s;}
+.bi-modal__close:hover{background:#E5E7EB;color:#1A1A2E;}
+.bi-modal__body{padding:24px 28px 28px;}
+.bi-modal__section{margin-bottom:22px;}
+.bi-modal__section:last-child{margin-bottom:0;}
+.bi-modal__section-title{font-family:'Lexend',sans-serif;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#9CA3AF;margin-bottom:8px;}
+.bi-modal__text{font-size:.88rem;color:#374151;line-height:1.65;}
+.bi-modal__steps{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.bi-modal__step{display:flex;gap:10px;align-items:flex-start;font-size:.86rem;color:#374151;line-height:1.5;}
+.bi-modal__step-num{flex-shrink:0;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Lexend',sans-serif;font-size:.7rem;font-weight:800;color:#fff;margin-top:1px;}
+.bi-modal__materials{display:flex;gap:7px;flex-wrap:wrap;}
+.bi-modal__material{padding:4px 12px;border-radius:8px;background:#F3F4F6;font-size:.78rem;font-weight:600;color:#374151;}
+.bi-modal__habilidades{display:flex;flex-direction:column;gap:5px;}
+.bi-modal__habilidade{display:flex;gap:8px;align-items:baseline;font-size:.83rem;}
+.bi-modal__hab-code{font-family:'Lexend',sans-serif;font-size:.7rem;font-weight:800;padding:2px 8px;border-radius:8px;white-space:nowrap;flex-shrink:0;}
+.bi-modal__hab-desc{color:#6B7280;line-height:1.45;}
+.bi-nav-toggle{display:none;align-items:center;gap:8px;padding:10px 16px;background:#fff;border:2px solid #DDE3ED;border-radius:10px;font-family:'Lexend',sans-serif;font-size:.82rem;font-weight:700;color:#374151;cursor:pointer;margin-bottom:16px;}
+@media(max-width:860px){
+  .bi-wrap{grid-template-columns:1fr;}
+  .bi-nav{display:none;position:static;height:auto;border-right:none;border-bottom:2px solid #EDF0F7;}
+  .bi-nav.mobile-open{display:block;}
+  .bi-nav-toggle{display:flex;}
+  .bi-main{padding:20px 18px 48px;}
+  .bi-grid{grid-template-columns:1fr;}
+  .bi-search{min-width:100%;}
+}
+</style>
+</head>
+<body>
+<nav class="vd-navbar">
+  <div class="vd-navbar__inner">
+    <a href="../index.html" class="vd-navbar__logo">
+      <img src="../assets/logo.png" alt="Varjota DigiEdu" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
+      <span class="vd-navbar__logo-fb" style="display:none">Varjota DigiEdu</span>
+    </a>
+    <button class="vd-navbar__hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <ul class="vd-navbar__links" id="navLinks">
+      <li><a href="../index.html">Início</a></li>
+      <li><a href="../ref-curricular/ref-index.html">BNCC Computação</a></li>
+      <li><a href="banco-ideias.html" class="active">Banco de ideias</a></li>
+      <li><a href="reds.html">REDs</a></li>
+    </ul>
+  </div>
+</nav>
+<section class="bi-hero">
+  <div class="bi-hero__inner">
+    <div class="bi-hero__tag">💡 Banco de Ideias</div>
+    <h1>Ideias criativas para a sua aula</h1>
+    <p>Sugestões de atividades pedagógicas organizadas por segmento e disciplina, alinhadas à BNCC e ao Referencial Curricular de Varjota.</p>
+    <div class="bi-hero__stats">
+      <div class="bi-hero__stat"><strong id="statTotal">–</strong><span>ideias no banco</span></div>
+      <div class="bi-hero__stat"><strong>3</strong><span>segmentos</span></div>
+      <div class="bi-hero__stat"><strong>10</strong><span>disciplinas</span></div>
+    </div>
+  </div>
+</section>
+<div class="bi-wrap">
+
+  <nav class="bi-nav" id="biNav" aria-label="Segmentos e disciplinas">
+    <div class="bi-nav__label">Navegar</div>
+    <button class="bi-nav__all active" id="btnTodas" onclick="showTodas()">
+      <span class="bi-nav__all-icon">💡</span>
+      <span class="bi-nav__all-label">Todas as Ideias</span>
+      <span class="bi-nav__all-count" id="countTodas">0</span>
+    </button>
+    <div class="bi-nav__divider"></div>
+    <div class="bi-nav__seg-label">Por segmento</div>
+    <div class="bi-segment bi-segment--ei">
+      <button class="bi-segment__header" onclick="toggleSegment('ei')" aria-expanded="false">
+        <span class="bi-segment__icon">🧸</span><span class="bi-segment__name">Educação Infantil</span>
+        <span class="bi-segment__count" id="count-ei">0</span><span class="bi-segment__chevron">▼</span>
+      </button>
+      <div class="bi-segment__drawer" id="drawer-ei">
+        <button class="bi-nav__item" onclick="filterView('ei','todos')" data-seg="ei" data-disc="todos"><span class="bi-nav__item-icon">✦</span><span class="bi-nav__item-label">Todas as ideias</span></button>
+        <button class="bi-nav__item" onclick="filterView('ei','interdisciplinar')" data-seg="ei" data-disc="interdisciplinar"><span class="bi-nav__item-icon">🌈</span><span class="bi-nav__item-label">Interdisciplinar</span></button>
+        <button class="bi-nav__item" onclick="filterView('ei','arte')" data-seg="ei" data-disc="arte"><span class="bi-nav__item-icon">🎨</span><span class="bi-nav__item-label">Arte</span></button>
+        <button class="bi-nav__item" onclick="filterView('ei','lingua-portuguesa')" data-seg="ei" data-disc="lingua-portuguesa"><span class="bi-nav__item-icon">📖</span><span class="bi-nav__item-label">Língua Portuguesa</span></button>
+        <button class="bi-nav__item" onclick="filterView('ei','matematica')" data-seg="ei" data-disc="matematica"><span class="bi-nav__item-icon">📐</span><span class="bi-nav__item-label">Matemática</span></button>
+      </div>
+    </div>
+    <div class="bi-segment bi-segment--ai">
+      <button class="bi-segment__header" onclick="toggleSegment('ai')" aria-expanded="false">
+        <span class="bi-segment__icon">📗</span><span class="bi-segment__name">Anos Iniciais</span>
+        <span class="bi-segment__count" id="count-ai">0</span><span class="bi-segment__chevron">▼</span>
+      </button>
+      <div class="bi-segment__drawer" id="drawer-ai">
+        <button class="bi-nav__item" onclick="filterView('ai','todos')" data-seg="ai" data-disc="todos"><span class="bi-nav__item-icon">✦</span><span class="bi-nav__item-label">Todas as ideias</span></button>
+        <button class="bi-nav__item" onclick="filterView('ai','interdisciplinar')" data-seg="ai" data-disc="interdisciplinar"><span class="bi-nav__item-icon">🌈</span><span class="bi-nav__item-label">Interdisciplinar</span></button>
+        <button class="bi-nav__item" onclick="filterView('ai','arte')" data-seg="ai" data-disc="arte"><span class="bi-nav__item-icon">🎨</span><span class="bi-nav__item-label">Arte</span></button>
+        <button class="bi-nav__item" onclick="filterView('ai','ciencias')" data-seg="ai" data-disc="ciencias"><span class="bi-nav__item-icon">🔬</span><span class="bi-nav__item-label">Ciências</span></button>
+        <button class="bi-nav__item" onclick="filterView('ai','educacao-fisica')" data-seg="ai" data-disc="educacao-fisica"><span class="bi-nav__item-icon">⚽</span><span class="bi-nav__item-label">Educação Física</span></button>
+        <button class="bi-nav__item" onclick="filterView('ai','ensino-religioso')" data-seg="ai" data-disc="ensino-religioso"><span class="bi-nav__item-icon">✨</span><span class="bi-nav__item-label">Ensino Religioso</span></button>
+        <button class="bi-nav__item" onclick="filterView('ai','geografia')" data-seg="ai" data-disc="geografia"><span class="bi-nav__item-icon">🌍</span><span class="bi-nav__item-label">Geografia</span></button>
+        <button class="bi-nav__item" onclick="filterView('ai','historia')" data-seg="ai" data-disc="historia"><span class="bi-nav__item-icon">📜</span><span class="bi-nav__item-label">História</span></button>
+        <button class="bi-nav__item" onclick="filterView('ai','lingua-portuguesa')" data-seg="ai" data-disc="lingua-portuguesa"><span class="bi-nav__item-icon">📖</span><span class="bi-nav__item-label">Língua Portuguesa</span></button>
+        <button class="bi-nav__item" onclick="filterView('ai','matematica')" data-seg="ai" data-disc="matematica"><span class="bi-nav__item-icon">📐</span><span class="bi-nav__item-label">Matemática</span></button>
+      </div>
+    </div>
+    <div class="bi-segment bi-segment--af">
+      <button class="bi-segment__header" onclick="toggleSegment('af')" aria-expanded="false">
+        <span class="bi-segment__icon">📘</span><span class="bi-segment__name">Anos Finais</span>
+        <span class="bi-segment__count" id="count-af">0</span><span class="bi-segment__chevron">▼</span>
+      </button>
+      <div class="bi-segment__drawer" id="drawer-af">
+        <button class="bi-nav__item" onclick="filterView('af','todos')" data-seg="af" data-disc="todos"><span class="bi-nav__item-icon">✦</span><span class="bi-nav__item-label">Todas as ideias</span></button>
+        <button class="bi-nav__item" onclick="filterView('af','interdisciplinar')" data-seg="af" data-disc="interdisciplinar"><span class="bi-nav__item-icon">🌈</span><span class="bi-nav__item-label">Interdisciplinar</span></button>
+        <button class="bi-nav__item" onclick="filterView('af','arte')" data-seg="af" data-disc="arte"><span class="bi-nav__item-icon">🎨</span><span class="bi-nav__item-label">Arte</span></button>
+        <button class="bi-nav__item" onclick="filterView('af','ciencias')" data-seg="af" data-disc="ciencias"><span class="bi-nav__item-icon">🔬</span><span class="bi-nav__item-label">Ciências</span></button>
+        <button class="bi-nav__item" onclick="filterView('af','educacao-fisica')" data-seg="af" data-disc="educacao-fisica"><span class="bi-nav__item-icon">⚽</span><span class="bi-nav__item-label">Educação Física</span></button>
+        <button class="bi-nav__item" onclick="filterView('af','ensino-religioso')" data-seg="af" data-disc="ensino-religioso"><span class="bi-nav__item-icon">✨</span><span class="bi-nav__item-label">Ensino Religioso</span></button>
+        <button class="bi-nav__item" onclick="filterView('af','geografia')" data-seg="af" data-disc="geografia"><span class="bi-nav__item-icon">🌍</span><span class="bi-nav__item-label">Geografia</span></button>
+        <button class="bi-nav__item" onclick="filterView('af','historia')" data-seg="af" data-disc="historia"><span class="bi-nav__item-icon">📜</span><span class="bi-nav__item-label">História</span></button>
+        <button class="bi-nav__item" onclick="filterView('af','lingua-inglesa')" data-seg="af" data-disc="lingua-inglesa"><span class="bi-nav__item-icon">🆙</span><span class="bi-nav__item-label">Língua Inglesa</span></button>
+        <button class="bi-nav__item" onclick="filterView('af','lingua-portuguesa')" data-seg="af" data-disc="lingua-portuguesa"><span class="bi-nav__item-icon">📖</span><span class="bi-nav__item-label">Língua Portuguesa</span></button>
+        <button class="bi-nav__item" onclick="filterView('af','matematica')" data-seg="af" data-disc="matematica"><span class="bi-nav__item-icon">📐</span><span class="bi-nav__item-label">Matemática</span></button>
+      </div>
+    </div>
+  </nav>
+  <div class="bi-main">
+    <button class="bi-nav-toggle" onclick="toggleMobileNav()">☰ Filtrar por segmento</button>
+    <div class="bi-toolbar">
+      <div class="bi-toolbar__title" id="toolbarTitle">Todas as Ideias <span></span></div>
+      <div class="bi-search"><span class="bi-search__icon">🔍</span><input type="text" id="searchIdeas" placeholder="Buscar ideias..." oninput="applySearch()"/></div>
+    </div>
+    <div class="bi-filters">
+      <button class="bi-filter-btn active" onclick="setFilter('todos',this)">Todas</button>
+      <button class="bi-filter-btn" onclick="setFilter('pratica',this)">🛠️ Prática</button>
+      <button class="bi-filter-btn" onclick="setFilter('digital',this)">💻 Digital</button>
+      <button class="bi-filter-btn" onclick="setFilter('debate',this)">🗣️ Debate</button>
+      <button class="bi-filter-btn" onclick="setFilter('pesquisa',this)">🔍 Pesquisa</button>
+      <button class="bi-filter-btn" onclick="setFilter('projeto',this)">📁 Projeto</button>
+      <button class="bi-filter-btn" onclick="setFilter('jogo',this)">🎮 Jogo</button>
+    </div>
+    <div class="bi-grid" id="biGrid"></div>
+  </div>
+</div>
+<div class="bi-overlay" id="biOverlay" onclick="closeModal(event)">
+  <div class="bi-modal">
+    <div class="bi-modal__header">
+      <div class="bi-modal__emoji" id="modalEmoji"></div>
+      <div class="bi-modal__info"><div class="bi-modal__title" id="modalTitle"></div><div class="bi-modal__tags" id="modalTags"></div></div>
+      <button class="bi-modal__close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="bi-modal__body" id="modalBody"></div>
+  </div>
+</div>
+<footer class="vd-footer">
+  <div class="vd-footer__inner">
+    <p>© 2025 Prefeitura de Varjota — Secretaria de Educação e Tecnologia (SMETEC)</p>
+    <p class="vd-footer__notice">O conteúdo deste site não pode ser editado, copiado ou distribuído sem expressa autorização da SMETEC-Varjota.</p>
+  </div>
+</footer>
+<script>
+
+/* ════════════════════════════════════════════════════════
+   DADOS DAS IDEIAS
+   Para adicionar novas ideias, insira objetos nos arrays
+   IDEIAS_EI, IDEIAS_AI ou IDEIAS_AF abaixo.
+
+   CAMPOS:
+     id         → prefixo + número  ex: 'ei-003'
+     titulo     → título da ideia
+     emoji      → emoji representativo
+     segmento   → 'ei' | 'ai' | 'af'
+     disciplina → arte | ciencias | educacao-fisica | ensino-religioso
+                  geografia | historia | lingua-inglesa | lingua-portuguesa
+                  matematica | interdisciplinar
+     anos       → array ex: ['2º ano', '3º ano']
+     tipo       → array: 'pratica'|'digital'|'debate'|'pesquisa'|'projeto'|'jogo'
+     descricao  → texto curto para o card
+     objetivo   → objetivo pedagógico
+     passos     → array de strings com as etapas
+     materiais  → array de strings
+     habilidades→ array de {codigo, desc}
+     duracao    → ex: '2 aulas'
+     agrupamento→ 'individual'|'duplas'|'grupos'|'turma'
+   ════════════════════════════════════════════════════════ */
+
+var IDEIAS_EI = [
+  {
+    id:'ei-001', titulo:'Minha Caixinha de Sons', emoji:'🎵',
+    segmento:'ei', disciplina:'interdisciplinar', anos:['4-5 anos'],
+    tipo:['pratica','jogo'],
+    descricao:'Crianças exploram sons do ambiente e criam instrumentos musicais com materiais recicláveis, desenvolvendo percepção auditiva e criatividade.',
+    objetivo:'Desenvolver a percepção auditiva e a expressão criativa por meio da exploração e produção sonora com materiais do cotidiano.',
+    passos:['Roda de conversa sobre sons que as crianças conhecem e ouvem no dia a dia.','Exploração livre de materiais recicláveis (potes, tampinhas, arroz, feijão).','Cada criança monta seu instrumento sonoro e o experimenta.','Apresentação em roda: cada um toca seu instrumento e todos identificam o som.','Registro com desenho do instrumento criado.'],
+    materiais:['Potes plásticos','Tampinhas','Arroz e feijão','Fita adesiva','Papel e giz de cera'],
+    habilidades:[{codigo:'EI03TS02',desc:'Utilizar materiais variados com possibilidades de manipulação.'},{codigo:'EI03EO05',desc:'Demonstrar valorização das características da criança.'}],
+    duracao:'2 aulas', agrupamento:'individual'
+  },
+  {
+    id:'ei-002', titulo:'Mapa do Nosso Espaço', emoji:'🗺️',
+    segmento:'ei', disciplina:'interdisciplinar', anos:['4-5 anos'],
+    tipo:['pratica','projeto'],
+    descricao:'As crianças constroem coletivamente um mapa da sala de aula e do pátio, desenvolvendo noções espaciais e representação simbólica.',
+    objetivo:'Desenvolver noções de espacialidade, localização e representação simbólica por meio da construção coletiva de mapas do ambiente escolar.',
+    passos:['Passeio pela sala e pelo pátio observando móveis, objetos e espaços.','Conversa sobre como representar o que foi visto em um papel.','Cada grupo recebe uma folha grande e materiais para desenhar sua parte do mapa.','Os grupos montam o mapa completo juntando as partes.','Roda final para "ler" o mapa e identificar os espaços.'],
+    materiais:['Papel kraft grande','Canetinhas','Régua','Cola','Fotografia da escola (opcional)'],
+    habilidades:[{codigo:'EI03ET01',desc:'Estabelecer relações de comparação entre objetos, observando suas propriedades.'},{codigo:'EI03ET03',desc:'Identificar e selecionar fontes de informações para responder questões.'}],
+    duracao:'3 aulas', agrupamento:'grupos'
+  }
+  /* Adicione novas ideias da Educação Infantil aqui ↓ */
+];
+
+var IDEIAS_AI = [
+  {
+    id:'ai-001', titulo:'Receita Matemática', emoji:'🍰',
+    segmento:'ai', disciplina:'matematica', anos:['2º ano','3º ano'],
+    tipo:['pratica','projeto'],
+    descricao:'Alunos interpretam uma receita culinária para praticar medidas, frações e sequência de passos, integrando matemática e língua portuguesa.',
+    objetivo:'Desenvolver noções de medida, fração e sequência lógica por meio da leitura e interpretação de uma receita culinária simples.',
+    passos:['Apresentação de uma receita simples (bolo de caneca ou gelatina).','Identificação das medidas e quantidades presentes na receita.','Resolução de situações-problema: se a receita serve 4, como fazer para 8?','Reescrita da receita com as quantidades ajustadas.','Se possível: execução da receita em sala.'],
+    materiais:['Receita impressa','Caderno','Régua','Copo medidor (opcional)','Ingredientes (opcional)'],
+    habilidades:[{codigo:'EF02MA06',desc:'Construir fatos básicos da adição e subtração.'},{codigo:'EF03MA11',desc:'Reconhecer e relacionar unidades de medida de comprimento.'}],
+    duracao:'2 aulas', agrupamento:'duplas'
+  },
+  {
+    id:'ai-002', titulo:'Caça ao Tesouro Histórico', emoji:'🏺',
+    segmento:'ai', disciplina:'historia', anos:['4º ano','5º ano'],
+    tipo:['jogo','pesquisa'],
+    descricao:'Uma gincana colaborativa onde os alunos resolvem enigmas sobre a história local e do Brasil para encontrar o tesouro do conhecimento.',
+    objetivo:'Estimular a pesquisa histórica e o trabalho em equipe por meio de uma gincana gamificada com enigmas sobre história local e brasileira.',
+    passos:['Divisão da turma em grupos e entrega do primeiro envelope com o enigma inicial.','Cada enigma resolvido leva a uma pista escondida na escola.','As pistas envolvem pesquisa em livros, mapas ou internet.','O grupo que chegar ao tesouro apresenta o que aprendeu na jornada.','Roda de socialização: cada grupo compartilha o conteúdo de sua pista.'],
+    materiais:['Envelopes','Pistas impressas','Livros didáticos','Acesso à internet (opcional)'],
+    habilidades:[{codigo:'EF04HI03',desc:'Identificar as transformações ocorridas na cidade ao longo do tempo.'},{codigo:'EF05HI02',desc:'Selecionar e registrar informações sobre a história local.'}],
+    duracao:'2 aulas', agrupamento:'grupos'
+  },
+  {
+    id:'ai-003', titulo:'Jornal da Turma', emoji:'📰',
+    segmento:'ai', disciplina:'lingua-portuguesa', anos:['3º ano','4º ano','5º ano'],
+    tipo:['projeto','digital'],
+    descricao:'Os alunos assumem papéis de repórteres, editores e fotógrafos para criar um jornal impresso ou digital sobre temas da escola e da comunidade.',
+    objetivo:'Desenvolver a produção textual de diferentes gêneros jornalísticos, a escuta ativa e a capacidade de síntese e revisão textual.',
+    passos:['Análise de jornais reais: identificar seções, manchetes, fotos e legendas.','Escolha dos temas e distribuição de funções: repórter, fotógrafo, editor.','Entrevistas com colegas, professores ou membros da comunidade.','Escrita das notícias com revisão em duplas.','Diagramação e publicação (impressa ou digital/blog).'],
+    materiais:['Jornais impressos de referência','Computador ou tablet','Câmera ou celular','Papel A3'],
+    habilidades:[{codigo:'EF35LP06',desc:'Ler e ouvir textos noticiosos, identificando o fato principal.'},{codigo:'EF35LP07',desc:'Produzir notícias sobre fatos da escola ou comunidade.'}],
+    duracao:'5 aulas', agrupamento:'grupos'
+  },
+  {
+    id:'ai-004', titulo:'Mapeando a Vizinhança', emoji:'🗺️',
+    segmento:'ai', disciplina:'geografia', anos:['2º ano','3º ano'],
+    tipo:['pratica','digital'],
+    descricao:'Alunos exploram o Google Maps para criar um mapa comentado dos pontos importantes do bairro ou da cidade de Varjota.',
+    objetivo:'Desenvolver noções de localização, orientação e representação cartográfica utilizando ferramentas digitais de mapeamento.',
+    passos:['Conversa sobre pontos de referência que os alunos conhecem na cidade.','Exploração coletiva do Google Maps ou Google Earth no projetor.','Em duplas: cada aluno localiza sua casa e a escola no mapa.','Criação de um mapa desenhado com pontos marcados e legendas.','Exposição dos mapas na sala e apresentação oral.'],
+    materiais:['Computadores ou tablets','Acesso à internet','Papel A3','Canetinhas coloridas'],
+    habilidades:[{codigo:'EF02GE04',desc:'Reconhecer semelhanças e diferenças entre paisagens.'},{codigo:'EF03GE06',desc:'Identificar e interpretar imagens e fotografias do lugar de vivência.'}],
+    duracao:'3 aulas', agrupamento:'duplas'
+  }
+  /* Adicione novas ideias dos Anos Iniciais aqui ↓ */
+];
+
+var IDEIAS_AF = [
+  {
+    id:'af-001', titulo:'Podcast Científico', emoji:'🎙️',
+    segmento:'af', disciplina:'ciencias', anos:['7º ano','8º ano'],
+    tipo:['projeto','digital'],
+    descricao:'Grupos pesquisam um tema científico atual e produzem um episódio de podcast para a escola, desenvolvendo argumentação e comunicação oral.',
+    objetivo:'Desenvolver pesquisa científica, argumentação e comunicação oral por meio da produção colaborativa de um podcast sobre tema de Ciências.',
+    passos:['Seleção colaborativa dos temas (saúde, meio ambiente, tecnologia etc.).','Pesquisa em fontes confiáveis: artigos, sites científicos, vídeos.','Roteiro do episódio: abertura, desenvolvimento, curiosidades, encerramento.','Gravação com celular ou computador (app gratuito de gravação).','Edição básica e publicação no Google Drive ou plataforma da escola.'],
+    materiais:['Celular ou computador com microfone','App Audacity ou similar (gratuito)','Acesso à internet','Roteiro impresso'],
+    habilidades:[{codigo:'EF07CI07',desc:'Analisar e explicar as transformações envolvendo ciclos biogeoquímicos.'},{codigo:'EF08CI09',desc:'Comparar mecanismos de defesa do organismo humano.'}],
+    duracao:'4 aulas', agrupamento:'grupos'
+  },
+  {
+    id:'af-002', titulo:'Debate Estruturado', emoji:'🗣️',
+    segmento:'af', disciplina:'lingua-portuguesa', anos:['6º ano','7º ano','8º ano','9º ano'],
+    tipo:['debate'],
+    descricao:'Alunos debatem uma questão controversa do cotidiano seguindo regras formais, desenvolvendo argumentação, escuta respeitosa e pensamento crítico.',
+    objetivo:'Desenvolver a capacidade argumentativa, a escuta ativa e o respeito à diversidade de opiniões por meio do debate regrado.',
+    passos:['Escolha do tema (ex: redes sociais fazem mais bem ou mal?).','Divisão em dois grupos: favoráveis e contrários (sorteio).','Pesquisa de argumentos: cada grupo tem 2 aulas para preparar.','Debate formal com tempo controlado para abertura, réplica e tréplica.','Votação secreta da turma sobre os argumentos mais convincentes.','Reflexão final: o que aprendi sobre o outro lado da questão?'],
+    materiais:['Timer','Caderno para anotações','Lousa','Acesso à internet para pesquisa'],
+    habilidades:[{codigo:'EF69LP13',desc:'Engajar-se e contribuir com a busca de conclusões comuns aos debates.'},{codigo:'EF69LP14',desc:'Formular perguntas e réplicas durante o debate.'}],
+    duracao:'4 aulas', agrupamento:'turma'
+  },
+  {
+    id:'af-003', titulo:'Infográfico Geográfico', emoji:'📊',
+    segmento:'af', disciplina:'geografia', anos:['6º ano','7º ano'],
+    tipo:['projeto','digital','pesquisa'],
+    descricao:'Alunos pesquisam dados sobre o município de Varjota e criam infográficos digitais comparando com dados estaduais e nacionais.',
+    objetivo:'Desenvolver o letramento cartográfico e estatístico por meio da criação de infográficos com dados reais sobre o município de Varjota.',
+    passos:['Pesquisa no IBGE e sites oficiais: população, área, IDH, economia de Varjota.','Comparação com dados do Ceará e do Brasil.','Seleção dos dados mais relevantes e definição do layout do infográfico.','Criação no Canva, Google Slides ou à mão em papel A3.','Apresentação e exposição dos infográficos na escola.'],
+    materiais:['Computadores ou tablets','Acesso ao site do IBGE','Canva ou Google Slides (gratuito)','Papel A3 (opcional)'],
+    habilidades:[{codigo:'EF06GE09',desc:'Elaborar hipóteses sobre o papel das tecnologias na organização do espaço.'},{codigo:'EF07GE01',desc:'Avaliar, por meio de exemplos, a importância do trabalho na produção da cultura.'}],
+    duracao:'3 aulas', agrupamento:'duplas'
+  },
+  {
+    id:'af-004', titulo:'Linha do Tempo Digital', emoji:'⏳',
+    segmento:'af', disciplina:'historia', anos:['6º ano','7º ano','8º ano','9º ano'],
+    tipo:['digital','projeto'],
+    descricao:'Grupos criam linhas do tempo interativas de períodos históricos usando ferramentas digitais gratuitas, relacionando fatos locais e globais.',
+    objetivo:'Desenvolver noções de temporalidade, causalidade e relação entre eventos históricos locais e globais por meio da criação de linhas do tempo digitais.',
+    passos:['Seleção do período histórico e dos eventos a serem representados.','Pesquisa em fontes variadas (livro, internet, museu virtual).','Criação da linha do tempo no TimelineJS, Canva ou Google Slides.','Inclusão de imagens, mapas e fontes primárias quando possível.','Apresentação para a turma e debate sobre conexões entre os eventos.'],
+    materiais:['Computadores ou tablets','Acesso ao TimelineJS ou Canva','Acesso à internet','Livros didáticos'],
+    habilidades:[{codigo:'EF06HI01',desc:'Identificar diferentes formas de compreensão da noção de tempo e espaço.'},{codigo:'EF09HI03',desc:'Identificar continuidades e rupturas nos processos históricos.'}],
+    duracao:'4 aulas', agrupamento:'grupos'
+  },
+  {
+    id:'af-005', titulo:'Simulação de Ecossistema', emoji:'🌿',
+    segmento:'af', disciplina:'ciencias', anos:['6º ano'],
+    tipo:['pratica','projeto'],
+    descricao:'Alunos constroem um terrário e monitoram as interações dos seres vivos ao longo de semanas, registrando observações em diário científico.',
+    objetivo:'Compreender as relações entre seres vivos e seu ambiente por meio da construção e observação sistemática de um ecossistema em miniatura.',
+    passos:['Aula teórica sobre ecossistemas, cadeias alimentares e fluxo de energia.','Planejamento coletivo do terrário: quais seres, qual solo, qual umidade.','Construção do terrário em grupos com garrafas PET ou potes de vidro.','Observação semanal com registro em diário científico.','Análise final: o que funcionou, o que mudou, o que aprendemos.'],
+    materiais:['Garrafas PET grandes ou potes de vidro','Terra, areia e pedras','Plantas pequenas','Minhocas ou insetos (opcional)','Caderno de registro'],
+    habilidades:[{codigo:'EF06CI04',desc:'Relacionar os papéis ecológicos dos grupos de seres vivos com a estrutura do ecossistema.'},{codigo:'EF06CI05',desc:'Estabelecer a relação entre os fatores abióticos e bióticos de um ecossistema.'}],
+    duracao:'6 aulas + observação por 3 semanas', agrupamento:'grupos'
+  }
+  /* Adicione novas ideias dos Anos Finais aqui ↓ */
+];
+
+var IDEIAS = [].concat(IDEIAS_EI, IDEIAS_AI, IDEIAS_AF);
+
+var state = {segmento:'todos', disciplina:'todos', tipo:'todos', busca:''};
+var SEG_LABELS  = {ei:'Educação Infantil', ai:'Anos Iniciais', af:'Anos Finais'};
+var DISC_LABELS = {arte:'Arte',ciencias:'Ciências','educacao-fisica':'Ed. Física','ensino-religioso':'Ens. Religioso',geografia:'Geografia',historia:'História','lingua-inglesa':'Língua Inglesa','lingua-portuguesa':'L. Portuguesa',matematica:'Matemática',interdisciplinar:'Interdisciplinar'};
+var TIPO_LABELS = {pratica:'🛠️ Prática',digital:'💻 Digital',debate:'🗣️ Debate',pesquisa:'🔍 Pesquisa',projeto:'📁 Projeto',jogo:'🎮 Jogo'};
+var AGR_LABELS  = {individual:'👤 Individual',duplas:'👥 Duplas',grupos:'👨‍👩‍👧 Grupos',turma:'🏫 Turma toda'};
+
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+function getFiltered(){
+  var q=state.busca.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+  return IDEIAS.filter(function(i){
+    if(state.segmento!=='todos'&&i.segmento!==state.segmento)return false;
+    if(state.disciplina!=='todos'&&i.disciplina!==state.disciplina)return false;
+    if(state.tipo!=='todos'&&i.tipo.indexOf(state.tipo)===-1)return false;
+    if(q){var h=(i.titulo+' '+i.descricao+' '+i.disciplina+' '+i.anos.join(' ')).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');if(!h.includes(q))return false;}
+    return true;
+  });
+}
+
+function renderGrid(){
+  var items=getFiltered(),grid=document.getElementById('biGrid');
+  var lbl=state.segmento==='todos'?'Todas as Ideias':SEG_LABELS[state.segmento];
+  if(state.disciplina!=='todos'&&DISC_LABELS[state.disciplina])lbl+=' — '+DISC_LABELS[state.disciplina];
+  document.getElementById('toolbarTitle').innerHTML=esc(lbl)+' <span>'+items.length+' ideia'+(items.length!==1?'s':'')+'</span>';
+  if(!items.length){grid.innerHTML='<div class="bi-empty"><span class="bi-empty__icon">💭</span><div class="bi-empty__text">Nenhuma ideia encontrada para esta seleção.</div></div>';return;}
+  grid.innerHTML=items.map(function(idea){
+    var cor=idea.segmento;
+    var tipos=idea.tipo.map(function(t){return '<span class="bi-card__chip">'+esc(TIPO_LABELS[t]||t)+'</span>';}).join('');
+    var anos=idea.anos.map(function(a){return '<span class="bi-card__tag">'+esc(a)+'</span>';}).join('');
+    return '<div class="bi-card bi-card--'+cor+'" id="idea-'+esc(idea.id)+'">'
+      +'<div class="bi-card__top"><div class="bi-card__emoji">'+idea.emoji+'</div>'
+      +'<div class="bi-card__header"><div class="bi-card__title">'+esc(idea.titulo)+'</div>'
+      +'<div class="bi-card__meta"><span class="bi-card__tag">'+esc(DISC_LABELS[idea.disciplina]||idea.disciplina)+'</span>'+anos+'</div></div></div>'
+      +'<div class="bi-card__desc">'+esc(idea.descricao)+'</div>'
+      +'<div class="bi-card__footer"><div class="bi-card__chips">'+tipos+'</div>'
+      +'<button class="bi-card__btn" onclick="openModal(\''+idea.id+'\')">Ver detalhes ↗</button></div></div>';
+  }).join('');
+}
+
+function updateCounts(){
+  document.getElementById('statTotal').textContent=IDEIAS.length;
+  document.getElementById('countTodas').textContent=IDEIAS.length;
+  ['ei','ai','af'].forEach(function(s){document.getElementById('count-'+s).textContent=IDEIAS.filter(function(i){return i.segmento===s;}).length;});
+}
+
+function showTodas(){
+  state.segmento='todos';state.disciplina='todos';
+  ['ei','ai','af'].forEach(function(s){
+    document.getElementById('drawer-'+s).classList.remove('open');
+    var h=document.getElementById('drawer-'+s).previousElementSibling;
+    h.classList.remove('open','active');h.setAttribute('aria-expanded','false');
+  });
+  document.querySelectorAll('.bi-nav__item').forEach(function(b){b.classList.remove('active');});
+  document.getElementById('btnTodas').classList.add('active');
+  renderGrid();
+}
+
+function toggleSegment(seg){
+  var drawer=document.getElementById('drawer-'+seg),header=drawer.previousElementSibling,isOpen=drawer.classList.contains('open');
+  ['ei','ai','af'].forEach(function(s){
+    document.getElementById('drawer-'+s).classList.remove('open');
+    var h=document.getElementById('drawer-'+s).previousElementSibling;
+    h.classList.remove('open','active');h.setAttribute('aria-expanded','false');
+  });
+  if(!isOpen){
+    drawer.classList.add('open');header.classList.add('open','active');header.setAttribute('aria-expanded','true');
+    state.segmento=seg;state.disciplina='todos';
+    document.getElementById('btnTodas').classList.remove('active');
+    document.querySelectorAll('.bi-nav__item').forEach(function(b){b.classList.remove('active');});
+    var ab=document.querySelector('[data-seg="'+seg+'"][data-disc="todos"]');
+    if(ab)ab.classList.add('active');
+    renderGrid();
+  }
+}
+
+function filterView(seg,disc){
+  state.segmento=seg;state.disciplina=disc;
+  document.getElementById('btnTodas').classList.remove('active');
+  document.querySelectorAll('.bi-nav__item').forEach(function(b){b.classList.toggle('active',b.dataset.seg===seg&&b.dataset.disc===disc);});
+  renderGrid();
+}
+
+function setFilter(tipo,btn){
+  state.tipo=tipo;
+  document.querySelectorAll('.bi-filter-btn').forEach(function(b){b.classList.remove('active');});
+  btn.classList.add('active');renderGrid();
+}
+
+function applySearch(){state.busca=document.getElementById('searchIdeas').value;renderGrid();}
+function toggleMobileNav(){document.getElementById('biNav').classList.toggle('mobile-open');}
+
+function openModal(id){
+  var idea=IDEIAS.find(function(i){return i.id===id;});
+  if(!idea)return;
+  var cor=idea.segmento;
+  var corHex={ei:'var(--ei-color)',ai:'var(--ai-color)',af:'var(--af-color)'}[cor];
+  var corLight={ei:'var(--ei-light)',ai:'var(--ai-light)',af:'var(--af-light)'}[cor];
+  document.getElementById('modalEmoji').textContent=idea.emoji;
+  document.getElementById('modalEmoji').style.background=corLight;
+  document.getElementById('modalTitle').textContent=idea.titulo;
+  var tags='<span class="bi-modal__tag" style="background:'+corLight+';color:'+corHex+'">'+esc(SEG_LABELS[idea.segmento])+'</span>';
+  tags+='<span class="bi-modal__tag" style="background:#F3F4F6;color:#374151">'+esc(DISC_LABELS[idea.disciplina]||idea.disciplina)+'</span>';
+  idea.anos.forEach(function(a){tags+='<span class="bi-modal__tag" style="background:#F3F4F6;color:#374151">'+esc(a)+'</span>';});
+  tags+='<span class="bi-modal__tag" style="background:#F3F4F6;color:#374151">⏱ '+esc(idea.duracao)+'</span>';
+  tags+='<span class="bi-modal__tag" style="background:#F3F4F6;color:#374151">'+esc(AGR_LABELS[idea.agrupamento]||idea.agrupamento)+'</span>';
+  document.getElementById('modalTags').innerHTML=tags;
+  var body='<div class="bi-modal__section"><div class="bi-modal__section-title">🎯 Objetivo pedagógico</div><div class="bi-modal__text">'+esc(idea.objetivo)+'</div></div>';
+  body+='<div class="bi-modal__section"><div class="bi-modal__section-title">📋 Passo a passo</div><ol class="bi-modal__steps">'+idea.passos.map(function(p,i){return '<li class="bi-modal__step"><span class="bi-modal__step-num" style="background:'+corHex+'">'+(i+1)+'</span><span>'+esc(p)+'</span></li>';}).join('')+'</ol></div>';
+  body+='<div class="bi-modal__section"><div class="bi-modal__section-title">🧰 Materiais necessários</div><div class="bi-modal__materials">'+idea.materiais.map(function(m){return '<span class="bi-modal__material">'+esc(m)+'</span>';}).join('')+'</div></div>';
+  if(idea.habilidades&&idea.habilidades.length){body+='<div class="bi-modal__section"><div class="bi-modal__section-title">📌 Habilidades relacionadas</div><div class="bi-modal__habilidades">'+idea.habilidades.map(function(h){return '<div class="bi-modal__habilidade"><span class="bi-modal__hab-code" style="background:'+corLight+';color:'+corHex+'">'+esc(h.codigo)+'</span><span class="bi-modal__hab-desc">'+esc(h.desc)+'</span></div>';}).join('')+'</div></div>';}
+  document.getElementById('modalBody').innerHTML=body;
+  document.getElementById('biOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(e){if(e&&e.target!==document.getElementById('biOverlay'))return;document.getElementById('biOverlay').classList.remove('open');document.body.style.overflow='';}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();});
+document.getElementById('hamburger').addEventListener('click',function(){document.getElementById('navLinks').classList.toggle('open');});
+updateCounts();
+renderGrid();
+
+</script>
+</body>
+</html>
