@@ -37,4 +37,25 @@
       '<link rel="stylesheet" href="' + css.href + '">'
     );
   }
+
+  // Injeta favicons
+if (!document.querySelector('link[rel="icon"]')) {
+  const favicons = [
+    { rel: 'icon',             type: 'image/x-icon', href: 'favicon.ico',                sizes: null },
+    { rel: 'icon',             type: 'image/png',    href: 'favicon-16x16.png',           sizes: '16x16' },
+    { rel: 'icon',             type: 'image/png',    href: 'favicon-32x32.png',           sizes: '32x32' },
+    { rel: 'icon',             type: 'image/png',    href: 'android-chrome-192x192.png',  sizes: '192x192' },
+    { rel: 'icon',             type: 'image/png',    href: 'android-chrome-512x512.png',  sizes: '512x512' },
+    { rel: 'apple-touch-icon', type: 'image/png',    href: 'apple-touch-icon.png',        sizes: '180x180' },
+  ];
+  favicons.forEach(function(f) {
+    const link = document.createElement('link');
+    link.rel  = f.rel;
+    link.type = f.type;
+    link.href = PREFIX + 'assets/' + f.href;
+    if (f.sizes) link.sizes = f.sizes;
+    document.head.appendChild(link);
+  });
+}
+
 })();
