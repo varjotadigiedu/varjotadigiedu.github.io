@@ -1,0 +1,1 @@
+python3 scripts/gera-aba/gera-aba.py scripts/gera-aba/links.csv

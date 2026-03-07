@@ -1,0 +1,7 @@
+disciplina,titulo,descricao,url,aba,anos,tipo_recurso,tipo_uso,acessibilidade
+matematica,Khan Academy — Frações,Videoaulas e exercícios sobre frações para os anos iniciais do EF.,https://pt.khanacademy.org/math/cc-fourth-grade-math/fractions,reds,4º ano|5º ano,site,complementar,
+historia,Museu Imperial — Visita Virtual,Tour virtual pelo Museu Imperial de Petrópolis com acervo do período imperial brasileiro.,https://www.museuimperial.gov.br,reds,7º ano|8º ano,site,complementar,
+lingua-portuguesa,Escrevendo o Futuro — Olimpíada de LP,Portal com cadernos do professor e materiais de apoio para produção textual.,https://www.escrevendoofuturo.org.br,materiais,Todos,site,teorico,
+arte,Tate Kids — Jogos e Atividades de Arte,Plataforma do museu Tate com jogos e atividades de arte para crianças e adolescentes.,https://www.tate.org.uk/kids,reds,Anos Iniciais|Anos Finais,jogo,pratico,
+ciencias,Vídeo em Libras — Sistema Solar,Videoaula sobre o sistema solar com interpretação completa em Libras.,https://exemplo.gov.br/sistema-solar-libras,acessibilidade,6º ano|7º ano,video,teorico,libras
+educacao-fisica,Guia de Atividades Adaptadas para TEA,Material com propostas de atividades físicas adaptadas para estudantes com TEA e TDAH.,https://exemplo.gov.br/ef-atividades-tea.pdf,acessibilidade,Todos,pdf,pratico,TEA|TDAH

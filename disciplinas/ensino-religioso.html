@@ -40,7 +40,35 @@
     .em-breve { text-align: center; padding: 48px 20px; color: #9CA3AF; border: 2px dashed #DDE3ED; border-radius: 14px; }
     .em-breve__icon { font-size: 2.5rem; margin-bottom: 10px; }
     .em-breve__text { font-family: 'Lexend', sans-serif; font-size: .9rem; font-weight: 600; }
+
+    /* ── Links externos (abas) ── */
+    .links-toolbar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; align-items: center; }
+    .links-toolbar__group { display: flex; flex-wrap: wrap; gap: 6px; }
+    .links-toolbar__sep { width: 1px; height: 28px; background: #DDE3ED; margin: 0 4px; flex-shrink: 0; }
+    .links-filtro { padding: 4px 13px; border-radius: 20px; border: 2px solid #DDE3ED; background: #fff; font-family: 'Lexend', sans-serif; font-size: .72rem; font-weight: 700; color: #6B7280; cursor: pointer; transition: all .15s; white-space: nowrap; }
+    .links-filtro:hover { border-color: var(--disc-cor); color: var(--disc-cor); background: var(--disc-cor-light); }
+    .links-filtro.ativo { background: var(--disc-cor); border-color: var(--disc-cor); color: #fff; }
+    .links-lista { display: flex; flex-direction: column; gap: 10px; }
+    .link-item { display: flex; align-items: flex-start; gap: 14px; padding: 14px 16px; background: #fff; border: 1.5px solid #EDF0F7; border-radius: 12px; transition: border-color .15s, box-shadow .15s; text-decoration: none; }
+    .link-item:hover { border-color: var(--disc-cor); box-shadow: 0 3px 12px rgba(0,0,0,.07); }
+    .link-item__icon { font-size: 1.3rem; flex-shrink: 0; width: 38px; height: 38px; border-radius: 10px; background: var(--disc-cor-light); display: flex; align-items: center; justify-content: center; }
+    .link-item__body { flex: 1; min-width: 0; }
+    .link-item__titulo { font-family: 'Lexend', sans-serif; font-size: .88rem; font-weight: 700; color: #1A1A2E; margin-bottom: 3px; line-height: 1.3; }
+    .link-item:hover .link-item__titulo { color: var(--disc-cor); }
+    .link-item__desc { font-size: .8rem; color: #6B7280; line-height: 1.5; margin-bottom: 7px; }
+    .link-item__tags { display: flex; gap: 5px; flex-wrap: wrap; }
+    .link-item__tag { font-size: .65rem; font-weight: 700; font-family: 'Lexend', sans-serif; padding: 2px 8px; border-radius: 10px; white-space: nowrap; }
+    .link-item__tag--recurso { background: #EEF4FF; color: #1565C0; }
+    .link-item__tag--uso     { background: #F0FBF4; color: #1B5E20; }
+    .link-item__tag--ac      { background: #FFF3E0; color: #E65100; }
+    .link-item__tag--ano     { background: #F3F4F6; color: #374151; }
+    .link-item__seta { font-size: .85rem; color: #9CA3AF; flex-shrink: 0; margin-top: 2px; }
+    .links-vazio { text-align: center; padding: 40px 20px; color: #9CA3AF; border: 2px dashed #DDE3ED; border-radius: 12px; }
+    .links-vazio__icon { font-size: 2rem; margin-bottom: 8px; }
+    .links-vazio__text { font-family: 'Lexend', sans-serif; font-size: .85rem; font-weight: 600; }
+    .links-count { font-family: 'Lexend', sans-serif; font-size: .75rem; font-weight: 600; color: #9CA3AF; margin-left: auto; white-space: nowrap; }
   </style>
+  <script src="dados/links-ensino-religioso.js"></script>
 </head>
 <body>
 
@@ -695,16 +723,20 @@
   </div>
 
   <div class="sec-painel" id="painel-atividades">
-    <div class="em-breve"><div class="em-breve__icon">🚧</div><div class="em-breve__text">Conteúdo em breve</div></div>
+    <div id="ui-atividades"></div>
+  </div>
   </div>
   <div class="sec-painel" id="painel-reds">
-    <div class="em-breve"><div class="em-breve__icon">🚧</div><div class="em-breve__text">Conteúdo em breve</div></div>
+    <div id="ui-reds"></div>
+  </div>
   </div>
   <div class="sec-painel" id="painel-materiais">
-    <div class="em-breve"><div class="em-breve__icon">🚧</div><div class="em-breve__text">Conteúdo em breve</div></div>
+    <div id="ui-materiais"></div>
+  </div>
   </div>
   <div class="sec-painel" id="painel-acessibilidade">
-    <div class="em-breve"><div class="em-breve__icon">🚧</div><div class="em-breve__text">Conteúdo em breve</div></div>
+    <div id="ui-acessibilidade"></div>
+  </div>
   </div>
 
 
@@ -715,6 +747,117 @@
         document.getElementById('painel-'+i).classList.toggle('ativo', i===id);
       });
     }
+  </script>
+
+  <script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+
+      var ABAS_LINKS = ['atividades','reds','materiais','acessibilidade'];
+
+      var TIPO_RECURSO_LABEL = {'video':'🎥 Vídeo','pdf':'📄 PDF','site':'🌐 Site','apresentacao':'📊 Apresentação','planilha':'📋 Planilha','podcast':'🎙️ Podcast','jogo':'🎮 Jogo','simulador':'🔭 Simulador','aplicativo':'📱 Aplicativo','infografico':'🖼️ Infográfico','atividade-interativa':'✏️ Atividade Interativa','mapa':'🗺️ Mapa','outros':'📦 Outros'};
+      var TIPO_USO_LABEL = {'teorico':'📚 Teórico','pratico':'🛠️ Prático','avaliativo':'📝 Avaliativo','complementar':'➕ Complementar'};
+      var AC_LABEL = {'libras':'👐 Libras','audiodescrição':'🔊 Audiodescrição','daltonismo':'🎨 Daltonismo','baixa-visao':'👁️ Baixa Visão','TEA':'🧩 TEA','TDAH':'⚡ TDAH','deficiencia-intelectual':'🧠 Def. Intelectual','deficiencia-fisica':'♿ Def. Física','altas-habilidades':'⭐ Altas Habilidades'};
+      var linkState = {};
+
+      function getLinksAba(aba) { return (window.LINKS_ENSINO_RELIGIOSO || []).filter(function(l){return l.aba===aba;}); }
+
+      function filtrarLinks(items, st) {
+        return items.filter(function(l) {
+          if (st.ano !== 'todos' && l.anos.indexOf(st.ano) === -1) return false;
+          if (st.recurso !== 'todos' && l.tipo_recurso !== st.recurso) return false;
+          if (st.uso !== 'todos' && l.tipo_uso !== st.uso) return false;
+          if (st.ac !== 'todos' && (!l.acessibilidade || l.acessibilidade.indexOf(st.ac) === -1)) return false;
+          return true;
+        });
+      }
+
+      function mkBtn(valor, label, ativo, aba, campo) {
+        var cls = 'links-filtro' + (ativo === valor ? ' ativo' : '');
+        return '<button class="' + cls + '" onclick="setLinkFiltro(\'' + aba + '\',\'' + campo + '\',\'' + valor + '\')">' + label + '</button>';
+      }
+
+      window.renderLinks = function(aba) {
+        var container = document.getElementById('ui-' + aba);
+        if (!container) return;
+        var isAc = aba === 'acessibilidade';
+        if (!linkState[aba]) linkState[aba] = {ano:'todos', recurso:'todos', uso:'todos', ac:'todos'};
+        var st    = linkState[aba];
+        var todos = getLinksAba(aba);
+        var itens = filtrarLinks(todos, st);
+
+        var anosSet = {};
+        todos.forEach(function(l){l.anos.forEach(function(a){anosSet[a]=1;});});
+        var fAnos = '<div class="links-toolbar__group">' + mkBtn('todos','Todos os anos',st.ano,aba,'ano');
+        Object.keys(anosSet).sort().forEach(function(a){ fAnos += mkBtn(a,a,st.ano,aba,'ano'); });
+        fAnos += '</div>';
+
+        var recSet = {};
+        todos.forEach(function(l){recSet[l.tipo_recurso]=1;});
+        var fRec = '<div class="links-toolbar__group">' + mkBtn('todos','📦 Tipo',st.recurso,aba,'recurso');
+        Object.keys(recSet).forEach(function(t){ fRec += mkBtn(t, TIPO_RECURSO_LABEL[t]||t, st.recurso, aba, 'recurso'); });
+        fRec += '</div>';
+
+        var usoSet = {};
+        todos.forEach(function(l){usoSet[l.tipo_uso]=1;});
+        var fUso = '<div class="links-toolbar__group">' + mkBtn('todos','🎯 Uso',st.uso,aba,'uso');
+        Object.keys(usoSet).forEach(function(t){ fUso += mkBtn(t, TIPO_USO_LABEL[t]||t, st.uso, aba, 'uso'); });
+        fUso += '</div>';
+
+        var fAc = '';
+        if (isAc) {
+          var acSet = {};
+          todos.forEach(function(l){(l.acessibilidade||[]).forEach(function(a){acSet[a]=1;});});
+          fAc = '<div class="links-toolbar__sep"></div><div class="links-toolbar__group">' + mkBtn('todos','♿ Condição',st.ac,aba,'ac');
+          Object.keys(acSet).forEach(function(t){ fAc += mkBtn(t, AC_LABEL[t]||t, st.ac, aba, 'ac'); });
+          fAc += '</div>';
+        }
+
+        var count = '<span class="links-count">' + itens.length + ' / ' + todos.length + ' recursos</span>';
+        var toolbar = '<div class="links-toolbar">' + fAnos
+          + '<div class="links-toolbar__sep"></div>' + fRec
+          + '<div class="links-toolbar__sep"></div>' + fUso + fAc + count + '</div>';
+
+        var lista;
+        if (!itens.length) {
+          lista = '<div class="links-vazio"><div class="links-vazio__icon">🔍</div><div class="links-vazio__text">Nenhum recurso encontrado para esta seleção.</div></div>';
+        } else {
+          lista = '<div class="links-lista">' + itens.map(function(l) {
+            var icone = (TIPO_RECURSO_LABEL[l.tipo_recurso]||'🔗').split(' ')[0];
+            var tags  = '<span class="link-item__tag link-item__tag--recurso">'+(TIPO_RECURSO_LABEL[l.tipo_recurso]||l.tipo_recurso)+'</span>';
+            tags += '<span class="link-item__tag link-item__tag--uso">'+(TIPO_USO_LABEL[l.tipo_uso]||l.tipo_uso)+'</span>';
+            l.anos.forEach(function(a){tags+='<span class="link-item__tag link-item__tag--ano">'+a+'</span>';});
+            (l.acessibilidade||[]).forEach(function(a){tags+='<span class="link-item__tag link-item__tag--ac">'+(AC_LABEL[a]||a)+'</span>';});
+            return '<a class="link-item" href="'+l.url+'" target="_blank" rel="noopener">'
+              +'<div class="link-item__icon">'+icone+'</div>'
+              +'<div class="link-item__body">'
+              +'<div class="link-item__titulo">'+l.titulo+'</div>'
+              +'<div class="link-item__desc">'+l.descricao+'</div>'
+              +'<div class="link-item__tags">'+tags+'</div>'
+              +'</div><span class="link-item__seta">↗</span></a>';
+          }).join('') + '</div>';
+        }
+        container.innerHTML = toolbar + lista;
+      };
+
+      window.setLinkFiltro = function(aba, campo, valor) {
+        if (!linkState[aba]) linkState[aba] = {ano:'todos',recurso:'todos',uso:'todos',ac:'todos'};
+        linkState[aba][campo] = valor;
+        window.renderLinks(aba);
+      };
+
+      var _original = window.mostrarSecao;
+      window.mostrarSecao = function(id) {
+        if (typeof _original === 'function') _original(id);
+        if (ABAS_LINKS.indexOf(id) !== -1) window.renderLinks(id);
+      };
+
+      if (typeof window.mostrarSecao === 'function') {
+        window.mostrarSecao('bncc');
+      }
+
+    });
+
   </script>
 
 </body>

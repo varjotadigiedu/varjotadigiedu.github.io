@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sobre — Varjota DigiEdu</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="../assets/favicon.ico" type="image/x-icon">
+<style>
+:root {
+  --vd-primary: #1565C0; --vd-primary-dk: #0D47A1; --vd-accent: #FF8F00;
+  --vd-bg: #F4F7FB; --vd-white: #FFFFFF; --vd-text: #1A1A2E; --vd-muted: #6B7280;
+  --vd-border: #DDE3ED; --vd-nav-h: 68px; --vd-radius: 14px;
+  --vd-shadow: 0 2px 14px rgba(21,101,192,.09); --vd-shadow-md: 0 6px 28px rgba(21,101,192,.15);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--vd-bg); color: var(--vd-text); font-family: 'Nunito', sans-serif; min-height: 100vh; display: flex; flex-direction: column; }
+
+/* ── Navbar ── */
+.vd-navbar { position: sticky; top: 0; z-index: 1000; background: linear-gradient(135deg, var(--vd-primary-dk) 0%, var(--vd-primary) 100%); height: var(--vd-nav-h); box-shadow: 0 2px 20px rgba(13,71,161,.3); }
+.vd-navbar__inner { max-width: 1400px; margin: 0 auto; height: 100%; padding: 0 28px; display: flex; align-items: center; gap: 28px; }
+.vd-navbar__logo { flex-shrink: 0; display: flex; align-items: center; text-decoration: none; }
+.vd-navbar__logo img { height: 50px; width: auto; object-fit: contain; }
+.vd-navbar__logo-fb { color:#fff;font-family:'Lexend',sans-serif;font-weight:700;font-size:1.1rem; }
+.vd-navbar__links { display: flex; list-style: none; gap: 2px; margin-left: auto; }
+.vd-navbar__links a { display: block; padding: 8px 15px; color: rgba(255,255,255,.85); text-decoration: none; font-family: 'Lexend', sans-serif; font-size: .85rem; font-weight: 500; border-radius: 8px; transition: background .2s, color .2s; white-space: nowrap; }
+.vd-navbar__links a:hover, .vd-navbar__links a.active { background: rgba(255,255,255,.18); color: #fff; }
+.vd-navbar__hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; margin-left: auto; }
+.vd-navbar__hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; }
+
+/* ── Hero ── */
+.page-hero { background: linear-gradient(135deg, var(--vd-primary-dk) 0%, var(--vd-primary) 60%, #1976D2 100%); padding: 48px 28px 44px; text-align: center; position: relative; }
+.page-hero::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+.page-hero__icon { position: relative; font-size: 3rem; margin-bottom: 12px; }
+.page-hero__title { position: relative; font-family: 'Lexend', sans-serif; font-size: 1.9rem; font-weight: 800; color: #fff; margin-bottom: 8px; }
+.page-hero__sub { position: relative; font-size: .95rem; color: rgba(255,255,255,.75); max-width: 560px; margin: 0 auto; line-height: 1.6; }
+
+/* ── Main ── */
+main { flex: 1; max-width: 900px; margin: 0 auto; padding: 40px 24px 60px; width: 100%; }
+
+/* ── Seções ── */
+.sobre-section { margin-bottom: 52px; }
+.sobre-section__titulo { font-family: 'Lexend', sans-serif; font-size: 1.15rem; font-weight: 700; color: var(--vd-primary); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+.sobre-section__texto { font-size: .92rem; color: var(--vd-text); line-height: 1.75; }
+.sobre-section__texto + .sobre-section__texto { margin-top: 12px; }
+.sobre-divider { border: none; border-top: 2px solid var(--vd-border); margin-bottom: 52px; }
+
+/* ── Box plataforma ── */
+.sobre-box { background: #fff; border: 1.5px solid var(--vd-border); border-radius: var(--vd-radius); padding: 28px 28px; box-shadow: var(--vd-shadow); }
+.sobre-box__kv { display: grid; grid-template-columns: auto 1fr; gap: 8px 20px; margin-top: 16px; }
+.sobre-box__kv dt { font-family: 'Lexend', sans-serif; font-size: .78rem; font-weight: 700; color: var(--vd-muted); text-transform: uppercase; letter-spacing: .05em; padding-top: 2px; }
+.sobre-box__kv dd { font-size: .88rem; color: var(--vd-text); line-height: 1.55; }
+
+/* ── Pilares da Educação Digital ── */
+.pilares-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; margin-top: 16px; }
+.pilar-card { background: #fff; border: 1.5px solid var(--vd-border); border-radius: 12px; padding: 18px 16px; display: flex; flex-direction: column; gap: 6px; }
+.pilar-card__icon { font-size: 1.5rem; }
+.pilar-card__titulo { font-family: 'Lexend', sans-serif; font-size: .85rem; font-weight: 700; color: var(--vd-primary); }
+.pilar-card__desc { font-size: .78rem; color: var(--vd-muted); line-height: 1.55; }
+
+/* ── Equipe ── */
+.equipe-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 18px; margin-top: 16px; }
+.equipe-card { background: #fff; border: 1.5px solid var(--vd-border); border-radius: var(--vd-radius); padding: 24px 16px 20px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px; box-shadow: var(--vd-shadow); transition: transform .18s, box-shadow .18s; }
+.equipe-card:hover { transform: translateY(-3px); box-shadow: var(--vd-shadow-md); }
+.equipe-card__foto { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 3px solid var(--vd-border); background: #EEF4FF; display: flex; align-items: center; justify-content: center; font-size: 2rem; overflow: hidden; }
+.equipe-card__foto img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+.equipe-card__nome { font-family: 'Lexend', sans-serif; font-size: .88rem; font-weight: 700; color: var(--vd-text); line-height: 1.3; }
+.equipe-card__cargo { font-size: .75rem; color: var(--vd-muted); font-weight: 600; line-height: 1.4; }
+.equipe-card__badge { font-size: .68rem; font-family: 'Lexend', sans-serif; font-weight: 700; padding: 3px 10px; border-radius: 20px; background: #EEF4FF; color: var(--vd-primary); }
+
+/* ── Footer ── */
+.vd-footer { background: linear-gradient(135deg, var(--vd-primary-dk), var(--vd-primary)); color: rgba(255,255,255,.8); margin-top: auto; padding: 20px 28px; text-align: center; }
+.vd-footer__inner { max-width:1400px; margin:0 auto; display:flex; flex-direction:column; gap:4px; }
+.vd-footer__inner p { font-size:.8rem; font-weight:600; }
+.vd-footer__notice { font-size:.72rem!important; opacity:.65; }
+
+/* ── Mobile ── */
+@media(max-width:600px){
+  .vd-navbar__links { display: none; flex-direction: column; position: absolute; top: var(--vd-nav-h); left: 0; right: 0; background: var(--vd-primary-dk); padding: 12px 16px; gap: 4px; }
+  .vd-navbar__links.open { display: flex; }
+  .vd-navbar__hamburger { display: flex; }
+  .page-hero__title { font-size: 1.5rem; }
+  .equipe-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+  .sobre-box__kv { grid-template-columns: 1fr; gap: 4px; }
+  .sobre-box__kv dt { margin-top: 8px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="vd-navbar">
+  <div class="vd-navbar__inner">
+    <a href="../index.html" class="vd-navbar__logo">
+      <img src="../assets/logo.png" alt="Varjota DigiEdu" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
+      <span class="vd-navbar__logo-fb" style="display:none">Varjota DigiEdu</span>
+    </a>
+    <button class="vd-navbar__hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <ul class="vd-navbar__links" id="navLinks">
+      <li><a href="../index.html">Início</a></li>
+      <li><a href="../ref-curricular/ref-index.html">BNCC Computação</a></li>
+      <li><a href="banco-ideias.html">Banco de Ideias</a></li>
+      <li><a href="reds.html">REDs</a></li>
+      <li><a href="sobre.html" class="active">Sobre</a></li>
+      <li><a href="suporte.html">Suporte</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero__icon">🏫</div>
+  <h1 class="page-hero__title">Sobre a Plataforma</h1>
+  <p class="page-hero__sub">Conheça o Varjota DigiEdu, sua proposta pedagógica e as pessoas que tornam esta iniciativa possível.</p>
+</div>
+
+<main>
+
+  <!-- ── Sobre o site ── -->
+  <section class="sobre-section">
+    <h2 class="sobre-section__titulo">🖥️ O que é o Varjota DigiEdu</h2>
+    <div class="sobre-box">
+      <p class="sobre-section__texto">
+        O <strong>Varjota DigiEdu</strong> é a plataforma oficial de recursos educacionais digitais da Secretaria Municipal de Educação e Tecnologia de Varjota (SMETEC-Varjota). Desenvolvida para apoiar professores e gestores da rede municipal, a plataforma reúne em um único espaço os referenciais curriculares, recursos educacionais digitais (REDs), ideias pedagógicas e materiais de apoio organizados por disciplina e ano escolar.
+      </p>
+      <p class="sobre-section__texto">
+        A plataforma é estruturada em torno do currículo da Educação Básica e do Referencial Curricular da Educação Digital e Midiática de Varjota, permitindo que educadores encontrem recursos alinhados às habilidades da BNCC e às especificidades do contexto local.
+      </p>
+      <dl class="sobre-box__kv">
+        <dt>Mantenedor</dt>
+        <dd>SMETEC — Secretaria Municipal de Educação e Tecnologia de Varjota</dd>
+        <dt>Desenvolvimento</dt>
+        <dd>Professor Gabriel do Carmo Rodrigues Alves</dd>
+        <dt>Público-alvo</dt>
+        <dd>Professores, coordenadores e gestores da rede municipal de Varjota</dd>
+        <dt>Abrangência</dt>
+        <dd>Educação Infantil e Ensino Fundamental (1º ao 9º ano)</dd>
+        <dt>Atualização</dt>
+        <dd>Contínua — novos recursos são incorporados ao longo do ano letivo</dd>
+      </dl>
+    </div>
+  </section>
+
+  <hr class="sobre-divider">
+
+  <!-- ── Educação Digital e Midiática ── -->
+  <section class="sobre-section">
+    <h2 class="sobre-section__titulo">💻 Educação Digital e Midiática</h2>
+    <p class="sobre-section__texto">
+      A <strong>Educação Digital e Midiática</strong> é uma área do conhecimento que busca desenvolver nos estudantes as competências necessárias para compreender, usar e criar com as tecnologias digitais de forma crítica, ética e criativa. Vai além do simples uso de dispositivos — envolve o letramento digital, a cidadania na internet, o pensamento computacional e a capacidade de produzir e avaliar informações em ambientes digitais.
+    </p>
+    <p class="sobre-section__texto">
+      No contexto da BNCC, a Cultura Digital é reconhecida como uma das competências gerais da Educação Básica. O Referencial Curricular da Educação Digital e Midiática de Varjota organiza essas competências em três eixos que perpassam todas as disciplinas e etapas da Educação Básica de maneira transversal:
+    </p>
+
+    <div class="pilares-grid">
+      <div class="pilar-card">
+        <span class="pilar-card__icon">🔢</span>
+        <span class="pilar-card__titulo">Pensamento Computacional</span>
+        <p class="pilar-card__desc">Resolução de problemas com lógica, decomposição, padrões e algoritmos.</p>
+      </div>
+      <div class="pilar-card">
+        <span class="pilar-card__icon">🌐</span>
+        <span class="pilar-card__titulo">Mundo Digital</span>
+        <p class="pilar-card__desc">Compreensão de como o mundo digital funciona e seu impacto na sociedade.</p>
+      </div>
+      <div class="pilar-card">
+        <span class="pilar-card__icon">🤝</span>
+        <span class="pilar-card__titulo">Cultura Digital</span>
+        <p class="pilar-card__desc">Uso, participação e produção ético, crítico e consciente das tecnologias na vida social e cidadã.
+          Produção criativa e autoral com linguagens e ferramentas digitais.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="sobre-divider">
+
+  <!-- ── Equipe ── -->
+  <section class="sobre-section">
+    <h2 class="sobre-section__titulo">👥 Equipe Responsável</h2>
+    <p class="sobre-section__texto" style="margin-bottom:0">Conheça as pessoas que coordenam, desenvolvem e mantêm o Varjota DigiEdu.</p>
+
+    <div class="equipe-grid">
+
+      <div class="equipe-card">
+        <div class="equipe-card__foto">
+          <img src="../assets/equipe/responsavel-00.jpg" alt="Foto"
+               onerror="this.parentElement.innerHTML='👤'"/>
+        </div>
+        <span class="equipe-card__nome">Francisco Elmo Bezerra Monte</span>
+        <span class="equipe-card__cargo">Prefeito Municipal</span>
+        <span class="equipe-card__badge">Gestão</span>
+      </div>
+
+      <div class="equipe-card">
+        <div class="equipe-card__foto">
+          <img src="../assets/equipe/responsavel-01.jpg" alt="Foto"
+               onerror="this.parentElement.innerHTML='👤'"/>
+        </div>
+        <span class="equipe-card__nome">Maria Lucila Oliveira Lima</span>
+        <span class="equipe-card__cargo">Secretário de Educação e Tecnologia</span>
+        <span class="equipe-card__badge">Gestão</span>
+      </div>
+
+      <div class="equipe-card">
+        <div class="equipe-card__foto">
+          <img src="../assets/equipe/responsavel-02.jpg" alt="Foto"
+               onerror="this.parentElement.innerHTML='👤'"/>
+        </div>
+        <span class="equipe-card__nome">Nome do Responsável</span>
+        <span class="equipe-card__cargo">Gerente do Paic Integral</span>
+        <span class="equipe-card__badge">Coordenação</span>
+      </div>
+
+      <div class="equipe-card">
+        <div class="equipe-card__foto">
+          <img src="../assets/equipe/responsavel-02.jpg" alt="Foto"
+               onerror="this.parentElement.innerHTML='👤'"/>
+        </div>
+        <span class="equipe-card__nome">Nome do Responsável</span>
+        <span class="equipe-card__cargo">Coordenador(a) Pedagógico(a)</span>
+        <span class="equipe-card__badge">Coordenação</span>
+      </div>
+
+      <div class="equipe-card">
+        <div class="equipe-card__foto">
+          <img src="../assets/equipe/responsavel-03.jpg" alt="Foto"
+               onerror="this.parentElement.innerHTML='👤'"/>
+        </div>
+        <span class="equipe-card__nome">Gabriel do Carmo Rodrigues Alves</span>
+        <span class="equipe-card__cargo">Coordenador de Tecnologia Educacional</span>
+        <span class="equipe-card__badge">Formação</span>
+        <span class="equipe-card__badge">Tecnologia</span>
+      </div>
+
+      <div class="equipe-card">
+        <div class="equipe-card__foto">
+          <img src="../assets/equipe/responsavel-04.jpg" alt="Foto"
+               onerror="this.parentElement.innerHTML='👤'"/>
+        </div>
+        <span class="equipe-card__nome">Nome do Responsável</span>
+        <span class="equipe-card__cargo">Designer e Desenvolvimento Web</span>
+        <span class="equipe-card__badge">Desenvolvimento</span>
+      </div>
+
+    </div>
+    <!-- Para adicionar mais membros, copie um bloco .equipe-card acima.        -->
+    <!-- Fotos devem ser salvas em assets/equipe/ com fundo neutro, 200×200px. -->
+  </section>
+
+</main>
+
+<footer class="vd-footer">
+  <div class="vd-footer__inner">
+    <p>© 2025 Prefeitura de Varjota — Secretaria de Educação e Tecnologia (SMETEC)</p>
+    <p class="vd-footer__notice">O conteúdo deste site não pode ser editado, copiado ou distribuído sem expressa autorização da SMETEC-Varjota.</p>
+  </div>
+</footer>
+
+<script>
+document.getElementById('hamburger').addEventListener('click', function() {
+  document.getElementById('navLinks').classList.toggle('open');
+});
+</script>
+</body>
+</html>

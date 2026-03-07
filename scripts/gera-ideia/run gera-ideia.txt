@@ -1,0 +1,1 @@
+python3 scripts/gera-ideia/gera-ideia.py scripts/gera-ideia/ideias.csv
