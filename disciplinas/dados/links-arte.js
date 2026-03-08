@@ -143,8 +143,34 @@ window.LINKS_ARTE = [
       tipo_recurso: 'pdf',
       tipo_uso: 'pratico',
       acessibilidade: ['TEA', 'TDAH']
-    }
+    },
   
-    /* Adicione novos links aqui ↓ */
+     
+
+    {
+    id: 'ar-re-004',
+    titulo: "Tate Kids — Jogos e Atividades de Arte",
+    descricao: "Plataforma do museu Tate com jogos e atividades de arte para crianças e adolescentes.",
+    url: 'https://www.tate.org.uk/kids',
+    aba: 'reds',
+    anos: ['Anos Iniciais', 'Anos Finais'],
+    tipo_recurso: 'jogo',
+    tipo_uso: 'pratico',
+    acessibilidade: []
+  },
+
+    {
+    id: 'ar-re-005',
+    titulo: "Tate Kids — Jogos e Atividades de Arte",
+    descricao: "Plataforma do museu Tate com jogos e atividades de arte para crianças e adolescentes.",
+    url: 'https://www.tate.org.uk/kids',
+    aba: 'reds',
+    anos: ['Anos Iniciais', 'Anos Finais'],
+    tipo_recurso: 'jogo',
+    tipo_uso: 'pratico',
+    acessibilidade: []
+  },
+
+  /* Adicione novos links aqui ↓ */
   
   ];

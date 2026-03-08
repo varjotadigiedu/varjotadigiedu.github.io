@@ -220,8 +220,10 @@ body { background: var(--vd-bg); color: var(--vd-text); font-family: 'Nunito', s
     <ul class="vd-navbar__links" id="navLinks">
       <li><a href="../index.html">Início</a></li>
       <li><a href="../ref-curricular/ref-index.html">BNCC Computação</a></li>
-      <li><a href="banco-ideias.html" class="active">Banco de ideias</a></li>
+      <li><a href="banco-ideias.html" class="active">Banco de Ideias</a></li>
       <li><a href="reds.html">REDs</a></li>
+      <li><a href="sobre.html">Sobre</a></li>
+      <li><a href="suporte.html">Suporte</a></li>
     </ul>
   </div>
 </nav>
@@ -333,165 +335,10 @@ body { background: var(--vd-bg); color: var(--vd-text); font-family: 'Nunito', s
     <p class="vd-footer__notice">O conteúdo deste site não pode ser editado, copiado ou distribuído sem expressa autorização da SMETEC-Varjota.</p>
   </div>
 </footer>
+<script src="dados/ideias-ei.js"></script>
+<script src="dados/ideias-ai.js"></script>
+<script src="dados/ideias-af.js"></script>
 <script>
-
-/* ════════════════════════════════════════════════════════
-   DADOS DAS IDEIAS
-   Para adicionar novas ideias, insira objetos nos arrays
-   IDEIAS_EI, IDEIAS_AI ou IDEIAS_AF abaixo.
-
-   CAMPOS:
-     id         → prefixo + número  ex: 'ei-003'
-     titulo     → título da ideia
-     emoji      → emoji representativo
-     segmento   → 'ei' | 'ai' | 'af'
-     disciplina → arte | ciencias | educacao-fisica | ensino-religioso
-                  geografia | historia | lingua-inglesa | lingua-portuguesa
-                  matematica | interdisciplinar
-     anos       → array ex: ['2º ano', '3º ano']
-     tipo       → array: 'pratica'|'digital'|'debate'|'pesquisa'|'projeto'|'jogo'
-     descricao  → texto curto para o card
-     objetivo   → objetivo pedagógico
-     passos     → array de strings com as etapas
-     materiais  → array de strings
-     habilidades→ array de {codigo, desc}
-     duracao    → ex: '2 aulas'
-     agrupamento→ 'individual'|'duplas'|'grupos'|'turma'
-   ════════════════════════════════════════════════════════ */
-
-var IDEIAS_EI = [
-  {
-    id:'ei-001', titulo:'Minha Caixinha de Sons', emoji:'🎵',
-    segmento:'ei', disciplina:'interdisciplinar', anos:['4-5 anos'],
-    tipo:['pratica','jogo'],
-    descricao:'Crianças exploram sons do ambiente e criam instrumentos musicais com materiais recicláveis, desenvolvendo percepção auditiva e criatividade.',
-    objetivo:'Desenvolver a percepção auditiva e a expressão criativa por meio da exploração e produção sonora com materiais do cotidiano.',
-    passos:['Roda de conversa sobre sons que as crianças conhecem e ouvem no dia a dia.','Exploração livre de materiais recicláveis (potes, tampinhas, arroz, feijão).','Cada criança monta seu instrumento sonoro e o experimenta.','Apresentação em roda: cada um toca seu instrumento e todos identificam o som.','Registro com desenho do instrumento criado.'],
-    materiais:['Potes plásticos','Tampinhas','Arroz e feijão','Fita adesiva','Papel e giz de cera'],
-    habilidades:[{codigo:'EI03TS02',desc:'Utilizar materiais variados com possibilidades de manipulação.'},{codigo:'EI03EO05',desc:'Demonstrar valorização das características da criança.'}],
-    duracao:'2 aulas', agrupamento:'individual'
-  },
-  {
-    id:'ei-002', titulo:'Mapa do Nosso Espaço', emoji:'🗺️',
-    segmento:'ei', disciplina:'interdisciplinar', anos:['4-5 anos'],
-    tipo:['pratica','projeto'],
-    descricao:'As crianças constroem coletivamente um mapa da sala de aula e do pátio, desenvolvendo noções espaciais e representação simbólica.',
-    objetivo:'Desenvolver noções de espacialidade, localização e representação simbólica por meio da construção coletiva de mapas do ambiente escolar.',
-    passos:['Passeio pela sala e pelo pátio observando móveis, objetos e espaços.','Conversa sobre como representar o que foi visto em um papel.','Cada grupo recebe uma folha grande e materiais para desenhar sua parte do mapa.','Os grupos montam o mapa completo juntando as partes.','Roda final para "ler" o mapa e identificar os espaços.'],
-    materiais:['Papel kraft grande','Canetinhas','Régua','Cola','Fotografia da escola (opcional)'],
-    habilidades:[{codigo:'EI03ET01',desc:'Estabelecer relações de comparação entre objetos, observando suas propriedades.'},{codigo:'EI03ET03',desc:'Identificar e selecionar fontes de informações para responder questões.'}],
-    duracao:'3 aulas', agrupamento:'grupos'
-  }
-  /* Adicione novas ideias da Educação Infantil aqui ↓ */
-];
-
-var IDEIAS_AI = [
-  {
-    id:'ai-001', titulo:'Receita Matemática', emoji:'🍰',
-    segmento:'ai', disciplina:'matematica', anos:['2º ano','3º ano'],
-    tipo:['pratica','projeto'],
-    descricao:'Alunos interpretam uma receita culinária para praticar medidas, frações e sequência de passos, integrando matemática e língua portuguesa.',
-    objetivo:'Desenvolver noções de medida, fração e sequência lógica por meio da leitura e interpretação de uma receita culinária simples.',
-    passos:['Apresentação de uma receita simples (bolo de caneca ou gelatina).','Identificação das medidas e quantidades presentes na receita.','Resolução de situações-problema: se a receita serve 4, como fazer para 8?','Reescrita da receita com as quantidades ajustadas.','Se possível: execução da receita em sala.'],
-    materiais:['Receita impressa','Caderno','Régua','Copo medidor (opcional)','Ingredientes (opcional)'],
-    habilidades:[{codigo:'EF02MA06',desc:'Construir fatos básicos da adição e subtração.'},{codigo:'EF03MA11',desc:'Reconhecer e relacionar unidades de medida de comprimento.'}],
-    duracao:'2 aulas', agrupamento:'duplas'
-  },
-  {
-    id:'ai-002', titulo:'Caça ao Tesouro Histórico', emoji:'🏺',
-    segmento:'ai', disciplina:'historia', anos:['4º ano','5º ano'],
-    tipo:['jogo','pesquisa'],
-    descricao:'Uma gincana colaborativa onde os alunos resolvem enigmas sobre a história local e do Brasil para encontrar o tesouro do conhecimento.',
-    objetivo:'Estimular a pesquisa histórica e o trabalho em equipe por meio de uma gincana gamificada com enigmas sobre história local e brasileira.',
-    passos:['Divisão da turma em grupos e entrega do primeiro envelope com o enigma inicial.','Cada enigma resolvido leva a uma pista escondida na escola.','As pistas envolvem pesquisa em livros, mapas ou internet.','O grupo que chegar ao tesouro apresenta o que aprendeu na jornada.','Roda de socialização: cada grupo compartilha o conteúdo de sua pista.'],
-    materiais:['Envelopes','Pistas impressas','Livros didáticos','Acesso à internet (opcional)'],
-    habilidades:[{codigo:'EF04HI03',desc:'Identificar as transformações ocorridas na cidade ao longo do tempo.'},{codigo:'EF05HI02',desc:'Selecionar e registrar informações sobre a história local.'}],
-    duracao:'2 aulas', agrupamento:'grupos'
-  },
-  {
-    id:'ai-003', titulo:'Jornal da Turma', emoji:'📰',
-    segmento:'ai', disciplina:'lingua-portuguesa', anos:['3º ano','4º ano','5º ano'],
-    tipo:['projeto','digital'],
-    descricao:'Os alunos assumem papéis de repórteres, editores e fotógrafos para criar um jornal impresso ou digital sobre temas da escola e da comunidade.',
-    objetivo:'Desenvolver a produção textual de diferentes gêneros jornalísticos, a escuta ativa e a capacidade de síntese e revisão textual.',
-    passos:['Análise de jornais reais: identificar seções, manchetes, fotos e legendas.','Escolha dos temas e distribuição de funções: repórter, fotógrafo, editor.','Entrevistas com colegas, professores ou membros da comunidade.','Escrita das notícias com revisão em duplas.','Diagramação e publicação (impressa ou digital/blog).'],
-    materiais:['Jornais impressos de referência','Computador ou tablet','Câmera ou celular','Papel A3'],
-    habilidades:[{codigo:'EF35LP06',desc:'Ler e ouvir textos noticiosos, identificando o fato principal.'},{codigo:'EF35LP07',desc:'Produzir notícias sobre fatos da escola ou comunidade.'}],
-    duracao:'5 aulas', agrupamento:'grupos'
-  },
-  {
-    id:'ai-004', titulo:'Mapeando a Vizinhança', emoji:'🗺️',
-    segmento:'ai', disciplina:'geografia', anos:['2º ano','3º ano'],
-    tipo:['pratica','digital'],
-    descricao:'Alunos exploram o Google Maps para criar um mapa comentado dos pontos importantes do bairro ou da cidade de Varjota.',
-    objetivo:'Desenvolver noções de localização, orientação e representação cartográfica utilizando ferramentas digitais de mapeamento.',
-    passos:['Conversa sobre pontos de referência que os alunos conhecem na cidade.','Exploração coletiva do Google Maps ou Google Earth no projetor.','Em duplas: cada aluno localiza sua casa e a escola no mapa.','Criação de um mapa desenhado com pontos marcados e legendas.','Exposição dos mapas na sala e apresentação oral.'],
-    materiais:['Computadores ou tablets','Acesso à internet','Papel A3','Canetinhas coloridas'],
-    habilidades:[{codigo:'EF02GE04',desc:'Reconhecer semelhanças e diferenças entre paisagens.'},{codigo:'EF03GE06',desc:'Identificar e interpretar imagens e fotografias do lugar de vivência.'}],
-    duracao:'3 aulas', agrupamento:'duplas'
-  }
-  /* Adicione novas ideias dos Anos Iniciais aqui ↓ */
-];
-
-var IDEIAS_AF = [
-  {
-    id:'af-001', titulo:'Podcast Científico', emoji:'🎙️',
-    segmento:'af', disciplina:'ciencias', anos:['7º ano','8º ano'],
-    tipo:['projeto','digital'],
-    descricao:'Grupos pesquisam um tema científico atual e produzem um episódio de podcast para a escola, desenvolvendo argumentação e comunicação oral.',
-    objetivo:'Desenvolver pesquisa científica, argumentação e comunicação oral por meio da produção colaborativa de um podcast sobre tema de Ciências.',
-    passos:['Seleção colaborativa dos temas (saúde, meio ambiente, tecnologia etc.).','Pesquisa em fontes confiáveis: artigos, sites científicos, vídeos.','Roteiro do episódio: abertura, desenvolvimento, curiosidades, encerramento.','Gravação com celular ou computador (app gratuito de gravação).','Edição básica e publicação no Google Drive ou plataforma da escola.'],
-    materiais:['Celular ou computador com microfone','App Audacity ou similar (gratuito)','Acesso à internet','Roteiro impresso'],
-    habilidades:[{codigo:'EF07CI07',desc:'Analisar e explicar as transformações envolvendo ciclos biogeoquímicos.'},{codigo:'EF08CI09',desc:'Comparar mecanismos de defesa do organismo humano.'}],
-    duracao:'4 aulas', agrupamento:'grupos'
-  },
-  {
-    id:'af-002', titulo:'Debate Estruturado', emoji:'🗣️',
-    segmento:'af', disciplina:'lingua-portuguesa', anos:['6º ano','7º ano','8º ano','9º ano'],
-    tipo:['debate'],
-    descricao:'Alunos debatem uma questão controversa do cotidiano seguindo regras formais, desenvolvendo argumentação, escuta respeitosa e pensamento crítico.',
-    objetivo:'Desenvolver a capacidade argumentativa, a escuta ativa e o respeito à diversidade de opiniões por meio do debate regrado.',
-    passos:['Escolha do tema (ex: redes sociais fazem mais bem ou mal?).','Divisão em dois grupos: favoráveis e contrários (sorteio).','Pesquisa de argumentos: cada grupo tem 2 aulas para preparar.','Debate formal com tempo controlado para abertura, réplica e tréplica.','Votação secreta da turma sobre os argumentos mais convincentes.','Reflexão final: o que aprendi sobre o outro lado da questão?'],
-    materiais:['Timer','Caderno para anotações','Lousa','Acesso à internet para pesquisa'],
-    habilidades:[{codigo:'EF69LP13',desc:'Engajar-se e contribuir com a busca de conclusões comuns aos debates.'},{codigo:'EF69LP14',desc:'Formular perguntas e réplicas durante o debate.'}],
-    duracao:'4 aulas', agrupamento:'turma'
-  },
-  {
-    id:'af-003', titulo:'Infográfico Geográfico', emoji:'📊',
-    segmento:'af', disciplina:'geografia', anos:['6º ano','7º ano'],
-    tipo:['projeto','digital','pesquisa'],
-    descricao:'Alunos pesquisam dados sobre o município de Varjota e criam infográficos digitais comparando com dados estaduais e nacionais.',
-    objetivo:'Desenvolver o letramento cartográfico e estatístico por meio da criação de infográficos com dados reais sobre o município de Varjota.',
-    passos:['Pesquisa no IBGE e sites oficiais: população, área, IDH, economia de Varjota.','Comparação com dados do Ceará e do Brasil.','Seleção dos dados mais relevantes e definição do layout do infográfico.','Criação no Canva, Google Slides ou à mão em papel A3.','Apresentação e exposição dos infográficos na escola.'],
-    materiais:['Computadores ou tablets','Acesso ao site do IBGE','Canva ou Google Slides (gratuito)','Papel A3 (opcional)'],
-    habilidades:[{codigo:'EF06GE09',desc:'Elaborar hipóteses sobre o papel das tecnologias na organização do espaço.'},{codigo:'EF07GE01',desc:'Avaliar, por meio de exemplos, a importância do trabalho na produção da cultura.'}],
-    duracao:'3 aulas', agrupamento:'duplas'
-  },
-  {
-    id:'af-004', titulo:'Linha do Tempo Digital', emoji:'⏳',
-    segmento:'af', disciplina:'historia', anos:['6º ano','7º ano','8º ano','9º ano'],
-    tipo:['digital','projeto'],
-    descricao:'Grupos criam linhas do tempo interativas de períodos históricos usando ferramentas digitais gratuitas, relacionando fatos locais e globais.',
-    objetivo:'Desenvolver noções de temporalidade, causalidade e relação entre eventos históricos locais e globais por meio da criação de linhas do tempo digitais.',
-    passos:['Seleção do período histórico e dos eventos a serem representados.','Pesquisa em fontes variadas (livro, internet, museu virtual).','Criação da linha do tempo no TimelineJS, Canva ou Google Slides.','Inclusão de imagens, mapas e fontes primárias quando possível.','Apresentação para a turma e debate sobre conexões entre os eventos.'],
-    materiais:['Computadores ou tablets','Acesso ao TimelineJS ou Canva','Acesso à internet','Livros didáticos'],
-    habilidades:[{codigo:'EF06HI01',desc:'Identificar diferentes formas de compreensão da noção de tempo e espaço.'},{codigo:'EF09HI03',desc:'Identificar continuidades e rupturas nos processos históricos.'}],
-    duracao:'4 aulas', agrupamento:'grupos'
-  },
-  {
-    id:'af-005', titulo:'Simulação de Ecossistema', emoji:'🌿',
-    segmento:'af', disciplina:'ciencias', anos:['6º ano'],
-    tipo:['pratica','projeto'],
-    descricao:'Alunos constroem um terrário e monitoram as interações dos seres vivos ao longo de semanas, registrando observações em diário científico.',
-    objetivo:'Compreender as relações entre seres vivos e seu ambiente por meio da construção e observação sistemática de um ecossistema em miniatura.',
-    passos:['Aula teórica sobre ecossistemas, cadeias alimentares e fluxo de energia.','Planejamento coletivo do terrário: quais seres, qual solo, qual umidade.','Construção do terrário em grupos com garrafas PET ou potes de vidro.','Observação semanal com registro em diário científico.','Análise final: o que funcionou, o que mudou, o que aprendemos.'],
-    materiais:['Garrafas PET grandes ou potes de vidro','Terra, areia e pedras','Plantas pequenas','Minhocas ou insetos (opcional)','Caderno de registro'],
-    habilidades:[{codigo:'EF06CI04',desc:'Relacionar os papéis ecológicos dos grupos de seres vivos com a estrutura do ecossistema.'},{codigo:'EF06CI05',desc:'Estabelecer a relação entre os fatores abióticos e bióticos de um ecossistema.'}],
-    duracao:'6 aulas + observação por 3 semanas', agrupamento:'grupos'
-  }
-  /* Adicione novas ideias dos Anos Finais aqui ↓ */
-];
-
 var IDEIAS = [].concat(IDEIAS_EI, IDEIAS_AI, IDEIAS_AF);
 
 var state = {segmento:'todos', disciplina:'todos', tipo:'todos', busca:''};

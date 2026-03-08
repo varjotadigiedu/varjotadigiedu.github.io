@@ -209,8 +209,22 @@ window.LINKS_MATEMATICA = [
       tipo_recurso: 'site',
       tipo_uso: 'complementar',
       acessibilidade: ['altas-habilidades']
-    }
+    },
   
-    /* Adicione novos links aqui ↓ */
+    {
+    id: 'ma-re-007',
+    titulo: "Khan Academy — Frações",
+    descricao: "Videoaulas e exercícios sobre frações para os anos iniciais do EF.",
+    url: 'https://pt.khanacademy.org/math/cc-fourth-grade-math/fractions',
+    aba: 'reds',
+    anos: ['4º ano', '5º ano'],
+    tipo_recurso: 'site',
+    tipo_uso: 'complementar',
+    acessibilidade: []
+  },
+
+  /* Adicione novos links aqui ↓ */
   
+
+
   ];

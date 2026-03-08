@@ -220,8 +220,34 @@ window.LINKS_LINGUA_PORTUGUESA = [
       tipo_recurso: 'site',
       tipo_uso: 'complementar',
       acessibilidade: ['altas-habilidades']
-    }
+    },
   
-    /* Adicione novos links aqui ↓ */
+    
+
+    {
+    id: 'lp-ma-005',
+    titulo: "Escrevendo o Futuro — Olimpíada de LP",
+    descricao: "Portal com cadernos do professor e materiais de apoio para produção textual.",
+    url: 'https://www.escrevendoofuturo.org.br',
+    aba: 'materiais',
+    anos: ['Todos'],
+    tipo_recurso: 'site',
+    tipo_uso: 'teorico',
+    acessibilidade: []
+  },
+
+    {
+    id: 'lp-ma-006',
+    titulo: "Escrevendo o Futuro — Olimpíada de LP",
+    descricao: "Portal com cadernos do professor e materiais de apoio para produção textual.",
+    url: 'https://www.escrevendoofuturo.org.br',
+    aba: 'materiais',
+    anos: ['Todos'],
+    tipo_recurso: 'site',
+    tipo_uso: 'teorico',
+    acessibilidade: []
+  },
+
+  /* Adicione novos links aqui ↓ */
   
   ];

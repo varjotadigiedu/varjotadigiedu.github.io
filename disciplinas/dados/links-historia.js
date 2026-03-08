@@ -165,8 +165,34 @@ window.LINKS_HISTORIA = [
       tipo_recurso: 'outros',
       tipo_uso: 'complementar',
       acessibilidade: ['baixa-visao', 'audiodescrição']
-    }
+    },
   
-    /* Adicione novos links aqui ↓ */
+     
+
+    {
+    id: 'hi-re-005',
+    titulo: "Museu Imperial — Visita Virtual",
+    descricao: "Tour virtual pelo Museu Imperial de Petrópolis com acervo do período imperial brasileiro.",
+    url: 'https://www.museuimperial.gov.br',
+    aba: 'reds',
+    anos: ['7º ano', '8º ano'],
+    tipo_recurso: 'site',
+    tipo_uso: 'complementar',
+    acessibilidade: []
+  },
+
+    {
+    id: 'hi-re-006',
+    titulo: "Museu Imperial — Visita Virtual",
+    descricao: "Tour virtual pelo Museu Imperial de Petrópolis com acervo do período imperial brasileiro.",
+    url: 'https://www.museuimperial.gov.br',
+    aba: 'reds',
+    anos: ['7º ano', '8º ano'],
+    tipo_recurso: 'site',
+    tipo_uso: 'complementar',
+    acessibilidade: []
+  },
+
+  /* Adicione novos links aqui ↓ */
   
   ];

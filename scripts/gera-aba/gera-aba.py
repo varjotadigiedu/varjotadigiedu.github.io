@@ -114,7 +114,7 @@ def item_para_js(item, indent="  "):
         f"{indent}  acessibilidade: {ac}",
         f"{indent}}}",
     ]
-    return ",\n".join(linhas[:-1]) + "\n" + linhas[-1]
+    return "\n".join(linhas)
 
 
 def injetar_no_js(conteudo, novo_bloco, marcador):

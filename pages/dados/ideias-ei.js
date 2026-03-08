@@ -81,6 +81,25 @@ window.IDEIAS_EI = [
     agrupamento: 'grupos',
   },
 
+  {
+    id: 'ei-003',
+    titulo: "Minha Caixinha de Sons",
+    emoji: '🎶',
+    segmento: 'ei',
+    disciplina: 'interdisciplinar',
+    anos: ['Educação Infantil'],
+    tipo: ['pratica', 'jogo'],
+    descricao: "Crianças exploram sons do ambiente e criam instrumentos com materiais recicláveis.",
+    objetivo: "Desenvolver a percepção sonora a expressão musical e a criatividade.",
+    passos: ['Exploração de sons do ambiente com olhos fechados', 'Identificação e classificação dos sons', 'Construção de instrumentos com materiais recicláveis', 'Apresentação musical da turma'],
+    materiais: ['Potes e caixas recicláveis', 'Sementes e pedrinhas', 'Fita crepe e tesoura sem ponta', 'TNT colorido'],
+    habilidades: [
+      { codigo: 'EIEF06EO02', desc: "Demonstrar atitudes de cuidado" }
+    ],
+    duracao: '1 aula de 40 min',
+    agrupamento: 'turma',
+  },
+
   /* Adicione novas ideias da Educação Infantil aqui ↓ */
 
 ];

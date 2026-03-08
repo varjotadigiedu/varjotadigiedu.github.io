@@ -31,10 +31,12 @@
   ];
 
   var NAV_ITEMS = [
-    { label: 'Início',              href: 'index.html' },
-    { label: 'BNCC Computação',                href: 'ref-curricular/ref-index.html' },
-    { label: 'Banco de ideias',     href: 'pages/banco-ideias.html' },
-    { label: 'REDs',                href: 'pages/reds.html' },
+    { label: 'Início',          href: 'index.html' },
+    { label: 'BNCC Computação', href: 'ref-curricular/ref-index.html' },
+    { label: 'Banco de Ideias', href: 'pages/banco-ideias.html' },
+    { label: 'REDs',            href: 'pages/reds.html' },
+    { label: 'Sobre',           href: 'pages/sobre.html' },
+    { label: 'Suporte',         href: 'pages/suporte.html' },
   ];
 
   /* ── 2. Utilitários ─────────────────────────────────────────── */
@@ -232,6 +234,62 @@
     sidebar.appendChild(backBtn);
     sidebar.appendChild(sidebarSection);
 
+    /* ── Dropdown mobile de disciplinas ── */
+    var activeLabel = disc ? (disc.icon + ' ' + disc.label) : 'Disciplinas';
+
+    var dropTrigger = document.createElement('button');
+    dropTrigger.className   = 'vd-disc-trigger';
+    dropTrigger.innerHTML   = '<span class="vd-disc-trigger__label">' + activeLabel + '</span><span class="vd-disc-trigger__arrow">▾</span>';
+
+    var dropMenu = document.createElement('ul');
+    dropMenu.className = 'vd-disc-dropmenu';
+
+    DISCIPLINAS.forEach(function(d) {
+      var a2 = document.createElement('a');
+      a2.href = r('disciplinas/' + d.slug + '.html');
+      a2.textContent = d.icon + ' ' + d.label;
+      if (d.slug === slug) { a2.className = 'active'; }
+      var li2 = document.createElement('li');
+      li2.appendChild(a2);
+      dropMenu.appendChild(li2);
+    });
+
+    var dropWrap = document.createElement('div');
+    dropWrap.className = 'vd-disc-dropdown';
+    dropWrap.appendChild(dropTrigger);
+    dropWrap.appendChild(dropMenu);
+
+    dropTrigger.addEventListener('click', function() {
+      var open = dropWrap.classList.toggle('open');
+      dropTrigger.querySelector('.vd-disc-trigger__arrow').textContent = open ? '▴' : '▾';
+    });
+
+    // Fecha ao clicar fora
+    document.addEventListener('click', function(e) {
+      if (!dropWrap.contains(e.target)) {
+        dropWrap.classList.remove('open');
+        dropTrigger.querySelector('.vd-disc-trigger__arrow').textContent = '▾';
+      }
+    });
+
+    // Injeta CSS do dropdown mobile
+    if (!document.getElementById('vd-disc-dropdown-css')) {
+      var styleEl = document.createElement('style');
+      styleEl.id = 'vd-disc-dropdown-css';
+      styleEl.textContent = [
+        '.vd-disc-dropdown { display: none; position: relative; margin: 0 16px 12px; }',
+        '.vd-disc-trigger { width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 11px 16px; background: #fff; border: 1.5px solid #DDE3ED; border-radius: 10px; font-family: Lexend, sans-serif; font-size: .9rem; font-weight: 600; color: #1A1A2E; cursor: pointer; }',
+        '.vd-disc-trigger__arrow { font-size: .75rem; color: #6B7280; transition: transform .2s; }',
+        '.vd-disc-dropmenu { display: none; position: absolute; top: calc(100% + 6px); left: 0; right: 0; background: #fff; border: 1.5px solid #DDE3ED; border-radius: 10px; box-shadow: 0 8px 24px rgba(21,101,192,.12); list-style: none; padding: 6px; z-index: 200; max-height: 60vh; overflow-y: auto; }',
+        '.vd-disc-dropdown.open .vd-disc-dropmenu { display: block; }',
+        '.vd-disc-dropmenu li a { display: block; padding: 9px 12px; border-radius: 7px; font-family: Nunito, sans-serif; font-size: .88rem; font-weight: 600; color: #1A1A2E; text-decoration: none; }',
+        '.vd-disc-dropmenu li a:hover { background: #EEF4FF; }',
+        '.vd-disc-dropmenu li a.active { background: #1565C0; color: #fff; }',
+        '@media(max-width:768px){ .vd-disc-dropdown { display: block; } .vd-sidebar { display: none; } }',
+      ].join('\n');
+      document.head.appendChild(styleEl);
+    }
+
     /* ── Breadcrumb ── */
     var bcOl = document.createElement('ol');
 
@@ -276,6 +334,7 @@
     /* ── Main ── */
     var main = document.createElement('main');
     main.className = 'vd-main';
+    main.appendChild(dropWrap);
     main.appendChild(breadcrumb);
     main.appendChild(content);
 

@@ -133,6 +133,46 @@ window.IDEIAS_AI = [
     agrupamento: 'duplas',
   },
 
+  {
+    id: 'ai-005',
+    titulo: "Receita de Números",
+    emoji: '🍳',
+    segmento: 'ai',
+    disciplina: 'matematica',
+    anos: ['3º ano', '4º ano'],
+    tipo: ['pratica', 'jogo'],
+    descricao: "Os alunos criam receitas culinárias usando frações e medidas matemáticas.",
+    objetivo: "Desenvolver o conceito de frações e medidas a partir de situações do cotidiano.",
+    passos: ['Apresente o conceito de fração com exemplos de receitas', 'Divida os alunos em grupos e entregue fichas de receitas incompletas', 'Cada grupo completa a receita calculando as quantidades', 'Apresentação e degustação simbólica das receitas'],
+    materiais: ['Fichas de receitas impressas', 'Lápis e borracha', 'Calculadora (opcional)'],
+    habilidades: [
+      { codigo: 'EF03MA07', desc: "Reconhecer e representar frações" },
+      { codigo: 'EF04MA09', desc: "Resolver problemas com frações" }
+    ],
+    duracao: '2 aulas de 50 min',
+    agrupamento: 'grupos',
+  },
+
+  {
+    id: 'ai-006',
+    titulo: "Jornal da Turma Digital",
+    emoji: '📰',
+    segmento: 'ai',
+    disciplina: 'lingua-portuguesa',
+    anos: ['4º ano', '5º ano'],
+    tipo: ['digital', 'projeto', 'pesquisa'],
+    descricao: "A turma cria um jornal digital cobrindo eventos da escola e da comunidade.",
+    objetivo: "Desenvolver leitura escrita e produção de textos jornalísticos em ambiente digital.",
+    passos: ['Leitura e análise de jornais reais', 'Definição das editorias e divisão de equipes', 'Apuração entrevistas e redação das matérias', 'Diagramação digital', 'Publicação e distribuição'],
+    materiais: ['Computadores ou tablets', 'Acesso à internet', 'Modelo de jornal impresso', 'Google Docs ou Canva'],
+    habilidades: [
+      { codigo: 'EF05LP06', desc: "Produzir textos jornalísticos" },
+      { codigo: 'EF05LP07', desc: "Usar recursos de coesão" }
+    ],
+    duracao: '4 aulas de 50 min',
+    agrupamento: 'grupos',
+  },
+
   /* Adicione novas ideias dos Anos Iniciais aqui ↓ */
 
 ];

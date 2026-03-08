@@ -160,6 +160,26 @@ window.IDEIAS_AF = [
     agrupamento: 'grupos',
   },
 
+  {
+    id: 'af-006',
+    titulo: "Podcast Científico",
+    emoji: '🎙️',
+    segmento: 'af',
+    disciplina: 'ciencias',
+    anos: ['8º ano', '9º ano'],
+    tipo: ['digital', 'pesquisa', 'projeto'],
+    descricao: "Os alunos produzem episódios de podcast sobre temas científicos contemporâneos.",
+    objetivo: "Desenvolver habilidades de pesquisa comunicação científica e uso de tecnologia digital.",
+    passos: ['Escolha dos temas científicos por grupo', 'Pesquisa e roteiro do episódio', 'Gravação do áudio', 'Edição básica com app gratuito', 'Publicação e apresentação à turma'],
+    materiais: ['Smartphone ou computador', 'Fone de ouvido com microfone', 'App de gravação (gratuito)', 'Roteiro impresso'],
+    habilidades: [
+      { codigo: 'EF09CI08', desc: "Analisar questões ambientais" },
+      { codigo: 'EF09CI09', desc: "Relacionar tecnologia e ciência" }
+    ],
+    duracao: '3 aulas de 50 min',
+    agrupamento: 'grupos',
+  },
+
   /* Adicione novas ideias dos Anos Finais aqui ↓ */
 
 ];

@@ -143,8 +143,34 @@ window.LINKS_EDUCACAO_FISICA = [
       tipo_recurso: 'pdf',
       tipo_uso: 'pratico',
       acessibilidade: ['TEA', 'TDAH']
-    }
+    },
   
-    /* Adicione novos links aqui ↓ */
+     
+
+    {
+    id: 'ef-ac-004',
+    titulo: "Guia de Atividades Adaptadas para TEA",
+    descricao: "Material com propostas de atividades físicas adaptadas para estudantes com TEA e TDAH.",
+    url: 'https://exemplo.gov.br/ef-atividades-tea.pdf',
+    aba: 'acessibilidade',
+    anos: ['Todos'],
+    tipo_recurso: 'pdf',
+    tipo_uso: 'pratico',
+    acessibilidade: ['TEA', 'TDAH']
+  },
+
+    {
+    id: 'ef-ac-005',
+    titulo: "Guia de Atividades Adaptadas para TEA",
+    descricao: "Material com propostas de atividades físicas adaptadas para estudantes com TEA e TDAH.",
+    url: 'https://exemplo.gov.br/ef-atividades-tea.pdf',
+    aba: 'acessibilidade',
+    anos: ['Todos'],
+    tipo_recurso: 'pdf',
+    tipo_uso: 'pratico',
+    acessibilidade: ['TEA', 'TDAH']
+  },
+
+  /* Adicione novos links aqui ↓ */
   
   ];

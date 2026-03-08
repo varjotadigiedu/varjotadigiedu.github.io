@@ -4,11 +4,16 @@
 =============================================================================
 Varjota DigiEdu — scripts/gera-ideia/gera-ideia.py
 =============================================================================
-Lê um CSV com ideias pedagógicas e injeta os itens novos nas variáveis
-IDEIAS_EI, IDEIAS_AI ou IDEIAS_AF dentro do arquivo pages/banco-ideias.html.
+Lê um CSV com ideias pedagógicas e injeta os itens novos nos arquivos JS
+separados por etapa:
+  - dados/ideias-ei.js  → Educação Infantil
+  - dados/ideias-ai.js  → Anos Iniciais (1º ao 5º ano)
+  - dados/ideias-af.js  → Anos Finais   (6º ao 9º ano)
 
 USO:
     python3 scripts/gera-ideia/gera-ideia.py scripts/gera-ideia/ideias.csv
+
+    Execute a partir da raiz do projeto.
 
 COLUNAS OBRIGATÓRIAS DO CSV:
     segmento, titulo, emoji, disciplina, anos, tipo, descricao,
@@ -22,7 +27,7 @@ COLUNAS OBRIGATÓRIAS DO CSV:
       - habilidades ex: "EF03CI01:Observar fenômenos|EF03CI02:Descrever ciclos"
                         (código e descrição separados por ":")
 
-    segmento: 'ei' | 'ai' | 'af'
+    segmento:    'ei' | 'ai' | 'af'
     agrupamento: 'individual' | 'duplas' | 'grupos' | 'turma'
 =============================================================================
 """
@@ -37,28 +42,41 @@ from datetime import datetime
 
 # ── Configuração ──────────────────────────────────────────────────────────────
 
-CAMINHO_HTML = os.path.join("pages", "banco-ideias.html")
-
 SEGMENTOS = {
-    "ei": {"var": "IDEIAS_EI", "prefixo": "ei"},
-    "ai": {"var": "IDEIAS_AI", "prefixo": "ai"},
-    "af": {"var": "IDEIAS_AF", "prefixo": "af"},
+    "ei": {
+        "var":      "IDEIAS_EI",
+        "prefixo":  "ei",
+        "arquivo":  os.path.join("pages", "dados", "ideias-ei.js"),
+        "marcador": "/* Adicione novas ideias da Educação Infantil aqui ↓ */",
+    },
+    "ai": {
+        "var":      "IDEIAS_AI",
+        "prefixo":  "ai",
+        "arquivo":  os.path.join("pages", "dados", "ideias-ai.js"),
+        "marcador": "/* Adicione novas ideias dos Anos Iniciais aqui ↓ */",
+    },
+    "af": {
+        "var":      "IDEIAS_AF",
+        "prefixo":  "af",
+        "arquivo":  os.path.join("pages", "dados", "ideias-af.js"),
+        "marcador": "/* Adicione novas ideias dos Anos Finais aqui ↓ */",
+    },
 }
 
-TIPOS_VALIDOS = {"pratica","digital","debate","pesquisa","projeto","jogo"}
-AGRUPAMENTOS_VALIDOS = {"individual","duplas","grupos","turma"}
+TIPOS_VALIDOS        = {"pratica", "digital", "debate", "pesquisa", "projeto", "jogo"}
+AGRUPAMENTOS_VALIDOS = {"individual", "duplas", "grupos", "turma"}
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
 
 def extrair_ids_existentes(conteudo, prefixo):
-    """Extrai números de IDs do segmento. Ex: 'ai-003' → 3."""
+    """Extrai números dos IDs já existentes. Ex: 'ai-003' → 3."""
     padrao = rf"id:\s*['\"]({re.escape(prefixo)}-(\d+))['\"]"
     numeros = [int(m.group(2)) for m in re.finditer(padrao, conteudo)]
     return numeros
 
 
 def proximo_id(conteudo, prefixo):
-    """Retorna próximo ID formatado. Ex: 'ai-004'."""
+    """Retorna próximo ID formatado. Ex: 'ai-005'."""
     existentes = extrair_ids_existentes(conteudo, prefixo)
     proximo = (max(existentes) + 1) if existentes else 1
     return f"{prefixo}-{proximo:03d}"
@@ -73,105 +91,98 @@ def lista_habilidades(habilidades):
     """
     Converte lista de 'CODIGO:descricao' em array JS de objetos.
     Ex: ['EF03CI01:Observar fenômenos'] →
-        [{codigo: 'EF03CI01', desc: 'Observar fenômenos'}]
+        [{ codigo: 'EF03CI01', desc: 'Observar fenômenos' }]
     """
-    if not habilidades or habilidades == ['']:
+    if not habilidades or habilidades == [""]:
         return "[]"
     itens = []
     for h in habilidades:
         if ":" in h:
             codigo, desc = h.split(":", 1)
             itens.append(
-                f"{{codigo: '{codigo.strip()}', desc: {json.dumps(desc.strip(), ensure_ascii=False)}}}"
+                f"{{ codigo: '{codigo.strip()}', desc: {json.dumps(desc.strip(), ensure_ascii=False)} }}"
             )
         else:
-            itens.append(f"{{codigo: '{h.strip()}', desc: ''}}")
-    return "[\n            " + ",\n            ".join(itens) + "\n          ]"
+            itens.append(f"{{ codigo: '{h.strip()}', desc: '' }}")
+    return "[\n      " + ",\n      ".join(itens) + "\n    ]"
 
 
-def ideia_para_js(ideia, indent="  "):
+def ideia_para_js(ideia):
     """Serializa um objeto ideia para bloco JS formatado."""
-    i = indent
-    ii = indent + "  "
     return (
-        f"{i}{{\n"
-        f"{ii}id: '{ideia['id']}',\n"
-        f"{ii}titulo: {json.dumps(ideia['titulo'], ensure_ascii=False)},\n"
-        f"{ii}emoji: '{ideia['emoji']}',\n"
-        f"{ii}segmento: '{ideia['segmento']}',\n"
-        f"{ii}disciplina: '{ideia['disciplina']}',\n"
-        f"{ii}anos: {lista_str(ideia['anos'])},\n"
-        f"{ii}tipo: {lista_str(ideia['tipo'])},\n"
-        f"{ii}descricao: {json.dumps(ideia['descricao'], ensure_ascii=False)},\n"
-        f"{ii}objetivo: {json.dumps(ideia['objetivo'], ensure_ascii=False)},\n"
-        f"{ii}passos: {lista_str(ideia['passos'])},\n"
-        f"{ii}materiais: {lista_str(ideia['materiais'])},\n"
-        f"{ii}habilidades: {lista_habilidades(ideia['habilidades'])},\n"
-        f"{ii}duracao: '{ideia['duracao']}',\n"
-        f"{ii}agrupamento: '{ideia['agrupamento']}'\n"
-        f"{i}}}"
+        f"  {{\n"
+        f"    id: '{ideia['id']}',\n"
+        f"    titulo: {json.dumps(ideia['titulo'], ensure_ascii=False)},\n"
+        f"    emoji: '{ideia['emoji']}',\n"
+        f"    segmento: '{ideia['segmento']}',\n"
+        f"    disciplina: '{ideia['disciplina']}',\n"
+        f"    anos: {lista_str(ideia['anos'])},\n"
+        f"    tipo: {lista_str(ideia['tipo'])},\n"
+        f"    descricao: {json.dumps(ideia['descricao'], ensure_ascii=False)},\n"
+        f"    objetivo: {json.dumps(ideia['objetivo'], ensure_ascii=False)},\n"
+        f"    passos: {lista_str(ideia['passos'])},\n"
+        f"    materiais: {lista_str(ideia['materiais'])},\n"
+        f"    habilidades: {lista_habilidades(ideia['habilidades'])},\n"
+        f"    duracao: '{ideia['duracao']}',\n"
+        f"    agrupamento: '{ideia['agrupamento']}',\n"
+        f"  }}"
     )
 
 
-def injetar_na_variavel(conteudo, var_nome, novo_bloco):
+def injetar_no_js(conteudo, novo_bloco, marcador):
     """
-    Injeta novo_bloco antes do marcador de fim na variável JS correta.
-    Marcador: /* Adicione novas ideias aqui ↓ */
+    Injeta novo_bloco antes do marcador no arquivo JS.
+    O último item já tem vírgula no arquivo — basta inserir antes do marcador.
     """
-    marcador = "/* Adicione novas ideias aqui ↓ */"
+    if marcador not in conteudo:
+        # Fallback: insere antes do fechamento do array
+        return re.sub(r"(\n\];)", f"\n{novo_bloco},\n\\1", conteudo, count=1)
 
-    # Encontra o contexto da variável correta (pode haver múltiplos marcadores)
-    # Procura o marcador dentro do escopo da variável
-    padrao_var = rf"(var {re.escape(var_nome)}\s*=\s*\[.*?)(\/\* Adicione novas ideias aqui ↓ \*\/)"
-    match = re.search(padrao_var, conteudo, re.DOTALL)
+    # O marcador no arquivo tem '  ' antes — substituímos esse trecho inteiro
+    alvo = "  " + marcador
+    if alvo in conteudo:
+        return conteudo.replace(alvo, novo_bloco + ",\n\n  " + marcador, 1)
+    return conteudo.replace(marcador, novo_bloco + ",\n\n  " + marcador, 1)
 
-    if match:
-        pos_marcador = match.start(2)
-        antes  = conteudo[:pos_marcador]
-        depois = conteudo[pos_marcador:]
-        return antes + novo_bloco + ",\n\n  " + depois
-    else:
-        # Fallback: insere antes do fechamento da variável
-        padrao_close = rf"(var {re.escape(var_nome)}\s*=\s*\[.*?)(\n\];)"
-        return re.sub(padrao_close, rf"\1\n{novo_bloco},\n\2", conteudo, count=1, flags=re.DOTALL)
 
+# ── Validação ─────────────────────────────────────────────────────────────────
 
 def validar_linha(linha, num):
-    """Valida campos obrigatórios. Retorna lista de erros."""
+    """Valida campos obrigatórios e valores permitidos. Retorna lista de erros."""
     erros = []
 
-    seg = linha.get("segmento","").strip().lower()
+    seg = linha.get("segmento", "").strip().lower()
     if seg not in SEGMENTOS:
-        erros.append(f"segmento '{seg}' inválido (use: ei, ai, af)")
+        erros.append(f"segmento '{seg}' inválido — use: ei, ai, af")
 
-    if not linha.get("titulo","").strip():
+    if not linha.get("titulo", "").strip():
         erros.append("campo 'titulo' vazio")
 
-    if not linha.get("disciplina","").strip():
+    if not linha.get("disciplina", "").strip():
         erros.append("campo 'disciplina' vazio")
 
-    if not linha.get("anos","").strip():
+    if not linha.get("anos", "").strip():
         erros.append("campo 'anos' vazio")
 
-    tipos_raw = [t.strip() for t in linha.get("tipo","").split("|") if t.strip()]
+    tipos_raw = [t.strip() for t in linha.get("tipo", "").split("|") if t.strip()]
     tipos_inv = [t for t in tipos_raw if t not in TIPOS_VALIDOS]
     if tipos_inv:
         erros.append(f"tipo(s) inválido(s): {tipos_inv} — use: {', '.join(sorted(TIPOS_VALIDOS))}")
 
-    agrup = linha.get("agrupamento","").strip()
+    agrup = linha.get("agrupamento", "").strip()
     if agrup not in AGRUPAMENTOS_VALIDOS:
         erros.append(f"agrupamento '{agrup}' inválido — use: {', '.join(sorted(AGRUPAMENTOS_VALIDOS))}")
 
-    if not linha.get("descricao","").strip():
+    if not linha.get("descricao", "").strip():
         erros.append("campo 'descricao' vazio")
 
-    if not linha.get("duracao","").strip():
+    if not linha.get("duracao", "").strip():
         erros.append("campo 'duracao' vazio")
 
     return erros
 
 
-# ── Processamento principal ───────────────────────────────────────────────────
+# ── Processamento CSV ─────────────────────────────────────────────────────────
 
 def processar_csv(caminho_csv):
     """Lê o CSV e agrupa as linhas válidas por segmento."""
@@ -183,9 +194,9 @@ def processar_csv(caminho_csv):
         reader.fieldnames = [c.strip() for c in reader.fieldnames]
 
         colunas_obrigatorias = {
-            "segmento","titulo","emoji","disciplina","anos","tipo",
-            "descricao","objetivo","passos","materiais",
-            "habilidades","duracao","agrupamento"
+            "segmento", "titulo", "emoji", "disciplina", "anos", "tipo",
+            "descricao", "objetivo", "passos", "materiais",
+            "habilidades", "duracao", "agrupamento"
         }
         faltando = colunas_obrigatorias - set(reader.fieldnames)
         if faltando:
@@ -205,17 +216,17 @@ def processar_csv(caminho_csv):
             grupos[seg].append({
                 "segmento":    seg,
                 "titulo":      linha["titulo"],
-                "emoji":       linha.get("emoji","📌"),
+                "emoji":       linha.get("emoji", "📌"),
                 "disciplina":  linha["disciplina"],
                 "anos":        [a.strip() for a in linha["anos"].split("|") if a.strip()],
                 "tipo":        [t.strip() for t in linha["tipo"].split("|") if t.strip()],
-                "descricao":   linha.get("descricao",""),
-                "objetivo":    linha.get("objetivo",""),
+                "descricao":   linha.get("descricao", ""),
+                "objetivo":    linha.get("objetivo", ""),
                 "passos":      [p.strip() for p in linha["passos"].split("|") if p.strip()],
-                "materiais":   [m.strip() for m in linha.get("materiais","").split("|") if m.strip()],
-                "habilidades": [h.strip() for h in linha.get("habilidades","").split("|") if h.strip()],
-                "duracao":     linha.get("duracao",""),
-                "agrupamento": linha.get("agrupamento","grupos"),
+                "materiais":   [m.strip() for m in linha.get("materiais", "").split("|") if m.strip()],
+                "habilidades": [h.strip() for h in linha.get("habilidades", "").split("|") if h.strip()],
+                "duracao":     linha.get("duracao", ""),
+                "agrupamento": linha.get("agrupamento", "grupos"),
             })
 
     if erros_totais:
@@ -226,6 +237,8 @@ def processar_csv(caminho_csv):
 
     return grupos
 
+
+# ── Main ──────────────────────────────────────────────────────────────────────
 
 def main():
     if len(sys.argv) < 2:
@@ -238,15 +251,9 @@ def main():
         print(f"❌ Arquivo CSV não encontrado: {caminho_csv}")
         sys.exit(1)
 
-    if not os.path.exists(CAMINHO_HTML):
-        print(f"❌ Arquivo HTML não encontrado: {CAMINHO_HTML}")
-        print("   Execute o script a partir da raiz do projeto.")
-        sys.exit(1)
-
     print(f"\n{'='*60}")
     print(f"  Varjota DigiEdu — gera-ideia.py")
-    print(f"  CSV:  {caminho_csv}")
-    print(f"  HTML: {CAMINHO_HTML}")
+    print(f"  CSV: {caminho_csv}")
     print(f"  {datetime.now().strftime('%d/%m/%Y %H:%M:%S')}")
     print(f"{'='*60}\n")
 
@@ -256,32 +263,43 @@ def main():
         print("❌ Nenhum item válido encontrado no CSV.")
         sys.exit(1)
 
-    with open(CAMINHO_HTML, "r", encoding="utf-8") as f:
-        conteudo = f.read()
-
+    nomes_seg = {
+        "ei": "Educação Infantil",
+        "ai": "Anos Iniciais",
+        "af": "Anos Finais",
+    }
     total_adicionados = 0
-    nomes_seg = {"ei": "Educação Infantil", "ai": "Anos Iniciais", "af": "Anos Finais"}
 
     for seg, ideias in sorted(grupos.items()):
-        cfg = SEGMENTOS[seg]
-        prefixo = cfg["prefixo"]
-        var_nome = cfg["var"]
-        print(f"📚 {nomes_seg[seg]} — {var_nome} ({len(ideias)} ideia(s)):")
+        cfg      = SEGMENTOS[seg]
+        prefixo  = cfg["prefixo"]
+        arquivo  = cfg["arquivo"]
+        marcador = cfg["marcador"]
+
+        if not os.path.exists(arquivo):
+            print(f"  ⚠️  Arquivo não encontrado: {arquivo} — segmento '{seg}' ignorado.")
+            print(f"      Execute o script a partir da raiz do projeto.\n")
+            continue
+
+        print(f"📚 {nomes_seg[seg]} → {arquivo} ({len(ideias)} ideia(s)):")
+
+        with open(arquivo, "r", encoding="utf-8") as f:
+            conteudo = f.read()
 
         for ideia in ideias:
             ideia["id"] = proximo_id(conteudo, prefixo)
             bloco = ideia_para_js(ideia)
-            conteudo = injetar_na_variavel(conteudo, var_nome, bloco)
+            conteudo = injetar_no_js(conteudo, bloco, marcador)
             total_adicionados += 1
             print(f"    ✓ [{ideia['id']}] {ideia['titulo'][:55]}")
 
+        with open(arquivo, "w", encoding="utf-8") as f:
+            f.write(conteudo)
+
         print()
 
-    with open(CAMINHO_HTML, "w", encoding="utf-8") as f:
-        f.write(conteudo)
-
     print(f"{'='*60}")
-    print(f"  ✅ Concluído — {total_adicionados} ideia(s) adicionada(s) em {CAMINHO_HTML}")
+    print(f"  ✅ Concluído — {total_adicionados} ideia(s) adicionada(s)")
     print(f"{'='*60}\n")
 
 

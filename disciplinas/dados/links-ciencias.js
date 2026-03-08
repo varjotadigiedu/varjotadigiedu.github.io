@@ -121,8 +121,34 @@ window.LINKS_CIENCIAS = [
       tipo_recurso: 'pdf',
       tipo_uso: 'complementar',
       acessibilidade: ['TEA', 'deficiencia-intelectual']
-    }
+    },
   
-    /* Adicione novos links aqui ↓ */
+     
+
+    {
+    id: 'ci-ac-003',
+    titulo: "Vídeo em Libras — Sistema Solar",
+    descricao: "Videoaula sobre o sistema solar com interpretação completa em Libras.",
+    url: 'https://exemplo.gov.br/sistema-solar-libras',
+    aba: 'acessibilidade',
+    anos: ['6º ano', '7º ano'],
+    tipo_recurso: 'video',
+    tipo_uso: 'teorico',
+    acessibilidade: ['libras']
+  },
+
+    {
+    id: 'ci-ac-004',
+    titulo: "Vídeo em Libras — Sistema Solar",
+    descricao: "Videoaula sobre o sistema solar com interpretação completa em Libras.",
+    url: 'https://exemplo.gov.br/sistema-solar-libras',
+    aba: 'acessibilidade',
+    anos: ['6º ano', '7º ano'],
+    tipo_recurso: 'video',
+    tipo_uso: 'teorico',
+    acessibilidade: ['libras']
+  },
+
+  /* Adicione novos links aqui ↓ */
   
   ];
