@@ -151,19 +151,19 @@ body { background: var(--vd-bg); color: var(--vd-text); font-family: 'Nunito', s
 .index-section-title { font-family: 'Lexend', sans-serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
 .index-section-title::after { content: ''; flex: 1; height: 2px; background: var(--vd-border); border-radius: 2px; }
 .disc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 18px; }
-.disc-card { border-radius: var(--vd-radius); padding: 28px 16px 24px; display: flex; flex-direction: column; align-items: center; gap: 10px; text-decoration: none; color: #fff; font-family: 'Lexend', sans-serif; font-weight: 600; font-size: .95rem; text-align: center; box-shadow: var(--vd-shadow-md); transition: transform .22s, box-shadow .22s; }
+.disc-card { border-radius: var(--vd-radius); padding: 28px 16px 24px; display: flex; flex-direction: column; align-items: center; gap: 10px; text-decoration: none; color: #fff; font-family: 'Lexend', sans-serif; font-weight: 600; font-size: .95rem; text-align: center; box-shadow: var(--vd-shadow-md); transition: transform .22s, box-shadow .22s; text-shadow: 0 1px 4px rgba(0,0,0,0.35); }
 .disc-card:hover { transform: translateY(-6px) scale(1.025); box-shadow: 0 14px 36px rgba(0,0,0,.2); }
 .disc-card__icon { font-size: 2.6rem; line-height: 1; }
-.disc-card--arte              { background: linear-gradient(135deg,#C62828,#EF9A9A); color:#3E1500; }
-.disc-card--ciencias          { background: linear-gradient(135deg,#00695C,#80CBC4); color:#3E1500; }
-.disc-card--educacao-fisica   { background: linear-gradient(135deg,#2E7D32,#A5D6A7); color:#3E1500; }
-.disc-card--ensino-religioso  { background: linear-gradient(135deg,#6A1B9A,#CE93D8); color:#3E1500; }
-.disc-card--geografia         { background: linear-gradient(135deg,#1565C0,#90CAF9); color:#3E1500; }
-.disc-card--historia          { background: linear-gradient(135deg,#BF360C,#FFAB91); color:#3E1500; }
-.disc-card--lingua-inglesa    { background: linear-gradient(135deg,#00838F,#80DEEA); color:#3E1500; }
-.disc-card--lingua-portuguesa { background: linear-gradient(135deg,#E65100,#FFE082); color:#3E1500; }
-.disc-card--matematica        { background: linear-gradient(135deg,#283593,#7986CB); color:#3E1500; }
-.disc-card--educacao-infantil { background: linear-gradient(135deg, #AD1457, #F48FB1); color:#3E1500; }
+.disc-card--arte              { background: linear-gradient(135deg,#C62828,#EF9A9A);  }
+.disc-card--ciencias          { background: linear-gradient(135deg,#00695C,#80CBC4);  }
+.disc-card--educacao-fisica   { background: linear-gradient(135deg,#2E7D32,#A5D6A7); }
+.disc-card--ensino-religioso  { background: linear-gradient(135deg,#6A1B9A,#CE93D8);  }
+.disc-card--geografia         { background: linear-gradient(135deg,#1565C0,#90CAF9);  }
+.disc-card--historia          { background: linear-gradient(135deg,#BF360C,#FFAB91);  }
+.disc-card--lingua-inglesa    { background: linear-gradient(135deg,#00838F,#80DEEA);  }
+.disc-card--lingua-portuguesa { background: linear-gradient(135deg,#E65100,#FFE082);  }
+.disc-card--matematica        { background: linear-gradient(135deg,#283593,#7986CB);  }
+.disc-card--educacao-infantil { background: linear-gradient(135deg, #AD1457, #F48FB1); }
 .ref-card { background: linear-gradient(135deg,#0D47A1,#1565C0); border-radius: var(--vd-radius); padding: 24px 28px; display: flex; align-items: center; gap: 18px; margin-top: 20px; text-decoration: none; transition: transform .2s, box-shadow .2s; box-shadow: var(--vd-shadow-md); }
 .ref-card:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(13,71,161,.3); }
 .ref-card__icon { font-size: 2.4rem; flex-shrink: 0; }
@@ -209,6 +209,8 @@ body { background: var(--vd-bg); color: var(--vd-text); font-family: 'Nunito', s
       <li><a href="ref-curricular/ref-index.html">BNCC Computação</a></li>
       <li><a href="pages/banco-ideias.html">Banco de ideias</a></li>
       <li><a href="pages/reds.html">REDs</a></li>
+      <li><a href="pages/sobre.html">Sobre</a></li>
+      <li><a href="pages/suporte.html">Suporte</a></li>
     </ul>
   </div>
 </nav>
@@ -248,6 +250,30 @@ body { background: var(--vd-bg); color: var(--vd-text); font-family: 'Nunito', s
     </div>
     <span class="ref-card__arrow">→</span>
   </a>
+
+  <!-- ── Cards institucionais ── -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-top:16px;">
+
+    <a href="pages/sobre.html" style="display:flex;align-items:center;gap:16px;padding:20px 22px;background:#fff;border:1.5px solid var(--vd-border);border-radius:var(--vd-radius);text-decoration:none;box-shadow:var(--vd-shadow);transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 28px rgba(21,101,192,.15)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--vd-shadow)'">
+      <span style="font-size:2rem;flex-shrink:0;">🏫</span>
+      <div>
+        <div style="font-family:'Lexend',sans-serif;font-size:.92rem;font-weight:700;color:var(--vd-text);margin-bottom:3px;">Sobre o Varjota DigiEdu</div>
+        <div style="font-size:.8rem;color:var(--vd-muted);line-height:1.5;">Conheça a plataforma, a Educação Digital e a equipe responsável.</div>
+      </div>
+      <span style="margin-left:auto;color:var(--vd-muted);font-size:1.1rem;flex-shrink:0;">→</span>
+    </a>
+
+    <a href="pages/suporte.html" style="display:flex;align-items:center;gap:16px;padding:20px 22px;background:#fff;border:1.5px solid var(--vd-border);border-radius:var(--vd-radius);text-decoration:none;box-shadow:var(--vd-shadow);transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 28px rgba(21,101,192,.15)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--vd-shadow)'">
+      <span style="font-size:2rem;flex-shrink:0;">🛟</span>
+      <div>
+        <div style="font-family:'Lexend',sans-serif;font-size:.92rem;font-weight:700;color:var(--vd-text);margin-bottom:3px;">Suporte e Sugestões</div>
+        <div style="font-size:.8rem;color:var(--vd-muted);line-height:1.5;">Reporte problemas ou envie sugestões de recursos e atividades.</div>
+      </div>
+      <span style="margin-left:auto;color:var(--vd-muted);font-size:1.1rem;flex-shrink:0;">→</span>
+    </a>
+
+  </div>
+
 </main>
 
 <footer class="vd-footer">

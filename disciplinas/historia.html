@@ -9,6 +9,7 @@
     window.VD_PAGE = { disciplina: "historia", pageTitle: "História" };
   </script>
   <script src="../assets/template.js"></script>
+  <script src="../assets/router.js"></script>
   <style>
     :root { --disc-cor: #BF360C; --disc-cor-light: #FFF3EE; }
 
@@ -79,14 +80,14 @@
   </div>
 
   <div class="sec-btns">
-    <button class="sec-btn" id="btn-bncc"       onclick="mostrarSecao('bncc')">      <span class="sec-btn__icon">📋</span> Correlação BNCC</button>
+    <button class="sec-btn ativo" id="btn-bncc"        onclick="mostrarSecao('bncc')">      <span class="sec-btn__icon">📋</span> Correlação BNCC</button>
     <button class="sec-btn" id="btn-atividades"  onclick="mostrarSecao('atividades')"><span class="sec-btn__icon">✏️</span> Atividades</button>
     <button class="sec-btn" id="btn-reds"        onclick="mostrarSecao('reds')">      <span class="sec-btn__icon">💻</span> REDs</button>
     <button class="sec-btn" id="btn-materiais"   onclick="mostrarSecao('materiais')"> <span class="sec-btn__icon">📁</span> Materiais de Apoio</button>
     <button class="sec-btn" id="btn-acessibilidade"   onclick="mostrarSecao('acessibilidade')"> <span class="sec-btn__icon">♿</span> Acessibilidade</button>
   </div>
 
-  <div class="sec-painel" id="painel-bncc">
+  <div class="sec-painel ativo" id="painel-bncc">
     <div class="bncc-grid">
 <!-- Card 1 -->
 <div class="bncc-card">
@@ -1731,9 +1732,7 @@
         if (ABAS_LINKS.indexOf(id) !== -1) window.renderLinks(id);
       };
 
-      if (typeof window.mostrarSecao === 'function') {
-        window.mostrarSecao('bncc');
-      }
+      
 
     });
 

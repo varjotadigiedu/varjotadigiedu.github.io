@@ -377,7 +377,23 @@
     buildNavbar();
     buildLayout();
     buildFooter();
+    // Revela o body somente após tudo montado — elimina FOUC
+    document.body.classList.add('vd-ready');
   }
+
+  // Expõe função para o roteador SPA reinicializar só o layout interno
+  window.VD_rebuildLayout = function(newMeta) {
+    window.VD_PAGE = newMeta;
+
+    // Remove layout e footer anteriores
+    var oldLayout = document.querySelector('.vd-layout');
+    var oldFooter = document.querySelector('.vd-footer');
+    if (oldLayout) oldLayout.remove();
+    if (oldFooter) oldFooter.remove();
+
+    buildLayout();
+    buildFooter();
+  };
 
   injectFonts();
 
