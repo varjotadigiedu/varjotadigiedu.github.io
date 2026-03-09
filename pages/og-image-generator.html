@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Gerador og-image — Varjota DigiEdu</title>
+<style>
+  body { margin: 0; background: #1A1A2E; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; font-family: sans-serif; gap: 20px; }
+  canvas { border-radius: 8px; box-shadow: 0 8px 40px rgba(0,0,0,.5); display: block; max-width: 100%; }
+  button { padding: 12px 32px; background: #FF8F00; border: none; border-radius: 8px; color: #fff; font-size: 1rem; font-weight: 700; cursor: pointer; }
+  p { color: rgba(255,255,255,.5); font-size: .85rem; text-align: center; }
+</style>
+</head>
+<body>
+<canvas id="og" width="1200" height="630"></canvas>
+<button onclick="download()">⬇️ Baixar og-image.png</button>
+<p>Salve o arquivo como <strong>og-image.png</strong> e coloque em <strong>assets/</strong></p>
+<script>
+var canvas = document.getElementById('og');
+var ctx = canvas.getContext('2d');
+var W = 1200, H = 630;
+
+// Fundo gradiente
+var grad = ctx.createLinearGradient(0, 0, W, H);
+grad.addColorStop(0,   '#0D47A1');
+grad.addColorStop(0.55,'#1565C0');
+grad.addColorStop(1,   '#1976D2');
+ctx.fillStyle = grad;
+ctx.fillRect(0, 0, W, H);
+
+// Padrão de + (mesmo do site)
+ctx.fillStyle = 'rgba(255,255,255,0.035)';
+var step = 60;
+for (var x = 0; x < W; x += step) {
+  for (var y = 0; y < H; y += step) {
+    // cruz
+    ctx.fillRect(x + 26, y + 22, 8, 16);
+    ctx.fillRect(x + 22, y + 26, 16, 8);
+  }
+}
+
+// Faixa laranja inferior
+ctx.fillStyle = '#FF8F00';
+ctx.fillRect(0, H - 8, W, 8);
+
+// Faixa lateral esquerda sutil
+var gradLeft = ctx.createLinearGradient(0, 0, 180, H);
+gradLeft.addColorStop(0, 'rgba(255,143,0,0.18)');
+gradLeft.addColorStop(1, 'rgba(255,143,0,0)');
+ctx.fillStyle = gradLeft;
+ctx.fillRect(0, 0, 180, H);
+
+// Bloco de ícones disciplinas (lado direito, decorativo)
+var emojis = ['🎨','🔬','⚽','✨','🌍','📜','🆙','📖','📐','🧸'];
+ctx.font = '52px serif';
+ctx.globalAlpha = 0.12;
+emojis.forEach(function(e, i) {
+  var col = i % 2;
+  var row = Math.floor(i / 2);
+  ctx.fillText(e, W - 220 + col * 80, 110 + row * 100);
+});
+ctx.globalAlpha = 1;
+
+// Logo / marca (texto)
+ctx.font = 'bold 28px "Lexend", sans-serif';
+ctx.fillStyle = 'rgba(255,255,255,0.6)';
+ctx.fillText('PREFEITURA DE VARJOTA  ·  SMETEC', 80, 100);
+
+// Linha separadora
+ctx.strokeStyle = 'rgba(255,255,255,0.2)';
+ctx.lineWidth = 1.5;
+ctx.beginPath();
+ctx.moveTo(80, 118);
+ctx.lineTo(780, 118);
+ctx.stroke();
+
+// Título principal
+ctx.font = 'bold 72px "Lexend", Arial, sans-serif';
+ctx.fillStyle = '#FFFFFF';
+ctx.fillText('Varjota', 80, 230);
+
+ctx.fillStyle = '#FF8F00';
+ctx.fillText('DigiEdu', 80, 320);
+
+// Subtítulo
+ctx.font = '28px "Nunito", Arial, sans-serif';
+ctx.fillStyle = 'rgba(255,255,255,0.75)';
+var sub = 'Plataforma de recursos educacionais digitais';
+ctx.fillText(sub, 80, 388);
+ctx.fillText('da rede municipal de Varjota — CE', 80, 425);
+
+// Chips de destaque
+function chip(text, x, y, cor) {
+  ctx.font = 'bold 18px "Lexend", Arial, sans-serif';
+  var w = ctx.measureText(text).width + 32;
+  ctx.fillStyle = cor || 'rgba(255,255,255,0.15)';
+  roundRect(ctx, x, y, w, 38, 19);
+  ctx.fillStyle = '#fff';
+  ctx.fillText(text, x + 16, y + 25);
+}
+
+function roundRect(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.lineTo(x + w - r, y);
+  ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+  ctx.lineTo(x + w, y + h - r);
+  ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+  ctx.lineTo(x + r, y + h);
+  ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+  ctx.lineTo(x, y + r);
+  ctx.quadraticCurveTo(x, y, x + r, y);
+  ctx.closePath();
+  ctx.fill();
+}
+
+chip('📋 BNCC Computação', 80, 475);
+chip('💡 Banco de Ideias', 310, 475);
+chip('💻 REDs', 560, 475);
+
+// URL
+ctx.font = '20px "Lexend", Arial, sans-serif';
+ctx.fillStyle = 'rgba(255,255,255,0.4)';
+ctx.fillText('varjotadigiedu.github.io', 80, 590);
+
+function download() {
+  var a = document.createElement('a');
+  a.download = 'og-image.png';
+  a.href = canvas.toDataURL('image/png');
+  a.click();
+}
+</script>
+</body>
+</html>

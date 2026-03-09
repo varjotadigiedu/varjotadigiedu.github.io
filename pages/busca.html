@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Busca Avançada — Varjota DigiEdu</title>
+<meta name="description" content="Pesquise recursos educacionais, habilidades BNCC e ideias pedagógicas da plataforma Varjota DigiEdu.">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="../assets/favicon.ico" type="image/x-icon">
+
+<!-- Dados completos para busca -->
+<script src="../disciplinas/dados/links-arte.js"></script>
+<script src="../disciplinas/dados/links-ciencias.js"></script>
+<script src="../disciplinas/dados/links-educacao-fisica.js"></script>
+<script src="../disciplinas/dados/links-ensino-religioso.js"></script>
+<script src="../disciplinas/dados/links-geografia.js"></script>
+<script src="../disciplinas/dados/links-historia.js"></script>
+<script src="../disciplinas/dados/links-lingua-inglesa.js"></script>
+<script src="../disciplinas/dados/links-lingua-portuguesa.js"></script>
+<script src="../disciplinas/dados/links-matematica.js"></script>
+<script src="../disciplinas/dados/links-educacao-infantil.js"></script>
+<script src="dados/ideias-ei.js"></script>
+<script src="dados/ideias-ai.js"></script>
+<script src="dados/ideias-af.js"></script>
+<script src="../assets/search-index.js"></script>
+<script src="../assets/search-index-full.js"></script>
+
+<style>
+/* ─────────────────────────────── TOKENS ────────────────────────────── */
+:root {
+  --p:#1565C0;--p-dk:#0D47A1;--p-lt:#EEF4FF;
+  --acc:#FF8F00;--acc-lt:#FFF8E7;
+  --bg:#F4F7FB;--white:#fff;--txt:#1A1A2E;--muted:#6B7280;
+  --bdr:#DDE3ED;--nav-h:68px;--r:14px;--r-sm:8px;
+  --sh:0 2px 14px rgba(21,101,192,.09);
+  --sh-md:0 6px 28px rgba(21,101,192,.15);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--txt);font-family:'Nunito',sans-serif;min-height:100vh;display:flex;flex-direction:column;}
+
+/* ─────────────────────────────── NAVBAR ────────────────────────────── */
+.vd-nav{position:sticky;top:0;z-index:1000;height:var(--nav-h);background:linear-gradient(135deg,var(--p-dk),var(--p));box-shadow:0 2px 20px rgba(13,71,161,.3);}
+.vd-nav__inner{max-width:1400px;margin:0 auto;height:100%;padding:0 28px;display:flex;align-items:center;gap:28px;}
+.vd-nav__logo{flex-shrink:0;display:flex;align-items:center;text-decoration:none;}
+.vd-nav__logo img{height:50px;object-fit:contain;}
+.vd-nav__logo-fb{color:#fff;font-family:'Lexend',sans-serif;font-weight:700;font-size:1.1rem;}
+.vd-nav__links{display:flex;list-style:none;gap:2px;margin-left:auto;}
+.vd-nav__links a{display:block;padding:8px 15px;color:rgba(255,255,255,.85);text-decoration:none;font-family:'Lexend',sans-serif;font-size:.85rem;font-weight:500;border-radius:8px;transition:.2s;white-space:nowrap;}
+.vd-nav__links a:hover,.vd-nav__links a.active{background:rgba(255,255,255,.18);color:#fff;}
+.vd-nav__ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;margin-left:auto;}
+.vd-nav__ham span{display:block;width:24px;height:2px;background:#fff;border-radius:2px;}
+
+/* ─────────────────────────────── HERO ─────────────────────────────── */
+.hero{background:linear-gradient(135deg,var(--p-dk) 0%,var(--p) 60%,#1976D2 100%);padding:40px 28px 36px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23fff' fill-opacity='.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E");}
+.hero h1{position:relative;font-family:'Lexend',sans-serif;font-size:1.8rem;font-weight:800;color:#fff;margin-bottom:6px;}
+.hero p{position:relative;font-size:.9rem;color:rgba(255,255,255,.75);margin-bottom:24px;}
+.search-bar{position:relative;max-width:660px;margin:0 auto;display:flex;background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.3);border-radius:50px;backdrop-filter:blur(8px);transition:.25s;}
+.search-bar:focus-within{background:rgba(255,255,255,.22);border-color:rgba(255,255,255,.6);box-shadow:0 0 0 4px rgba(255,255,255,.12);}
+.search-bar__ico{padding:0 0 0 20px;display:flex;align-items:center;color:rgba(255,255,255,.6);flex-shrink:0;}
+.search-bar input{flex:1;padding:14px 10px;background:none;border:none;outline:none;color:#fff;font-family:'Nunito',sans-serif;font-size:1rem;font-weight:600;}
+.search-bar input::placeholder{color:rgba(255,255,255,.5);}
+.search-bar__clr{background:none;border:none;padding:0 8px;color:rgba(255,255,255,.5);cursor:pointer;font-size:1.1rem;display:none;}
+.search-bar__clr.on{display:block;}
+.search-bar__btn{padding:11px 24px;background:var(--acc);border:none;color:#fff;font-family:'Lexend',sans-serif;font-size:.875rem;font-weight:700;cursor:pointer;border-radius:0 48px 48px 0;flex-shrink:0;transition:.2s;}
+.search-bar__btn:hover{background:#F57C00;}
+.hero-history{position:relative;margin-top:14px;display:flex;flex-wrap:wrap;gap:6px;justify-content:center;min-height:24px;}
+.hero-history__label{font-size:.72rem;color:rgba(255,255,255,.55);font-family:'Lexend',sans-serif;font-weight:700;align-self:center;}
+.hist-chip{padding:4px 12px;border-radius:16px;border:1.5px solid rgba(255,255,255,.25);background:rgba(255,255,255,.1);color:rgba(255,255,255,.8);font-family:'Lexend',sans-serif;font-size:.72rem;font-weight:700;cursor:pointer;transition:.15s;}
+.hist-chip:hover{background:rgba(255,255,255,.22);color:#fff;}
+
+/* ─────────────────────────────── LAYOUT ────────────────────────────── */
+.page-body{max-width:1300px;margin:0 auto;padding:28px 24px 60px;width:100%;flex:1;display:flex;gap:28px;align-items:flex-start;}
+
+/* ─────────────────────────────── SIDEBAR ───────────────────────────── */
+.filters-aside{width:252px;flex-shrink:0;position:sticky;top:calc(var(--nav-h) + 16px);}
+.filters-card{background:#fff;border:1.5px solid var(--bdr);border-radius:var(--r);overflow:hidden;}
+.filters-card__head{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1.5px solid var(--bdr);background:var(--p-lt);}
+.filters-card__title{font-family:'Lexend',sans-serif;font-size:.8rem;font-weight:800;color:var(--p);}
+.filters-card__reset{background:none;border:none;font-family:'Lexend',sans-serif;font-size:.72rem;font-weight:700;color:var(--acc);cursor:pointer;padding:2px 6px;border-radius:6px;transition:.15s;}
+.filters-card__reset:hover{background:var(--acc-lt);}
+.filter-group{border-bottom:1px solid var(--bdr);}
+.filter-group:last-child{border-bottom:none;}
+.filter-group__toggle{width:100%;display:flex;align-items:center;justify-content:space-between;padding:11px 16px;background:none;border:none;cursor:pointer;font-family:'Lexend',sans-serif;font-size:.78rem;font-weight:700;color:var(--txt);transition:.15s;}
+.filter-group__toggle:hover{background:#F8FAFD;}
+.filter-group__toggle .arrow{font-size:.65rem;color:var(--muted);transition:transform .2s;}
+.filter-group__toggle.open .arrow{transform:rotate(180deg);}
+.filter-group__body{padding:8px 12px 12px;display:none;}
+.filter-group__body.open{display:block;}
+.fcheck{display:flex;align-items:center;gap:8px;padding:4px;border-radius:6px;cursor:pointer;transition:.12s;}
+.fcheck:hover{background:#F0F4FF;}
+.fcheck input[type=checkbox]{width:15px;height:15px;accent-color:var(--p);cursor:pointer;flex-shrink:0;}
+.fcheck__label{font-size:.78rem;font-weight:600;color:var(--txt);flex:1;}
+.fcheck__count{font-size:.68rem;font-weight:700;color:var(--muted);background:#F3F4F6;padding:1px 6px;border-radius:10px;}
+
+/* mobile drawer */
+.filters-toggle-btn{display:none;align-items:center;gap:8px;padding:9px 16px;border-radius:var(--r-sm);border:1.5px solid var(--bdr);background:#fff;font-family:'Lexend',sans-serif;font-size:.8rem;font-weight:700;color:var(--txt);cursor:pointer;transition:.15s;}
+.filters-toggle-btn:hover{border-color:var(--p);color:var(--p);}
+.filter-badge{background:var(--p);color:#fff;border-radius:10px;padding:1px 7px;font-size:.68rem;display:none;}
+.filter-badge.on{display:inline;}
+.drawer-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:500;}
+.drawer-overlay.on{display:block;}
+.filters-drawer{display:none;position:fixed;top:0;left:0;bottom:0;width:300px;background:#fff;z-index:501;overflow-y:auto;box-shadow:4px 0 24px rgba(0,0,0,.15);transform:translateX(-100%);transition:transform .28s ease;}
+.filters-drawer.on{display:block;transform:translateX(0);}
+.filters-drawer__head{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1.5px solid var(--bdr);}
+.filters-drawer__head h2{font-family:'Lexend',sans-serif;font-size:.9rem;font-weight:800;color:var(--txt);}
+.filters-drawer__close{background:none;border:none;font-size:1.3rem;cursor:pointer;color:var(--muted);}
+
+/* ─────────────────────────────── MAIN ──────────────────────────────── */
+.results-main{flex:1;min-width:0;}
+.active-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px;}
+.active-tag{display:flex;align-items:center;gap:5px;padding:4px 10px;background:var(--p-lt);border:1.5px solid var(--p);border-radius:16px;font-family:'Lexend',sans-serif;font-size:.72rem;font-weight:700;color:var(--p);}
+.active-tag__rm{background:none;border:none;font-size:.8rem;cursor:pointer;color:var(--p);padding:0;line-height:1;}
+.results-toolbar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:18px;}
+.results-count{font-family:'Lexend',sans-serif;font-size:.85rem;font-weight:600;color:var(--muted);}
+.results-count strong{color:var(--txt);}
+.toolbar-right{display:flex;align-items:center;gap:10px;}
+.sort-sel{padding:6px 10px;border:1.5px solid var(--bdr);border-radius:var(--r-sm);font-family:'Lexend',sans-serif;font-size:.78rem;font-weight:700;color:var(--txt);background:#fff;cursor:pointer;outline:none;}
+.view-btns{display:flex;border:1.5px solid var(--bdr);border-radius:var(--r-sm);overflow:hidden;}
+.view-btn{padding:6px 10px;background:#fff;border:none;cursor:pointer;color:var(--muted);font-size:.85rem;transition:.15s;}
+.view-btn.active{background:var(--p);color:#fff;}
+.cat-tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px;}
+.cat-tab{padding:6px 14px;border-radius:20px;border:1.5px solid var(--bdr);background:#fff;font-family:'Lexend',sans-serif;font-size:.75rem;font-weight:700;color:var(--muted);cursor:pointer;transition:.15s;white-space:nowrap;}
+.cat-tab:hover{border-color:var(--p);color:var(--p);}
+.cat-tab.active{background:var(--p);border-color:var(--p);color:#fff;}
+.cat-tab .cnt{opacity:.7;margin-left:3px;}
+
+/* ── Lista ── */
+.results-list{display:flex;flex-direction:column;gap:10px;}
+.rc{display:flex;align-items:flex-start;gap:14px;padding:16px 18px;background:#fff;border:1.5px solid var(--bdr);border-radius:var(--r);text-decoration:none;transition:.15s;}
+.rc:hover{border-color:var(--p);box-shadow:var(--sh-md);transform:translateX(3px);}
+.rc__ico{width:42px;height:42px;border-radius:10px;background:var(--p-lt);display:flex;align-items:center;justify-content:center;font-size:1.25rem;flex-shrink:0;}
+.rc__body{flex:1;min-width:0;}
+.rc__title{font-family:'Lexend',sans-serif;font-size:.9rem;font-weight:700;color:var(--txt);margin-bottom:3px;line-height:1.3;}
+.rc__title mark,.rc__desc mark{background:rgba(255,143,0,.25);color:inherit;border-radius:2px;padding:0 2px;}
+.rc:hover .rc__title{color:var(--p);}
+.rc__sub{font-size:.72rem;font-weight:700;font-family:'Lexend',sans-serif;color:var(--p);margin-bottom:4px;opacity:.8;}
+.rc__desc{font-size:.8rem;color:var(--muted);line-height:1.55;}
+.rc__meta{display:flex;flex-wrap:wrap;gap:5px;margin-top:7px;}
+.rc__right{display:flex;flex-direction:column;align-items:flex-end;gap:5px;flex-shrink:0;}
+.rc__arrow{font-size:.85rem;color:#C4C9D4;}
+.badge-cat{font-size:.62rem;font-weight:700;font-family:'Lexend',sans-serif;padding:2px 8px;border-radius:8px;}
+.badge-cat--recurso{background:#EEF4FF;color:#1565C0;}
+.badge-cat--bncc{background:#F0FBF4;color:#1B5E20;}
+.badge-cat--habilidade{background:#E8F5E9;color:#1B5E20;}
+.badge-cat--ideia{background:var(--acc-lt);color:#E65100;}
+.badge-cat--pagina{background:#F3F4F6;color:#374151;}
+.badge-cat--secao{background:#F3ECF9;color:#6A1B9A;}
+.badge-cat--ref{background:#E3F2FD;color:#0D47A1;}
+.badge-tipo{font-size:.62rem;font-weight:700;font-family:'Lexend',sans-serif;padding:2px 8px;border-radius:8px;background:#F3F4F6;color:#374151;}
+
+/* ── Grade ── */
+.results-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;}
+.rg{display:flex;flex-direction:column;padding:16px;background:#fff;border:1.5px solid var(--bdr);border-radius:var(--r);text-decoration:none;transition:.15s;}
+.rg:hover{border-color:var(--p);box-shadow:var(--sh-md);transform:translateY(-2px);}
+.rg__head{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.rg__ico{width:38px;height:38px;border-radius:9px;background:var(--p-lt);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.rg__title{font-family:'Lexend',sans-serif;font-size:.85rem;font-weight:700;color:var(--txt);margin-bottom:5px;line-height:1.3;}
+.rg__title mark{background:rgba(255,143,0,.25);color:inherit;border-radius:2px;}
+.rg:hover .rg__title{color:var(--p);}
+.rg__sub{font-size:.68rem;font-weight:700;font-family:'Lexend',sans-serif;color:var(--p);margin-bottom:4px;opacity:.8;}
+.rg__desc{font-size:.76rem;color:var(--muted);line-height:1.5;flex:1;}
+
+/* paginação */
+.pagination{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:28px;flex-wrap:wrap;}
+.pg-btn{min-width:36px;height:36px;padding:0 10px;border:1.5px solid var(--bdr);border-radius:var(--r-sm);background:#fff;font-family:'Lexend',sans-serif;font-size:.8rem;font-weight:700;color:var(--txt);cursor:pointer;transition:.15s;}
+.pg-btn:hover{border-color:var(--p);color:var(--p);}
+.pg-btn.active{background:var(--p);border-color:var(--p);color:#fff;}
+.pg-btn:disabled{opacity:.35;cursor:not-allowed;}
+.pg-ellipsis{padding:0 4px;color:var(--muted);font-family:'Lexend',sans-serif;font-size:.8rem;}
+
+/* estados */
+.state-empty,.state-initial{text-align:center;padding:60px 20px;color:var(--muted);}
+.state-ico{font-size:3rem;margin-bottom:16px;}
+.state-title{font-family:'Lexend',sans-serif;font-size:1rem;font-weight:700;color:var(--txt);margin-bottom:8px;}
+.state-sub{font-size:.85rem;line-height:1.6;margin-bottom:20px;}
+.suggestions{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;}
+.sug{padding:6px 16px;border-radius:20px;border:1.5px solid var(--bdr);background:#fff;font-family:'Lexend',sans-serif;font-size:.78rem;font-weight:700;color:var(--p);cursor:pointer;transition:.15s;}
+.sug:hover{background:var(--p);color:#fff;border-color:var(--p);}
+
+/* ─────────────────────────────── FOOTER ────────────────────────────── */
+.vd-footer{background:linear-gradient(135deg,var(--p-dk),var(--p));color:rgba(255,255,255,.8);margin-top:auto;padding:20px 28px;text-align:center;}
+.vd-footer p{font-size:.8rem;font-weight:600;}
+.vd-footer__notice{font-size:.72rem!important;opacity:.65;}
+
+/* ─────────────────────────────── MOBILE ────────────────────────────── */
+@media(max-width:900px){
+  .filters-aside{display:none;}
+  .filters-toggle-btn{display:flex;}
+  .page-body{flex-direction:column;}
+  .results-main{width:100%;}
+}
+@media(max-width:768px){
+  .vd-nav__links{display:none;flex-direction:column;position:absolute;top:var(--nav-h);left:0;right:0;background:var(--p-dk);padding:12px 16px;gap:4px;z-index:999;}
+  .vd-nav__links.open{display:flex;}
+  .vd-nav__ham{display:flex;}
+  .vd-nav__inner{position:relative;}
+  .hero h1{font-size:1.4rem;}
+  .search-bar{flex-direction:column;border-radius:16px;overflow:hidden;}
+  .search-bar input{padding:13px 16px;}
+  .search-bar__ico{padding:12px 0 0 16px;}
+  .search-bar__btn{border-radius:0 0 14px 14px;padding:11px;}
+  .rc__right{display:none;}
+  .results-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:480px){
+  .results-grid{grid-template-columns:1fr;}
+  .page-body{padding:16px 14px 40px;}
+}
+</style>
+</head>
+<body>
+
+<nav class="vd-nav">
+  <div class="vd-nav__inner">
+    <a href="../index.html" class="vd-nav__logo">
+      <img src="../assets/logo.png" alt="Varjota DigiEdu" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <span class="vd-nav__logo-fb" style="display:none">Varjota DigiEdu</span>
+    </a>
+    <button class="vd-nav__ham" id="navHam" aria-label="Menu"><span></span><span></span><span></span></button>
+    <ul class="vd-nav__links" id="navLinks">
+      <li><a href="../index.html">Início</a></li>
+      <li><a href="../ref-curricular/ref-index.html">BNCC Computação</a></li>
+      <li><a href="banco-ideias.html">Banco de Ideias</a></li>
+      <li><a href="reds.html">REDs</a></li>
+      <li><a href="sobre.html">Sobre</a></li>
+      <li><a href="suporte.html">Suporte</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Drawer mobile overlay -->
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<div class="filters-drawer" id="filtersDrawer">
+  <div class="filters-drawer__head">
+    <h2>⚙️ Filtros Avançados</h2>
+    <button class="filters-drawer__close" id="drawerClose">✕</button>
+  </div>
+  <div id="filtersDrawerBody"></div>
+</div>
+
+<div class="hero">
+  <h1>🔍 Busca Avançada</h1>
+  <p>Pesquise em recursos, habilidades BNCC, ideias de aula e páginas do site</p>
+  <div class="search-bar" id="searchBar">
+    <span class="search-bar__ico">🔍</span>
+    <input type="text" id="searchInput" placeholder="Ex: vídeo matemática 3º ano, jogo português…" autocomplete="off" aria-label="Pesquisar">
+    <button class="search-bar__clr" id="searchClr" aria-label="Limpar">✕</button>
+    <button class="search-bar__btn" id="searchBtn">Pesquisar</button>
+  </div>
+  <div class="hero-history" id="heroHistory"></div>
+</div>
+
+<div class="page-body">
+
+  <!-- Sidebar filtros (desktop) -->
+  <aside class="filters-aside">
+    <div class="filters-card">
+      <div class="filters-card__head">
+        <span class="filters-card__title">⚙️ Filtros Avançados</span>
+        <button class="filters-card__reset" id="resetFilters">Limpar tudo</button>
+      </div>
+      <div id="filterGroups"></div>
+    </div>
+  </aside>
+
+  <main class="results-main">
+
+    <!-- Linha topo: botão mobile filtros + cat tabs -->
+    <div style="display:flex;gap:10px;align-items:flex-start;margin-bottom:16px;flex-wrap:wrap;">
+      <button class="filters-toggle-btn" id="filtersToggleBtn">
+        ⚙️ Filtros <span class="filter-badge" id="filterBadge">0</span>
+      </button>
+      <div class="cat-tabs" id="catTabs" style="margin-bottom:0;flex:1;min-width:0;"></div>
+    </div>
+
+    <!-- Tags ativas -->
+    <div class="active-tags" id="activeTags"></div>
+
+    <!-- Toolbar de resultados -->
+    <div class="results-toolbar" id="resultsToolbar" style="display:none">
+      <span class="results-count" id="resultsCount"></span>
+      <div class="toolbar-right">
+        <select class="sort-sel" id="sortSel">
+          <option value="relevancia">↕ Relevância</option>
+          <option value="titulo">A–Z Título</option>
+          <option value="categoria">📂 Categoria</option>
+        </select>
+        <div class="view-btns">
+          <button class="view-btn active" id="viewList" title="Lista">☰</button>
+          <button class="view-btn" id="viewGrid" title="Grade">⊞</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="resultsArea"></div>
+    <div class="pagination" id="pagination"></div>
+  </main>
+</div>
+
+<footer class="vd-footer">
+  <p>© <span id="anoFt"></span> Prefeitura de Varjota — Secretaria de Educação (SMETEC)</p>
+  <p class="vd-footer__notice">O conteúdo deste site não pode ser editado, copiado ou distribuído sem expressa autorização da SMETEC-Varjota.</p>
+</footer>
+
+<script>
+document.getElementById('anoFt').textContent = new Date().getFullYear();
+document.getElementById('navHam').addEventListener('click', function(){
+  document.getElementById('navLinks').classList.toggle('open');
+});
+
+(function(){
+'use strict';
+
+var PER_PAGE = 30;
+
+var CAT_MAP = {
+  'todos':'Tudo',
+  'Recurso':'💻 Recursos',
+  'Habilidade BNCC':'📋 BNCC Disciplinas',
+  'Habilidade':'🧠 BNCC Computação',
+  'Referencial Curricular':'📘 Referencial',
+  'Ideia de Aula':'💡 Ideias de Aula',
+  'Seção':'🗂️ Seções',
+  'Página':'📄 Páginas',
+};
+
+var CAT_BADGE = {
+  'Recurso':'badge-cat--recurso',
+  'Habilidade BNCC':'badge-cat--bncc',
+  'Habilidade':'badge-cat--habilidade',
+  'Referencial Curricular':'badge-cat--ref',
+  'Ideia de Aula':'badge-cat--ideia',
+  'Seção':'badge-cat--secao',
+  'Página':'badge-cat--pagina',
+};
+
+var TIPO_REC = {
+  'video':'🎥 Vídeo','pdf':'📄 PDF','site':'🌐 Site','apresentacao':'📊 Apresentação',
+  'planilha':'📋 Planilha','podcast':'🎙️ Podcast','jogo':'🎮 Jogo','simulador':'🔭 Simulador',
+  'aplicativo':'📱 Aplicativo','infografico':'🖼️ Infográfico',
+  'atividade-interativa':'✏️ Atividade Interativa','mapa':'🗺️ Mapa','outros':'📦 Outros',
+};
+var TIPO_USO = {
+  'teorico':'📚 Teórico','pratico':'🛠️ Prático',
+  'avaliativo':'📝 Avaliativo','complementar':'➕ Complementar',
+};
+var AC_MAP = {
+  'libras':'👐 Libras','audiodescrição':'🔊 Audiodescrição','daltonismo':'🎨 Daltonismo',
+  'baixa-visao':'👁️ Baixa Visão','TEA':'🧩 TEA','TDAH':'⚡ TDAH',
+  'deficiencia-intelectual':'🧠 Def. Intelectual','deficiencia-fisica':'♿ Def. Física',
+  'altas-habilidades':'⭐ Altas Habilidades',
+};
+var ANOS_ORDER = [
+  'Educação Infantil','1º ano','2º ano','3º ano','4º ano','5º ano',
+  '6º ano','7º ano','8º ano','9º ano',
+  '1º ao 5º ano','3º ao 5º ano','6º ao 9º ano',
+];
+var DISCS = [
+  'Arte','Ciências','Educação Física','Ensino Religioso','Geografia',
+  'História','Língua Inglesa','Língua Portuguesa','Matemática',
+  'Educação Infantil','Interdisciplinar',
+];
+
+/* ── Estado ── */
+var S = {
+  q:'', cat:'todos',
+  disciplina:[], tipo:[], uso:[], ano:[], segmento:[], ac:[],
+  sort:'relevancia', view:'list', page:1,
+};
+
+/* ── Utils ── */
+function norm(s){ return (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,''); }
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function highlight(text, terms){
+  if(!terms.length) return esc(text);
+  var re=new RegExp('('+terms.map(function(t){return t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');}).join('|')+')','gi');
+  return esc(text).replace(re,'<mark>$1</mark>');
+}
+
+/* ── Histórico (sessionStorage) ── */
+function getHist(){ try{ return JSON.parse(sessionStorage.getItem('vd_hist')||'[]'); }catch(e){ return []; } }
+function saveHist(q){
+  if(!q.trim()) return;
+  var h=getHist().filter(function(x){ return x!==q; });
+  h.unshift(q); h=h.slice(0,6);
+  try{ sessionStorage.setItem('vd_hist',JSON.stringify(h)); }catch(e){}
+}
+function renderHist(){
+  var el=document.getElementById('heroHistory');
+  var h=getHist();
+  if(!h.length){ el.innerHTML=''; return; }
+  el.innerHTML='<span class="hero-history__label">Recentes:</span>'
+    +h.map(function(q){ return '<button class="hist-chip" data-q="'+esc(q)+'">'+esc(q)+'</button>'; }).join('');
+}
+document.getElementById('heroHistory').addEventListener('click',function(e){
+  var b=e.target.closest('.hist-chip');
+  if(!b) return;
+  document.getElementById('searchInput').value=b.dataset.q;
+  S.q=b.dataset.q; S.page=1; run();
+});
+
+/* ── Motor ── */
+function matchF(item){
+  if(S.cat!=='todos' && item.categoria!==S.cat) return false;
+  if(S.disciplina.length && S.disciplina.indexOf(item.disciplina)===-1) return false;
+  if(S.tipo.length && S.tipo.indexOf(item.tipo||'')===-1) return false;
+  if(S.ano.length){
+    var ok=S.ano.some(function(a){ return (item.anos||[]).indexOf(a)>-1; });
+    if(!ok) return false;
+  }
+  if(S.segmento.length){
+    var sub=norm(item.subcategoria||'');
+    var ok2=S.segmento.some(function(s){ return sub.includes(norm(s)); });
+    if(!ok2) return false;
+  }
+  if(S.uso.length){
+    var t=norm(item.tags||'');
+    var ok3=S.uso.some(function(u){ return t.includes(norm(u)); });
+    if(!ok3) return false;
+  }
+  if(S.ac.length){
+    var t2=norm(item.tags||'');
+    var ok4=S.ac.some(function(a){ return t2.includes(norm(a)); });
+    if(!ok4) return false;
+  }
+  return true;
+}
+
+function doSearch(){
+  var q=norm(S.q).trim();
+  var terms=q?q.split(/\s+/):[];
+  var idx=window.VD_FULL_INDEX||[];
+  var sc=[];
+  idx.forEach(function(item){
+    if(!matchF(item)) return;
+    if(!terms.length){ sc.push({item:item,score:0}); return; }
+    var hT=norm(item.title),hD=norm(item.desc),hG=norm(item.tags||''),hS=norm(item.subcategoria||'');
+    var score=0;
+    terms.forEach(function(t){
+      if(hT.includes(t)) score+=10;
+      if(hS.includes(t)) score+=7;
+      if(hD.includes(t)) score+=4;
+      if(hG.includes(t)) score+=2;
+    });
+    if(terms.every(function(t){ return (hT+hD+hG).includes(t); })) score+=5;
+    if(score>0) sc.push({item:item,score:score});
+  });
+  if(S.sort==='relevancia') sc.sort(function(a,b){ return b.score-a.score; });
+  else if(S.sort==='titulo') sc.sort(function(a,b){ return a.item.title.localeCompare(b.item.title,'pt-BR'); });
+  else if(S.sort==='categoria') sc.sort(function(a,b){ return a.item.categoria.localeCompare(b.item.categoria,'pt-BR'); });
+  return sc;
+}
+
+/* ── Contagens ── */
+function buildCounts(results){
+  var C={disciplina:{},tipo:{},ano:{},segmento:{},uso:{},ac:{},cat:{}};
+  results.forEach(function(s){
+    var it=s.item;
+    if(it.disciplina) C.disciplina[it.disciplina]=(C.disciplina[it.disciplina]||0)+1;
+    if(it.tipo) C.tipo[it.tipo]=(C.tipo[it.tipo]||0)+1;
+    if(it.categoria) C.cat[it.categoria]=(C.cat[it.categoria]||0)+1;
+    (it.anos||[]).forEach(function(a){ C.ano[a]=(C.ano[a]||0)+1; });
+    var sub=it.subcategoria||'';
+    ['Educação Infantil','Anos Iniciais','Anos Finais'].forEach(function(seg){
+      if(sub.includes(seg)) C.segmento[seg]=(C.segmento[seg]||0)+1;
+    });
+    var tags=it.tags||'';
+    Object.keys(TIPO_USO).forEach(function(u){ if(tags.includes(u)) C.uso[u]=(C.uso[u]||0)+1; });
+    Object.keys(AC_MAP).forEach(function(a){ if(tags.includes(a)) C.ac[a]=(C.ac[a]||0)+1; });
+  });
+  return C;
+}
+
+/* ── Renderização filtros ── */
+function buildFilterHtml(C){
+  var grupos=[
+    {id:'disciplina',label:'📚 Disciplina',items:DISCS,lFn:null,arr:S.disciplina},
+    {id:'tipo',label:'📦 Tipo de Recurso',items:Object.keys(TIPO_REC),lFn:function(k){return TIPO_REC[k];},arr:S.tipo},
+    {id:'uso',label:'🎯 Tipo de Uso',items:Object.keys(TIPO_USO),lFn:function(k){return TIPO_USO[k];},arr:S.uso},
+    {id:'ano',label:'🗓️ Ano Escolar',items:ANOS_ORDER,lFn:null,arr:S.ano},
+    {id:'segmento',label:'🏫 Segmento',items:['Educação Infantil','Anos Iniciais','Anos Finais'],lFn:null,arr:S.segmento},
+    {id:'ac',label:'♿ Acessibilidade',items:Object.keys(AC_MAP),lFn:function(k){return AC_MAP[k];},arr:S.ac},
+  ];
+  return grupos.map(function(g){
+    var isOpen=g.arr.length>0;
+    var body=g.items.map(function(v){
+      var lbl=g.lFn?g.lFn(v):v;
+      var cnt=(C[g.id]||{})[v]||0;
+      var chk=g.arr.indexOf(v)>-1;
+      var dis=cnt===0&&!chk;
+      return '<label class="fcheck" style="'+(dis?'opacity:.45':'')+'"><input type="checkbox" data-group="'+esc(g.id)+'" data-val="'+esc(v)+'"'+(chk?' checked':'')+(dis?' disabled':'')+' >'
+        +'<span class="fcheck__label">'+esc(lbl)+'</span>'+(cnt?'<span class="fcheck__count">'+cnt+'</span>':'')+'</label>';
+    }).join('');
+    return '<div class="filter-group">'
+      +'<button class="filter-group__toggle'+(isOpen?' open':'')+'" data-gid="'+g.id+'">'+esc(g.label)+'<span class="arrow">▾</span></button>'
+      +'<div class="filter-group__body'+(isOpen?' open':'')+'" data-gbody="'+g.id+'">'+body+'</div>'
+      +'</div>';
+  }).join('');
+}
+
+function renderFilters(C){
+  var html=buildFilterHtml(C);
+  var sd='<div class="filters-card" style="border:none;border-radius:0">'
+    +'<div class="filters-card__head"><span class="filters-card__title">⚙️ Filtros</span>'
+    +'<button class="filters-card__reset" id="resetDrawer">Limpar</button></div>'
+    +'<div>'+html+'</div></div>';
+  document.getElementById('filterGroups').innerHTML=html;
+  document.getElementById('filtersDrawerBody').innerHTML=sd;
+  bindF(document.getElementById('filterGroups'));
+  bindF(document.getElementById('filtersDrawerBody'));
+  var rd=document.getElementById('resetDrawer');
+  if(rd) rd.addEventListener('click',resetAll);
+}
+
+function bindF(root){
+  if(!root) return;
+  root.querySelectorAll('input[type=checkbox]').forEach(function(cb){
+    cb.addEventListener('change',function(){
+      var g=cb.dataset.group, v=cb.dataset.val, arr=S[g];
+      if(cb.checked){ if(arr.indexOf(v)===-1) arr.push(v); }
+      else{ var i=arr.indexOf(v); if(i>-1) arr.splice(i,1); }
+      S.page=1; run();
+    });
+  });
+  root.querySelectorAll('.filter-group__toggle').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var id=btn.dataset.gid;
+      btn.classList.toggle('open');
+      document.querySelectorAll('[data-gbody="'+id+'"]').forEach(function(b){ b.classList.toggle('open'); });
+    });
+  });
+}
+
+/* ── Cat tabs ── */
+function renderCatTabs(C){
+  var cats=['todos','Recurso','Habilidade BNCC','Habilidade','Referencial Curricular','Ideia de Aula','Seção','Página'];
+  var el=document.getElementById('catTabs');
+  el.innerHTML=cats.map(function(c){
+    var cnt=c==='todos'?Object.values(C.cat||{}).reduce(function(a,b){return a+b;},0):(C.cat||{})[c]||0;
+    if(c!=='todos' && cnt===0) return '';
+    return '<button class="cat-tab'+(S.cat===c?' active':'')+'" data-cat="'+esc(c)+'">'+esc(CAT_MAP[c]||c)+(cnt?' <span class="cnt">('+cnt+')</span>':'')+'</button>';
+  }).join('');
+}
+document.getElementById('catTabs').addEventListener('click',function(e){
+  var b=e.target.closest('.cat-tab');
+  if(!b) return;
+  S.cat=b.dataset.cat; S.page=1; run();
+});
+
+/* ── Tags ativas ── */
+var GLABELS={disciplina:'Disciplina',tipo:'Tipo',uso:'Uso',ano:'Ano',segmento:'Segmento',ac:'Acessibilidade'};
+function renderActiveTags(){
+  var tags=[];
+  ['disciplina','tipo','uso','ano','segmento','ac'].forEach(function(g){
+    S[g].forEach(function(v){
+      var lbl=v;
+      if(g==='tipo'&&TIPO_REC[v]) lbl=TIPO_REC[v];
+      if(g==='uso'&&TIPO_USO[v]) lbl=TIPO_USO[v];
+      if(g==='ac'&&AC_MAP[v]) lbl=AC_MAP[v];
+      tags.push({g:g,v:v,lbl:GLABELS[g]+': '+lbl});
+    });
+  });
+  document.getElementById('activeTags').innerHTML=tags.map(function(t){
+    return '<span class="active-tag">'+esc(t.lbl)+'<button class="active-tag__rm" data-g="'+esc(t.g)+'" data-v="'+esc(t.v)+'">✕</button></span>';
+  }).join('');
+  var n=tags.length;
+  var badge=document.getElementById('filterBadge');
+  badge.textContent=n; badge.classList.toggle('on',n>0);
+}
+document.getElementById('activeTags').addEventListener('click',function(e){
+  var b=e.target.closest('.active-tag__rm');
+  if(!b) return;
+  var arr=S[b.dataset.g], i=arr.indexOf(b.dataset.v);
+  if(i>-1){ arr.splice(i,1); S.page=1; run(); }
+});
+
+/* ── Cards ── */
+function catBadgeHtml(item){
+  var cls=CAT_BADGE[item.categoria]||'badge-cat--pagina';
+  var lbl=(CAT_MAP[item.categoria]||item.categoria).replace(/^[^\s]+ /,'');
+  return '<span class="badge-cat '+cls+'">'+esc(lbl)+'</span>';
+}
+function metaHtml(item){
+  var bits=[];
+  if(item.tipo && TIPO_REC[item.tipo]) bits.push('<span class="badge-tipo">'+esc(TIPO_REC[item.tipo])+'</span>');
+  (item.anos||[]).slice(0,2).forEach(function(a){ bits.push('<span class="badge-tipo">'+esc(a)+'</span>'); });
+  return bits.join('');
+}
+function cardList(s,terms){
+  var it=s.item;
+  return '<a class="rc" href="'+esc(it.url)+'">'
+    +'<div class="rc__ico">'+it.icon+'</div>'
+    +'<div class="rc__body">'
+    +'<div class="rc__title">'+highlight(it.title,terms)+'</div>'
+    +(it.subcategoria?'<div class="rc__sub">'+esc(it.subcategoria)+'</div>':'')
+    +'<div class="rc__desc">'+highlight(it.desc,terms)+'</div>'
+    +'<div class="rc__meta">'+catBadgeHtml(it)+metaHtml(it)+'</div>'
+    +'</div>'
+    +'<div class="rc__right">'+catBadgeHtml(it)+'<span class="rc__arrow">→</span></div>'
+    +'</a>';
+}
+function cardGrid(s,terms){
+  var it=s.item;
+  var cls=CAT_BADGE[it.categoria]||'badge-cat--pagina';
+  return '<a class="rg" href="'+esc(it.url)+'">'
+    +'<div class="rg__head"><div class="rg__ico">'+it.icon+'</div>'
+    +'<span class="badge-cat '+cls+'" style="font-size:.6rem">'+esc((CAT_MAP[it.categoria]||it.categoria).replace(/^[^\s]+ /,''))+'</span></div>'
+    +'<div class="rg__title">'+highlight(it.title,terms)+'</div>'
+    +(it.subcategoria?'<div class="rg__sub">'+esc(it.subcategoria)+'</div>':'')
+    +'<div class="rg__desc">'+highlight(it.desc,terms)+'</div>'
+    +'</a>';
+}
+
+/* ── Paginação ── */
+function renderPag(total){
+  var el=document.getElementById('pagination');
+  var pages=Math.ceil(total/PER_PAGE);
+  if(pages<=1){ el.innerHTML=''; return; }
+  var cur=S.page;
+  var items=[]; var prev=null;
+  for(var i=1;i<=pages;i++){
+    if(i===1||i===pages||Math.abs(i-cur)<=2){ items.push(i); prev=i; }
+    else if(prev!=='…'){ items.push('…'); prev='…'; }
+  }
+  var html='<button class="pg-btn" id="pgPrev"'+(cur===1?' disabled':'')+'>‹</button>';
+  items.forEach(function(p){
+    if(p==='…') html+='<span class="pg-ellipsis">…</span>';
+    else html+='<button class="pg-btn'+(p===cur?' active':'')+'" data-p="'+p+'">'+p+'</button>';
+  });
+  html+='<button class="pg-btn" id="pgNext"'+(cur===pages?' disabled':'')+'>›</button>';
+  el.innerHTML=html;
+  el.querySelectorAll('[data-p]').forEach(function(b){
+    b.addEventListener('click',function(){ S.page=parseInt(b.dataset.p); run(true); window.scrollTo(0,300); });
+  });
+  var pv=document.getElementById('pgPrev'), nx=document.getElementById('pgNext');
+  if(pv&&!pv.disabled) pv.addEventListener('click',function(){ S.page--; run(true); window.scrollTo(0,300); });
+  if(nx&&!nx.disabled) nx.addEventListener('click',function(){ S.page++; run(true); window.scrollTo(0,300); });
+}
+
+/* ── URL sync ── */
+function toUrl(){
+  var p=new URLSearchParams();
+  if(S.q) p.set('q',S.q);
+  if(S.cat!=='todos') p.set('cat',S.cat);
+  ['disciplina','tipo','uso','ano','segmento','ac'].forEach(function(g){ if(S[g].length) p.set(g,S[g].join(',')); });
+  if(S.page>1) p.set('pg',S.page);
+  var str=p.toString();
+  history.replaceState(null,'',str?'?'+str:window.location.pathname);
+}
+function fromUrl(){
+  var p=new URLSearchParams(window.location.search);
+  S.q=p.get('q')||''; S.cat=p.get('cat')||'todos';
+  S.page=parseInt(p.get('pg')||'1')||1;
+  ['disciplina','tipo','uso','ano','segmento','ac'].forEach(function(g){
+    S[g]=p.get(g)?p.get(g).split(','):[];
+  });
+}
+
+/* ── Run ── */
+function totalF(){ return ['disciplina','tipo','uso','ano','segmento','ac'].reduce(function(a,g){return a+S[g].length;},0); }
+function resetAll(){ ['disciplina','tipo','uso','ano','segmento','ac'].forEach(function(g){S[g]=[];}); S.page=1; run(); }
+
+function run(skipHist){
+  var all=doSearch();
+  var C=buildCounts(all);
+  var terms=norm(S.q).trim().split(/\s+/).filter(Boolean);
+  var total=all.length;
+  var page=all.slice((S.page-1)*PER_PAGE, S.page*PER_PAGE);
+
+  renderFilters(C);
+  renderCatTabs(C);
+  renderActiveTags();
+  toUrl();
+
+  var toolbar=document.getElementById('resultsToolbar');
+  var countEl=document.getElementById('resultsCount');
+  var area   =document.getElementById('resultsArea');
+  var hasQ   =S.q.trim().length>0;
+  var hasF   =totalF()>0;
+  var catF   =S.cat!=='todos';
+
+  if(!hasQ && !hasF && !catF){
+    toolbar.style.display='none';
+    area.innerHTML='<div class="state-initial">'
+      +'<div class="state-ico">✨</div>'
+      +'<div class="state-title">O que você quer encontrar hoje?</div>'
+      +'<div class="state-sub">Use a barra de busca ou os filtros laterais para começar.</div>'
+      +'<div class="suggestions">'
+      +['jogo matemática','vídeo história','atividade 3º ano','BNCC arte',
+        'projeto interdisciplinar','leitura português','ciências natureza','podcast ciências']
+       .map(function(s){ return '<button class="sug" data-sug="'+esc(s)+'">'+esc(s)+'</button>'; }).join('')
+      +'</div></div>';
+    document.getElementById('pagination').innerHTML='';
+    renderHist(); return;
+  }
+
+  if(hasQ && !skipHist) saveHist(S.q);
+  toolbar.style.display='flex';
+  countEl.innerHTML='<strong>'+total+'</strong> resultado'+(total!==1?'s':'')
+    +(hasQ?' para "<strong>'+esc(S.q)+'</strong>"':'');
+
+  if(!page.length){
+    area.innerHTML='<div class="state-empty">'
+      +'<div class="state-ico">🔍</div>'
+      +'<div class="state-title">Nenhum resultado</div>'
+      +'<div class="state-sub">Tente termos diferentes ou remova alguns filtros.</div>'
+      +'</div>';
+    document.getElementById('pagination').innerHTML='';
+    renderHist(); return;
+  }
+
+  var wrap=S.view==='grid'?'results-grid':'results-list';
+  var fn=S.view==='grid'?cardGrid:cardList;
+  area.innerHTML='<div class="'+wrap+'">'+page.map(function(s){return fn(s,terms);}).join('')+'</div>';
+  renderPag(total);
+  renderHist();
+}
+
+/* ── Eventos ── */
+var input=document.getElementById('searchInput');
+var clr  =document.getElementById('searchClr');
+var timer;
+input.addEventListener('input',function(){
+  clr.classList.toggle('on',input.value.trim().length>0);
+  clearTimeout(timer); timer=setTimeout(function(){S.q=input.value;S.page=1;run();},280);
+});
+input.addEventListener('keydown',function(e){
+  if(e.key==='Enter'){ clearTimeout(timer); S.q=input.value; S.page=1; run(); }
+});
+document.getElementById('searchBtn').addEventListener('click',function(){
+  clearTimeout(timer); S.q=input.value; S.page=1; run();
+});
+clr.addEventListener('click',function(){
+  input.value=''; S.q=''; S.page=1; clr.classList.remove('on'); run();
+});
+document.getElementById('resetFilters').addEventListener('click',resetAll);
+document.getElementById('sortSel').addEventListener('change',function(){ S.sort=this.value; S.page=1; run(true); });
+document.getElementById('viewList').addEventListener('click',function(){
+  S.view='list';
+  document.getElementById('viewList').classList.add('active');
+  document.getElementById('viewGrid').classList.remove('active');
+  run(true);
+});
+document.getElementById('viewGrid').addEventListener('click',function(){
+  S.view='grid';
+  document.getElementById('viewGrid').classList.add('active');
+  document.getElementById('viewList').classList.remove('active');
+  run(true);
+});
+document.getElementById('resultsArea').addEventListener('click',function(e){
+  var b=e.target.closest('.sug');
+  if(!b) return;
+  input.value=b.dataset.sug; S.q=b.dataset.sug; S.page=1; run();
+});
+
+// Mobile drawer
+document.getElementById('filtersToggleBtn').addEventListener('click',function(){
+  document.getElementById('filtersDrawer').classList.add('on');
+  document.getElementById('drawerOverlay').classList.add('on');
+});
+function closeDrawer(){
+  document.getElementById('filtersDrawer').classList.remove('on');
+  document.getElementById('drawerOverlay').classList.remove('on');
+}
+document.getElementById('drawerClose').addEventListener('click',closeDrawer);
+document.getElementById('drawerOverlay').addEventListener('click',closeDrawer);
+
+/* ── Boot ── */
+fromUrl();
+input.value=S.q;
+clr.classList.toggle('on',S.q.length>0);
+run();
+
+})();
+</script>
+</body>
+</html>

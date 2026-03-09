@@ -99,6 +99,44 @@
     }
   }
 
+  /* ── 3b. Open Graph dinâmico por disciplina ─────────────────── */
+
+  function injectOpenGraph() {
+    var meta  = window.VD_PAGE || {};
+    var slug  = meta.disciplina || null;
+    var disc  = null;
+    DISCIPLINAS.forEach(function(d) { if (d.slug === slug) { disc = d; } });
+
+    if (!disc) return; // só injeta em páginas de disciplina
+
+    var base  = 'https://varjotadigiedu.github.io';
+    var url   = base + '/disciplinas/' + slug + '.html';
+    var title = disc.icon + ' ' + disc.label + ' — Varjota DigiEdu';
+    var desc  = 'Recursos educacionais, habilidades BNCC e atividades de ' + disc.label + ' para o Ensino Fundamental — rede municipal de Varjota.';
+
+    function setMeta(prop, content, isName) {
+      var attr = isName ? 'name' : 'property';
+      var el = document.querySelector('meta[' + attr + '="' + prop + '"]');
+      if (!el) {
+        el = document.createElement('meta');
+        el.setAttribute(attr, prop);
+        document.head.appendChild(el);
+      }
+      el.setAttribute('content', content);
+    }
+
+    setMeta('description',       desc, true);
+    setMeta('og:type',           'website');
+    setMeta('og:url',            url);
+    setMeta('og:title',          title);
+    setMeta('og:description',    desc);
+    setMeta('og:image',          base + '/assets/og-image.png');
+    setMeta('og:image:width',    '1200');
+    setMeta('og:image:height',   '630');
+    setMeta('og:locale',         'pt_BR');
+    setMeta('twitter:card',      'summary_large_image', true);
+  }
+
   /* ── 4. Navbar ──────────────────────────────────────────────── */
 
   function buildNavbar() {
@@ -374,10 +412,10 @@
   /* ── 7. Inicialização ───────────────────────────────────────── */
 
   function run() {
+    injectOpenGraph();
     buildNavbar();
     buildLayout();
     buildFooter();
-    // Revela o body somente após tudo montado — elimina FOUC
     document.body.classList.add('vd-ready');
   }
 

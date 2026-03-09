@@ -19,6 +19,56 @@
   // Cache de páginas já buscadas: url → { meta, styleText, bodyHTML, scriptTexts }
   var cache = {};
 
+  /* ── Barra de progresso ───────────────────────────────────── */
+  var bar = null;
+  var barTimer = null;
+
+  function barCreate() {
+    if (bar) return;
+    bar = document.createElement('div');
+    bar.id = 'vd-progress-bar';
+    bar.style.cssText = [
+      'position:fixed', 'top:0', 'left:0', 'z-index:9999',
+      'height:3px', 'width:0%',
+      'background:linear-gradient(90deg,#FF8F00,#FFB300)',
+      'border-radius:0 2px 2px 0',
+      'transition:width .25s ease, opacity .3s ease',
+      'pointer-events:none',
+      'box-shadow:0 0 8px rgba(255,143,0,.6)',
+    ].join(';');
+    document.body.appendChild(bar);
+  }
+
+  function barStart() {
+    barCreate();
+    clearTimeout(barTimer);
+    bar.style.opacity  = '1';
+    bar.style.width    = '0%';
+    // Força reflow para reiniciar a transição
+    bar.getBoundingClientRect();
+    bar.style.width    = '70%';
+  }
+
+  function barFinish() {
+    if (!bar) return;
+    bar.style.width = '100%';
+    barTimer = setTimeout(function () {
+      bar.style.opacity = '0';
+      barTimer = setTimeout(function () {
+        bar.style.width = '0%';
+      }, 300);
+    }, 200);
+  }
+
+  function barError() {
+    if (!bar) return;
+    bar.style.background = '#E53935';
+    barFinish();
+    setTimeout(function () {
+      if (bar) bar.style.background = 'linear-gradient(90deg,#FF8F00,#FFB300)';
+    }, 600);
+  }
+
   // ID do <style> injetado pelo roteador (substituído a cada navegação)
   var ROUTER_STYLE_ID = 'vd-router-page-style';
 
@@ -259,6 +309,8 @@
     // Não navega se já está na mesma página
     if (absUrl === window.location.href) return;
 
+    barStart();
+
     fetchPage(absUrl)
       .then(function (pageData) {
         // Página auto-contida (sem template.js) — navegação normal
@@ -266,12 +318,14 @@
           window.location.href = absUrl;
           return;
         }
+        barFinish();
         if (pushState !== false) {
           history.pushState({ vdSpa: true, url: absUrl }, pageData.title, absUrl);
         }
         applyPage(pageData, absUrl);
       })
       .catch(function (err) {
+        barError();
         // Fallback: navegação normal em caso de erro
         console.warn('[router] Fallback para navegação normal:', err);
         window.location.href = absUrl;
