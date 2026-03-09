@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>EF09CI05 — Ciências — Varjota DigiEdu</title>
+
+  <script src="../../assets/template-loader.js"></script>
+  <script>
+    window.VD_PAGE = {
+      disciplina: "ciencias",
+      pageTitle:  "EF09CI05"
+    };
+  </script>
+  <script src="../../assets/template.js"></script>
+
+  <style>
+    /* ── Cores temáticas — Ciências ── */
+    :root {
+      --disc-cor:       #00695C;
+      --disc-cor-light: #F0FBF9;
+      --comp-cor:       #27AE60;
+      --comp-cor-light: #E8F5E9;
+    }
+
+    /* ── Botão voltar ── */
+    .hab-voltar {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-bottom: 24px;
+      padding: 8px 18px; border-radius: 50px;
+      border: 2px solid var(--disc-cor);
+      background: #fff; color: var(--disc-cor);
+      font-family: 'Lexend', sans-serif; font-size: .85rem; font-weight: 700;
+      text-decoration: none; transition: background .15s, color .15s;
+    }
+    .hab-voltar:hover { background: var(--disc-cor); color: #fff; }
+
+    /* ── Bloco da habilidade principal ── */
+    .hab-principal {
+      background: var(--disc-cor-light);
+      border-left: 4px solid var(--disc-cor);
+      border-radius: 0 12px 12px 0;
+      padding: 24px 28px;
+      margin-bottom: 32px;
+    }
+    .hab-principal__titulo {
+      font-family: 'Lexend', sans-serif;
+      font-size: 1.1rem; font-weight: 800;
+      color: var(--disc-cor);
+      margin-bottom: 16px;
+    }
+    .hab-principal__campo { margin: 6px 0; font-size: .9rem; color: #374151; }
+    .hab-principal__campo strong {
+      font-family: 'Lexend', sans-serif;
+      color: #1A1A2E;
+      display: inline-block; min-width: 160px;
+    }
+
+    /* ── Título da seção de Computação ── */
+    .hab-secao-titulo {
+      font-family: 'Lexend', sans-serif;
+      font-size: 1.15rem; font-weight: 800;
+      color: #1A1A2E;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #DDE3ED;
+    }
+
+    /* ── Cards de habilidades de Computação ── */
+    .hab-computacao {
+      background: #F9FAFB;
+      border: 1px solid #DDE3ED;
+      border-radius: 12px;
+      padding: 22px 24px;
+      margin-bottom: 16px;
+      transition: box-shadow .15s;
+    }
+    .hab-computacao:hover { box-shadow: 0 4px 16px rgba(0,0,0,.08); }
+
+    .hab-computacao__codigo {
+      font-family: 'Lexend', sans-serif;
+      font-size: 1rem; font-weight: 800;
+      color: var(--comp-cor);
+      margin-bottom: 14px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .hab-computacao__codigo::before { content: "🔹"; font-size: .9rem; }
+
+    .hab-computacao__campo { margin: 5px 0; font-size: .875rem; color: #374151; }
+    .hab-computacao__campo strong {
+      font-family: 'Lexend', sans-serif;
+      color: #555;
+      display: inline-block; min-width: 160px;
+    }
+
+    /* ── Box de relação ── */
+    .hab-relacao {
+      background: var(--comp-cor-light);
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-top: 14px;
+      font-size: .875rem;
+      font-style: italic;
+      color: #1B5E20;
+      line-height: 1.55;
+    }
+    .hab-relacao::before {
+      content: "🎯 Relação: ";
+      font-weight: 700;
+      font-style: normal;
+      font-family: 'Lexend', sans-serif;
+    }
+
+    /* ── Rodapé de metadados ── */
+    .hab-metadata {
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid #DDE3ED;
+      font-size: .8rem;
+      color: #9CA3AF;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Botão voltar -->
+  <a href="../../disciplinas/ciencias.html" class="hab-voltar">
+    ← Voltar para Ciências
+  </a>
+
+  <!-- ══════════════════════════════════════════════════
+       BLOCO DA HABILIDADE PRINCIPAL
+  ══════════════════════════════════════════════════ -->
+  <section class="hab-principal">
+    <div class="hab-principal__titulo">📌 Habilidade selecionada</div>
+    <p class="hab-principal__campo"><strong>Código:</strong> EF09CI05</p>
+    <p class="hab-principal__campo"><strong>Descrição:</strong> Investigar os principais mecanismos envolvidos na transmissão e recepção de imagem e som que revolucionaram os sistemas de comunicação humana.</p>
+    <p class="hab-principal__campo"><strong>Componente:</strong> Ciências</p>
+    <p class="hab-principal__campo"><strong>Ano/Etapa:</strong> 9º</p>
+    <p class="hab-principal__campo"><strong>Unidade temática:</strong> Matéria e energia</p>
+    <p class="hab-principal__campo"><strong>Objeto do conhecimento:</strong> Aspectos quantitativos das transformações químicas / Estrutura da matéria / Radiações e suas aplicações na saúde</p>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════
+       SEÇÃO DE HABILIDADES DE COMPUTAÇÃO CORRELACIONADAS
+  ══════════════════════════════════════════════════ -->
+  <div class="hab-secao-titulo">💻 Habilidades de Computação correlacionadas</div>
+
+  <!-- Bloco 1 - EF04CO05 (Codificação de informações) -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF04CO05</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Codificar diferentes informações para representação em computador (binária, ASCII, atributos de pixel, como RGB etc.).</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 4º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Codificação da informação</p>
+    <div class="hab-relacao">A transmissão digital de imagem e som depende da codificação da informação. Formatos como JPEG, MP3, e a própria transmissão de dados em redes utilizam princípios de codificação — uma aplicação direta e central da EF09CI05 na computação.</div>
+  </div>
+
+  <!-- Bloco 2 - EF05CO02 (Grafos) -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF05CO02</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer objetos do mundo real e digital que podem ser representados através de grafos que estabelecem uma organização com uma quantidade variável de vértices conectados por arestas, fazendo manipulações simples sobre estas representações.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 5º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Listas e grafos</p>
+    <div class="hab-relacao">As redes de comunicação (como a internet) são estruturas em grafo, onde roteadores e dispositivos são vértices e as conexões são arestas — fundamental para entender a transmissão de dados.</div>
+  </div>
+
+  <!-- Bloco 3 - EF08CO05 (Sistemas distribuídos) -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF08CO05</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Compreender os conceitos de paralelismo, concorrência e armazenamento/ processamento distribuídos.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 8º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Mundo digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Sistemas distribuídos e internet - Fundamentos de sistemas distribuídos</p>
+    <div class="hab-relacao">A transmissão de imagem e som em larga escala (streaming) depende de sistemas distribuídos e processamento paralelo — uma conexão direta com a computação.</div>
+  </div>
+
+  <!-- Bloco 4 - EF08CO06 (Internet) -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF08CO06</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Entender como é a estrutura e funcionamento da internet.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 8º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Mundo digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Sistemas distribuídos e internet - Internet</p>
+    <div class="hab-relacao">A internet é o principal meio de transmissão de imagem e som atualmente. Compreender sua estrutura é fundamental para a EF09CI05.</div>
+  </div>
+
+  <!-- Bloco 5 - EF07CO11 (Produção Digital) -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF07CO11</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Criar, documentar e publicar de forma individual ou colaborativa, produtos (vídeos, podcasts, web sites) usando recursos de tecnologia. Selecionar e utilizar tecnologias computacionais para se expressar e resolver problemas, analisando criticamente os diferentes impactos na sociedade.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 7º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Uso de tecnologias computacionais - Produção Digital</p>
+    <div class="hab-relacao">A produção e publicação de conteúdo multimídia (vídeos, podcasts) é uma aplicação prática dos mecanismos de transmissão de imagem e som estudados na EF09CI05.</div>
+  </div>
+
+  <!-- Bloco 6 - EF03CO07 (Uso de ferramentas de busca) -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF03CO07</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Utilizar diferentes navegadores e ferramentas de busca para pesquisar e acessar informações.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 3º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Uso de tecnologias computacionais</p>
+    <div class="hab-relacao">Os alunos podem pesquisar sobre a história das comunicações, desde o telégrafo até a internet, usando ferramentas digitais.</div>
+  </div>
+
+  <!-- Bloco 7 - EF01CO05 (Codificação da informação) -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF01CO05</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Representar informação usando diferentes codificações.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Mundo digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Codificação da informação</p>
+    <div class="hab-relacao">Base para entender que imagens e sons precisam ser codificados para serem transmitidos digitalmente.</div>
+  </div>
+
+  <!-- Bloco 8 - EF04CO04 (Codificação da informação) -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF04CO04</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Entender que para guardar, manipular e transmitir dados deve-se codificá-los de alguma forma que seja compreendida pela máquina (formato digital).</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 4º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Codificação da informação</p>
+    <div class="hab-relacao">Reforça o conceito de codificação necessário para a transmissão digital de imagem e som.</div>
+  </div>
+
+  <!-- Bloco 9 - EF03CI01 (Som) -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF03CI01</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Produzir diferentes sons a partir da vibração de variados objetos e identificar variáveis que influem nesse fenômeno.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Ciências</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 3º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Matéria e energia</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Produção de som / Efeitos da luz nos materiais / Saúde auditiva e visual</p>
+    <div class="hab-relacao">Base para entender a natureza do som, que é um dos elementos transmitidos nos sistemas de comunicação.</div>
+  </div>
+
+  <!-- Bloco 10 - EF15CO08 (Uso de artefatos computacionais) -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF15CO08</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer e utilizar tecnologias computacionais para pesquisar e acessar informações, expressar-se crítica e criativamente e resolver problemas.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º, 2º, 3º, 4º, 5º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Uso de artefatos computacionais</p>
+    <div class="hab-relacao">Os alunos podem criar vídeos, podcasts ou apresentações multimídia sobre a evolução dos sistemas de comunicação.</div>
+  </div>
+
+  <p class="hab-metadata">
+    🔍 Habilidades listadas em ordem decrescente de relevância para a habilidade EF09CI05
+  </p>
+
+</body>
+</html>

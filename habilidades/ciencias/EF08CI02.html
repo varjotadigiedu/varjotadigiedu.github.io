@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>EF08CI02 — Ciências — Varjota DigiEdu</title>
+
+  <script src="../../assets/template-loader.js"></script>
+  <script>
+    window.VD_PAGE = {
+      disciplina: "ciencias",
+      pageTitle:  "EF08CI02"
+    };
+  </script>
+  <script src="../../assets/template.js"></script>
+
+  <style>
+    /* ── Cores temáticas — Ciências ── */
+    :root {
+      --disc-cor:       #00695C;
+      --disc-cor-light: #F0FBF9;
+      --comp-cor:       #27AE60;
+      --comp-cor-light: #E8F5E9;
+    }
+
+    /* ── Botão voltar ── */
+    .hab-voltar {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-bottom: 24px;
+      padding: 8px 18px; border-radius: 50px;
+      border: 2px solid var(--disc-cor);
+      background: #fff; color: var(--disc-cor);
+      font-family: 'Lexend', sans-serif; font-size: .85rem; font-weight: 700;
+      text-decoration: none; transition: background .15s, color .15s;
+    }
+    .hab-voltar:hover { background: var(--disc-cor); color: #fff; }
+
+    /* ── Bloco da habilidade principal ── */
+    .hab-principal {
+      background: var(--disc-cor-light);
+      border-left: 4px solid var(--disc-cor);
+      border-radius: 0 12px 12px 0;
+      padding: 24px 28px;
+      margin-bottom: 32px;
+    }
+    .hab-principal__titulo {
+      font-family: 'Lexend', sans-serif;
+      font-size: 1.1rem; font-weight: 800;
+      color: var(--disc-cor);
+      margin-bottom: 16px;
+    }
+    .hab-principal__campo { margin: 6px 0; font-size: .9rem; color: #374151; }
+    .hab-principal__campo strong {
+      font-family: 'Lexend', sans-serif;
+      color: #1A1A2E;
+      display: inline-block; min-width: 160px;
+    }
+
+    /* ── Título da seção de Computação ── */
+    .hab-secao-titulo {
+      font-family: 'Lexend', sans-serif;
+      font-size: 1.15rem; font-weight: 800;
+      color: #1A1A2E;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #DDE3ED;
+    }
+
+    /* ── Cards de habilidades de Computação ── */
+    .hab-computacao {
+      background: #F9FAFB;
+      border: 1px solid #DDE3ED;
+      border-radius: 12px;
+      padding: 22px 24px;
+      margin-bottom: 16px;
+      transition: box-shadow .15s;
+    }
+    .hab-computacao:hover { box-shadow: 0 4px 16px rgba(0,0,0,.08); }
+
+    .hab-computacao__codigo {
+      font-family: 'Lexend', sans-serif;
+      font-size: 1rem; font-weight: 800;
+      color: var(--comp-cor);
+      margin-bottom: 14px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .hab-computacao__codigo::before { content: "🔹"; font-size: .9rem; }
+
+    .hab-computacao__campo { margin: 5px 0; font-size: .875rem; color: #374151; }
+    .hab-computacao__campo strong {
+      font-family: 'Lexend', sans-serif;
+      color: #555;
+      display: inline-block; min-width: 160px;
+    }
+
+    /* ── Box de relação ── */
+    .hab-relacao {
+      background: var(--comp-cor-light);
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-top: 14px;
+      font-size: .875rem;
+      font-style: italic;
+      color: #1B5E20;
+      line-height: 1.55;
+    }
+    .hab-relacao::before {
+      content: "🎯 Relação: ";
+      font-weight: 700;
+      font-style: normal;
+      font-family: 'Lexend', sans-serif;
+    }
+
+    /* ── Rodapé de metadados ── */
+    .hab-metadata {
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid #DDE3ED;
+      font-size: .8rem;
+      color: #9CA3AF;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Botão voltar -->
+  <a href="../../disciplinas/ciencias.html" class="hab-voltar">
+    ← Voltar para Ciências
+  </a>
+
+  <!-- ══════════════════════════════════════════════════
+       BLOCO DA HABILIDADE PRINCIPAL
+  ══════════════════════════════════════════════════ -->
+  <section class="hab-principal">
+    <div class="hab-principal__titulo">📌 Habilidade selecionada</div>
+    <p class="hab-principal__campo"><strong>Código:</strong> EF08CI02</p>
+    <p class="hab-principal__campo"><strong>Descrição:</strong> Construir circuitos elétricos com pilha/bateria, fios e lâmpada ou outros dispositivos e compará-los a circuitos elétricos residenciais.</p>
+    <p class="hab-principal__campo"><strong>Componente:</strong> Ciências</p>
+    <p class="hab-principal__campo"><strong>Ano/Etapa:</strong> 8º</p>
+    <p class="hab-principal__campo"><strong>Unidade temática:</strong> Matéria e energia</p>
+    <p class="hab-principal__campo"><strong>Objeto do conhecimento:</strong> Fontes e tipos de energia / Transformação de energia / Cálculo de consumo de energia elétrica / Circuitos elétricos / Uso consciente de energia elétrica</p>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════
+       SEÇÃO DE HABILIDADES DE COMPUTAÇÃO CORRELACIONADAS
+  ══════════════════════════════════════════════════ -->
+  <div class="hab-secao-titulo">💻 Habilidades de Computação correlacionadas</div>
+
+  <!-- Bloco 1 - EF01CO02 (Conceituação de Algoritmos) -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF01CO02</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Identificar e seguir sequências de passos aplicados no dia a dia para resolver problemas.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Conceituação de Algoritmos</p>
+    <div class="hab-relacao">A construção de um circuito elétrico segue uma sequência de passos (conectar fios, posicionar componentes, fechar o circuito) — uma aplicação direta do pensamento algorítmico.</div>
+  </div>
+
+  <!-- Bloco 2 - EF03CO06 (Interface física) -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF03CO06</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer que, para um computador realizar tarefas, ele se comunica com o mundo exterior com o uso de interfaces físicas (dispositivos de entrada e saída).</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 3º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Mundo digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Interface física</p>
+    <div class="hab-relacao">Circuitos elétricos são a base de todas as interfaces físicas de computadores. A construção de circuitos simples ajuda a entender como dispositivos de entrada/saída funcionam.</div>
+  </div>
+
+  <!-- Bloco 3 - EF05CO05 (Componentes de hardware) -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF05CO05</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Identificar os componentes principais de um computador (dispositivos de entrada/saída, processadores e armazenamento).</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 5º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Mundo digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Arquitetura de computadores</p>
+    <div class="hab-relacao">Um computador é essencialmente um conjunto de circuitos elétricos complexos. Construir circuitos simples ajuda a compreender a base do hardware.</div>
+  </div>
+
+  <!-- Bloco 4 - EF02CO03 (Instrução de máquina) -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF02CO03</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Identificar que máquinas diferentes executam conjuntos próprios de instruções e que podem ser usadas para definir algoritmos.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 2º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Mundo digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Instrução de máquina</p>
+    <div class="hab-relacao">Diferentes configurações de circuitos elétricos produzem diferentes comportamentos — uma analogia com instruções de máquina em computadores.</div>
+  </div>
+
+  <!-- Bloco 5 - EF04CO01 (Matrizes) -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF04CO01</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer objetos do mundo real e/ou digital que podem ser representados através de matrizes que estabelecem uma organização na qual cada componente está em uma posição definida por coordenadas, fazendo manipulações simples sobre estas representações.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 4º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Matrizes e registros</p>
+    <div class="hab-relacao">Circuitos impressos (PCBs) organizam componentes em posições definidas por coordenadas — uma aplicação de matrizes na eletrônica.</div>
+  </div>
+
+  <!-- Bloco 6 - EF08CI03 (Transformação de energia) -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF08CI03</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Classificar equipamentos elétricos residenciais (chuveiro, ferro, lâmpadas, TV, rádio, geladeira etc.) de acordo com o tipo de transformação de energia (da energia elétrica para a térmica, luminosa, sonora e mecânica, por exemplo).</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Ciências</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 8º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Matéria e energia</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Fontes e tipos de energia / Transformação de energia / Cálculo de consumo de energia elétrica / Circuitos elétricos / Uso consciente de energia elétrica</p>
+    <div class="hab-relacao">Complementa a EF08CI02 ao mostrar o que acontece com a energia nos dispositivos conectados aos circuitos.</div>
+  </div>
+
+  <!-- Bloco 7 - EF02CO04 (Hardware e software) -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF02CO04</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Diferenciar componentes físicos (hardware) e programas que fornecem as instruções (software) para o hardware.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 2º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Mundo digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Hardware e software</p>
+    <div class="hab-relacao">Os circuitos elétricos são o hardware que permite o funcionamento dos dispositivos, assim como os circuitos de um computador são seu hardware.</div>
+  </div>
+
+  <!-- Bloco 8 - EF05CO07 (Sistema operacional) -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF05CO07</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer a necessidade de um sistema operacional para a execução de programas e gerenciamento do hardware.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 5º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Mundo digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Sistema operacional</p>
+    <div class="hab-relacao">Um circuito residencial pode ser comparado a um sistema operacional que gerencia a distribuição de energia para diferentes dispositivos.</div>
+  </div>
+
+  <!-- Bloco 9 - EF03CO03 (Decomposição) -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF03CO03</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Aplicar a estratégia de decomposição para resolver problemas complexos, dividindo esse problema em partes menores, resolvendo-as e combinando suas soluções.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 3º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Decomposição</p>
+    <div class="hab-relacao">Um circuito residencial complexo pode ser decomposto em circuitos simples (como o construído em sala de aula) — uma aplicação da decomposição.</div>
+  </div>
+
+  <!-- Bloco 10 - EF15CO08 (Uso de artefatos computacionais) -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF15CO08</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer e utilizar tecnologias computacionais para pesquisar e acessar informações, expressar-se crítica e criativamente e resolver problemas.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º, 2º, 3º, 4º, 5º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Uso de artefatos computacionais</p>
+    <div class="hab-relacao">Os alunos podem usar simuladores de circuitos elétricos online (como Tinkercad) para projetar e testar circuitos virtualmente antes de construí-los fisicamente.</div>
+  </div>
+
+  <p class="hab-metadata">
+    🔍 Habilidades listadas em ordem decrescente de relevância para a habilidade EF08CI02
+  </p>
+
+</body>
+</html>

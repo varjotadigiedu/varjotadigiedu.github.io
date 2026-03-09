@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>EF08CI13 — Ciências — Varjota DigiEdu</title>
+
+  <script src="../../assets/template-loader.js"></script>
+  <script>
+    window.VD_PAGE = {
+      disciplina: "ciencias",
+      pageTitle:  "EF08CI13"
+    };
+  </script>
+  <script src="../../assets/template.js"></script>
+
+  <style>
+    /* ── Cores temáticas — Ciências ── */
+    :root {
+      --disc-cor:       #00695C;
+      --disc-cor-light: #F0FBF9;
+      --comp-cor:       #27AE60;
+      --comp-cor-light: #E8F5E9;
+    }
+
+    /* ── Botão voltar ── */
+    .hab-voltar {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-bottom: 24px;
+      padding: 8px 18px; border-radius: 50px;
+      border: 2px solid var(--disc-cor);
+      background: #fff; color: var(--disc-cor);
+      font-family: 'Lexend', sans-serif; font-size: .85rem; font-weight: 700;
+      text-decoration: none; transition: background .15s, color .15s;
+    }
+    .hab-voltar:hover { background: var(--disc-cor); color: #fff; }
+
+    /* ── Bloco da habilidade principal ── */
+    .hab-principal {
+      background: var(--disc-cor-light);
+      border-left: 4px solid var(--disc-cor);
+      border-radius: 0 12px 12px 0;
+      padding: 24px 28px;
+      margin-bottom: 32px;
+    }
+    .hab-principal__titulo {
+      font-family: 'Lexend', sans-serif;
+      font-size: 1.1rem; font-weight: 800;
+      color: var(--disc-cor);
+      margin-bottom: 16px;
+    }
+    .hab-principal__campo { margin: 6px 0; font-size: .9rem; color: #374151; }
+    .hab-principal__campo strong {
+      font-family: 'Lexend', sans-serif;
+      color: #1A1A2E;
+      display: inline-block; min-width: 160px;
+    }
+
+    /* ── Título da seção de Computação ── */
+    .hab-secao-titulo {
+      font-family: 'Lexend', sans-serif;
+      font-size: 1.15rem; font-weight: 800;
+      color: #1A1A2E;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #DDE3ED;
+    }
+
+    /* ── Cards de habilidades de Computação ── */
+    .hab-computacao {
+      background: #F9FAFB;
+      border: 1px solid #DDE3ED;
+      border-radius: 12px;
+      padding: 22px 24px;
+      margin-bottom: 16px;
+      transition: box-shadow .15s;
+    }
+    .hab-computacao:hover { box-shadow: 0 4px 16px rgba(0,0,0,.08); }
+
+    .hab-computacao__codigo {
+      font-family: 'Lexend', sans-serif;
+      font-size: 1rem; font-weight: 800;
+      color: var(--comp-cor);
+      margin-bottom: 14px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .hab-computacao__codigo::before { content: "🔹"; font-size: .9rem; }
+
+    .hab-computacao__campo { margin: 5px 0; font-size: .875rem; color: #374151; }
+    .hab-computacao__campo strong {
+      font-family: 'Lexend', sans-serif;
+      color: #555;
+      display: inline-block; min-width: 160px;
+    }
+
+    /* ── Box de relação ── */
+    .hab-relacao {
+      background: var(--comp-cor-light);
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-top: 14px;
+      font-size: .875rem;
+      font-style: italic;
+      color: #1B5E20;
+      line-height: 1.55;
+    }
+    .hab-relacao::before {
+      content: "🎯 Relação: ";
+      font-weight: 700;
+      font-style: normal;
+      font-family: 'Lexend', sans-serif;
+    }
+
+    /* ── Rodapé de metadados ── */
+    .hab-metadata {
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid #DDE3ED;
+      font-size: .8rem;
+      color: #9CA3AF;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Botão voltar -->
+  <a href="../../disciplinas/ciencias.html" class="hab-voltar">
+    ← Voltar para Ciências
+  </a>
+
+  <!-- ══════════════════════════════════════════════════
+       BLOCO DA HABILIDADE PRINCIPAL
+  ══════════════════════════════════════════════════ -->
+  <section class="hab-principal">
+    <div class="hab-principal__titulo">📌 Habilidade selecionada</div>
+    <p class="hab-principal__campo"><strong>Código:</strong> EF08CI13</p>
+    <p class="hab-principal__campo"><strong>Descrição:</strong> Representar os movimentos de rotação e translação da Terra e analisar o papel da inclinação do eixo de rotação da Terra em relação à sua órbita na ocorrência das estações do ano, com a utilização de modelos tridimensionais.</p>
+    <p class="hab-principal__campo"><strong>Componente:</strong> Ciências</p>
+    <p class="hab-principal__campo"><strong>Ano/Etapa:</strong> 8º</p>
+    <p class="hab-principal__campo"><strong>Unidade temática:</strong> Terra e Universo</p>
+    <p class="hab-principal__campo"><strong>Objeto do conhecimento:</strong> Sistema Sol, Terra e Lua / Clima</p>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════
+       SEÇÃO DE HABILIDADES DE COMPUTAÇÃO CORRELACIONADAS
+  ══════════════════════════════════════════════════ -->
+  <div class="hab-secao-titulo">💻 Habilidades de Computação correlacionadas</div>
+
+  <!-- Bloco 1 - EF04CO01 (Matrizes) -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF04CO01</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer objetos do mundo real e/ou digital que podem ser representados através de matrizes que estabelecem uma organização na qual cada componente está em uma posição definida por coordenadas, fazendo manipulações simples sobre estas representações.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 4º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Matrizes e registros</p>
+    <div class="hab-relacao">Modelos tridimensionais digitais da Terra utilizam matrizes de coordenadas para representar sua superfície e calcular a incidência solar em diferentes latitudes — uma aplicação direta de matrizes em computação gráfica e modelagem científica.</div>
+  </div>
+
+  <!-- Bloco 2 - EF05CO02 (Grafos) -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF05CO02</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer objetos do mundo real e digital que podem ser representados através de grafos que estabelecem uma organização com uma quantidade variável de vértices conectados por arestas, fazendo manipulações simples sobre estas representações.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 5º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Listas e grafos</p>
+    <div class="hab-relacao">A órbita da Terra em torno do Sol pode ser representada como um grafo, com posições em diferentes épocas do ano como vértices conectados pela trajetória.</div>
+  </div>
+
+  <!-- Bloco 3 - EF01CO02 (Conceituação de Algoritmos) -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF01CO02</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Identificar e seguir sequências de passos aplicados no dia a dia para resolver problemas.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Conceituação de Algoritmos</p>
+    <div class="hab-relacao">O movimento de rotação (dia/noite) e translação (estações) seguem sequências temporais previsíveis — uma analogia com algoritmos cíclicos.</div>
+  </div>
+
+  <!-- Bloco 4 - EF02CO02 (Algoritmos com repetições) -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF02CO02</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Criar e simular algoritmos representados em linguagem oral, escrita ou pictográfica, construídos como sequências com repetições simples (iterações definidas) com base em instruções preestabelecidas ou criadas, analisando como a precisão da instrução impacta na execução do algoritmo.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 2º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Algoritmos com repetições simples</p>
+    <div class="hab-relacao">O ciclo das estações do ano se repete a cada 365 dias — um exemplo de iteração anual na natureza.</div>
+  </div>
+
+  <!-- Bloco 5 - EF04CO02 (Registros) -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF04CO02</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer objetos do mundo real e/ou digital que podem ser representados através de registros que estabelecem uma organização na qual cada componente é identificado por um nome, fazendo manipulações sobre estas representações.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 4º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Matrizes e registros</p>
+    <div class="hab-relacao">Cada posição da Terra em sua órbita pode ser representada como um registro com campos: data, estação do ano, inclinação, incidência solar no hemisfério.</div>
+  </div>
+
+  <!-- Bloco 6 - EF05CO01 (Listas) -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF05CO01</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer objetos do mundo real e/ou digital que podem ser representados através de listas que estabelecem uma organização na qual há um número variável de itens dispostos em sequência, fazendo manipulações simples sobre estas representações.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 5º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Listas e grafos</p>
+    <div class="hab-relacao">As estações do ano podem ser listadas em ordem (primavera, verão, outono, inverno) com suas características e meses correspondentes.</div>
+  </div>
+
+  <!-- Bloco 7 - EF06CI14 (Movimentos da Terra) -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF06CI14</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Inferir que as mudanças na sombra de uma vara (gnômon) ao longo do dia em diferentes períodos do ano são uma evidência dos movimentos relativos entre a Terra e o Sol, que podem ser explicados por meio dos movimentos de rotação e translação da Terra e da inclinação de seu eixo de rotação em relação ao plano de sua órbita em torno do Sol.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Ciências</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 6º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Terra e Universo</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Forma, estrutura e movimentos da Terra</p>
+    <div class="hab-relacao">Base para a EF08CI13, introduzindo os conceitos de rotação, translação e inclinação do eixo terrestre.</div>
+  </div>
+
+  <!-- Bloco 8 - EF08CI12 (Sistema Sol-Terra-Lua) -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF08CI12</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Justificar, por meio da construção de modelos e da observação da Lua no céu, a ocorrência das fases da Lua e dos eclipses, com base nas posições relativas entre Sol, Terra e Lua.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Ciências</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 8º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Terra e Universo</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Sistema Sol, Terra e Lua / Clima</p>
+    <div class="hab-relacao">Complementa a EF08CI13 ao abordar outros fenômenos do sistema Sol-Terra-Lua.</div>
+  </div>
+
+  <!-- Bloco 9 - EF05CI11 (Movimento do Sol) -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF05CI11</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Associar o movimento diário do Sol e das demais estrelas no céu ao movimento de rotação da Terra.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Ciências</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 5º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Terra e Universo</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Constelações e mapas celestes / Movimento de rotação da Terra / Periodicidade das fases da Lua / Instrumentos óticos</p>
+    <div class="hab-relacao">Base para entender o movimento de rotação, um dos focos da EF08CI13.</div>
+  </div>
+
+  <!-- Bloco 10 - EF15CO08 (Uso de artefatos computacionais) -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF15CO08</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer e utilizar tecnologias computacionais para pesquisar e acessar informações, expressar-se crítica e criativamente e resolver problemas.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º, 2º, 3º, 4º, 5º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Uso de artefatos computacionais</p>
+    <div class="hab-relacao">A habilidade menciona explicitamente o uso de modelos tridimensionais, que podem ser digitais — uma aplicação direta da cultura digital na representação de fenômenos astronômicos.</div>
+  </div>
+
+  <p class="hab-metadata">
+    🔍 Habilidades listadas em ordem decrescente de relevância para a habilidade EF08CI13
+  </p>
+
+</body>
+</html>
