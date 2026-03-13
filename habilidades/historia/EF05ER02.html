@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>EF05ER02 — Ensino Religioso — Varjota DigiEdu</title>
+
+  <script src="../../assets/template-loader.js"></script>
+  <script>
+    window.VD_PAGE = {
+      disciplina: "ensino-religioso",
+      pageTitle:  "EF05ER02"
+    };
+  </script>
+  <script src="../../assets/template.js"></script>
+
+  <style>
+    /* ── Cores temáticas ── */
+    :root {
+      --disc-cor:       #6A1B9A;   /* roxo para Ensino Religioso */
+      --disc-cor-light: #F9F0FF;   /* fundo suave */
+      --comp-cor:       #27AE60;   /* verde fixo para Computação */
+      --comp-cor-light: #E8F5E9;   /* fundo suave para Computação */
+    }
+
+    .hab-voltar {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-bottom: 24px;
+      padding: 8px 18px; border-radius: 50px;
+      border: 2px solid var(--disc-cor);
+      background: #fff; color: var(--disc-cor);
+      font-family: 'Lexend', sans-serif; font-size: .85rem; font-weight: 700;
+      text-decoration: none; transition: background .15s, color .15s;
+    }
+    .hab-voltar:hover { background: var(--disc-cor); color: #fff; }
+
+    .hab-principal {
+      background: var(--disc-cor-light);
+      border-left: 4px solid var(--disc-cor);
+      border-radius: 0 12px 12px 0;
+      padding: 24px 28px;
+      margin-bottom: 32px;
+    }
+    .hab-principal__titulo {
+      font-family: 'Lexend', sans-serif;
+      font-size: 1.1rem; font-weight: 800;
+      color: var(--disc-cor);
+      margin-bottom: 16px;
+    }
+    .hab-principal__campo { margin: 6px 0; font-size: .9rem; color: #374151; }
+    .hab-principal__campo strong {
+      font-family: 'Lexend', sans-serif;
+      color: #1A1A2E;
+      display: inline-block; min-width: 160px;
+    }
+
+    .hab-secao-titulo {
+      font-family: 'Lexend', sans-serif;
+      font-size: 1.15rem; font-weight: 800;
+      color: #1A1A2E;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #DDE3ED;
+    }
+
+    .hab-computacao {
+      background: #F9FAFB;
+      border: 1px solid #DDE3ED;
+      border-radius: 12px;
+      padding: 22px 24px;
+      margin-bottom: 16px;
+      transition: box-shadow .15s;
+    }
+    .hab-computacao:hover { box-shadow: 0 4px 16px rgba(0,0,0,.08); }
+
+    .hab-computacao__codigo {
+      font-family: 'Lexend', sans-serif;
+      font-size: 1rem; font-weight: 800;
+      color: var(--comp-cor);
+      margin-bottom: 14px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .hab-computacao__codigo::before { content: "🔹"; font-size: .9rem; }
+
+    .hab-computacao__campo { margin: 5px 0; font-size: .875rem; color: #374151; }
+    .hab-computacao__campo strong {
+      font-family: 'Lexend', sans-serif;
+      color: #555;
+      display: inline-block; min-width: 160px;
+    }
+
+    .hab-relacao {
+      background: var(--comp-cor-light);
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-top: 14px;
+      font-size: .875rem;
+      font-style: italic;
+      color: #1B5E20;
+      line-height: 1.55;
+    }
+    .hab-relacao::before {
+      content: "🎯 Relação: ";
+      font-weight: 700;
+      font-style: normal;
+      font-family: 'Lexend', sans-serif;
+    }
+
+    .hab-metadata {
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid #DDE3ED;
+      font-size: .8rem;
+      color: #9CA3AF;
+    }
+  </style>
+</head>
+<body>
+
+  <a href="../../disciplinas/ensino-religioso.html" class="hab-voltar">
+    ← Voltar para Ensino Religioso
+  </a>
+
+  <!-- HABILIDADE PRINCIPAL -->
+  <section class="hab-principal">
+    <div class="hab-principal__titulo">📌 Habilidade selecionada</div>
+    <p class="hab-principal__campo"><strong>Código:</strong> EF05ER02</p>
+    <p class="hab-principal__campo"><strong>Descrição:</strong> Identificar mitos de criação em diferentes culturas e tradições religiosas.</p>
+    <p class="hab-principal__campo"><strong>Componente:</strong> Ensino Religioso</p>
+    <p class="hab-principal__campo"><strong>Ano/Etapa:</strong> 5º ano</p>
+    <p class="hab-principal__campo"><strong>Unidade temática:</strong> Crenças religiosas e filosofias de vida</p>
+    <p class="hab-principal__campo"><strong>Objeto do conhecimento:</strong> Mitos nas tradições religiosas</p>
+  </section>
+
+  <!-- SEÇÃO COMPUTAÇÃO -->
+  <div class="hab-secao-titulo">💻 Habilidades de Computação correlacionadas</div>
+
+  <!-- EF01CO04 - Informação e mensagem -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF01CO04</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer o que é a informação, que ela pode ser armazenada, transmitida como mensagem por diversos meios e descrita em várias linguagens.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º ano</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Mundo digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Codificação da informação</p>
+    <div class="hab-relacao">Os mitos de criação são informações fundamentais sobre a origem do mundo e da humanidade, transmitidas através de gerações por diferentes meios: tradição oral, textos sagrados, arte.</div>
+  </div>
+
+  <!-- EF01CO05 - Representar informação -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF01CO05</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Representar informação usando diferentes codificações.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º ano</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Mundo digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Codificação da informação</p>
+    <div class="hab-relacao">Os mitos de criação são representados de diferentes formas: narrativas, pinturas, esculturas, danças, rituais. Cada cultura "codifica" sua história da criação de uma maneira única.</div>
+  </div>
+
+  <!-- EF03CO07 - Navegadores e busca -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF03CO07</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Utilizar diferentes navegadores e ferramentas de busca para pesquisar e acessar informações.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 3º ano</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Uso de tecnologias computacionais</p>
+    <div class="hab-relacao">As crianças podem pesquisar mitos de criação de diferentes culturas: o Gênesis na tradição judaico-cristã, o mito de criação hindu, as histórias de origem dos povos indígenas, a cosmogonia africana, etc.</div>
+  </div>
+
+  <!-- EF04CO02 - Registros -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF04CO02</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer objetos do mundo real e/ou digital que podem ser representados através de registros que estabelecem uma organização na qual cada componente é identificado por um nome, fazendo manipulações sobre estas representações.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 4º ano</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Matrizes e registros</p>
+    <div class="hab-relacao">Criar um "livro dos mitos" com registros contendo: cultura/tradição, nome do mito, elementos da criação (mundo, seres humanos, animais), personagens principais, narrativa resumida.</div>
+  </div>
+
+  <!-- EF05CO01 - Listas -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF05CO01</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer objetos do mundo real e/ou digital que podem ser representados através de listas que estabelecem uma organização na qual há um número variável de itens dispostos em sequência, fazendo manipulações simples sobre estas representações.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 5º ano</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Listas e grafos</p>
+    <div class="hab-relacao">As crianças podem criar listas de mitos de criação organizadas por continente, por tipo de elemento criador (deuses, forças da natureza, animais), por similaridades narrativas.</div>
+  </div>
+
+  <!-- EF05CO02 - Grafos -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF05CO02</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer objetos do mundo real e digital que podem ser representados através de grafos que estabelecem uma organização com uma quantidade variável de vértices conectados por arestas, fazendo manipulações simples sobre estas representações.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 5º ano</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Listas e grafos</p>
+    <div class="hab-relacao">Um grafo pode representar as conexões entre diferentes mitos de criação, mostrando temas comuns (dilúvio, surgimento do sol, criação do homem) e como eles se manifestam em diferentes culturas.</div>
+  </div>
+
+  <!-- EF04CO06 - Criação de conteúdo -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF04CO06</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Usar diferentes ferramentas computacionais para criação de conteúdo (textos, apresentações, vídeos etc.).</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 4º ano</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Uso de tecnologias computacionais</p>
+    <div class="hab-relacao">As crianças podem criar um livro digital ou uma apresentação multimídia comparando diferentes mitos de criação, destacando similaridades e diferenças.</div>
+  </div>
+
+  <!-- EF03CO08 - Expressão em formatos digitais -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF03CO08</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Usar ferramentas computacionais em situações didáticas para se expressar em diferentes formatos digitais.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 3º ano</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Uso de tecnologias computacionais</p>
+    <div class="hab-relacao">As crianças podem criar histórias em quadrinhos digitais ou animações representando mitos de criação de diferentes culturas.</div>
+  </div>
+
+  <!-- EF15CO08 - Uso de tecnologias -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF15CO08</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer e utilizar tecnologias computacionais para pesquisar e acessar informações, expressar-se crítica e criativamente e resolver problemas.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º, 2º, 3º, 4º, 5º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Uso de artefatos computacionais</p>
+    <div class="hab-relacao">A tecnologia permite acessar versões de mitos de criação de culturas de todo o mundo, ampliando o repertório e promovendo o respeito à diversidade.</div>
+  </div>
+
+  <!-- EF03CO03 - Decomposição -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF03CO03</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Aplicar a estratégia de decomposição para resolver problemas complexos, dividindo esse problema em partes menores, resolvendo-as e combinando suas soluções.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 3º ano</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Decomposição</p>
+    <div class="hab-relacao">Os mitos de criação podem ser decompostos em elementos: personagens, cenários, eventos, ensinamentos. Essa decomposição ajuda a comparar diferentes mitos e compreender sua estrutura.</div>
+  </div>
+
+  <!-- EF04CO07 - Postura ética -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF04CO07</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Demonstrar postura ética nas atividades de coleta, transferência, guarda e uso de dados.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 4º ano</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Segurança e responsabilidade no uso da tecnologia</p>
+    <div class="hab-relacao">Ao pesquisar e compartilhar mitos de criação, é fundamental uma postura ética, respeitando a sacralidade que essas narrativas têm para as comunidades.</div>
+  </div>
+
+  <!-- EF15CO09 - Respeito e ética -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF15CO09</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Entender que as tecnologias devem ser utilizadas de maneira segura, ética e responsável, respeitando direitos autorais, de imagem e as leis vigentes.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º, 2º, 3º, 4º, 5º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Segurança e responsabilidade no uso da tecnologia computacional</p>
+    <div class="hab-relacao">O respeito aos mitos de criação inclui não ridicularizar ou desrespeitar as narrativas sagradas de qualquer tradição religiosa.</div>
+  </div>
+
+  <p class="hab-metadata">
+    🔍 Habilidades listadas em ordem decrescente de relevância para a habilidade EF05ER02
+  </p>
+
+</body>
+</html>

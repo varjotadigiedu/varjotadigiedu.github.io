@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>EF04ER04 — Ensino Religioso — Varjota DigiEdu</title>
+
+  <script src="../../assets/template-loader.js"></script>
+  <script>
+    window.VD_PAGE = {
+      disciplina: "ensino-religioso",
+      pageTitle:  "EF04ER04"
+    };
+  </script>
+  <script src="../../assets/template.js"></script>
+
+  <style>
+    /* ── Cores temáticas ── */
+    :root {
+      --disc-cor:       #6A1B9A;   /* roxo para Ensino Religioso */
+      --disc-cor-light: #F9F0FF;   /* fundo suave */
+      --comp-cor:       #27AE60;   /* verde fixo para Computação */
+      --comp-cor-light: #E8F5E9;   /* fundo suave para Computação */
+    }
+
+    .hab-voltar {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-bottom: 24px;
+      padding: 8px 18px; border-radius: 50px;
+      border: 2px solid var(--disc-cor);
+      background: #fff; color: var(--disc-cor);
+      font-family: 'Lexend', sans-serif; font-size: .85rem; font-weight: 700;
+      text-decoration: none; transition: background .15s, color .15s;
+    }
+    .hab-voltar:hover { background: var(--disc-cor); color: #fff; }
+
+    .hab-principal {
+      background: var(--disc-cor-light);
+      border-left: 4px solid var(--disc-cor);
+      border-radius: 0 12px 12px 0;
+      padding: 24px 28px;
+      margin-bottom: 32px;
+    }
+    .hab-principal__titulo {
+      font-family: 'Lexend', sans-serif;
+      font-size: 1.1rem; font-weight: 800;
+      color: var(--disc-cor);
+      margin-bottom: 16px;
+    }
+    .hab-principal__campo { margin: 6px 0; font-size: .9rem; color: #374151; }
+    .hab-principal__campo strong {
+      font-family: 'Lexend', sans-serif;
+      color: #1A1A2E;
+      display: inline-block; min-width: 160px;
+    }
+
+    .hab-secao-titulo {
+      font-family: 'Lexend', sans-serif;
+      font-size: 1.15rem; font-weight: 800;
+      color: #1A1A2E;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #DDE3ED;
+    }
+
+    .hab-computacao {
+      background: #F9FAFB;
+      border: 1px solid #DDE3ED;
+      border-radius: 12px;
+      padding: 22px 24px;
+      margin-bottom: 16px;
+      transition: box-shadow .15s;
+    }
+    .hab-computacao:hover { box-shadow: 0 4px 16px rgba(0,0,0,.08); }
+
+    .hab-computacao__codigo {
+      font-family: 'Lexend', sans-serif;
+      font-size: 1rem; font-weight: 800;
+      color: var(--comp-cor);
+      margin-bottom: 14px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .hab-computacao__codigo::before { content: "🔹"; font-size: .9rem; }
+
+    .hab-computacao__campo { margin: 5px 0; font-size: .875rem; color: #374151; }
+    .hab-computacao__campo strong {
+      font-family: 'Lexend', sans-serif;
+      color: #555;
+      display: inline-block; min-width: 160px;
+    }
+
+    .hab-relacao {
+      background: var(--comp-cor-light);
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-top: 14px;
+      font-size: .875rem;
+      font-style: italic;
+      color: #1B5E20;
+      line-height: 1.55;
+    }
+    .hab-relacao::before {
+      content: "🎯 Relação: ";
+      font-weight: 700;
+      font-style: normal;
+      font-family: 'Lexend', sans-serif;
+    }
+
+    .hab-metadata {
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid #DDE3ED;
+      font-size: .8rem;
+      color: #9CA3AF;
+    }
+  </style>
+</head>
+<body>
+
+  <a href="../../disciplinas/ensino-religioso.html" class="hab-voltar">
+    ← Voltar para Ensino Religioso
+  </a>
+
+  <!-- HABILIDADE PRINCIPAL -->
+  <section class="hab-principal">
+    <div class="hab-principal__titulo">📌 Habilidade selecionada</div>
+    <p class="hab-principal__campo"><strong>Código:</strong> EF04ER04</p>
+    <p class="hab-principal__campo"><strong>Descrição:</strong> Identificar as diversas formas de expressão da espiritualidade (orações, cultos, gestos, cantos, dança, meditação) nas diferentes tradições religiosas.</p>
+    <p class="hab-principal__campo"><strong>Componente:</strong> Ensino Religioso</p>
+    <p class="hab-principal__campo"><strong>Ano/Etapa:</strong> 4º ano</p>
+    <p class="hab-principal__campo"><strong>Unidade temática:</strong> Manifestações religiosas</p>
+    <p class="hab-principal__campo"><strong>Objeto do conhecimento:</strong> Ritos religiosos</p>
+  </section>
+
+  <!-- SEÇÃO COMPUTAÇÃO -->
+  <div class="hab-secao-titulo">💻 Habilidades de Computação correlacionadas</div>
+
+  <!-- EF01CO04 - Informação e mensagem -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF01CO04</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer o que é a informação, que ela pode ser armazenada, transmitida como mensagem por diversos meios e descrita em várias linguagens.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º ano</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Mundo digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Codificação da informação</p>
+    <div class="hab-relacao">As diferentes formas de expressão da espiritualidade (orações, cantos, danças, gestos) são "mensagens" que transmitem informações sobre fé e crenças, cada uma em sua própria linguagem.</div>
+  </div>
+
+  <!-- EF01CO05 - Representar informação -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF01CO05</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Representar informação usando diferentes codificações.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º ano</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Mundo digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Codificação da informação</p>
+    <div class="hab-relacao">Cada forma de expressão espiritual é uma "codificação" diferente da fé: palavras na oração, movimentos na dança, sons no canto, silêncio na meditação.</div>
+  </div>
+
+  <!-- EF03CO08 - Expressão em formatos digitais -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF03CO08</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Usar ferramentas computacionais em situações didáticas para se expressar em diferentes formatos digitais.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 3º ano</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Uso de tecnologias computacionais</p>
+    <div class="hab-relacao">As crianças podem usar ferramentas digitais para registrar e compartilhar diferentes formas de expressão espiritual, como gravar uma oração, filmar uma dança ou criar uma animação sobre meditação.</div>
+  </div>
+
+  <!-- EF03CO07 - Navegadores e busca -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF03CO07</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Utilizar diferentes navegadores e ferramentas de busca para pesquisar e acessar informações.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 3º ano</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Uso de tecnologias computacionais</p>
+    <div class="hab-relacao">As crianças podem pesquisar vídeos, músicas e imagens de diferentes práticas espirituais ao redor do mundo, ampliando seu conhecimento sobre a diversidade religiosa.</div>
+  </div>
+
+  <!-- EF04CO02 - Registros -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF04CO02</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer objetos do mundo real e/ou digital que podem ser representados através de registros que estabelecem uma organização na qual cada componente é identificado por um nome, fazendo manipulações sobre estas representações.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 4º ano</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Matrizes e registros</p>
+    <div class="hab-relacao">Criar um "livro de expressões espirituais" com registros contendo: tradição religiosa, tipo de expressão (oração, canto, dança), descrição, áudio/vídeo exemplo.</div>
+  </div>
+
+  <!-- EF05CO01 - Listas -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF05CO01</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer objetos do mundo real e/ou digital que podem ser representados através de listas que estabelecem uma organização na qual há um número variável de itens dispostos em sequência, fazendo manipulações simples sobre estas representações.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 5º ano</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Listas e grafos</p>
+    <div class="hab-relacao">As crianças podem criar listas de expressões espirituais organizadas por tipo: orações de diferentes tradições, cantos sagrados, danças rituais, práticas de meditação.</div>
+  </div>
+
+  <!-- EF05CO02 - Grafos -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF05CO02</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer objetos do mundo real e digital que podem ser representados através de grafos que estabelecem uma organização com uma quantidade variável de vértices conectados por arestas, fazendo manipulações simples sobre estas representações.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 5º ano</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Listas e grafos</p>
+    <div class="hab-relacao">Um grafo pode representar as conexões entre diferentes formas de expressão espiritual e as tradições religiosas que as praticam, mostrando similaridades e influências.</div>
+  </div>
+
+  <!-- EF04CO06 - Criação de conteúdo -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF04CO06</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Usar diferentes ferramentas computacionais para criação de conteúdo (textos, apresentações, vídeos etc.).</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 4º ano</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Uso de tecnologias computacionais</p>
+    <div class="hab-relacao">As crianças podem criar um mural digital ou apresentação multimídia mostrando as diferentes formas de expressão espiritual, com imagens, sons e vídeos.</div>
+  </div>
+
+  <!-- EF15CO08 - Uso de tecnologias -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF15CO08</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer e utilizar tecnologias computacionais para pesquisar e acessar informações, expressar-se crítica e criativamente e resolver problemas.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º, 2º, 3º, 4º, 5º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Uso de artefatos computacionais</p>
+    <div class="hab-relacao">A tecnologia permite que as crianças conheçam expressões espirituais de culturas distantes através de documentários, músicas e registros audiovisuais.</div>
+  </div>
+
+  <!-- EF02CO02 - Algoritmos e sequências -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF02CO02</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Criar e simular algoritmos representados em linguagem oral, escrita ou pictográfica, construídos como sequências com repetições simples (iterações definidas) com base em instruções preestabelecidas ou criadas, analisando como a precisão da instrução impacta na execução do algoritmo.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 2º ano</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Algoritmos com repetições simples</p>
+    <div class="hab-relacao">Muitas expressões espirituais seguem sequências: uma dança ritual tem passos em ordem, uma oração pode ter repetições, um canto tem uma estrutura. Isso se relaciona com o conceito de algoritmos.</div>
+  </div>
+
+  <!-- EF04CO07 - Postura ética -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF04CO07</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Demonstrar postura ética nas atividades de coleta, transferência, guarda e uso de dados.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 4º ano</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Segurança e responsabilidade no uso da tecnologia</p>
+    <div class="hab-relacao">Ao registrar e compartilhar expressões espirituais, é fundamental respeitar seu caráter sagrado e obter permissão quando necessário.</div>
+  </div>
+
+  <!-- EF15CO09 - Respeito e ética -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF15CO09</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Entender que as tecnologias devem ser utilizadas de maneira segura, ética e responsável, respeitando direitos autorais, de imagem e as leis vigentes.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º, 2º, 3º, 4º, 5º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Segurança e responsabilidade no uso da tecnologia computacional</p>
+    <div class="hab-relacao">O respeito às diferentes formas de expressão espiritual inclui não ridicularizar ou apropriar-se indevidamente de práticas sagradas.</div>
+  </div>
+
+  <p class="hab-metadata">
+    🔍 Habilidades listadas em ordem decrescente de relevância para a habilidade EF04ER04
+  </p>
+
+</body>
+</html>
