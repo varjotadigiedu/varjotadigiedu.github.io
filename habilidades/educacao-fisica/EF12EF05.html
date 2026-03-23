@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>EF12EF05 — Educação Física — Varjota DigiEdu</title>
+
+  <script src="../../assets/template-loader.js"></script>
+  <script>
+    window.VD_PAGE = {
+      disciplina: "educacao-fisica",
+      pageTitle:  "EF12EF05"
+    };
+  </script>
+  <script src="../../assets/template.js"></script>
+
+  <style>
+    /* ── Cores temáticas — Educação Física ── */
+    :root {
+      --disc-cor:       #2E7D32;
+      --disc-cor-light: #F1F8F1;
+      --comp-cor:       #27AE60;
+      --comp-cor-light: #E8F5E9;
+    }
+
+    .hab-voltar {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-bottom: 24px;
+      padding: 8px 18px; border-radius: 50px;
+      border: 2px solid var(--disc-cor);
+      background: #fff; color: var(--disc-cor);
+      font-family: 'Lexend', sans-serif; font-size: .85rem; font-weight: 700;
+      text-decoration: none; transition: background .15s, color .15s;
+    }
+    .hab-voltar:hover { background: var(--disc-cor); color: #fff; }
+
+    .hab-principal {
+      background: var(--disc-cor-light);
+      border-left: 4px solid var(--disc-cor);
+      border-radius: 0 12px 12px 0;
+      padding: 24px 28px;
+      margin-bottom: 32px;
+    }
+    .hab-principal__titulo {
+      font-family: 'Lexend', sans-serif;
+      font-size: 1.1rem; font-weight: 800;
+      color: var(--disc-cor);
+      margin-bottom: 16px;
+    }
+    .hab-principal__campo { margin: 6px 0; font-size: .9rem; color: #374151; }
+    .hab-principal__campo strong {
+      font-family: 'Lexend', sans-serif;
+      color: #1A1A2E;
+      display: inline-block; min-width: 160px;
+    }
+
+    .hab-secao-titulo {
+      font-family: 'Lexend', sans-serif;
+      font-size: 1.15rem; font-weight: 800;
+      color: #1A1A2E;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #DDE3ED;
+    }
+
+    .hab-computacao {
+      background: #F9FAFB;
+      border: 1px solid #DDE3ED;
+      border-radius: 12px;
+      padding: 22px 24px;
+      margin-bottom: 16px;
+      transition: box-shadow .15s;
+    }
+    .hab-computacao:hover { box-shadow: 0 4px 16px rgba(0,0,0,.08); }
+
+    .hab-computacao__codigo {
+      font-family: 'Lexend', sans-serif;
+      font-size: 1rem; font-weight: 800;
+      color: var(--comp-cor);
+      margin-bottom: 14px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .hab-computacao__codigo::before { content: "🔹"; font-size: .9rem; }
+
+    .hab-computacao__campo { margin: 5px 0; font-size: .875rem; color: #374151; }
+    .hab-computacao__campo strong {
+      font-family: 'Lexend', sans-serif;
+      color: #555;
+      display: inline-block; min-width: 160px;
+    }
+
+    .hab-relacao {
+      background: var(--comp-cor-light);
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-top: 14px;
+      font-size: .875rem;
+      font-style: italic;
+      color: #1B5E20;
+      line-height: 1.55;
+    }
+    .hab-relacao::before {
+      content: "🎯 Relação: ";
+      font-weight: 700;
+      font-style: normal;
+      font-family: 'Lexend', sans-serif;
+    }
+
+    .hab-metadata {
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid #DDE3ED;
+      font-size: .8rem;
+      color: #9CA3AF;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Botão voltar -->
+  <a href="../../disciplinas/educacao-fisica.html" class="hab-voltar">
+    ← Voltar para Educação Física
+  </a>
+
+  <!-- HABILIDADE PRINCIPAL: EF12EF05 -->
+  <section class="hab-principal">
+    <div class="hab-principal__titulo">📌 Habilidade selecionada</div>
+    <p class="hab-principal__campo"><strong>Código:</strong> EF12EF05</p>
+    <p class="hab-principal__campo"><strong>Descrição:</strong> Experimentar e fruir, prezando pelo trabalho coletivo e pelo protagonismo, a prática de esportes de marca e de precisão, identificando os elementos comuns a esses esportes.</p>
+    <p class="hab-principal__campo"><strong>Componente:</strong> Educação Física</p>
+    <p class="hab-principal__campo"><strong>Ano/Etapa:</strong> 1º e 2º ano</p>
+    <p class="hab-principal__campo"><strong>Unidade temática:</strong> Esportes</p>
+    <p class="hab-principal__campo"><strong>Objeto do conhecimento:</strong> Esportes de marca / Esportes de precisão</p>
+  </section>
+
+  <!-- SEÇÃO DE CORRELAÇÕES COM COMPUTAÇÃO -->
+  <div class="hab-secao-titulo">💻 Habilidades de Computação correlacionadas</div>
+
+  <!-- Habilidade 1: EF01CO01 – Organizar objetos (identificar elementos comuns) -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF01CO01</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Organizar objetos físicos ou digitais considerando diferentes características, explicitando semelhanças (padrões) e diferenças.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Organização de objetos</p>
+    <div class="hab-relacao">Relação direta com "identificar os elementos comuns": a Computação ensina a reconhecer padrões e semelhanças entre diferentes objetos ou situações.</div>
+  </div>
+
+  <!-- Habilidade 2: EF01CO02 – Sequências de passos (regras dos esportes) -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF01CO02</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Identificar e seguir sequências de passos aplicados no dia a dia para resolver problemas.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Conceituação de Algoritmos</p>
+    <div class="hab-relacao">Os esportes têm regras e sequências de ações; esta habilidade ajuda a compreender e seguir essas sequências (algoritmos esportivos).</div>
+  </div>
+
+  <!-- Habilidade 3: EF01CO03 – Criar sequências de passos -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF01CO03</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reorganizar e criar sequências de passos em meios físicos ou digitais, relacionando essas sequências à palavra 'Algoritmos'.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Conceituação de Algoritmos</p>
+    <div class="hab-relacao">Os alunos podem criar novas formas de praticar os esportes, reorganizando suas sequências de ações (criando novos algoritmos).</div>
+  </div>
+
+  <!-- Habilidade 4: EF15CO02 – Algoritmos para problemas cotidianos -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF15CO02</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Construir e simular algoritmos, de forma independente ou em colaboração, que resolvam problemas simples e do cotidiano com uso de sequências, seleções condicionais e repetições de instruções.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º, 2º, 3º, 4º, 5º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Algoritmos</p>
+    <div class="hab-relacao">Os esportes podem ser vistos como algoritmos colaborativos, com sequências, repetições (várias rodadas) e decisões (estratégias).</div>
+  </div>
+
+  <!-- Habilidade 5: EF15CO01 – Organizar e representar informação -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF15CO01</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Identificar as principais formas de organizar e representar a informação de maneira estruturada (matrizes, registros, listas e grafos) ou não estruturada (números, palavras, valores verdade).</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º, 2º, 3º, 4º, 5º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Organização e representação da informação</p>
+    <div class="hab-relacao">Esportes de marca envolvem números (pontuações, tempos) e esportes de precisão envolvem medidas; esta habilidade ensina a organizar esses dados.</div>
+  </div>
+
+  <!-- Habilidade 6: EF03CO01 – Lógica computacional (verdadeiro/falso) -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF03CO01</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Associar os valores "verdadeiro" e "falso" a sentenças lógicas que dizem respeito a situações do dia a dia, fazendo uso de termos que indicam negação.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 3º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Lógica computacional</p>
+    <div class="hab-relacao">Nos esportes, há situações de verdadeiro/falso (ex.: "a bola entrou?"), conectando-se à lógica computacional.</div>
+  </div>
+
+  <!-- Habilidade 7: EF05CO03 – Operações lógicas -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF05CO03</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Realizar operações de negação, conjunção e disjunção sobre sentenças lógicas e valores "verdadeiro" e "falso".</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 5º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Lógica computacional</p>
+    <div class="hab-relacao">Amplia a habilidade anterior: decisões esportivas podem envolver combinações lógicas (ex.: "se está dentro E é a vez do jogador...").</div>
+  </div>
+
+  <!-- Habilidade 8: EF04CO01 – Matrizes (posicionamento em esportes) -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF04CO01</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer objetos do mundo real e/ou digital que podem ser representados através de matrizes que estabelecem uma organização na qual cada componente está em uma posição definida por coordenadas, fazendo manipulações simples sobre estas representações.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 4º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Matrizes e registros</p>
+    <div class="hab-relacao">Esportes de precisão (ex.: tiro ao alvo) podem ser representados por coordenadas (matrizes), conectando-se a este conceito.</div>
+  </div>
+
+  <!-- Habilidade 9: EF05CO01 – Listas (sequência de jogadas) -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF05CO01</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer objetos do mundo real e/ou digital que podem ser representados através de listas que estabelecem uma organização na qual há um número variável de itens dispostos em sequência, fazendo manipulações simples sobre estas representações.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 5º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Listas e grafos</p>
+    <div class="hab-relacao">Sequências de jogadas ou pontuações podem ser organizadas em listas, facilitando a análise e comparação.</div>
+  </div>
+
+  <!-- Habilidade 10: EF15CO08 – Uso de tecnologias para experimentar e fruir -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF15CO08</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer e utilizar tecnologias computacionais para pesquisar e acessar informações, expressar‑se crítica e criativamente e resolver problemas.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º, 2º, 3º, 4º, 5º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Uso de artefatos computacionais</p>
+    <div class="hab-relacao">Tecnologias podem ser usadas para conhecer diferentes esportes, registrar práticas e compartilhar experiências, ampliando a fruição.</div>
+  </div>
+
+  <!-- Habilidade 11: EF05CO011 – Adequação de tecnologias na resolução de problemas -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF05CO011</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Identificar a adequação de diferentes tecnologias computacionais na resolução de problemas.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 5º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Uso de tecnologias computacionais</p>
+    <div class="hab-relacao">Para medir marcas ou precisão, diferentes tecnologias podem ser adequadas (cronômetros, sensores, câmeras), conectando-se a esta habilidade.</div>
+  </div>
+
+  <!-- Habilidade 12: EF02CO06 – Cuidados com segurança -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF02CO06</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer os cuidados com a segurança no uso de dispositivos computacionais.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 2º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Segurança e responsabilidade no uso de tecnologia computacional</p>
+    <div class="hab-relacao">Ao usar dispositivos para registrar ou analisar os esportes, é importante reconhecer os cuidados com a segurança.</div>
+  </div>
+
+  <!-- Rodapé com metadados -->
+  <p class="hab-metadata">
+    🔍 Habilidades listadas em ordem decrescente de relevância para a habilidade EF12EF05<br>
+    ✨ Ênfase em: identificação de padrões, organização de dados (números/medidas), algoritmos esportivos e uso de tecnologias para análise de desempenho.
+  </p>
+
+</body>
+</html>

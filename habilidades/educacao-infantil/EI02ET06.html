@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>EI02ET06 — Educação Infantil — Varjota DigiEdu</title>
+
+  <script src="../../assets/template-loader.js"></script>
+  <script>
+    window.VD_PAGE = {
+      disciplina: "educacao-infantil",
+      pageTitle:  "EI02ET06"
+    };
+  </script>
+  <script src="../../assets/template.js"></script>
+
+  <style>
+    /* ── Cores temáticas — Educação Infantil ── */
+    :root {
+      --disc-cor:       #AD1457;   /* cor principal da Educação Infantil */
+      --disc-cor-light: #FFF0F5;   /* fundo suave da Educação Infantil  */
+      --comp-cor:       #27AE60;   /* verde fixo para Computação */
+      --comp-cor-light: #E8F5E9;   /* fundo suave para Computação */
+    }
+
+    /* ── Botão voltar ── */
+    .hab-voltar {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-bottom: 24px;
+      padding: 8px 18px; border-radius: 50px;
+      border: 2px solid var(--disc-cor);
+      background: #fff; color: var(--disc-cor);
+      font-family: 'Lexend', sans-serif; font-size: .85rem; font-weight: 700;
+      text-decoration: none; transition: background .15s, color .15s;
+    }
+    .hab-voltar:hover { background: var(--disc-cor); color: #fff; }
+
+    /* ── Bloco da habilidade principal ── */
+    .hab-principal {
+      background: var(--disc-cor-light);
+      border-left: 4px solid var(--disc-cor);
+      border-radius: 0 12px 12px 0;
+      padding: 24px 28px;
+      margin-bottom: 32px;
+    }
+    .hab-principal__titulo {
+      font-family: 'Lexend', sans-serif;
+      font-size: 1.1rem; font-weight: 800;
+      color: var(--disc-cor);
+      margin-bottom: 16px;
+    }
+    .hab-principal__campo { margin: 6px 0; font-size: .9rem; color: #374151; }
+    .hab-principal__campo strong {
+      font-family: 'Lexend', sans-serif;
+      color: #1A1A2E;
+      display: inline-block; min-width: 160px;
+    }
+
+    /* ── Título da seção de Computação ── */
+    .hab-secao-titulo {
+      font-family: 'Lexend', sans-serif;
+      font-size: 1.15rem; font-weight: 800;
+      color: #1A1A2E;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #DDE3ED;
+    }
+
+    /* ── Cards de habilidades de Computação ── */
+    .hab-computacao {
+      background: #F9FAFB;
+      border: 1px solid #DDE3ED;
+      border-radius: 12px;
+      padding: 22px 24px;
+      margin-bottom: 16px;
+      transition: box-shadow .15s;
+    }
+    .hab-computacao:hover { box-shadow: 0 4px 16px rgba(0,0,0,.08); }
+
+    .hab-computacao__codigo {
+      font-family: 'Lexend', sans-serif;
+      font-size: 1rem; font-weight: 800;
+      color: var(--comp-cor);
+      margin-bottom: 14px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .hab-computacao__codigo::before { content: "🔹"; font-size: .9rem; }
+
+    .hab-computacao__campo { margin: 5px 0; font-size: .875rem; color: #374151; }
+    .hab-computacao__campo strong {
+      font-family: 'Lexend', sans-serif;
+      color: #555;
+      display: inline-block; min-width: 160px;
+    }
+
+    /* ── Box de relação ── */
+    .hab-relacao {
+      background: var(--comp-cor-light);
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-top: 14px;
+      font-size: .875rem;
+      font-style: italic;
+      color: #1B5E20;
+      line-height: 1.55;
+    }
+    .hab-relacao::before {
+      content: "🎯 Relação: ";
+      font-weight: 700;
+      font-style: normal;
+      font-family: 'Lexend', sans-serif;
+    }
+
+    /* ── Rodapé de metadados ── */
+    .hab-metadata {
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid #DDE3ED;
+      font-size: .8rem;
+      color: #9CA3AF;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Botão voltar — Educação Infantil -->
+  <a href="../../disciplinas/educacao-infantil.html" class="hab-voltar">
+    ← Voltar para Educação Infantil
+  </a>
+
+  <!-- ══════════════════════════════════════════════════
+       BLOCO DA HABILIDADE PRINCIPAL
+       Habilidade EI02ET06
+  ══════════════════════════════════════════════════ -->
+  <section class="hab-principal">
+    <div class="hab-principal__titulo">📌 Habilidade selecionada</div>
+    <p class="hab-principal__campo"><strong>Código:</strong> EI02ET06</p>
+    <p class="hab-principal__campo"><strong>Descrição:</strong> Utilizar conceitos básicos de tempo (agora, antes, durante, depois, ontem, hoje, amanhã, lento, rápido, depressa, devagar).</p>
+    <p class="hab-principal__campo"><strong>Componente:</strong> Educação Infantil</p>
+    <p class="hab-principal__campo"><strong>Ano/Etapa:</strong> Crianças bem pequenas (1 ano e 7 meses a 3 anos e 11 meses)</p>
+    <p class="hab-principal__campo"><strong>Unidade temática:</strong> Espaços, tempos, quantidades, relações e transformações</p>
+    <p class="hab-principal__campo"><strong>Objeto do conhecimento:</strong> Noções temporais</p>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════
+       SEÇÃO DE HABILIDADES DE COMPUTAÇÃO CORRELACIONADAS
+  ══════════════════════════════════════════════════ -->
+  <div class="hab-secao-titulo">💻 Habilidades de Computação correlacionadas</div>
+
+  <!-- ──────────────────────────────────────────────────
+       Habilidade 1: EI03CO02 – Expressar etapas para realização de tarefas
+       Mais relevante: conceitos temporais → sequenciação e ordenação
+  ────────────────────────────────────────────────── -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EI03CO02</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Expressar as etapas para a realização de uma tarefa de forma clara e ordenada.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> Educação Infantil</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento Computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Sequenciação e organização de ideias</p>
+    <div class="hab-relacao">Conceitos temporais como antes, durante e depois são a base para compreender sequências e ordenação. Essa noção de sequência temporal é fundamental para expressar etapas de tarefas de forma clara e organizada.</div>
+  </div>
+
+  <!-- ──────────────────────────────────────────────────
+       Habilidade 2: EI03CO01 – Reconhecimento de padrões
+  ────────────────────────────────────────────────── -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EI03CO01</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer padrão de repetição em sequência de sons, movimentos, desenhos.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> Educação Infantil</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento Computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Identificação de padrões</p>
+    <div class="hab-relacao">O tempo segue padrões: dias que se repetem (ontem, hoje, amanhã), ritmos (rápido/lento). Reconhecer esses padrões temporais é fundamental para o pensamento computacional.</div>
+  </div>
+
+  <!-- ──────────────────────────────────────────────────
+       Habilidade 3: EI03CO03 – Execução de algoritmos
+  ────────────────────────────────────────────────── -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EI03CO03</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Experienciar a execução de algoritmos brincando com objetos (des)plugados.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> Educação Infantil</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento Computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Sequências de instruções</p>
+    <div class="hab-relacao">Brincadeiras que envolvem noções temporais (corrida rápida/lenta, sequências "antes/depois") são experiências concretas de execução de algoritmos com variação de tempo.</div>
+  </div>
+
+  <!-- ──────────────────────────────────────────────────
+       Habilidade 4: EI03CO06 – Decisões em dois estados
+  ────────────────────────────────────────────────── -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EI03CO06</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Compreender decisões em dois estados (verdadeiro ou falso).</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> Educação Infantil</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento Computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Lógica binária e tomada de decisão</p>
+    <div class="hab-relacao">Conceitos temporais frequentemente são binários: rápido/lento, antes/depois, dia/noite. Esses pares opostos introduzem o conceito de decisões em dois estados.</div>
+  </div>
+
+  <!-- ──────────────────────────────────────────────────
+       Habilidade 5: EI03CO04 – Criar e representar algoritmos
+  ────────────────────────────────────────────────── -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EI03CO04</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Criar e representar algoritmos para resolver problemas.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> Educação Infantil</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento Computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Elaboração de sequências lógicas</p>
+    <div class="hab-relacao">Compreender a passagem do tempo permite à criança criar sequências planejadas: "primeiro faço isso, depois aquilo". Essa organização temporal é a base para criar algoritmos.</div>
+  </div>
+
+  <!-- ──────────────────────────────────────────────────
+       Habilidade 6: EI03CO05 – Comparar soluções
+  ────────────────────────────────────────────────── -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EI03CO05</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Comparar soluções algorítmicas para resolver um mesmo problema.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> Educação Infantil</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento Computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Flexibilidade cognitiva e diferentes estratégias</p>
+    <div class="hab-relacao">A mesma tarefa pode ser feita rápido ou devagar. Comparar diferentes ritmos e tempos desenvolve a flexibilidade cognitiva.</div>
+  </div>
+
+  <!-- ──────────────────────────────────────────────────
+       Habilidade 7: EI03CO08 – Compreender interfaces
+  ────────────────────────────────────────────────── -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EI03CO08</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Compreender o conceito de interfaces para comunicação com objetos (des)plugados.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> Educação Infantil</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Mundo Digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Formas de interação com dispositivos</p>
+    <div class="hab-relacao">Dispositivos digitais operam em diferentes tempos - alguns respondem rápido, outros têm animações lentas. Compreender noções de tempo ajuda a interagir adequadamente com eles.</div>
+  </div>
+
+  <!-- ──────────────────────────────────────────────────
+       Habilidade 8: EI03CO09 – Identificar dispositivos
+  ────────────────────────────────────────────────── -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EI03CO09</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Identificar dispositivos computacionais e as diferentes formas de interação.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> Educação Infantil</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Mundo Digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Dispositivos e suas interfaces</p>
+    <div class="hab-relacao">Jogos digitais frequentemente exigem noções de tempo: esperar a vez, agir rápido, sequenciar ações. A experiência com tempo no mundo físico prepara para essas interações.</div>
+  </div>
+
+  <p class="hab-metadata">
+    🔍 Habilidades listadas em ordem decrescente de relevância para a habilidade EI02ET06
+  </p>
+
+</body>
+</html>

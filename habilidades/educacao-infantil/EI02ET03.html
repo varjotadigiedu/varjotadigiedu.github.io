@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>EI02ET03 — Educação Infantil — Varjota DigiEdu</title>
+
+  <script src="../../assets/template-loader.js"></script>
+  <script>
+    window.VD_PAGE = {
+      disciplina: "educacao-infantil",
+      pageTitle:  "EI02ET03"
+    };
+  </script>
+  <script src="../../assets/template.js"></script>
+
+  <style>
+    /* ── Cores temáticas — Educação Infantil ── */
+    :root {
+      --disc-cor:       #AD1457;   /* cor principal da Educação Infantil */
+      --disc-cor-light: #FFF0F5;   /* fundo suave da Educação Infantil  */
+      --comp-cor:       #27AE60;   /* verde fixo para Computação */
+      --comp-cor-light: #E8F5E9;   /* fundo suave para Computação */
+    }
+
+    /* ── Botão voltar ── */
+    .hab-voltar {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-bottom: 24px;
+      padding: 8px 18px; border-radius: 50px;
+      border: 2px solid var(--disc-cor);
+      background: #fff; color: var(--disc-cor);
+      font-family: 'Lexend', sans-serif; font-size: .85rem; font-weight: 700;
+      text-decoration: none; transition: background .15s, color .15s;
+    }
+    .hab-voltar:hover { background: var(--disc-cor); color: #fff; }
+
+    /* ── Bloco da habilidade principal ── */
+    .hab-principal {
+      background: var(--disc-cor-light);
+      border-left: 4px solid var(--disc-cor);
+      border-radius: 0 12px 12px 0;
+      padding: 24px 28px;
+      margin-bottom: 32px;
+    }
+    .hab-principal__titulo {
+      font-family: 'Lexend', sans-serif;
+      font-size: 1.1rem; font-weight: 800;
+      color: var(--disc-cor);
+      margin-bottom: 16px;
+    }
+    .hab-principal__campo { margin: 6px 0; font-size: .9rem; color: #374151; }
+    .hab-principal__campo strong {
+      font-family: 'Lexend', sans-serif;
+      color: #1A1A2E;
+      display: inline-block; min-width: 160px;
+    }
+
+    /* ── Título da seção de Computação ── */
+    .hab-secao-titulo {
+      font-family: 'Lexend', sans-serif;
+      font-size: 1.15rem; font-weight: 800;
+      color: #1A1A2E;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #DDE3ED;
+    }
+
+    /* ── Cards de habilidades de Computação ── */
+    .hab-computacao {
+      background: #F9FAFB;
+      border: 1px solid #DDE3ED;
+      border-radius: 12px;
+      padding: 22px 24px;
+      margin-bottom: 16px;
+      transition: box-shadow .15s;
+    }
+    .hab-computacao:hover { box-shadow: 0 4px 16px rgba(0,0,0,.08); }
+
+    .hab-computacao__codigo {
+      font-family: 'Lexend', sans-serif;
+      font-size: 1rem; font-weight: 800;
+      color: var(--comp-cor);
+      margin-bottom: 14px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .hab-computacao__codigo::before { content: "🔹"; font-size: .9rem; }
+
+    .hab-computacao__campo { margin: 5px 0; font-size: .875rem; color: #374151; }
+    .hab-computacao__campo strong {
+      font-family: 'Lexend', sans-serif;
+      color: #555;
+      display: inline-block; min-width: 160px;
+    }
+
+    /* ── Box de relação ── */
+    .hab-relacao {
+      background: var(--comp-cor-light);
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-top: 14px;
+      font-size: .875rem;
+      font-style: italic;
+      color: #1B5E20;
+      line-height: 1.55;
+    }
+    .hab-relacao::before {
+      content: "🎯 Relação: ";
+      font-weight: 700;
+      font-style: normal;
+      font-family: 'Lexend', sans-serif;
+    }
+
+    /* ── Rodapé de metadados ── */
+    .hab-metadata {
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid #DDE3ED;
+      font-size: .8rem;
+      color: #9CA3AF;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Botão voltar — Educação Infantil -->
+  <a href="../../disciplinas/educacao-infantil.html" class="hab-voltar">
+    ← Voltar para Educação Infantil
+  </a>
+
+  <!-- ══════════════════════════════════════════════════
+       BLOCO DA HABILIDADE PRINCIPAL
+       Habilidade EI02ET03
+  ══════════════════════════════════════════════════ -->
+  <section class="hab-principal">
+    <div class="hab-principal__titulo">📌 Habilidade selecionada</div>
+    <p class="hab-principal__campo"><strong>Código:</strong> EI02ET03</p>
+    <p class="hab-principal__campo"><strong>Descrição:</strong> Compartilhar, com outras crianças, situações de cuidado de plantas e animais nos espaços da instituição e fora dela.</p>
+    <p class="hab-principal__campo"><strong>Componente:</strong> Educação Infantil</p>
+    <p class="hab-principal__campo"><strong>Ano/Etapa:</strong> Crianças bem pequenas (1 ano e 7 meses a 3 anos e 11 meses)</p>
+    <p class="hab-principal__campo"><strong>Unidade temática:</strong> Espaços, tempos, quantidades, relações e transformações</p>
+    <p class="hab-principal__campo"><strong>Objeto do conhecimento:</strong> Cuidado com a natureza e colaboração</p>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════
+       SEÇÃO DE HABILIDADES DE COMPUTAÇÃO CORRELACIONADAS
+  ══════════════════════════════════════════════════ -->
+  <div class="hab-secao-titulo">💻 Habilidades de Computação correlacionadas</div>
+
+  <!-- ──────────────────────────────────────────────────
+       Habilidade 1: EI03CO10 – Uso seguro, consciente e respeitoso da tecnologia
+       Mais relevante: compartilhar cuidado → colaboração e responsabilidade no ambiente digital
+  ────────────────────────────────────────────────── -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EI03CO10</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Utilizar tecnologia digital de maneira segura, consciente e respeitosa.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> Educação Infantil</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura Digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Convivência e segurança no meio digital</p>
+    <div class="hab-relacao">Compartilhar situações de cuidado com plantas e animais desenvolve atitudes de responsabilidade e colaboração. Essas mesmas atitudes são fundamentais para o uso seguro e respeitoso da tecnologia, onde também cuidamos de informações, equipamentos e das relações com os outros.</div>
+  </div>
+
+  <!-- ──────────────────────────────────────────────────
+       Habilidade 2: EI03CO02 – Expressar etapas
+  ────────────────────────────────────────────────── -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EI03CO02</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Expressar as etapas para a realização de uma tarefa de forma clara e ordenada.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> Educação Infantil</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento Computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Sequenciação e organização de ideias</p>
+    <div class="hab-relacao">Cuidar de plantas e animais segue uma sequência: preparar, alimentar, limpar, observar. Compartilhar essas experiências com outras crianças ajuda a desenvolver a capacidade de organizar ações em etapas e comunicá-las.</div>
+  </div>
+
+  <!-- ──────────────────────────────────────────────────
+       Habilidade 3: EI03CO03 – Execução de algoritmos
+  ────────────────────────────────────────────────── -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EI03CO03</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Experienciar a execução de algoritmos brincando com objetos (des)plugados.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> Educação Infantil</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento Computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Sequências de instruções</p>
+    <div class="hab-relacao">Cuidar de plantas e animais é uma atividade "desplugada" onde as crianças executam sequências de ações que produzem resultados observáveis: regar faz a planta crescer, alimentar mantém o animal saudável.</div>
+  </div>
+
+  <!-- ──────────────────────────────────────────────────
+       Habilidade 4: EI03CO04 – Criar e representar algoritmos
+  ────────────────────────────────────────────────── -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EI03CO04</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Criar e representar algoritmos para resolver problemas.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> Educação Infantil</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento Computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Elaboração de sequências lógicas</p>
+    <div class="hab-relacao">Ao cuidar de plantas e animais, as crianças criam estratégias e rotinas de cuidado, desenvolvendo "algoritmos de cuidado" que podem ser compartilhados e replicados.</div>
+  </div>
+
+  <!-- ──────────────────────────────────────────────────
+       Habilidade 5: EI03CO01 – Reconhecimento de padrões
+  ────────────────────────────────────────────────── -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EI03CO01</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer padrão de repetição em sequência de sons, movimentos, desenhos.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> Educação Infantil</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento Computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Identificação de padrões</p>
+    <div class="hab-relacao">O cuidado com plantas e animais revela padrões naturais: as plantas precisam de água regularmente, os animais comem em horários certos. Reconhecer esses padrões é fundamental para o pensamento computacional.</div>
+  </div>
+
+  <!-- ──────────────────────────────────────────────────
+       Habilidade 6: EI03CO05 – Comparar soluções
+  ────────────────────────────────────────────────── -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EI03CO05</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Comparar soluções algorítmicas para resolver um mesmo problema.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> Educação Infantil</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento Computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Flexibilidade cognitiva e diferentes estratégias</p>
+    <div class="hab-relacao">Diferentes crianças podem ter diferentes formas de cuidar de uma mesma planta ou animal. Comparar essas diferentes abordagens desenvolve a flexibilidade cognitiva.</div>
+  </div>
+
+  <!-- ──────────────────────────────────────────────────
+       Habilidade 7: EI03CO08 – Compreender interfaces
+  ────────────────────────────────────────────────── -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EI03CO08</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Compreender o conceito de interfaces para comunicação com objetos (des)plugados.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> Educação Infantil</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Mundo Digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Formas de interação com dispositivos</p>
+    <div class="hab-relacao">Plantas e animais respondem a ações de cuidado de formas específicas - são "interfaces" vivas que nos dão feedback. Essa compreensão de causa e efeito prepara para interagir com interfaces digitais.</div>
+  </div>
+
+  <!-- ──────────────────────────────────────────────────
+       Habilidade 8: EI03CO11 – Hábitos saudáveis
+  ────────────────────────────────────────────────── -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EI03CO11</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Adotar hábitos saudáveis de uso de artefatos computacionais, seguindo recomendações de órgãos de saúde competentes.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> Educação Infantil</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura Digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Equilíbrio e saúde digital</p>
+    <div class="hab-relacao">Cuidar de plantas e animais desenvolve a consciência sobre cuidados e equilíbrio, habilidades que se transferem para o uso saudável da tecnologia, respeitando limites e necessidades.</div>
+  </div>
+
+  <p class="hab-metadata">
+    🔍 Habilidades listadas em ordem decrescente de relevância para a habilidade EI02ET03
+  </p>
+
+</body>
+</html>

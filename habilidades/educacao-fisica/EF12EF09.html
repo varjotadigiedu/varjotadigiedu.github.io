@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>EF12EF09 — Educação Física — Varjota DigiEdu</title>
+
+  <script src="../../assets/template-loader.js"></script>
+  <script>
+    window.VD_PAGE = {
+      disciplina: "educacao-fisica",
+      pageTitle:  "EF12EF09"
+    };
+  </script>
+  <script src="../../assets/template.js"></script>
+
+  <style>
+    /* ── Cores temáticas — Educação Física ── */
+    :root {
+      --disc-cor:       #2E7D32;
+      --disc-cor-light: #F1F8F1;
+      --comp-cor:       #27AE60;
+      --comp-cor-light: #E8F5E9;
+    }
+
+    .hab-voltar {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-bottom: 24px;
+      padding: 8px 18px; border-radius: 50px;
+      border: 2px solid var(--disc-cor);
+      background: #fff; color: var(--disc-cor);
+      font-family: 'Lexend', sans-serif; font-size: .85rem; font-weight: 700;
+      text-decoration: none; transition: background .15s, color .15s;
+    }
+    .hab-voltar:hover { background: var(--disc-cor); color: #fff; }
+
+    .hab-principal {
+      background: var(--disc-cor-light);
+      border-left: 4px solid var(--disc-cor);
+      border-radius: 0 12px 12px 0;
+      padding: 24px 28px;
+      margin-bottom: 32px;
+    }
+    .hab-principal__titulo {
+      font-family: 'Lexend', sans-serif;
+      font-size: 1.1rem; font-weight: 800;
+      color: var(--disc-cor);
+      margin-bottom: 16px;
+    }
+    .hab-principal__campo { margin: 6px 0; font-size: .9rem; color: #374151; }
+    .hab-principal__campo strong {
+      font-family: 'Lexend', sans-serif;
+      color: #1A1A2E;
+      display: inline-block; min-width: 160px;
+    }
+
+    .hab-secao-titulo {
+      font-family: 'Lexend', sans-serif;
+      font-size: 1.15rem; font-weight: 800;
+      color: #1A1A2E;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #DDE3ED;
+    }
+
+    .hab-computacao {
+      background: #F9FAFB;
+      border: 1px solid #DDE3ED;
+      border-radius: 12px;
+      padding: 22px 24px;
+      margin-bottom: 16px;
+      transition: box-shadow .15s;
+    }
+    .hab-computacao:hover { box-shadow: 0 4px 16px rgba(0,0,0,.08); }
+
+    .hab-computacao__codigo {
+      font-family: 'Lexend', sans-serif;
+      font-size: 1rem; font-weight: 800;
+      color: var(--comp-cor);
+      margin-bottom: 14px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .hab-computacao__codigo::before { content: "🔹"; font-size: .9rem; }
+
+    .hab-computacao__campo { margin: 5px 0; font-size: .875rem; color: #374151; }
+    .hab-computacao__campo strong {
+      font-family: 'Lexend', sans-serif;
+      color: #555;
+      display: inline-block; min-width: 160px;
+    }
+
+    .hab-relacao {
+      background: var(--comp-cor-light);
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-top: 14px;
+      font-size: .875rem;
+      font-style: italic;
+      color: #1B5E20;
+      line-height: 1.55;
+    }
+    .hab-relacao::before {
+      content: "🎯 Relação: ";
+      font-weight: 700;
+      font-style: normal;
+      font-family: 'Lexend', sans-serif;
+    }
+
+    .hab-metadata {
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid #DDE3ED;
+      font-size: .8rem;
+      color: #9CA3AF;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Botão voltar -->
+  <a href="../../disciplinas/educacao-fisica.html" class="hab-voltar">
+    ← Voltar para Educação Física
+  </a>
+
+  <!-- HABILIDADE PRINCIPAL: EF12EF09 -->
+  <section class="hab-principal">
+    <div class="hab-principal__titulo">📌 Habilidade selecionada</div>
+    <p class="hab-principal__campo"><strong>Código:</strong> EF12EF09</p>
+    <p class="hab-principal__campo"><strong>Descrição:</strong> Participar da ginástica geral, identificando as potencialidades e os limites do corpo, e respeitando as diferenças individuais e de desempenho corporal.</p>
+    <p class="hab-principal__campo"><strong>Componente:</strong> Educação Física</p>
+    <p class="hab-principal__campo"><strong>Ano/Etapa:</strong> 1º e 2º ano</p>
+    <p class="hab-principal__campo"><strong>Unidade temática:</strong> Ginásticas</p>
+    <p class="hab-principal__campo"><strong>Objeto do conhecimento:</strong> Ginástica geral</p>
+  </section>
+
+  <!-- SEÇÃO DE CORRELAÇÕES COM COMPUTAÇÃO -->
+  <div class="hab-secao-titulo">💻 Habilidades de Computação correlacionadas</div>
+
+  <!-- Habilidade 1: EF01CO01 – Organizar objetos (identificar características) -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF01CO01</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Organizar objetos físicos ou digitais considerando diferentes características, explicitando semelhanças (padrões) e diferenças.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Organização de objetos</p>
+    <div class="hab-relacao">"Identificar potencialidades e limites do corpo" envolve reconhecer características individuais, semelhanças e diferenças entre os colegas.</div>
+  </div>
+
+  <!-- Habilidade 2: EF01CO07 – Uso seguro e respeito às diferenças -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF01CO07</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Conhecer as possibilidades de uso seguro das tecnologias computacionais para proteção dos dados pessoais e para garantir a própria segurança.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Segurança e responsabilidade no uso de tecnologia computacional</p>
+    <div class="hab-relacao">O respeito às diferenças e a identificação de limites estão relacionados ao uso seguro e responsável, tanto no físico quanto no digital.</div>
+  </div>
+
+  <!-- Habilidade 3: EF02CO06 – Cuidados com segurança e respeito -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF02CO06</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer os cuidados com a segurança no uso de dispositivos computacionais.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 2º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Segurança e responsabilidade no uso de tecnologia computacional</p>
+    <div class="hab-relacao">Reconhecer limites e respeitar diferenças são atitudes fundamentais tanto na ginástica quanto no uso responsável da tecnologia.</div>
+  </div>
+
+  <!-- Habilidade 4: EF03CO09 – Impacto do compartilhamento de informações pessoais -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF03CO09</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer o potencial impacto do compartilhamento de informações pessoais ou de seus pares em meio digital.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 3º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Segurança e responsabilidade no uso da tecnologia</p>
+    <div class="hab-relacao">Assim como é preciso respeitar as diferenças corporais, no ambiente digital é preciso respeitar a privacidade e as informações pessoais.</div>
+  </div>
+
+  <!-- Habilidade 5: EF04CO07 – Postura ética na coleta e uso de dados -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF04CO07</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Demonstrar postura ética nas atividades de coleta, transferência, guarda e uso de dados.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 4º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Segurança e responsabilidade no uso da tecnologia</p>
+    <div class="hab-relacao">A postura ética no uso de dados se relaciona com o respeito às diferenças e ao reconhecimento dos limites individuais.</div>
+  </div>
+
+  <!-- Habilidade 6: EF05CO09 – Direitos autorais e respeito -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF05CO09</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Usar informações considerando aplicações e limites dos direitos autorais em diferentes mídias digitais.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 5º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Segurança e responsabilidade no uso da tecnologia</p>
+    <div class="hab-relacao">Respeitar limites e diferenças também se aplica aos direitos autorais e ao uso ético de conteúdos digitais.</div>
+  </div>
+
+  <!-- Habilidade 7: EF15CO09 – Uso ético e responsável da tecnologia -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF15CO09</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Entender que as tecnologias devem ser utilizadas de maneira segura, ética e responsável, respeitando direitos autorais, de imagem e as leis vigentes.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º, 2º, 3º, 4º, 5º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Segurança e responsabilidade no uso da tecnologia computacional</p>
+    <div class="hab-relacao">O respeito às diferenças e aos limites individuais na ginástica dialoga diretamente com o uso ético e responsável da tecnologia.</div>
+  </div>
+
+  <!-- Habilidade 8: EF06CO09 – Conduta e linguagem apropriadas em ambiente digital -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF06CO09</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Apresentar conduta e linguagem apropriadas ao se comunicar em ambiente digital, considerando a ética e o respeito.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 6º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Segurança e responsabilidade no uso da tecnologia - Tecnologia digital e sociedade</p>
+    <div class="hab-relacao">A conduta respeitosa no ambiente digital reflete o mesmo respeito às diferenças individuais praticado na ginástica.</div>
+  </div>
+
+  <!-- Habilidade 9: EF07CO08 – Empatia sobre opiniões divergentes -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF07CO08</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Demonstrar empatia sobre opiniões divergentes na web.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 7º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Segurança e responsabilidade no uso da tecnologia - Cyberbullying</p>
+    <div class="hab-relacao">A empatia por opiniões divergentes na web é análoga ao respeito pelas diferenças de desempenho corporal na ginástica.</div>
+  </div>
+
+  <!-- Habilidade 10: EF07CO09 – Reconhecer e debater sobre cyberbullying -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF07CO09</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer e debater sobre cyberbullying.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 7º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Segurança e responsabilidade no uso da tecnologia - Cyberbullying</p>
+    <div class="hab-relacao">O combate ao cyberbullying está relacionado ao respeito às diferenças e à valorização da diversidade, presentes na habilidade.</div>
+  </div>
+
+  <!-- Habilidade 11: EF08CO10 – Segurança e privacidade em ambientes virtuais -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF08CO10</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Discutir questões sobre segurança e privacidade relacionadas ao uso dos ambientes virtuais.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 8º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Segurança e responsabilidade no uso da tecnologia - Segurança em ambientes virtuais</p>
+    <div class="hab-relacao">Discutir segurança e privacidade envolve reconhecer limites e respeitar o espaço do outro, assim como na ginástica.</div>
+  </div>
+
+  <!-- Habilidade 12: EF15CO08 – Uso de tecnologias para expressão e participação -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EF15CO08</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer e utilizar tecnologias computacionais para pesquisar e acessar informações, expressar‑se crítica e criativamente e resolver problemas.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> 1º, 2º, 3º, 4º, 5º</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Cultura digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Uso de artefatos computacionais</p>
+    <div class="hab-relacao">A participação na ginástica pode ser ampliada com o uso de tecnologias para registrar, compartilhar e aprender com diferentes práticas corporais.</div>
+  </div>
+
+  <!-- Rodapé com metadados -->
+  <p class="hab-metadata">
+    🔍 Habilidades listadas em ordem decrescente de relevância para a habilidade EF12EF09<br>
+    ✨ Ênfase em: respeito às diferenças, reconhecimento de limites, ética, empatia, segurança e responsabilidade.
+  </p>
+
+</body>
+</html>

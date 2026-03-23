@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>EI01TS02 — Educação Infantil — Varjota DigiEdu</title>
+
+  <script src="../../assets/template-loader.js"></script>
+  <script>
+    window.VD_PAGE = {
+      disciplina: "educacao-infantil",
+      pageTitle:  "EI01TS02"
+    };
+  </script>
+  <script src="../../assets/template.js"></script>
+
+  <style>
+    /* ── Cores temáticas — Educação Infantil ── */
+    :root {
+      --disc-cor:       #AD1457;   /* cor principal da Educação Infantil */
+      --disc-cor-light: #FFF0F5;   /* fundo suave da Educação Infantil  */
+      --comp-cor:       #27AE60;   /* verde fixo para Computação */
+      --comp-cor-light: #E8F5E9;   /* fundo suave para Computação */
+    }
+
+    /* ── Botão voltar ── */
+    .hab-voltar {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-bottom: 24px;
+      padding: 8px 18px; border-radius: 50px;
+      border: 2px solid var(--disc-cor);
+      background: #fff; color: var(--disc-cor);
+      font-family: 'Lexend', sans-serif; font-size: .85rem; font-weight: 700;
+      text-decoration: none; transition: background .15s, color .15s;
+    }
+    .hab-voltar:hover { background: var(--disc-cor); color: #fff; }
+
+    /* ── Bloco da habilidade principal ── */
+    .hab-principal {
+      background: var(--disc-cor-light);
+      border-left: 4px solid var(--disc-cor);
+      border-radius: 0 12px 12px 0;
+      padding: 24px 28px;
+      margin-bottom: 32px;
+    }
+    .hab-principal__titulo {
+      font-family: 'Lexend', sans-serif;
+      font-size: 1.1rem; font-weight: 800;
+      color: var(--disc-cor);
+      margin-bottom: 16px;
+    }
+    .hab-principal__campo { margin: 6px 0; font-size: .9rem; color: #374151; }
+    .hab-principal__campo strong {
+      font-family: 'Lexend', sans-serif;
+      color: #1A1A2E;
+      display: inline-block; min-width: 160px;
+    }
+
+    /* ── Título da seção de Computação ── */
+    .hab-secao-titulo {
+      font-family: 'Lexend', sans-serif;
+      font-size: 1.15rem; font-weight: 800;
+      color: #1A1A2E;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #DDE3ED;
+    }
+
+    /* ── Cards de habilidades de Computação ── */
+    .hab-computacao {
+      background: #F9FAFB;
+      border: 1px solid #DDE3ED;
+      border-radius: 12px;
+      padding: 22px 24px;
+      margin-bottom: 16px;
+      transition: box-shadow .15s;
+    }
+    .hab-computacao:hover { box-shadow: 0 4px 16px rgba(0,0,0,.08); }
+
+    .hab-computacao__codigo {
+      font-family: 'Lexend', sans-serif;
+      font-size: 1rem; font-weight: 800;
+      color: var(--comp-cor);
+      margin-bottom: 14px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .hab-computacao__codigo::before { content: "🔹"; font-size: .9rem; }
+
+    .hab-computacao__campo { margin: 5px 0; font-size: .875rem; color: #374151; }
+    .hab-computacao__campo strong {
+      font-family: 'Lexend', sans-serif;
+      color: #555;
+      display: inline-block; min-width: 160px;
+    }
+
+    /* ── Box de relação ── */
+    .hab-relacao {
+      background: var(--comp-cor-light);
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-top: 14px;
+      font-size: .875rem;
+      font-style: italic;
+      color: #1B5E20;
+      line-height: 1.55;
+    }
+    .hab-relacao::before {
+      content: "🎯 Relação: ";
+      font-weight: 700;
+      font-style: normal;
+      font-family: 'Lexend', sans-serif;
+    }
+
+    /* ── Rodapé de metadados ── */
+    .hab-metadata {
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid #DDE3ED;
+      font-size: .8rem;
+      color: #9CA3AF;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Botão voltar — Educação Infantil -->
+  <a href="../../disciplinas/educacao-infantil.html" class="hab-voltar">
+    ← Voltar para Educação Infantil
+  </a>
+
+  <!-- ══════════════════════════════════════════════════
+       BLOCO DA HABILIDADE PRINCIPAL
+       Habilidade EI01TS02
+  ══════════════════════════════════════════════════ -->
+  <section class="hab-principal">
+    <div class="hab-principal__titulo">📌 Habilidade selecionada</div>
+    <p class="hab-principal__campo"><strong>Código:</strong> EI01TS02</p>
+    <p class="hab-principal__campo"><strong>Descrição:</strong> Traçar marcas gráficas, em diferentes suportes, usando instrumentos riscantes e tintas.</p>
+    <p class="hab-principal__campo"><strong>Componente:</strong> Educação Infantil</p>
+    <p class="hab-principal__campo"><strong>Ano/Etapa:</strong> Bebês (zero a 1 ano e 6 meses)</p>
+    <p class="hab-principal__campo"><strong>Unidade temática:</strong> Traços, sons, cores e formas</p>
+    <p class="hab-principal__campo"><strong>Objeto do conhecimento:</strong> Expressão gráfica</p>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════
+       SEÇÃO DE HABILIDADES DE COMPUTAÇÃO CORRELACIONADAS
+  ══════════════════════════════════════════════════ -->
+  <div class="hab-secao-titulo">💻 Habilidades de Computação correlacionadas</div>
+
+  <!-- ──────────────────────────────────────────────────
+       Habilidade 1: EI03CO02 – Expressar etapas para realização de tarefas
+       Mais relevante: marcas gráficas → representação de ideias e procedimentos
+  ────────────────────────────────────────────────── -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EI03CO02</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Expressar as etapas para a realização de uma tarefa de forma clara e ordenada.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> Educação Infantil</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento Computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Sequenciação e organização de ideias</p>
+    <div class="hab-relacao">As primeiras marcas gráficas são uma forma de representar ideias e intenções. Essa representação visual é a base para, posteriormente, expressar etapas de tarefas e criar diagramas, fluxos e outras representações do pensamento computacional.</div>
+  </div>
+
+  <!-- ──────────────────────────────────────────────────
+       Habilidade 2: EI03CO04 – Criar e representar algoritmos para resolver problemas
+  ────────────────────────────────────────────────── -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EI03CO04</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Criar e representar algoritmos para resolver problemas.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> Educação Infantil</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento Computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Elaboração de sequências lógicas</p>
+    <div class="hab-relacao">Traçar marcas gráficas é uma forma elementar de "representar" algo. Essa capacidade de externalizar o pensamento por meio de traços é a precursora da representação de algoritmos, que podem ser desenhados como sequências de passos.</div>
+  </div>
+
+  <!-- ──────────────────────────────────────────────────
+       Habilidade 3: EI03CO01 – Reconhecimento de padrões
+  ────────────────────────────────────────────────── -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EI03CO01</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Reconhecer padrão de repetição em sequência de sons, movimentos, desenhos.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> Educação Infantil</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento Computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Identificação de padrões</p>
+    <div class="hab-relacao">Ao traçar marcas, a criança pode começar a perceber repetições e padrões: "fiz vários risquinhos", "fiz bolinhas iguais". Essa percepção de padrões nas próprias produções gráficas é fundamental para o pensamento computacional.</div>
+  </div>
+
+  <!-- ──────────────────────────────────────────────────
+       Habilidade 4: EI03CO03 – Execução de algoritmos com objetos (des)plugados
+  ────────────────────────────────────────────────── -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EI03CO03</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Experienciar a execução de algoritmos brincando com objetos (des)plugados.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> Educação Infantil</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Pensamento Computacional</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Sequências de instruções</p>
+    <div class="hab-relacao">Atividades de desenho podem seguir sequências: "primeiro faço um círculo, depois faço os olhos". Essa execução de etapas no desenho é uma forma de vivenciar algoritmos de criação.</div>
+  </div>
+
+  <!-- ──────────────────────────────────────────────────
+       Habilidade 5: EI03CO08 – Compreender interfaces para comunicação
+  ────────────────────────────────────────────────── -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EI03CO08</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Compreender o conceito de interfaces para comunicação com objetos (des)plugados.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> Educação Infantil</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Mundo Digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Formas de interação com dispositivos</p>
+    <div class="hab-relacao">Diferentes suportes (papel, areia, massa) e diferentes instrumentos (lápis, pincel, giz) oferecem "interfaces" variadas para produzir marcas. Explorar essas diferenças prepara para compreender interfaces digitais.</div>
+  </div>
+
+  <!-- ──────────────────────────────────────────────────
+       Habilidade 6: EI03CO09 – Identificar dispositivos e formas de interação
+  ────────────────────────────────────────────────── -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EI03CO09</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Identificar dispositivos computacionais e as diferentes formas de interação.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> Educação Infantil</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Mundo Digital</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Dispositivos e suas interfaces</p>
+    <div class="hab-relacao">Tablets e computadores também permitem traçar marcas gráficas através de programas de desenho. A experiência com suportes físicos prepara a criança para explorar essas possibilidades no ambiente digital.</div>
+  </div>
+
+  <!-- ──────────────────────────────────────────────────
+       Habilidade 7: EI03CG05 – Coordenar habilidades manuais
+       (Transversal com Corpo, Gestos e Movimentos)
+  ────────────────────────────────────────────────── -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EI03CG05</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Coordenar suas habilidades manuais no atendimento adequado a seus interesses e necessidades em situações diversas.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> Educação Infantil</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Corpo, Gestos e Movimentos</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Habilidades motoras finas</p>
+    <div class="hab-relacao">Traçar marcas gráficas desenvolve as habilidades motoras finas e a coordenação olho-mão, que são essenciais para interagir com dispositivos tecnológicos que exigem precisão (tocar, arrastar, clicar).</div>
+  </div>
+
+  <!-- ──────────────────────────────────────────────────
+       Habilidade 8: EI03TS02 – Expressar-se por meio de desenho, pintura, colagem
+       (Transversal com o próprio campo Traços, Sons, Cores e Formas)
+  ────────────────────────────────────────────────── -->
+  <div class="hab-computacao">
+    <div class="hab-computacao__codigo">EI03TS02</div>
+    <p class="hab-computacao__campo"><strong>Descrição:</strong> Expressar-se livremente por meio de desenho, pintura, colagem, dobradura e escultura, criando produções bidimensionais e tridimensionais.</p>
+    <p class="hab-computacao__campo"><strong>Componente:</strong> Computação</p>
+    <p class="hab-computacao__campo"><strong>Ano/Etapa:</strong> Educação Infantil</p>
+    <p class="hab-computacao__campo"><strong>Unidade temática:</strong> Traços, Sons, Cores e Formas</p>
+    <p class="hab-computacao__campo"><strong>Objeto do conhecimento:</strong> Produção artística</p>
+    <div class="hab-relacao">As primeiras marcas gráficas (EI01TS02) evoluem para produções mais elaboradas, onde a criança expressa intencionalmente suas ideias e sentimentos por meio de diferentes linguagens artísticas.</div>
+  </div>
+
+  <p class="hab-metadata">
+    🔍 Habilidades listadas em ordem decrescente de relevância para a habilidade EI01TS02
+  </p>
+
+</body>
+</html>
