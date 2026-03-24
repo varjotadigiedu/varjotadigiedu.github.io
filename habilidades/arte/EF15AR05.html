@@ -5,9 +5,120 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EF15AR05 — Arte — Varjota DigiEdu</title>
   <script src="../../assets/template-loader.js"></script>
-  <script>window.VD_PAGE={disciplina:"arte",pageTitle:"EF15AR05"};</script>
+  <script>
+    window.VD_PAGE = {
+      disciplina: "arte",
+      pageTitle:  "EF15AR04"
+    };
+  </script>
   <script src="../../assets/template.js"></script>
-  <style>:root{--disc-cor:#C62828;--disc-cor-light:#FFF5F5;--comp-cor:#27AE60;--comp-cor-light:#E8F5E9;}.hab-voltar{display:inline-flex;align-items:center;gap:6px;margin-bottom:24px;padding:8px 18px;border-radius:50px;border:2px solid var(--disc-cor);background:#fff;color:var(--disc-cor);font-family:'Lexend',sans-serif;font-size:.85rem;font-weight:700;text-decoration:none;transition:.15s;}.hab-voltar:hover{background:var(--disc-cor);color:#fff;}.hab-principal{background:var(--disc-cor-light);border-left:4px solid var(--disc-cor);border-radius:0 12px 12px 0;padding:24px 28px;margin-bottom:32px;}.hab-principal__titulo{font-family:'Lexend',sans-serif;font-size:1.1rem;font-weight:800;color:var(--disc-cor);margin-bottom:16px;}.hab-principal__campo{margin:6px 0;font-size:.9rem;color:#374151;}.hab-principal__campo strong{font-family:'Lexend',sans-serif;color:#1A1A2E;display:inline-block;min-width:160px;}.hab-secao-titulo{font-family:'Lexend',sans-serif;font-size:1.15rem;font-weight:800;color:#1A1A2E;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid #DDE3ED;}.hab-computacao{background:#F9FAFB;border:1px solid #DDE3ED;border-radius:12px;padding:22px 24px;margin-bottom:16px;transition:.15s;}.hab-computacao:hover{box-shadow:0 4px 16px rgba(0,0,0,.08);}.hab-computacao__codigo{font-family:'Lexend',sans-serif;font-size:1rem;font-weight:800;color:var(--comp-cor);margin-bottom:14px;display:flex;align-items:center;gap:8px;}.hab-computacao__codigo::before{content:"🔹";font-size:.9rem;}.hab-computacao__campo{margin:5px 0;font-size:.875rem;color:#374151;}.hab-computacao__campo strong{font-family:'Lexend',sans-serif;color:#555;display:inline-block;min-width:160px;}.hab-relacao{background:var(--comp-cor-light);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:.875rem;font-style:italic;color:#1B5E20;line-height:1.55;}.hab-relacao::before{content:"🎯 Relação: ";font-weight:700;font-style:normal;font-family:'Lexend',sans-serif;}.hab-metadata{margin-top:28px;padding-top:16px;border-top:1px solid #DDE3ED;font-size:.8rem;color:#9CA3AF;}</style>
+  <script src="../assets/router.js"></script>
+  <style>
+    /* ── Cores temáticas — Arte ── */
+    :root {
+      --disc-cor:       #C62828;   /* cor principal da disciplina */
+      --disc-cor-light: #FFF5F5;   /* fundo suave da disciplina  */
+      --comp-cor:       #27AE60;   /* verde fixo para Computação */
+      --comp-cor-light: #E8F5E9;   /* fundo suave para Computação */
+    }
+
+    /* ── Botão voltar ── */
+    .hab-voltar {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-bottom: 24px;
+      padding: 8px 18px; border-radius: 50px;
+      border: 2px solid var(--disc-cor);
+      background: #fff; color: var(--disc-cor);
+      font-family: 'Lexend', sans-serif; font-size: .85rem; font-weight: 700;
+      text-decoration: none; transition: background .15s, color .15s;
+    }
+    .hab-voltar:hover { background: var(--disc-cor); color: #fff; }
+
+    /* ── Bloco da habilidade principal ── */
+    .hab-principal {
+      background: var(--disc-cor-light);
+      border-left: 4px solid var(--disc-cor);
+      border-radius: 0 12px 12px 0;
+      padding: 24px 28px;
+      margin-bottom: 32px;
+    }
+    .hab-principal__titulo {
+      font-family: 'Lexend', sans-serif;
+      font-size: 1.1rem; font-weight: 800;
+      color: var(--disc-cor);
+      margin-bottom: 16px;
+    }
+    .hab-principal__campo { margin: 6px 0; font-size: .9rem; color: #374151; }
+    .hab-principal__campo strong {
+      font-family: 'Lexend', sans-serif;
+      color: #1A1A2E;
+      display: inline-block; min-width: 160px;
+    }
+
+    /* ── Título da seção de Computação ── */
+    .hab-secao-titulo {
+      font-family: 'Lexend', sans-serif;
+      font-size: 1.15rem; font-weight: 800;
+      color: #1A1A2E;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #DDE3ED;
+    }
+
+    /* ── Cards de habilidades de Computação ── */
+    .hab-computacao {
+      background: #F9FAFB;
+      border: 1px solid #DDE3ED;
+      border-radius: 12px;
+      padding: 22px 24px;
+      margin-bottom: 16px;
+      transition: box-shadow .15s;
+    }
+    .hab-computacao:hover { box-shadow: 0 4px 16px rgba(0,0,0,.08); }
+
+    .hab-computacao__codigo {
+      font-family: 'Lexend', sans-serif;
+      font-size: 1rem; font-weight: 800;
+      color: var(--comp-cor);
+      margin-bottom: 14px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .hab-computacao__codigo::before { content: "🔹"; font-size: .9rem; }
+
+    .hab-computacao__campo { margin: 5px 0; font-size: .875rem; color: #374151; }
+    .hab-computacao__campo strong {
+      font-family: 'Lexend', sans-serif;
+      color: #555;
+      display: inline-block; min-width: 160px;
+    }
+
+    /* ── Box de relação ── */
+    .hab-relacao {
+      background: var(--comp-cor-light);
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-top: 14px;
+      font-size: .875rem;
+      font-style: italic;
+      color: #1B5E20;
+      line-height: 1.55;
+    }
+    .hab-relacao::before {
+      content: "🎯 Relação: ";
+      font-weight: 700;
+      font-style: normal;
+      font-family: 'Lexend', sans-serif;
+    }
+
+    /* ── Rodapé de metadados ── */
+    .hab-metadata {
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid #DDE3ED;
+      font-size: .8rem;
+      color: #9CA3AF;
+    }
+  </style>
 </head>
 <body>
 <a href="../../disciplinas/arte.html" class="hab-voltar">← Voltar para Arte</a>
